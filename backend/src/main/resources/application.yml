@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: homestyler-api
+  profiles:
+    default: dev
+  # Jackson 3 (Spring Boot 4) 는 java.time 값을 기본적으로 ISO-8601 문자열로 직렬화한다.
+
+server:
+  port: 8080
