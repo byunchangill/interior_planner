@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">try{
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-lowest": "#ffffff",
+                    "secondary-fixed": "#85f8c4",
+                    "surface": "#f8f9fa",
+                    "background": "#f8f9fa",
+                    "surface-bright": "#f8f9fa",
+                    "secondary-fixed-dim": "#68dba9",
+                    "inverse-on-surface": "#f0f1f2",
+                    "secondary": "#006c4a",
+                    "tertiary-container": "#934e00",
+                    "surface-container": "#edeeef",
+                    "on-primary-container": "#dad7ff",
+                    "tertiary": "#703a00",
+                    "secondary-container": "#82f5c1",
+                    "outline": "#777587",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb77d",
+                    "tertiary-fixed": "#ffdcc3",
+                    "surface-container-low": "#f3f4f5",
+                    "primary-container": "#4f46e5",
+                    "on-error": "#ffffff",
+                    "primary": "#3525cd",
+                    "error": "#ba1a1a",
+                    "outline-variant": "#c7c4d8",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-primary-fixed": "#0f0069",
+                    "inverse-surface": "#2e3132",
+                    "on-surface-variant": "#464555",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "on-secondary-container": "#00714e",
+                    "error-container": "#ffdad6",
+                    "on-surface": "#191c1d",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-container": "#ffd2b1",
+                    "on-background": "#191c1d",
+                    "surface-container-high": "#e7e8e9",
+                    "inverse-primary": "#c3c0ff",
+                    "on-tertiary-fixed": "#2f1500",
+                    "on-secondary": "#ffffff",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "on-error-container": "#93000a",
+                    "primary-fixed": "#e2dfff",
+                    "on-secondary-fixed": "#002114",
+                    "surface-tint": "#4d44e3",
+                    "on-tertiary-fixed-variant": "#6e3900",
+                    "on-secondary-fixed-variant": "#005137",
+                    "surface-dim": "#d9dadb",
+                    "surface-variant": "#e1e3e4"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-lg": "32px",
+                    "gutter": "24px",
+                    "margin-mobile": "20px",
+                    "stack-md": "16px",
+                    "container-max-width": "1280px",
+                    "unit": "4px",
+                    "stack-sm": "8px",
+                    "margin-desktop": "48px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Inter"],
+                    "headline-xl": ["Plus Jakarta Sans"],
+                    "body-sm": ["Inter"],
+                    "label-md": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-xl": ["40px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    }catch(_e){}</script><meta charset="utf-8"/></head><body class="bg-background text-on-surface min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface shadow-sm flex justify-between items-center px-margin-mobile h-14 w-full">
+<div class="flex items-center gap-4">
+<button class="hover:opacity-80 transition-opacity active:scale-95 duration-100">
+<span class="material-symbols-outlined text-primary" data-original-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">HomeStyler AI</h1>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-8 h-8 rounded-full bg-primary-container flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a stylish interior design client, soft studio lighting, clean background, modern aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBf0RSlUbL0-Va2_16dkM-n2Cx2lDx-xKfIGN-cu6tDL06TNU-X_kV-NBgl8JpM0WHrgp44xe8talS064tUu3NN1f7hVaMst7avnV7dsul1tvYml95LvwOQptSOQpBUh3cL0RX_ieHEksZm6_6dIstwxSRt8MOQfsmjNshiCRaD6p5J52TExI51ORVGVOlibj2OZBVhblOACU5_4kl1Xumu6ukzvPbBRlS6Ne5QFZL0lMXgAWaWSiEfX05o2Z8DHQNPZ9RVUfQb_s7"/>
+</div>
+</div>
+</header>
+<main class="mt-14 max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop py-stack-lg">
+<!-- Hero Section: Before/After Slider -->
+<section class="mb-stack-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-stack-md gap-4">
+<div>
+<span class="font-label-md text-label-md text-primary uppercase tracking-wider">분석 완료</span>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mt-1">당신의 공간이 새롭게 태어났습니다</h2>
+</div>
+<div class="flex gap-2">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full font-label-sm text-label-sm">거실</span>
+<span class="bg-surface-container-high text-on-surface-variant px-3 py-1 rounded-full font-label-sm text-label-sm">24m²</span>
+</div>
+</div>
+<!-- Before/After Interactive Component -->
+<div class="relative w-full aspect-video md:aspect-[21/9] rounded-xl overflow-hidden shadow-lg before-after-slider group" id="slider-container">
+<!-- Base Image (Before) -->
+<div class="absolute inset-0 bg-surface-container-highest">
+<img class="w-full h-full object-cover" data-alt="A wide shot of a cluttered, dimly lit living room with dated brown furniture and beige walls. The space feels cramped and unorganized, with natural light struggling to penetrate through heavy curtains. A realistic, high-resolution interior photograph." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5kX5m9Rq-ZFdStDUYKk6yUymwXXUZYhCBaqjDYHWTagk-4tSaOnl7fEgTIpaWZIPGKZL6UvpTXyorCdCdF16tAKlp3oC6JVi0E9-PZv6bvmDjbLEg6iZgPBL55mHIs1FHRbbTt8JrFYvc2yF3Yvt5RAaOr-6oOc4i18SgOBS9XyDaWigCdQNz9SBr_GsFQZDPs1KhoT0Pe_0Do1TX1GdvwYNkIW8fkd_vokc_ZJm39UEO5zMT1Fmo6jFM2DlAI9zN2s7daXCiBSfW"/>
+<div class="absolute bottom-4 right-4 glass-card px-3 py-1 rounded-lg font-label-sm text-label-sm text-on-surface uppercase">변경 전</div>
+</div>
+<!-- Overlay Image (After) -->
+<div class="after-image" id="after-image" style="width: 50%;">
+<img class="w-full h-full object-cover min-w-[100vw]" data-alt="The same living room transformed into a bright, airy Scandinavian masterpiece. Light oak flooring, a plush cream sofa, minimalist artwork, and abundant indoor plants. Soft morning light floods the room through sheer linen curtains. The professional design is clean, balanced, and sophisticated." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCO-b6sSrXFn2tePDFaJZabCXR8_dAbw5UVjskenRTvLUCk7FVdEQfa3OG1VpZokbKYaMHqttqZbyG060yLb4YOocw9PT0OgoOpTUD8rz_6c_kqbN98TeVBDfcTZIcr25B0RyfI1cO54KbQQKP8glIYYHkT918EBOIwXifxQNGoaBaXVf7th2y7Z5_bgSHEnclpHgVtgGRq0A5VuS1ghrfCbIeMsRJnn32gWXKzqKzU25WuDQNHRB39-wxbfifHliMDfQL7PEme4zep"/>
+<div class="absolute bottom-4 left-4 glass-card px-3 py-1 rounded-lg font-label-sm text-label-sm text-primary font-bold uppercase">변경 후</div>
+</div>
+<!-- Slider Handle -->
+<div class="slider-handle" id="slider-handle" style="left: 50%;">
+<div class="slider-handle-circle">
+<span class="material-symbols-outlined text-primary">unfold_more</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Style Selection Tabs -->
+<section class="mb-stack-lg">
+<div class="flex space-x-1 bg-surface-container-low p-1 rounded-xl w-fit mb-stack-md">
+<button class="px-6 py-2 rounded-lg font-label-md text-label-md bg-white text-primary shadow-sm transition-all">노르딕 미니멀</button>
+<button class="px-6 py-2 rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-all">모던 인더스트리얼</button>
+<button class="px-6 py-2 rounded-lg font-label-md text-label-md text-on-surface-variant hover:bg-surface-container transition-all">자판디</button>
+</div>
+<!-- Recommendation Summary Bento -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Concept Summary Card -->
+<div class="md:col-span-2 glass-card p-gutter rounded-xl shadow-sm border-outline-variant flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-2 mb-stack-sm">
+<span class="material-symbols-outlined text-secondary">auto_awesome</span>
+<h3 class="font-headline-md text-headline-md text-on-surface">'평온한 노르딕' 컨셉</h3>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed mb-stack-md">
+                            AI 분석 결과, 남향의 채광을 극대화하기 위해 빛을 반사하는 밝은 표면과 유기적인 질감을 우선적으로 배치할 것을 제안합니다. 부피가 큰 소파를 낮은 프로필의 모듈형 가구로 교체하고 따뜻한 우드 톤을 가미하여, 기능적인 편안함을 유지하면서도 개방감 있는 평온함을 조성할 수 있습니다.
+                        </p>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase">메인 컬러</span>
+<div class="flex gap-1 mt-1">
+<div class="w-6 h-6 rounded-full bg-[#F5F5F5] border border-outline-variant"></div>
+<div class="w-6 h-6 rounded-full bg-[#E0E0E0] border border-outline-variant"></div>
+<div class="w-6 h-6 rounded-full bg-[#C3C0FF] border border-outline-variant"></div>
+</div>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase">주요 소재</span>
+<span class="font-body-md text-body-md text-on-surface mt-1">라이트 오크</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase">분위기</span>
+<span class="font-body-md text-body-md text-on-surface mt-1">밝고 평온함</span>
+</div>
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase">시공 난이도</span>
+<span class="font-body-md text-body-md text-on-surface mt-1">보통</span>
+</div>
+</div>
+</div>
+<!-- Quick Actions/Summary Details -->
+<div class="flex flex-col gap-gutter">
+<div class="bg-primary text-on-primary p-gutter rounded-xl shadow-lg flex flex-col justify-between aspect-square md:aspect-auto h-full">
+<div>
+<span class="font-label-md text-label-md text-primary-fixed-dim">AI 추천안</span>
+<h4 class="font-headline-md text-headline-md mt-2">공간을 바꿀 준비가 되셨나요?</h4>
+<p class="font-body-md text-body-md opacity-90 mt-2">가구 배치부터 조명, 상세 페인트 정보까지 포함된 전체 리포트를 확인해 보세요.</p>
+</div>
+<button class="mt-stack-md bg-white text-primary px-6 py-3 rounded-xl font-label-md text-label-md hover:bg-opacity-90 transition-all flex items-center justify-center gap-2 group">
+                            전체 리포트 보기
+                            <span class="material-symbols-outlined group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- Dynamic Insights Section -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter mb-stack-lg">
+<div class="bg-surface-container p-stack-md rounded-xl border border-outline-variant hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-secondary mb-2">lightbulb</span>
+<h5 class="font-label-md text-label-md text-on-surface">조명 팁</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">그림자를 방지하기 위해 3-2-1 법칙을 활용하여 부드운 간접 조명을 겹쳐보세요.</p>
+</div>
+<div class="bg-surface-container p-stack-md rounded-xl border border-outline-variant hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-tertiary mb-2">straighten</span>
+<h5 class="font-label-md text-label-md text-on-surface">공간 최적화</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">200cm x 300cm 크기의 러그는 가구에 안정감을 주고 방을 더 넓어 보이게 합니다.</p>
+</div>
+<div class="bg-surface-container p-stack-md rounded-xl border border-outline-variant hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-primary mb-2">eco</span>
+<h5 class="font-label-md text-label-md text-on-surface">에코 체크</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">추천된 자재의 85%가 지속 가능한 소재로 구성되었습니다.</p>
+</div>
+<div class="bg-surface-container p-stack-md rounded-xl border border-outline-variant hover:shadow-md transition-shadow">
+<span class="material-symbols-outlined text-error mb-2">monetization_on</span>
+<h5 class="font-label-md text-label-md text-on-surface">예상 예산</h5>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">추천 가구 구성 시 약 320만 원 ~ 430만 원의 예산이 예상됩니다.</p>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full h-16 flex justify-around items-center px-margin-mobile pb-safe bg-surface border-t border-outline-variant shadow-[0_-4px_20px_rgba(0,0,0,0.05)] z-50 rounded-t-xl">
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">홈</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 scale-90 duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="font-label-sm text-label-sm">스타일링</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-sm text-label-sm">분석</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">more_horiz</span>
+<span class="font-label-sm text-label-sm">더보기</span>
+</button>
+</nav>
+<script>
+        // Simple Before/After Slider Interaction
+        const container = document.getElementById('slider-container');
+        const handle = document.getElementById('slider-handle');
+        const afterImage = document.getElementById('after-image');
+
+        function moveSlider(e) {
+            const rect = container.getBoundingClientRect();
+            let x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
+            
+            if (x < 0) x = 0;
+            if (x > rect.width) x = rect.width;
+            
+            const percent = (x / rect.width) * 100;
+            
+            handle.style.left = `${percent}%`;
+            afterImage.style.width = `${percent}%`;
+        }
+
+        container.addEventListener('mousemove', moveSlider);
+        container.addEventListener('touchmove', moveSlider);
+
+        // Hover effect for tabs
+        const tabs = document.querySelectorAll('button[class*="font-label-md"]');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => {
+                    t.classList.remove('bg-white', 'text-primary', 'shadow-sm');
+                    t.classList.add('text-on-surface-variant');
+                });
+                tab.classList.add('bg-white', 'text-primary', 'shadow-sm');
+                tab.classList.remove('text-on-surface-variant');
+            });
+        });
+    </script>
+</body></html>

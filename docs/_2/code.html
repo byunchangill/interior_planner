@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .active-selection {
+            border-color: #3525cd;
+            background-color: #e2dfff;
+        }
+    </style>
+<title>공간 등록 - HomeStyler</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-md min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile py-4 bg-surface/80 backdrop-blur-md shadow-sm">
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-all">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">공간 등록</h1>
+</div>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-on-surface-variant p-2" data-icon="notifications">notifications</span>
+</div>
+</header>
+<main class="pt-24 px-margin-mobile max-w-container-max-width mx-auto">
+<!-- Title Section -->
+<section class="mb-stack-lg">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-2">어떤 공간을 꾸미고 싶으신가요?</h2>
+<p class="text-on-surface-variant text-body-md">분석하고 싶은 공간의 유형을 먼저 선택해주세요.</p>
+</section>
+<!-- Space Type Selection (Bento Grid Style) -->
+<section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-stack-lg">
+<!-- Living Room -->
+<button class="group flex flex-col items-center justify-center p-stack-md bg-surface-container-lowest border border-outline-variant rounded-xl transition-all duration-300 hover:shadow-md hover:border-primary active:scale-95" onclick="selectSpace(this)">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-[28px]" data-icon="chair">chair</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">거실</span>
+</button>
+<!-- Bedroom -->
+<button class="group flex flex-col items-center justify-center p-stack-md bg-surface-container-lowest border border-outline-variant rounded-xl transition-all duration-300 hover:shadow-md hover:border-primary active:scale-95" onclick="selectSpace(this)">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary text-[28px]" data-icon="bed">bed</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">침실</span>
+</button>
+<!-- Kitchen -->
+<button class="group flex flex-col items-center justify-center p-stack-md bg-surface-container-lowest border border-outline-variant rounded-xl transition-all duration-300 hover:shadow-md hover:border-primary active:scale-95" onclick="selectSpace(this)">
+<div class="w-12 h-12 rounded-full bg-tertiary-fixed flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-tertiary text-[28px]" data-icon="cooking">cooking</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">주방</span>
+</button>
+<!-- Study -->
+<button class="group flex flex-col items-center justify-center p-stack-md bg-surface-container-lowest border border-outline-variant rounded-xl transition-all duration-300 hover:shadow-md hover:border-primary active:scale-95" onclick="selectSpace(this)">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-primary text-[28px]" data-icon="menu_book">menu_book</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">서재</span>
+</button>
+<!-- Bathroom -->
+<button class="group flex flex-col items-center justify-center p-stack-md bg-surface-container-lowest border border-outline-variant rounded-xl transition-all duration-300 hover:shadow-md hover:border-primary active:scale-95" onclick="selectSpace(this)">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-secondary text-[28px]" data-icon="bathtub">bathtub</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">욕실</span>
+</button>
+<!-- Etc -->
+<button class="group flex flex-col items-center justify-center p-stack-md bg-surface-container-lowest border border-outline-variant rounded-xl transition-all duration-300 hover:shadow-md hover:border-primary active:scale-95" onclick="selectSpace(this)">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center mb-3 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-on-surface-variant text-[28px]" data-icon="more_horiz">more_horiz</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">기타</span>
+</button>
+</section>
+<!-- Registration Method -->
+<section class="space-y-4">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-sm">등록 방식 선택</h3>
+<!-- Method 1: AI Photo -->
+<div class="relative group cursor-pointer overflow-hidden rounded-xl border border-outline-variant bg-surface-container-lowest hover:border-primary transition-all duration-300">
+<div class="flex items-center p-5">
+<div class="flex-shrink-0 w-14 h-14 bg-primary text-white rounded-xl flex items-center justify-center mr-4">
+<span class="material-symbols-outlined text-[32px]" data-icon="photo_camera" style="font-variation-settings: 'FILL' 1;">photo_camera</span>
+</div>
+<div class="flex-grow">
+<div class="flex items-center gap-2 mb-1">
+<h4 class="font-label-md text-label-md text-on-surface">사진 촬영</h4>
+<span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded-full">추천</span>
+</div>
+<p class="text-body-sm text-on-surface-variant">AI가 가장 정확하게 분석해요</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<!-- Method 2: Album -->
+<div class="relative group cursor-pointer overflow-hidden rounded-xl border border-outline-variant bg-surface-container-lowest hover:border-primary transition-all duration-300">
+<div class="flex items-center p-5">
+<div class="flex-shrink-0 w-14 h-14 bg-surface-container-high text-primary rounded-xl flex items-center justify-center mr-4">
+<span class="material-symbols-outlined text-[32px]" data-icon="image">image</span>
+</div>
+<div class="flex-grow">
+<h4 class="font-label-md text-label-md text-on-surface mb-1">사진첩에서 선택</h4>
+<p class="text-body-sm text-on-surface-variant">저장된 사진으로 빠르게 시작하세요</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<!-- Method 3: Floor Plan -->
+<div class="relative group cursor-pointer overflow-hidden rounded-xl border border-outline-variant bg-surface-container-lowest hover:border-primary transition-all duration-300">
+<div class="flex items-center p-5">
+<div class="flex-shrink-0 w-14 h-14 bg-surface-container-high text-primary rounded-xl flex items-center justify-center mr-4">
+<span class="material-symbols-outlined text-[32px]" data-icon="architecture">architecture</span>
+</div>
+<div class="flex-grow">
+<h4 class="font-label-md text-label-md text-on-surface mb-1">도면 업로드</h4>
+<p class="text-body-sm text-on-surface-variant">도면이 있으면 더 정밀해요</p>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- Information Card (Glassmorphism) -->
+<div class="mt-stack-lg p-5 glass-card rounded-2xl border border-white/40 flex items-start gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="info" style="font-variation-settings: 'FILL' 1;">info</span>
+<div>
+<p class="text-body-sm text-on-surface font-semibold mb-1">팁: 밝은 곳에서 촬영하세요</p>
+<p class="text-body-sm text-on-surface-variant leading-relaxed">자연광이 잘 들어오는 낮 시간에 촬영하면 AI가 가구의 질감과 컬러를 더욱 정확하게 분석할 수 있습니다.</p>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface shadow-lg border-t border-outline-variant rounded-t-xl md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-[10px]">홈</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-3 py-1 scale-95 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="chair" style="font-variation-settings: 'FILL' 1;">chair</span>
+<span class="font-label-sm text-[10px]">내 공간</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-label-sm text-[10px]">추천</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-sm text-[10px]">보관함</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-[10px]">마이</span>
+</a>
+</nav>
+<script>
+        function selectSpace(element) {
+            // Remove active class from all
+            document.querySelectorAll('button').forEach(btn => {
+                btn.classList.remove('active-selection', 'border-primary');
+                btn.classList.add('border-outline-variant');
+            });
+            // Add to current
+            element.classList.add('active-selection', 'border-primary');
+            element.classList.remove('border-outline-variant');
+            
+            // Haptic feedback simulation
+            if (window.navigator.vibrate) {
+                window.navigator.vibrate(10);
+            }
+        }
+
+        // Simple entering animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section, .glass-card');
+            sections.forEach((sec, index) => {
+                sec.style.opacity = '0';
+                sec.style.transform = 'translateY(20px)';
+                sec.style.transition = 'all 0.5s ease-out';
+                setTimeout(() => {
+                    sec.style.opacity = '1';
+                    sec.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html><html class="light" lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>HomeStyler - 스타일 상세</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Load Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#777587",
+                    "on-tertiary-container": "#ffd2b1",
+                    "surface-dim": "#d9dadb",
+                    "secondary-container": "#82f5c1",
+                    "on-background": "#191c1d",
+                    "primary-fixed": "#e2dfff",
+                    "on-primary-fixed": "#0f0069",
+                    "on-surface-variant": "#464555",
+                    "background": "#f8f9fa",
+                    "outline-variant": "#c7c4d8",
+                    "surface-variant": "#e1e3e4",
+                    "on-primary": "#ffffff",
+                    "inverse-surface": "#2e3132",
+                    "on-surface": "#191c1d",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed": "#ffdcc3",
+                    "on-tertiary-fixed-variant": "#6e3900",
+                    "on-tertiary-fixed": "#2f1500",
+                    "surface-bright": "#f8f9fa",
+                    "surface": "#f8f9fa",
+                    "primary": "#3525cd",
+                    "inverse-on-surface": "#f0f1f2",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "tertiary-container": "#934e00",
+                    "on-tertiary": "#ffffff",
+                    "primary-container": "#4f46e5",
+                    "on-secondary-fixed-variant": "#005137",
+                    "on-error": "#ffffff",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-secondary-fixed": "#002114",
+                    "surface-tint": "#4d44e3",
+                    "secondary": "#006c4a",
+                    "surface-container-high": "#e7e8e9",
+                    "on-primary-container": "#dad7ff",
+                    "tertiary": "#703a00",
+                    "on-secondary-container": "#00714e",
+                    "error": "#ba1a1a",
+                    "inverse-primary": "#c3c0ff",
+                    "surface-container-low": "#f3f4f5",
+                    "tertiary-fixed-dim": "#ffb77d",
+                    "surface-container": "#edeeef",
+                    "secondary-fixed-dim": "#68dba9",
+                    "secondary-fixed": "#85f8c4",
+                    "error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "stack-sm": "8px",
+                    "container-max-width": "1280px",
+                    "stack-lg": "32px",
+                    "margin-desktop": "48px",
+                    "unit": "4px",
+                    "stack-md": "16px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "headline-xl": ["Plus Jakarta Sans"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-xl": ["40px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+      }
+      .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .hide-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md overflow-x-hidden">
+<!-- Top AppBar (From Shared Components) -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface/80 backdrop-blur-md flex justify-between items-center px-margin-mobile py-4 shadow-sm">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">HomeStyler</h1>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-on-surface-variant">share</span>
+</button>
+</header>
+<main class="pt-20 pb-32">
+<!-- Hero Section -->
+<section class="px-margin-mobile mb-stack-lg">
+<div class="relative w-full aspect-[4/3] rounded-3xl overflow-hidden shadow-lg group">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A cinematic, high-resolution photograph of a modern minimalist living room featuring a sleek charcoal grey sofa, a low-profile walnut coffee table, and an oversized abstract painting. The lighting is soft and natural, streaming from a floor-to-ceiling window, highlighting the rich textures of a wool rug and brass accents. The overall mood is sophisticated, calm, and professional, characteristic of a premium interior design gallery." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD4ENpdYjICPRC86iGdqj_aXQE0120PJHuBL99e2PJKuPmhRIwVAw7Yry3uAdxThv45ZixPxtxwl2PmnFBCIDB6NYKfmO8e1t6572Jhk33vs5JSWpCOEBGRfQ_JD7LMHq9znWLpNPNjfc_y-iMsN03JG0EJaVFE6WsMS3d2lu4BgUSWvGIJgvHU9_i9jFwaxiAOYAbcG_kJiWJj8BNSY2gr_n8Aqbau3NEgdfJNusku-3VeY_jDD6flVPTT3ALyTMp28UWh8-WjLJy6')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+<div class="absolute bottom-6 left-6 right-6 text-white">
+<div class="flex gap-2 mb-2">
+<span class="px-3 py-1 bg-primary text-white text-label-sm font-label-sm rounded-full">모던</span>
+<span class="px-3 py-1 bg-white/20 backdrop-blur-md text-white text-label-sm font-label-sm rounded-full">미니멀</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl mb-1">어반 미니멀리즘</h2>
+<p class="font-body-md text-white/80">정제된 직선과 고급스러운 톤의 조화</p>
+</div>
+</div>
+</section>
+<!-- Style Characteristics (Bento Style) -->
+<section class="px-margin-mobile mb-stack-lg">
+<div class="grid grid-cols-2 gap-4">
+<div class="col-span-2 glass-card p-6 rounded-3xl flex flex-col gap-2">
+<h3 class="font-label-md text-primary flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">auto_awesome</span>
+                        스타일 특징
+                    </h3>
+<p class="font-body-md text-on-surface-variant leading-relaxed">
+                        불필요한 장식을 배제하고 기능적 아름다움을 극대화한 스타일입니다. 무채색 베이스에 포인트 컬러를 활용하여 도회적이고 세련된 분위기를 연출합니다.
+                    </p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-3xl flex flex-col gap-4">
+<h3 class="font-label-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">palette</span>
+                        컬러 팔레트
+                    </h3>
+<div class="flex flex-wrap gap-2">
+<div class="w-8 h-8 rounded-full bg-[#2E3132] ring-2 ring-white" title="Charcoal"></div>
+<div class="w-8 h-8 rounded-full bg-[#777587] ring-2 ring-white" title="Stone"></div>
+<div class="w-8 h-8 rounded-full bg-[#C7C4D8] ring-2 ring-white" title="Soft Gray"></div>
+<div class="w-8 h-8 rounded-full bg-[#3525CD] ring-2 ring-white" title="Indigo Point"></div>
+</div>
+</div>
+<div class="bg-surface-container-low p-6 rounded-3xl flex flex-col gap-4">
+<h3 class="font-label-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]">architecture</span>
+                        대표 소재
+                    </h3>
+<div class="flex flex-col gap-1 text-on-surface-variant text-body-sm font-body-sm">
+<span>• 매트 블랙 스틸</span>
+<span>• 월넛 원목</span>
+<span>• 테라조 &amp; 대리석</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Space Examples (Horizontal Scroll) -->
+<section class="mb-stack-lg">
+<div class="px-margin-mobile mb-4 flex justify-between items-end">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">공간 예시</h3>
+<p class="font-body-sm text-on-surface-variant">이 스타일이 적용된 다양한 공간입니다</p>
+</div>
+<button class="text-primary text-label-md font-label-md hover:underline">전체보기</button>
+</div>
+<div class="flex overflow-x-auto gap-4 px-margin-mobile hide-scrollbar snap-x">
+<!-- Card 1 -->
+<div class="flex-none w-64 snap-start">
+<div class="w-full aspect-square rounded-2xl overflow-hidden mb-2 bg-surface-container">
+<div class="w-full h-full bg-cover bg-center" data-alt="A modern minimalist kitchen with matte black cabinetry, a white marble island, and built-in professional-grade appliances. The flooring is polished concrete, and a single pendant light with an indigo accent hangs over the island. The aesthetic is clean, luxurious, and functional, with bright daylight and a sharp focus on textures like stone and steel." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuChsJzFDkmlFsIvlTTGCSbluiqxPQWQiXVZhd7eUu5hZKcnGDKeNuH2Y7XV0bxIuAEBYuFh5yuUgmvSUktLZh0Z3WjA1TL8xXD3pxO9J3wZmLyRbod8U8YfSg0AhYABsrVNIlI6bC-tCE1409z0JgC-aV614O0Erh1T4zPxYgdcxKZYNPNbq0fKdqJaVuyktvxRKCA_PWmItBxLm9heARYthe0gLYK7IqLPzzgNW3nTiFm7xcJN8W1V7A4Eb2MKcrHcKd6gdHPgEsF7')"></div>
+</div>
+<span class="font-label-md text-on-surface">다이닝 룸</span>
+</div>
+<!-- Card 2 -->
+<div class="flex-none w-64 snap-start">
+<div class="w-full aspect-square rounded-2xl overflow-hidden mb-2 bg-surface-container">
+<div class="w-full h-full bg-cover bg-center" data-alt="A serene master bedroom following urban minimalism principles. It features a low platform bed with charcoal linen bedding, a dark walnut headboard, and a minimalist bedside lamp. Large windows overlook a city skyline at dusk, casting a cool blue light into the room. The space feels tranquil, modern, and highly curated with professional interior styling." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAIGqrqDQ3CHqd4TlvcZHF6Zu-z-UFNnvYecHfbOv4mvBJq4SQTPqlV3jXHfKSLkeWJZ06F42AE_Bl-HJrSn_pPSXbD9h8otq4BE52e3uMzMo3a2GkLdhbkrZTGyQEPxwePKXVNlfRQgubUpdA8duAX9ggPlBzp_h9l5Lcb8zkwqzbvyyVd6QmcxoI5CF3CnNiahA86X5BSj4X5TcXJW0YgndfsW66hhXhd5PJjW0_FvD0b7LREvZ3qSb_eOe-bQQ3xToqz01QJxooW')"></div>
+</div>
+<span class="font-label-md text-on-surface">침실</span>
+</div>
+<!-- Card 3 -->
+<div class="flex-none w-64 snap-start">
+<div class="w-full aspect-square rounded-2xl overflow-hidden mb-2 bg-surface-container">
+<div class="w-full h-full bg-cover bg-center" data-alt="A sophisticated home office setup with a floating walnut desk, an ergonomic black leather chair, and custom minimalist shelving. The background is a soft gray textured wall. Natural light hits the desk surface, showing fine wood grain and a small green plant for contrast. The vibe is professional, focused, and elegantly modern." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC_US2g0NKfEzt_49xyrDXxCVYtSr8m9pMZRPa3eCJcj1P5P9gYlPWw7oEJBxWsuTfVyucfA19ZliUoAj0r1BKO6iVJptqXHMuQy_x3SWr1M1HmMPA04m46keV49n7w04GxeAWgKOZ4XlSPtM1njwXK9iyKuollBJ0Od93uguHKEZ1r1fYVK94xmAOuqQJ1SnADBpBDzsLx8fdor17ICEGOs5D1sNCbcqp85uJt5pgW4qL6CatqY7-jWdZ9KZbMx4O68CdLKJgV_oTj')"></div>
+</div>
+<span class="font-label-md text-on-surface">서재</span>
+</div>
+</div>
+</section>
+<!-- AI Styling Insight -->
+<section class="px-margin-mobile">
+<div class="relative overflow-hidden p-8 rounded-[32px] bg-primary text-white shadow-xl">
+<!-- Abstract Background Ornament -->
+<div class="absolute top-0 right-0 -translate-y-1/2 translate-x-1/2 w-48 h-48 bg-white/10 rounded-full blur-3xl"></div>
+<div class="absolute bottom-0 left-0 translate-y-1/2 -translate-x-1/4 w-64 h-64 bg-secondary-container/20 rounded-full blur-2xl"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<h3 class="font-headline-md text-headline-md">AI 스타일 인사이트</h3>
+</div>
+<p class="font-body-md text-white/90 leading-relaxed mb-6">
+                        "어반 미니멀리즘은 채광이 풍부한 거실에 가장 잘 어울립니다. 가죽 소파와 월넛 가구를 조합하면 차가워 보일 수 있는 미니멀 공간에 따뜻한 무드를 더할 수 있습니다."
+                    </p>
+<div class="flex items-center gap-2 text-white/70">
+<span class="material-symbols-outlined text-[18px]">info</span>
+<span class="text-label-sm font-label-sm">현재 트렌드 92% 일치</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Action Bar -->
+<footer class="fixed bottom-0 left-0 w-full z-50 bg-white/90 backdrop-blur-xl border-t border-outline-variant/30 px-margin-mobile py-4 pb-safe flex flex-col gap-2 shadow-[0_-10px_20px_rgba(0,0,0,0.05)]">
+<button class="w-full h-[56px] bg-primary text-white rounded-2xl flex items-center justify-center gap-2 font-label-md text-label-md shadow-lg active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">camera_enhance</span>
+            이 스타일로 분석 시작하기
+        </button>
+</footer>
+<script>
+        // Simple Interaction for scroll effects or micro-animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const header = document.querySelector('header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) {
+                    header.classList.add('shadow-md');
+                    header.classList.remove('shadow-sm');
+                } else {
+                    header.classList.remove('shadow-md');
+                    header.classList.add('shadow-sm');
+                }
+            });
+
+            // Button Click Animation
+            const actionBtn = document.querySelector('footer button');
+            actionBtn.addEventListener('click', () => {
+                actionBtn.classList.add('bg-primary-container');
+                setTimeout(() => {
+                    actionBtn.classList.remove('bg-primary-container');
+                    alert('공간 분석 AI 모듈을 실행합니다.');
+                }, 150);
+            });
+        });
+    </script>
+</body></html>

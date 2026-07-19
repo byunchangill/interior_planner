@@ -1,0 +1,307 @@
+<!DOCTYPE html><html class="light" lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>HomeStyler AI - 분석 중</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(0.98); }
+        }
+        .animate-pulse-soft { animation: pulse-soft 3s ease-in-out infinite; }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .progress-shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .step-enter {
+            animation: slideUpFade 0.5s ease-out forwards;
+        }
+
+        @keyframes slideUpFade {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-variant": "#e1e3e4",
+                      "surface-bright": "#f8f9fa",
+                      "on-secondary-fixed": "#002114",
+                      "inverse-primary": "#c3c0ff",
+                      "tertiary": "#703a00",
+                      "tertiary-fixed-dim": "#ffb77d",
+                      "on-tertiary-fixed-variant": "#6e3900",
+                      "on-surface": "#191c1d",
+                      "secondary-fixed": "#85f8c4",
+                      "outline-variant": "#c7c4d8",
+                      "on-surface-variant": "#464555",
+                      "on-secondary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "surface-container-low": "#f3f4f5",
+                      "on-secondary-container": "#00714e",
+                      "outline": "#777587",
+                      "surface-container-high": "#e7e8e9",
+                      "on-secondary-fixed-variant": "#005137",
+                      "inverse-surface": "#2e3132",
+                      "secondary-container": "#82f5c1",
+                      "on-primary": "#ffffff",
+                      "inverse-on-surface": "#f0f1f2",
+                      "primary-fixed-dim": "#c3c0ff",
+                      "tertiary-fixed": "#ffdcc3",
+                      "primary-fixed": "#e2dfff",
+                      "surface-container": "#edeeef",
+                      "on-tertiary": "#ffffff",
+                      "tertiary-container": "#934e00",
+                      "secondary-fixed-dim": "#68dba9",
+                      "secondary": "#006c4a",
+                      "surface-container-highest": "#e1e3e4",
+                      "on-primary-container": "#dad7ff",
+                      "primary-container": "#4f46e5",
+                      "on-tertiary-fixed": "#2f1500",
+                      "background": "#f8f9fa",
+                      "surface-tint": "#4d44e3",
+                      "on-tertiary-container": "#ffd2b1",
+                      "on-error": "#ffffff",
+                      "on-background": "#191c1d",
+                      "error-container": "#ffdad6",
+                      "primary": "#3525cd",
+                      "error": "#ba1a1a",
+                      "surface": "#f8f9fa",
+                      "on-primary-fixed": "#0f0069",
+                      "surface-dim": "#d9dadb",
+                      "on-error-container": "#93000a",
+                      "on-primary-fixed-variant": "#3323cc"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-sm": "8px",
+                      "unit": "4px",
+                      "stack-md": "16px",
+                      "container-max-width": "1280px",
+                      "gutter": "24px",
+                      "stack-lg": "32px",
+                      "margin-desktop": "48px",
+                      "margin-mobile": "20px"
+              },
+              "fontFamily": {
+                      "headline-xl": ["Plus Jakarta Sans"],
+                      "body-md": ["Inter"],
+                      "headline-lg": ["Plus Jakarta Sans"],
+                      "label-md": ["Inter"],
+                      "body-sm": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "headline-lg-mobile": ["Plus Jakarta Sans"],
+                      "headline-md": ["Plus Jakarta Sans"]
+              },
+              "fontSize": {
+                      "headline-xl": ["40px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "14px", "fontWeight": "500"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col font-body-md overflow-hidden">
+<!-- Top AppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface shadow-sm flex justify-between items-center px-margin-mobile h-14 md:px-margin-desktop">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary hover:opacity-80 transition-opacity cursor-pointer">menu</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">HomeStyler AI</h1>
+</div>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional user profile avatar in a clean, high-key corporate style. The lighting is soft and professional, and the background is a neutral, blurred office environment with a palette of white and subtle greys, matching a modern UI aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4VYmSmnkhZBIR38M_mDxDHMjgSP7NKgytzDT6D4n4Ll8-2kptZKPYpQoSYdPUO6vsMtYdTX_9r_ki5Re0RWLrvwexG1-a5RTefEB4DRnsFvBQKL9K-Gw4GNOLli46sQveVq39AFFCiHJMF53DwS-qOAq91pNPjKcInxfTWiGJOu80w8Z2Cn0zgqaFwH7ZKm1Gd7G_q0n13O2OmnwB9CGySKHKuaPcTmGMcXux6sz8mjWZHau5EOdfqAUbR8qVEfB6jkWlOip6RwWK">
+</div>
+</header>
+<main class="flex-grow flex flex-col items-center justify-center pt-14 pb-16 px-margin-mobile relative overflow-hidden">
+<!-- Background Animation Layer -->
+<div class="absolute inset-0 z-0">
+
+</div>
+<!-- Content Canvas -->
+<div class="relative z-10 w-full max-w-2xl flex flex-col items-center">
+<!-- Analysis Graphic Container -->
+<div class="mb-stack-lg relative w-64 h-64 md:w-80 md:h-80 flex items-center justify-center">
+<!-- Silhouette/Robot Graphic Shell -->
+<div class="absolute inset-0 animate-pulse-soft">
+<div class="w-full h-full rounded-full bg-primary/5 flex items-center justify-center border border-primary/10">
+<div class="w-[85%] h-[85%] rounded-full border-2 border-dashed border-primary/20 animate-[spin_20s_linear_infinite]"></div>
+</div>
+</div>
+<!-- Main Visual Asset -->
+<div class="relative w-48 h-48 md:w-60 md:h-60 rounded-3xl overflow-hidden shadow-xl border-4 border-white glass-panel flex items-center justify-center">
+<img class="w-full h-full object-cover opacity-90" data-alt="A clean, minimalist 3D silhouette of a modern living room interior. The style is architectural and professional, using a soft emerald and indigo color palette with glassmorphic accents. A floating robotic eye icon or a scanning laser line subtly passes over the furniture, indicating AI analysis in progress. High-key lighting, bright and airy professional atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBL3NIrAMK3W6zhahXRUR5tnq7dIu7OAgVVesikFJCKG_02PUcTYydTQYlfbq8sMFu1Sg9Kh-3PpZzOIfUq8VUqxuS0dmDNvg-6fkYh0HVWyrTqURe6nDcttcKYBanXEtWyUhQBcwiW4wSV49CUy6XJsDMxL-HNCmwDdyrzNH_g14WsNUkdbFZ0-7KWhmhg0i_DGJRgsbpLmVBkvowQJ4iAE1vJWSTpGhIgWObyiNTsaQ7rgZm5y0VZFsrMN0lOi5D_2BwQzNXoo8BV">
+<!-- Scanning Line Animation -->
+<div class="absolute inset-0 pointer-events-none overflow-hidden">
+<div class="w-full h-1 bg-primary/40 shadow-[0_0_15px_rgba(79,70,229,0.5)] animate-[scan_3s_ease-in-out_infinite]" id="scan-line"></div>
+</div>
+</div>
+<!-- Floating Data Chips (Micro-interactions) -->
+<div class="absolute -top-4 -right-4 glass-panel px-3 py-1.5 rounded-full shadow-sm flex items-center gap-2 animate-[bounce_4s_infinite]">
+<span class="material-symbols-outlined text-[16px] text-secondary">check_circle</span>
+<span class="font-label-sm text-label-sm text-on-surface">RECO-003</span>
+</div>
+</div>
+<!-- Analysis Status -->
+<div class="text-center mb-stack-md">
+<h2 class="font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-2">AI가 공간을 분석하고 있습니다</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mx-auto">
+                    수만 개의 인테리어 데이터를 바탕으로 최적의 스타일을 매칭하고 있습니다.
+                </p>
+</div>
+<!-- Progress Section -->
+<div class="w-full max-w-md glass-panel p-stack-md rounded-xl shadow-sm space-y-4">
+<div class="flex justify-between items-end mb-1">
+<span class="font-label-md text-label-md text-primary" id="status-text">구조 분석 중...</span>
+<span class="font-headline-md text-headline-md text-primary" id="percent-text">0%</span>
+</div>
+<!-- Progress Bar Container -->
+<div class="w-full h-3 bg-surface-variant rounded-full overflow-hidden relative">
+<div class="h-full bg-primary w-0 transition-all duration-500 ease-out relative" id="progress-bar">
+<div class="absolute inset-0 progress-shimmer"></div>
+</div>
+</div>
+<!-- Sequence Messages Container -->
+<div class="flex flex-col gap-2 pt-2" id="step-container">
+<div class="flex items-center gap-3 opacity-40 transition-opacity duration-300" id="step-1">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">공간 레이아웃 감지</span>
+</div>
+<div class="flex items-center gap-3 opacity-40 transition-opacity duration-300" id="step-2">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">채광 및 조도 시뮬레이션</span>
+</div>
+<div class="flex items-center gap-3 opacity-40 transition-opacity duration-300" id="step-3">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">가구 및 마감재 매칭</span>
+</div>
+</div>
+</div>
+<!-- Footer Message -->
+<div class="mt-stack-lg text-center opacity-60">
+<p class="font-label-sm text-label-sm italic text-on-surface-variant">
+                    * 이 작업은 평균 10-15초가 소요됩니다.
+                </p>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation (Active: 분석) -->
+<nav class="fixed bottom-0 left-0 w-full h-16 flex justify-around items-center px-margin-mobile pb-safe bg-surface border-t border-outline-variant shadow-[0_-4px_20px_rgba(0,0,0,0.05)] z-50">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">홈</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="font-label-sm text-label-sm">스타일링</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container text-on-secondary-container rounded-full px-4 py-1 scale-90" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-sm text-label-sm">분석</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-4 py-1 hover:bg-surface-container-high transition-colors" href="#">
+<span class="material-symbols-outlined">more_horiz</span>
+<span class="font-label-sm text-label-sm">더보기</span>
+</a>
+</nav>
+<style>
+        @keyframes scan {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(100%); }
+            100% { transform: translateY(0); }
+        }
+        #scan-line {
+            height: 4px;
+            background: linear-gradient(to bottom, transparent, rgba(79, 70, 229, 0.8), transparent);
+        }
+    </style>
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const progressBar = document.getElementById('progress-bar');
+            const percentText = document.getElementById('percent-text');
+            const statusText = document.getElementById('status-text');
+            
+            const steps = [
+                { percent: 30, text: '구조 분석 중...', stepId: 'step-1' },
+                { percent: 65, text: '채광 분석 중...', stepId: 'step-2' },
+                { percent: 95, text: '스타일 매칭 중...', stepId: 'step-3' },
+                { percent: 100, text: '분석 완료!', stepId: null }
+            ];
+
+            let currentPercent = 0;
+            let currentStepIdx = 0;
+
+            const updateProgress = () => {
+                if (currentPercent < 100) {
+                    currentPercent += 1;
+                    progressBar.style.width = `${currentPercent}%`;
+                    percentText.innerText = `${currentPercent}%`;
+
+                    // Check for step transitions
+                    const currentStep = steps[currentStepIdx];
+                    if (currentStep && currentPercent >= currentStep.percent - 5) {
+                        statusText.innerText = currentStep.text;
+                        if (currentStep.stepId) {
+                            const stepEl = document.getElementById(currentStep.stepId);
+                            stepEl.classList.remove('opacity-40');
+                            stepEl.classList.add('opacity-100', 'step-enter');
+                        }
+                        if (currentPercent >= currentStep.percent) {
+                            currentStepIdx++;
+                        }
+                    }
+
+                    // Speed simulation
+                    let speed = 100;
+                    if (currentPercent > 40 && currentPercent < 70) speed = 150;
+                    if (currentPercent > 90) speed = 300;
+
+                    setTimeout(updateProgress, speed);
+                } else {
+                    // Final state interaction
+                    statusText.innerText = "분석이 완료되었습니다!";
+                    statusText.classList.add('text-secondary');
+                    percentText.classList.add('text-secondary');
+                    progressBar.classList.remove('bg-primary');
+                    progressBar.classList.add('bg-secondary');
+                }
+            };
+
+            setTimeout(updateProgress, 1000);
+        });
+    </script>
+</body></html>

@@ -1,0 +1,404 @@
+<!DOCTYPE html><html class="light" lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>HomeStyler - 공간 치수 및 가구 관리</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-error": "#ffffff",
+                    "inverse-surface": "#2e3132",
+                    "surface-container-highest": "#e1e3e4",
+                    "secondary-container": "#82f5c1",
+                    "tertiary": "#703a00",
+                    "outline": "#777587",
+                    "on-primary-fixed": "#0f0069",
+                    "surface-variant": "#e1e3e4",
+                    "secondary-fixed-dim": "#68dba9",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "on-secondary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed-variant": "#6e3900",
+                    "on-tertiary-container": "#ffd2b1",
+                    "tertiary-fixed-dim": "#ffb77d",
+                    "on-surface-variant": "#464555",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "on-background": "#191c1d",
+                    "surface-container-low": "#f3f4f5",
+                    "on-secondary-fixed-variant": "#005137",
+                    "inverse-on-surface": "#f0f1f2",
+                    "surface-bright": "#f8f9fa",
+                    "secondary": "#006c4a",
+                    "primary-fixed": "#e2dfff",
+                    "tertiary-fixed": "#ffdcc3",
+                    "surface": "#f8f9fa",
+                    "on-primary-container": "#dad7ff",
+                    "tertiary-container": "#934e00",
+                    "primary": "#3525cd",
+                    "on-surface": "#191c1d",
+                    "background": "#f8f9fa",
+                    "surface-container": "#edeeef",
+                    "on-secondary-fixed": "#002114",
+                    "secondary-fixed": "#85f8c4",
+                    "surface-dim": "#d9dadb",
+                    "error": "#ba1a1a",
+                    "inverse-primary": "#c3c0ff",
+                    "on-tertiary-fixed": "#2f1500",
+                    "on-error-container": "#93000a",
+                    "primary-container": "#4f46e5",
+                    "surface-container-high": "#e7e8e9",
+                    "on-primary": "#ffffff",
+                    "surface-tint": "#4d44e3",
+                    "outline-variant": "#c7c4d8",
+                    "on-tertiary": "#ffffff",
+                    "on-secondary-container": "#00714e"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-md": "16px",
+                    "stack-lg": "32px",
+                    "unit": "4px",
+                    "margin-mobile": "20px",
+                    "margin-desktop": "48px",
+                    "gutter": "24px",
+                    "stack-sm": "8px",
+                    "container-max-width": "1280px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "body-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-xl": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "headline-xl": ["40px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .blueprint-grid {
+            background-image: radial-gradient(#c7c4d8 0.5px, transparent 0.5px);
+            background-size: 20px 20px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-24">
+<!-- Top AppBar (from Shared Components JSON) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile py-4 bg-surface/80 dark:bg-surface-container-high/80 backdrop-blur-md shadow-sm dark:shadow-none">
+<div class="flex items-center gap-4">
+<button class="p-2 transition-all duration-300 ease-in-out hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-primary">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">HomeStyler</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 transition-all duration-300 ease-in-out hover:bg-surface-container-low">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+</div>
+</header>
+<!-- AI Warning Banner (Fixed) -->
+<div class="fixed top-[72px] left-0 w-full z-40 bg-tertiary-fixed text-on-tertiary-fixed px-4 py-3 flex items-center justify-center gap-3 shadow-md border-b border-tertiary/20">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">warning</span>
+<p class="font-label-md text-label-md text-center font-bold">AI 추정치입니다. 실제 치수와 다를 수 있으니 확인 후 수정해 주세요.</p>
+</div>
+<main class="pt-36 px-margin-mobile max-w-container-max-width mx-auto space-y-stack-lg">
+<!-- Section: Space Dimensions & Form -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Left: Blueprint Sketch (6/12) -->
+<div class="lg:col-span-7 bg-surface-container border border-outline-variant rounded-xl overflow-hidden relative aspect-square lg:aspect-auto lg:h-[500px] blueprint-grid flex items-center justify-center">
+<div class="absolute top-4 left-4 bg-surface/90 px-3 py-1.5 rounded-lg border border-outline-variant flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-primary text-[20px]">architecture</span>
+<span class="font-label-md text-label-md text-on-surface-variant">평면 스케치 뷰</span>
+</div>
+<!-- Room Sketch Representation -->
+<div class="relative w-3/4 h-3/4 border-[3px] border-primary/40 rounded-sm bg-white/40 flex items-center justify-center">
+<!-- Wall Dimension Labels -->
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-white px-2 py-0.5 rounded border border-primary text-primary font-label-md text-label-md">4,500mm</div>
+<div class="absolute -left-14 top-1/2 -translate-y-1/2 -rotate-90 bg-white px-2 py-0.5 rounded border border-primary text-primary font-label-md text-label-md">3,800mm</div>
+<!-- Window Controller -->
+<div class="absolute top-0 left-1/4 w-1/2 h-2 bg-blue-400 rounded-full cursor-pointer hover:h-3 transition-all flex items-center justify-center">
+<div class="bg-white px-1.5 py-0.5 rounded-full text-[10px] font-bold shadow-sm">창문</div>
+</div>
+<!-- Door Controller -->
+<div class="absolute bottom-0 right-10 w-16 h-1.5 bg-tertiary-container rounded-full cursor-pointer hover:h-2.5 transition-all flex items-center justify-center">
+<div class="absolute -bottom-6 bg-white px-1.5 py-0.5 rounded-full text-[10px] font-bold shadow-sm">출입문</div>
+</div>
+<!-- Internal Object (AI Detected Area) -->
+<div class="w-1/3 h-1/4 bg-primary/5 border border-dashed border-primary/30 rounded-lg flex items-center justify-center text-primary/40">
+<span class="material-symbols-outlined">chair</span>
+</div>
+</div>
+<!-- Control Overlay -->
+<div class="absolute bottom-4 right-4 flex flex-col gap-2">
+<button class="w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center text-primary hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined">add</span>
+</button>
+<button class="w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center text-primary hover:bg-primary-container transition-colors">
+<span class="material-symbols-outlined">remove</span>
+</button>
+</div>
+</div>
+<!-- Right: Input Form (5/12) -->
+<div class="lg:col-span-5 space-y-stack-md">
+<div class="bg-white p-stack-lg rounded-xl shadow-sm border border-outline-variant">
+<h2 class="font-headline-md text-headline-md text-primary mb-6">공간 치수 정보</h2>
+<form class="space-y-4">
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface-variant">가로 길이 (mm)</label>
+<div class="relative">
+<input class="w-full h-12 rounded-xl border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary pl-4 pr-12 font-body-md border-secondary" type="number" value="4500">
+<span class="material-symbols-outlined text-secondary text-[18px] absolute right-12 top-1/2 -translate-y-1/2">check_circle</span><span class="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant font-label-sm">mm</span>
+</div>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface-variant">세로 길이 (mm)</label>
+<div class="relative">
+<input class="w-full h-12 rounded-xl border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary pl-4 pr-12 font-body-md" type="number" value="3800">
+<span class="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant font-label-sm">mm</span>
+</div>
+</div>
+<div class="space-y-1">
+<label class="font-label-md text-label-md text-on-surface-variant">천장고 (mm)</label>
+<div class="relative">
+<input class="w-full h-12 rounded-xl border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary pl-4 pr-12 font-body-md" type="number" value="2300">
+<span class="absolute right-4 top-1/2 -translate-y-1/2 text-on-surface-variant font-label-sm">mm</span>
+</div>
+</div>
+<div class="pt-4">
+<button class="w-full h-14 bg-primary text-on-primary rounded-xl font-label-md text-label-md hover:bg-primary-container hover:text-on-primary-container transition-all flex items-center justify-center gap-2 shadow-lg shadow-primary/30" type="button">
+<span class="material-symbols-outlined">save</span>
+                                치수 정보 업데이트
+                            </button>
+</div>
+</form>
+</div>
+<div class="glass-card p-stack-md rounded-xl border border-primary/10">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary">auto_awesome</span>
+<div>
+<h4 class="font-label-md text-label-md text-primary">AI 공간 분석 리포트</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-relaxed">
+                                분석 결과, 이 공간은 <b>약 5.2평(17.1㎡)</b>의 정방형 거실로 파악됩니다. 창문의 크기가 커 채광이 우수할 것으로 예상됩니다.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Detected Furniture List -->
+<section class="space-y-stack-md">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<h3 class="font-headline-md text-headline-md text-on-surface">기존 가구 분석</h3>
+<span class="px-2 py-0.5 bg-secondary-container text-on-secondary-container rounded-full text-[12px] font-bold">AI 감지 4건</span>
+</div>
+<button class="text-primary font-label-md text-label-md flex items-center gap-1 hover:underline">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                    가구 수동 추가
+                </button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-stack-md">
+<!-- Furniture Item 1: Sofa -->
+<div class="bg-white rounded-xl border border-outline-variant overflow-hidden hover:shadow-lg transition-all group relative">
+<div class="aspect-[4/3] relative">
+<div class="w-full h-full bg-cover bg-center" data-alt="A luxurious, modern light gray fabric sofa positioned against a clean white wall in a bright, sunlit room. The sofa has a minimalist aesthetic with clean lines and soft textures, perfectly matching a professional interior design style. Professional photography, soft natural lighting, high-end furniture catalog aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAWmlIHPARZnXzybGnBI7M9KiJSK1E-Ja747lTdfMhP2Veom71PO-WWpyKixqv4uuG2FL2zRxDRQ7gJ1s6pzeJA1brrgDcTvKlSdNhkiE6h3MQA3poUoFY7L1TPuBTtM7S7yShpZenZj7WxESioono-zubAyq2389pFqtjys2bCvtNpFusS485_sLS8eQNVBx4a_YSALXi80lazpxdC4Z_R0s0r0UwHFkeq1heLb2Y7kty1O4PYCfgRxnikjO9xjW3H-jSb2MBcmaEj')"></div>
+<div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+<div class="absolute top-2 left-2">
+<input checked="" class="w-6 h-6 rounded-md border-white bg-white/20 backdrop-blur-md text-primary focus:ring-primary shadow-sm cursor-pointer" type="checkbox">
+</div>
+</div>
+<div class="p-4 space-y-2">
+<div class="flex justify-between items-start">
+<h4 class="font-label-md text-label-md text-on-surface">모던 패브릭 소파</h4>
+<span class="font-label-sm text-label-sm text-primary">유지 희망</span>
+</div>
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-surface-container rounded text-[11px] text-on-surface-variant font-medium">2,200 x 950 x 850mm</span>
+</div>
+</div>
+</div>
+<!-- Furniture Item 2: Table -->
+<div class="bg-white rounded-xl border border-outline-variant overflow-hidden hover:shadow-lg transition-all group relative">
+<div class="aspect-[4/3] relative">
+<div class="w-full h-full bg-cover bg-center" data-alt="A minimalist solid oak wood coffee table with a natural grain finish, standing in the center of a contemporary living room. The table has rounded corners and slim tapered legs. Modern corporate aesthetic, clean shadows, bright daylight filtering through a window. High-quality interior staging photo." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA7NSwXQsoehS92QuSX3gcWIE0awlzErYJ1rSJMoKnyCLhH2LoHje_ua_q3_2475lWMkAZWlZ1YBv5U5pM8jIGIGXT-14RS5PMbVpSGlEGG2wlL-GPDi3MxRzp459R5oghunxAIut8OJtwt5v1BZqwfXjFUmd2mYo3SHKzAxgcW76GUrOGs476kLucSUE0hqDd6GOyHEKIyZqrMNgndD9t4Z1ay6i3RUiuZWfndB8IrUcL7dgoFK5tYtyFVONc5jGXblF1GlZQmond5')"></div>
+<div class="absolute top-2 left-2">
+<input checked="" class="w-6 h-6 rounded-md border-white bg-white/20 backdrop-blur-md text-primary focus:ring-primary shadow-sm cursor-pointer" type="checkbox">
+</div>
+</div>
+<div class="p-4 space-y-2">
+<div class="flex justify-between items-start">
+<h4 class="font-label-md text-label-md text-on-surface">원목 커피 테이블</h4>
+<span class="font-label-sm text-label-sm text-primary">유지 희망</span>
+</div>
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-surface-container rounded text-[11px] text-on-surface-variant font-medium">1,200 x 600 x 400mm</span>
+</div>
+</div>
+</div>
+<!-- Furniture Item 3: Rug -->
+<div class="bg-white rounded-xl border border-outline-variant overflow-hidden hover:shadow-lg transition-all group relative">
+<div class="aspect-[4/3] relative">
+<div class="w-full h-full bg-cover bg-center" data-alt="A large, soft ivory-colored wool rug with a subtle geometric pattern. The rug is spread on a light-colored wooden floor in a spacious, airy interior. High-end lifestyle photography, soft morning light, minimalist home decor vibe, professional and calming atmosphere." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCr23riLfbtrJMrcf6ycgbdAvhm2dvTjFzU7-oOucssXrLLwDat9_NpOJKTD1AUtSaH6LI2QIcPgGVK7DwIv65h_iP2hZyTKq2rZHRxH_lLEOLGg3jXDCFQmj91DW-tWMP40NIF3K-1_JE16gmo6tzQPYK-YKj3OFZ4tZXhTJlJWtNbuSPYZDpMt0gipc8uVcrZ_94RxDE2MN1A8Ht0L31X3Wglw8-EOf33un3e6uWCNsoitg5IG4ubdw8z-xiQrzyC24fN02fGa72G')"></div>
+<div class="absolute top-2 left-2">
+<input class="w-6 h-6 rounded-md border-white bg-white/20 backdrop-blur-md text-primary focus:ring-primary shadow-sm cursor-pointer" type="checkbox">
+</div>
+</div>
+<div class="p-4 space-y-2">
+<div class="flex justify-between items-start">
+<h4 class="font-label-md text-label-md text-on-surface">베이지 양모 러그</h4>
+<span class="font-label-sm text-label-sm text-on-surface-variant opacity-50">제외 예정</span>
+</div>
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-surface-container rounded text-[11px] text-on-surface-variant font-medium">2,000 x 3,000mm</span>
+</div>
+</div>
+</div>
+<!-- Furniture Item 4: Plant -->
+<div class="bg-white rounded-xl border border-outline-variant overflow-hidden hover:shadow-lg transition-all group relative">
+<div class="aspect-[4/3] relative">
+<div class="w-full h-full bg-cover bg-center" data-alt="A tall, healthy Monstera Deliciosa plant in a sleek white ceramic pot, standing in a brightly lit corner of a modern apartment. Green lush leaves, crisp architectural shadows, professional interior greenery styling, high-key lighting, modern and fresh aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBvVxhevPaaKqWfbVErXSFVfylOejSGFmMSzrcahKXrEK4eSKyQIhEq4v8K0u4bETUp_cB8m7sAQAasR83DPh4pl426Pix8tArOQ-viyPxk7inWReXK7_i8bT4XByJrVXzh1wWkq6axXDg0sWCTDX9MAGMmA2TsGrGGL4XUuQox0jouqqK1zm7YM2LJTu2O848fGxbYa4N0W6GfRO6PKhAyUDVQVkTZvhxJwaWPi3V_pNiQqVLASEUQxPIDdCooq5sUJS9haH0FStRc')"></div>
+<div class="absolute top-2 left-2">
+<input checked="" class="w-6 h-6 rounded-md border-white bg-white/20 backdrop-blur-md text-primary focus:ring-primary shadow-sm cursor-pointer" type="checkbox">
+</div>
+</div>
+<div class="p-4 space-y-2">
+<div class="flex justify-between items-start">
+<h4 class="font-label-md text-label-md text-on-surface">몬스테라 화분</h4>
+<span class="font-label-sm text-label-sm text-primary">유지 희망</span>
+</div>
+<div class="flex gap-2">
+<span class="px-2 py-0.5 bg-surface-container rounded text-[11px] text-on-surface-variant font-medium">Height: 1,400mm</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Action -->
+<div class="pt-stack-lg flex flex-col md:flex-row gap-4 items-center justify-end border-t border-outline-variant">
+<p class="text-on-surface-variant font-body-sm text-center md:text-right">
+                유지할 가구 3개가 선택되었습니다.<br>이 정보로 새로운 인테리어 시뮬레이션을 시작할까요?
+            </p>
+<button class="w-full md:w-auto px-12 h-14 bg-primary text-on-primary rounded-xl font-label-md text-label-md shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all">
+                인테리어 시뮬레이션 시작하기
+            </button>
+</div>
+</main>
+<!-- Navigation Drawer (Side Nav - Simulated for Desktop) -->
+<aside class="hidden fixed inset-y-0 left-0 z-[60] flex flex-col p-stack-md bg-surface dark:bg-inverse-surface h-full w-80 rounded-r-xl shadow-xl transition-transform -translate-x-full lg:translate-x-0 lg:flex" id="navDrawer">
+<div class="flex flex-col gap-1 mb-8">
+<div class="flex items-center gap-4 px-2 py-4">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-primary font-bold">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-primary">AI 인테리어 비서</h3>
+<p class="text-[12px] text-on-surface-variant">반가워요, 홈스타일러님</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 space-y-2">
+<a class="flex items-center gap-4 p-4 text-on-surface-variant hover:bg-surface-container-highest transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">history</span>
+<span class="font-label-md">스타일 분석 내역</span>
+</a>
+<a class="flex items-center gap-4 p-4 text-on-surface-variant hover:bg-surface-container-highest transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">engineering</span>
+<span class="font-label-md">전문가 상담</span>
+</a>
+<a class="flex items-center gap-4 p-4 bg-primary-container text-on-primary-container font-bold rounded-lg group" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">architecture</span>
+<span class="font-label-md">치수 및 가구 관리</span>
+</a>
+<a class="flex items-center gap-4 p-4 text-on-surface-variant hover:bg-surface-container-highest transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary">settings</span>
+<span class="font-label-md">설정</span>
+</a>
+</nav>
+<div class="mt-auto p-4 border-t border-outline-variant">
+<div class="bg-primary/5 rounded-xl p-4">
+<p class="text-[12px] text-primary font-bold mb-1">프리미엄 멤버십</p>
+<p class="text-[11px] text-on-surface-variant">더 정교한 AI 분석을 이용해보세요.</p>
+</div>
+</div>
+</aside>
+<!-- Bottom Navigation (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface dark:bg-surface-container border-t border-outline-variant shadow-lg rounded-t-xl">
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80 transition-all cursor-pointer">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-[10px] mt-1">홈</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-4 py-1.5 Active: scale-95 transition-transform duration-200 cursor-pointer">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chair</span>
+<span class="font-label-sm text-[10px] mt-1">내 공간</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80 transition-all cursor-pointer">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="font-label-sm text-[10px] mt-1">추천</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80 transition-all cursor-pointer">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-sm text-[10px] mt-1">보관함</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80 transition-all cursor-pointer">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-[10px] mt-1">마이</span>
+</div>
+</nav>
+<script>
+        // Simple Interaction logic for demo
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', (e) => {
+                const card = e.target.closest('.group');
+                const label = card.querySelector('.font-label-sm');
+                if(e.target.checked) {
+                    label.textContent = "유지 희망";
+                    label.classList.remove('opacity-50', 'text-on-surface-variant');
+                    label.classList.add('text-primary');
+                } else {
+                    label.textContent = "제외 예정";
+                    label.classList.add('opacity-50', 'text-on-surface-variant');
+                    label.classList.remove('text-primary');
+                }
+            });
+        });
+    </script>
+
+
+
+</body></html>

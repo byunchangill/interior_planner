@@ -1,0 +1,267 @@
+<!DOCTYPE html><html class="light" lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>HomeStyler AI - 공간 유형 선택</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-variant": "#e1e3e4",
+                    "surface-bright": "#f8f9fa",
+                    "on-secondary-fixed": "#002114",
+                    "inverse-primary": "#c3c0ff",
+                    "tertiary": "#703a00",
+                    "tertiary-fixed-dim": "#ffb77d",
+                    "on-tertiary-fixed-variant": "#6e3900",
+                    "on-surface": "#191c1d",
+                    "secondary-fixed": "#85f8c4",
+                    "outline-variant": "#c7c4d8",
+                    "on-surface-variant": "#464555",
+                    "on-secondary": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container-low": "#f3f4f5",
+                    "on-secondary-container": "#00714e",
+                    "outline": "#777587",
+                    "surface-container-high": "#e7e8e9",
+                    "on-secondary-fixed-variant": "#005137",
+                    "inverse-surface": "#2e3132",
+                    "secondary-container": "#82f5c1",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#f0f1f2",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "tertiary-fixed": "#ffdcc3",
+                    "primary-fixed": "#e2dfff",
+                    "surface-container": "#edeeef",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-container": "#934e00",
+                    "secondary-fixed-dim": "#68dba9",
+                    "secondary": "#006c4a",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-primary-container": "#dad7ff",
+                    "primary-container": "#4f46e5",
+                    "on-tertiary-fixed": "#2f1500",
+                    "background": "#f8f9fa",
+                    "surface-tint": "#4d44e3",
+                    "on-tertiary-container": "#ffd2b1",
+                    "on-error": "#ffffff",
+                    "on-background": "#191c1d",
+                    "error-container": "#ffdad6",
+                    "primary": "#3525cd",
+                    "error": "#ba1a1a",
+                    "surface": "#f8f9fa",
+                    "on-primary-fixed": "#0f0069",
+                    "surface-dim": "#d9dadb",
+                    "on-error-container": "#93000a",
+                    "on-primary-fixed-variant": "#3323cc"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-sm": "8px",
+                    "unit": "4px",
+                    "stack-md": "16px",
+                    "container-max-width": "1280px",
+                    "gutter": "24px",
+                    "stack-lg": "32px",
+                    "margin-desktop": "48px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "headline-xl": ["Plus Jakarta Sans"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-xl": ["40px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .option-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        .active-state {
+            border: 2px solid #3525cd;
+            background-color: #e2dfff;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-on-surface shadow-sm flex justify-between items-center px-margin-mobile h-14 w-full">
+<div class="flex items-center gap-2">
+<button class="text-primary dark:text-inverse-primary hover:opacity-80 transition-opacity active:scale-95 duration-100">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary">HomeStyler AI</h1>
+</div>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional high-definition portrait of a stylish interior designer with a warm smile, set against a minimalist studio background with soft bokeh lighting. The aesthetic is clean, modern, and professional, reflecting a high-end corporate identity with a sophisticated color palette of whites and soft greys." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9I4OucY_NCH7Tyx8y5QQwR4wGXlcWap4sxzghtVZJucRw31_-uXyYey-u-A0orBRAeI7JTAT4enJBw9NpHlsuQHgWIVVnnp-vopE5thUST0YeCR9eryUP9N8naMjzhKVqOzJSbi_sfc9w_FQyC6wP1YJOHBxWDGZNQqqzgIxnlq4Ganl1G-SDrS4zRxqw5rE0eAZwgm9oT-QSvD25Lq6l-O8X1ybWme62zBhJvIaIZpzU3RaKeNNFI81-vyWI0Am3VfDihdMF9xwh">
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="flex-1 mt-14 mb-16 px-margin-mobile py-stack-lg max-w-container-max-width mx-auto w-full">
+<!-- Hero Section -->
+<section class="mb-stack-lg text-center md:text-left">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface mb-2">
+                어떤 공간을 꾸미고 싶으신가요?
+            </h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-xl">
+                스타일링을 시작할 공간의 유형을 선택해 주세요. <br class="hidden md:block">AI가 선택하신 공간에 최적화된 맞춤형 디자인을 제안해 드립니다.
+            </p>
+</section>
+<!-- Grid Container -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
+<!-- Living Room -->
+<button class="option-card glass-card rounded-xl p-stack-md flex flex-col items-center justify-center transition-all duration-300 group aspect-square" onclick="selectSpace(this)">
+<div class="mb-stack-sm w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl" data-icon="chair">chair</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">거실</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 hidden md:block">Living Room</p>
+</button>
+<!-- Bedroom -->
+<button class="option-card glass-card rounded-xl p-stack-md flex flex-col items-center justify-center transition-all duration-300 group aspect-square" onclick="selectSpace(this)">
+<div class="mb-stack-sm w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl" data-icon="bed">bed</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">침실</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 hidden md:block">Bedroom</p>
+</button>
+<!-- Kitchen -->
+<button class="option-card glass-card rounded-xl p-stack-md flex flex-col items-center justify-center transition-all duration-300 group aspect-square" onclick="selectSpace(this)">
+<div class="mb-stack-sm w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl" data-icon="cooking">cooking</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">주방</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 hidden md:block">Kitchen</p>
+</button>
+<!-- Study/Office -->
+<button class="option-card glass-card rounded-xl p-stack-md flex flex-col items-center justify-center transition-all duration-300 group aspect-square" onclick="selectSpace(this)">
+<div class="mb-stack-sm w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl" data-icon="laptop_mac">laptop_mac</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">서재</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 hidden md:block">Study &amp; Office</p>
+</button>
+<!-- Bathroom -->
+<button class="option-card glass-card rounded-xl p-stack-md flex flex-col items-center justify-center transition-all duration-300 group aspect-square" onclick="selectSpace(this)">
+<div class="mb-stack-sm w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl" data-icon="bathtub">bathtub</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">욕실</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 hidden md:block">Bathroom</p>
+</button>
+<!-- Others -->
+<button class="option-card glass-card rounded-xl p-stack-md flex flex-col items-center justify-center transition-all duration-300 group aspect-square" onclick="selectSpace(this)">
+<div class="mb-stack-sm w-12 h-12 rounded-full bg-primary-container/10 flex items-center justify-center text-primary group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl" data-icon="add_circle">add_circle</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">기타</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 hidden md:block">Other Spaces</p>
+</button>
+</div>
+<!-- Action Button -->
+<div class="mt-12 flex justify-center">
+<button class="bg-primary text-on-primary font-label-md text-label-md py-4 px-12 rounded-full shadow-sm opacity-50 cursor-not-allowed transition-all duration-300 hover:scale-105 active:scale-95" disabled="" id="nextStep">다음 단계로 이동</button>
+</div>
+<!-- Decorative AI Insight Card -->
+<div class="mt-12 glass-card rounded-2xl p-6 border-primary/10 relative overflow-hidden">
+<div class="absolute -right-10 -top-10 w-32 h-32 bg-secondary-container/20 rounded-full blur-3xl"></div>
+<div class="relative z-10 flex items-start gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="auto_awesome">auto_awesome</span>
+<div>
+<h4 class="font-label-md text-label-md text-primary mb-1">AI 스타일링 팁</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                        공간 유형을 선택하면 해당 공간의 특성에 맞는 조명 배치와 가구 추천 알고리즘이 활성화됩니다. 사진 촬영 시에는 공간 전체가 잘 보이도록 넓은 각도에서 촬영해 주세요.
+                    </p>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full h-16 flex justify-around items-center px-margin-mobile pb-safe bg-surface dark:bg-inverse-surface border-t border-outline-variant shadow-[0_-4px_20px_rgba(0,0,0,0.05)] z-50 rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm">홈</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-4 py-1 active:scale-90 duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-label-sm text-label-sm">스타일링</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-sm text-label-sm">분석</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-surface-variant px-4 py-1 hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors" href="#">
+<span class="material-symbols-outlined" data-icon="more_horiz">more_horiz</span>
+<span class="font-label-sm text-label-sm">더보기</span>
+</a>
+</nav>
+<script>
+        function selectSpace(element) {
+            // Remove active state from all cards
+            document.querySelectorAll('.option-card').forEach(card => {
+                card.classList.remove('active-state');
+                card.querySelector('div').classList.replace('bg-primary', 'bg-primary-container/10');
+                card.querySelector('div').classList.replace('text-white', 'text-primary');
+                card.querySelector('.material-symbols-outlined').style.fontVariationSettings = "'FILL' 0";
+            });
+
+            // Add active state to clicked card
+            element.classList.add('active-state');
+            const iconContainer = element.querySelector('div');
+            iconContainer.classList.replace('bg-primary-container/10', 'bg-primary');
+            iconContainer.classList.replace('text-primary', 'text-white');
+            element.querySelector('.material-symbols-outlined').style.fontVariationSettings = "'FILL' 1";
+
+            // Enable action button
+            const nextBtn = document.getElementById('nextStep');
+            nextBtn.disabled = false;
+            nextBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+            nextBtn.classList.add('bg-primary', 'hover:bg-primary/90');
+        }
+    </script>
+
+
+
+</body></html>

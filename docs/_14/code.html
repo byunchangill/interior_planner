@@ -1,0 +1,348 @@
+<!DOCTYPE html><html class="light" lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>HomeStyler - Account &amp; Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary-fixed": "#ffdcc3",
+                    "surface-container-low": "#f3f4f5",
+                    "surface-dim": "#d9dadb",
+                    "on-primary-fixed": "#0f0069",
+                    "primary": "#3525cd",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#edeeef",
+                    "secondary-container": "#82f5c1",
+                    "secondary": "#006c4a",
+                    "on-secondary-container": "#00714e",
+                    "tertiary": "#703a00",
+                    "on-background": "#191c1d",
+                    "on-secondary-fixed-variant": "#005137",
+                    "surface-container-high": "#e7e8e9",
+                    "on-tertiary-fixed": "#2f1500",
+                    "surface-container-highest": "#e1e3e4",
+                    "primary-fixed": "#e2dfff",
+                    "outline": "#777587",
+                    "secondary-fixed-dim": "#68dba9",
+                    "on-tertiary-fixed-variant": "#6e3900",
+                    "on-primary-container": "#dad7ff",
+                    "error-container": "#ffdad6",
+                    "surface-bright": "#f8f9fa",
+                    "error": "#ba1a1a",
+                    "background": "#f8f9fa",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "tertiary-fixed-dim": "#ffb77d",
+                    "on-surface-variant": "#464555",
+                    "on-secondary": "#ffffff",
+                    "on-tertiary-container": "#ffd2b1",
+                    "inverse-surface": "#2e3132",
+                    "on-error-container": "#93000a",
+                    "surface": "#f8f9fa",
+                    "on-surface": "#191c1d",
+                    "on-primary": "#ffffff",
+                    "primary-container": "#4f46e5",
+                    "on-secondary-fixed": "#002114",
+                    "surface-tint": "#4d44e3",
+                    "inverse-primary": "#c3c0ff",
+                    "on-error": "#ffffff",
+                    "surface-variant": "#e1e3e4",
+                    "secondary-fixed": "#85f8c4",
+                    "inverse-on-surface": "#f0f1f2",
+                    "on-tertiary": "#ffffff",
+                    "tertiary-container": "#934e00",
+                    "outline-variant": "#c7c4d8"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "stack-md": "16px",
+                    "container-max-width": "1280px",
+                    "stack-sm": "8px",
+                    "stack-lg": "32px",
+                    "margin-desktop": "48px",
+                    "unit": "4px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "label-sm": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-lg": ["Inter"],
+                    "headline-xl": ["Plus Jakarta Sans"],
+                    "body-md": ["Inter"],
+                    "label-md": ["Inter"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "label-sm": ["12px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-xl": ["40px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+        .ios-toggle:checked + .ios-toggle-label {
+            background-color: #3525cd;
+        }
+        .ios-toggle:checked + .ios-toggle-label::after {
+            transform: translateX(1.25rem);
+        }
+    </style>
+</head>
+<body class="bg-surface font-body-md text-on-surface overflow-x-hidden">
+<!-- Top AppBar (JSON Content & Identity) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile py-4 bg-surface/80 backdrop-blur-md shadow-sm">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary hover:bg-surface-container-low p-2 rounded-full transition-all">arrow_back</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">설정</h1>
+</div>
+<div class="flex gap-2">
+<span class="material-symbols-outlined text-on-surface-variant p-2 cursor-pointer transition-all hover:bg-surface-container-low rounded-full">search</span>
+</div>
+</header>
+<main class="pt-24 pb-32 max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Sidebar Navigation (Desktop) -->
+<aside class="hidden lg:block lg:col-span-3 space-y-2">
+<nav class="sticky top-28">
+<div class="flex flex-col p-4 bg-surface-container-low rounded-xl">
+<a class="flex items-center gap-3 px-4 py-3 bg-primary-container text-on-primary-container font-bold rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-md text-label-md">프로필 편집</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">notifications</span>
+<span class="font-label-md text-label-md">알림 설정</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">lock</span>
+<span class="font-label-md text-label-md">보안 및 비밀번호</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-container-highest rounded-lg transition-all" href="#">
+<span class="material-symbols-outlined">link</span>
+<span class="font-label-md text-label-md">연결된 계정</span>
+</a>
+</div>
+</nav>
+</aside>
+<!-- Main Settings Canvas -->
+<section class="lg:col-span-9 space-y-stack-lg">
+<!-- Profile Section -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-stack-md md:p-stack-lg shadow-sm">
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+<div>
+<h2 class="font-headline-md text-headline-md text-primary mb-1">프로필 편집</h2>
+<p class="text-on-surface-variant font-body-sm text-body-sm">회원님의 기본 정보를 관리하세요.</p>
+</div>
+<button class="bg-primary text-on-primary px-6 py-2.5 rounded-full font-label-md text-label-md transition-all hover:opacity-90 active:scale-95 shadow-md">변경사항 저장</button>
+</div>
+<div class="flex flex-col md:flex-row gap-10">
+<div class="flex flex-col items-center gap-4">
+<div class="relative group cursor-pointer">
+<div class="w-32 h-32 rounded-full border-4 border-primary-fixed overflow-hidden bg-surface-container-high flex items-center justify-center">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform" data-alt="A professional studio portrait of a friendly interior designer in a bright, modern office with soft daylight and high-end decor. The lighting is clean and airy, creating a professional and welcoming corporate modern vibe with a soft bokeh background of a minimalist showroom." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9hdIH6oGl46CqP2zQXAYdFnEYRLorDY4EBKSTDGepM9_wR9D_paWv0mz3ifV7kYhJnoIhbtt0D1eFF_7T_gWedmvVd0CcTgHq9SR24w_QikGxqjaBYhfOMF985Ro1mDeLgT9ofIuHAqG_cUCcB-FCLUUC2hipgmae-U2kaTCdsQegTiFBrC1BWvA8nv1sjaVbuXgKk0CyDENjmmlu4JV-hcfeHij_Wvygn7hkFSigabOpsJ3gZ75TTUN3Gyxh45M08gx5hMrO68DY">
+</div>
+<div class="absolute bottom-0 right-0 bg-primary text-on-primary p-2 rounded-full shadow-lg border-2 border-surface">
+<span class="material-symbols-outlined text-[18px]">photo_camera</span>
+</div>
+</div>
+<span class="font-label-sm text-label-sm text-primary underline cursor-pointer">사진 삭제</span>
+</div>
+<div class="flex-1 grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface-variant">이름</label>
+<input class="w-full h-12 px-4 rounded-xl border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md text-body-md" type="text" value="홈스타일러">
+</div>
+<div class="flex flex-col gap-2">
+<label class="font-label-md text-label-md text-on-surface-variant">닉네임</label>
+<input class="w-full h-12 px-4 rounded-xl border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md text-body-md" type="text" value="InteriorPro">
+</div>
+<div class="flex flex-col gap-2 md:col-span-2">
+<label class="font-label-md text-label-md text-on-surface-variant">이메일 주소</label>
+<input class="w-full h-12 px-4 rounded-xl border border-outline-variant bg-surface-container-low text-on-surface-variant font-body-md text-body-md" readonly="" type="email" value="homestyler@example.com">
+</div>
+<div class="flex flex-col gap-2 md:col-span-2">
+<label class="font-label-md text-label-md text-on-surface-variant">자기소개</label>
+<textarea class="w-full p-4 rounded-xl border border-outline-variant focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all font-body-md text-body-md resize-none" rows="3">공간을 빛내는 작은 차이, 당신의 감각을 현실로 만들어드립니다.</textarea>
+</div>
+</div>
+</div>
+</div>
+<!-- Notification Settings (Glassmorphism Accents) -->
+<div class="glass-card rounded-xl border border-outline-variant p-stack-md md:p-stack-lg shadow-sm">
+<h2 class="font-headline-md text-headline-md text-primary mb-6">알림 설정</h2>
+<div class="space-y-4">
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-xl border border-outline-variant/30">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">campaign</span>
+</div>
+<div>
+<p class="font-label-md text-label-md">푸시 알림</p>
+<p class="text-body-sm text-on-surface-variant">새로운 인테리어 스타일 및 이벤트 알림</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only ios-toggle" type="checkbox">
+<div class="ios-toggle-label w-11 h-6 bg-surface-container-highest rounded-full transition-all after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+</label>
+</div>
+<div class="flex items-center justify-between p-4 bg-surface-container-lowest rounded-xl border border-outline-variant/30">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-lg bg-secondary-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">chat_bubble</span>
+</div>
+<div>
+<p class="font-label-md text-label-md">전문가 상담 채팅</p>
+<p class="text-body-sm text-on-surface-variant">디자이너의 답변이 등록되었을 때 알림</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only ios-toggle" type="checkbox">
+<div class="ios-toggle-label w-11 h-6 bg-surface-container-highest rounded-full transition-all after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all"></div>
+</label>
+</div>
+</div>
+</div>
+<!-- Password Change & Linked Accounts (Asymmetric Grid) -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-stack-md">
+<!-- Password -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-6 shadow-sm flex flex-col">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">key</span>
+<h2 class="font-label-md text-label-md">비밀번호 변경</h2>
+</div>
+<p class="text-body-sm text-on-surface-variant mb-6">정기적인 비밀번호 변경으로 소중한 정보를 안전하게 보호하세요.</p>
+<div class="mt-auto">
+<button class="w-full border border-primary text-primary px-4 py-3 rounded-xl font-label-md text-label-md hover:bg-primary-fixed transition-all">비밀번호 재설정</button>
+</div>
+</div>
+<!-- Linked Accounts -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant p-6 shadow-sm">
+<div class="flex items-center gap-3 mb-6">
+<span class="material-symbols-outlined text-primary">link</span>
+<h2 class="font-label-md text-label-md">연결된 계정</h2>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-3 bg-surface-container-low rounded-lg">
+<div class="flex items-center gap-3">
+<div class="w-6 h-6 bg-white rounded-full flex items-center justify-center overflow-hidden">
+<img class="w-4 h-4" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6KJ8mmvo0lic63ZKm8-pOZSRTCAQh1PgKPQYVzqfhFcFWpR_h8LLtPaKYY4vuHcXQUo2xLa5My9ZxIBdoDgBosq4VTtk4ikmvSDcVaQAUMrSlGZWNmOqbASZA4Sblk--woa5E2JI1d98Q-Beg-tIA_uAMy7qmi8VV4pv1Bj77WukR9e8-0Kp6YiN2DQP3vsIHlYrOeUv5KyzPjY9KGw2_oaqsXTOhD3_ztSp8VKftLYLjcUm6pvUEzioBs2PA0RurCH_9rwBfQto-">
+</div>
+<span class="text-body-sm font-medium">Google</span>
+</div>
+<span class="text-body-sm text-secondary font-bold">연결됨</span>
+</div>
+<div class="flex items-center justify-between p-3 bg-surface-container-low rounded-lg">
+<div class="flex items-center gap-3">
+<div class="w-6 h-6 bg-[#FEE500] rounded-full flex items-center justify-center overflow-hidden">
+<span class="text-[10px] font-bold text-black">K</span>
+</div>
+<span class="text-body-sm font-medium">Kakao</span>
+</div>
+<button class="text-body-sm text-primary font-bold">연결하기</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Footer Section -->
+<footer class="mt-stack-lg pt-12 border-t border-outline-variant flex flex-col gap-8 pb-10">
+<div class="flex flex-wrap justify-between items-start gap-8">
+<div class="space-y-4">
+<div class="font-headline-md text-headline-md font-bold text-primary">HomeStyler</div>
+<div class="flex gap-4 text-on-surface-variant font-label-sm text-label-sm">
+<a class="hover:text-primary transition-colors" href="#">이용약관</a>
+<a class="hover:text-primary transition-colors" href="#">개인정보처리방침</a>
+<a class="hover:text-primary transition-colors" href="#">라이선스</a>
+</div>
+</div>
+<div class="text-right">
+<p class="font-label-sm text-label-sm text-on-surface-variant">App Version 2.4.0 (Stable)</p>
+<p class="text-body-sm text-on-surface-variant/60 mt-1">© 2024 HomeStyler Inc. All rights reserved.</p>
+</div>
+</div>
+<div class="flex flex-col sm:flex-row justify-between items-center pt-8 border-t border-outline-variant/30 gap-6">
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center hover:bg-primary-fixed cursor-pointer transition-all">
+<span class="material-symbols-outlined text-[20px]">language</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center hover:bg-primary-fixed cursor-pointer transition-all">
+<span class="material-symbols-outlined text-[20px]">help</span>
+</div>
+</div>
+<button class="flex items-center gap-2 text-error px-6 py-3 border border-error/30 rounded-full hover:bg-error-container transition-all active:scale-95">
+<span class="material-symbols-outlined">logout</span>
+<span class="font-label-md text-label-md">로그아웃</span>
+</button>
+</div>
+</footer>
+</section>
+</div>
+</main>
+<!-- Bottom Navigation (JSON Rules: Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface border-t border-outline-variant shadow-lg rounded-t-xl">
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">홈</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80">
+<span class="material-symbols-outlined">chair</span>
+<span class="font-label-sm text-label-sm">내 공간</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="font-label-sm text-label-sm">추천</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-sm text-label-sm">보관함</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-3 py-1 scale-95 transition-transform">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">마이</span>
+</div>
+</nav>
+<script>
+        // Simple Interaction Logic
+        document.querySelectorAll('.ios-toggle').forEach(toggle => {
+            toggle.addEventListener('change', function() {
+                const parent = this.closest('.bg-surface-container-lowest');
+                if(this.checked) {
+                    parent.style.borderColor = 'rgba(53, 37, 205, 0.3)';
+                } else {
+                    parent.style.borderColor = 'rgba(199, 196, 216, 0.3)';
+                }
+            });
+        });
+    </script>
+</body></html>

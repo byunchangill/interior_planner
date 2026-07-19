@@ -1,0 +1,260 @@
+<!DOCTYPE html><html class="light" lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>회원 탈퇴 | HomeStyler AI</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-variant": "#e1e3e4",
+                        "surface-bright": "#f8f9fa",
+                        "on-secondary-fixed": "#002114",
+                        "inverse-primary": "#c3c0ff",
+                        "tertiary": "#703a00",
+                        "tertiary-fixed-dim": "#ffb77d",
+                        "on-tertiary-fixed-variant": "#6e3900",
+                        "on-surface": "#191c1d",
+                        "secondary-fixed": "#85f8c4",
+                        "outline-variant": "#c7c4d8",
+                        "on-surface-variant": "#464555",
+                        "on-secondary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container-low": "#f3f4f5",
+                        "on-secondary-container": "#00714e",
+                        "outline": "#777587",
+                        "surface-container-high": "#e7e8e9",
+                        "on-secondary-fixed-variant": "#005137",
+                        "inverse-surface": "#2e3132",
+                        "secondary-container": "#82f5c1",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#f0f1f2",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "tertiary-fixed": "#ffdcc3",
+                        "primary-fixed": "#e2dfff",
+                        "surface-container": "#edeeef",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#934e00",
+                        "secondary-fixed-dim": "#68dba9",
+                        "secondary": "#006c4a",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-primary-container": "#dad7ff",
+                        "primary-container": "#4f46e5",
+                        "on-tertiary-fixed": "#2f1500",
+                        "background": "#f8f9fa",
+                        "surface-tint": "#4d44e3",
+                        "on-tertiary-container": "#ffd2b1",
+                        "on-error": "#ffffff",
+                        "on-background": "#191c1d",
+                        "error-container": "#ffdad6",
+                        "primary": "#3525cd",
+                        "error": "#ba1a1a",
+                        "surface": "#f8f9fa",
+                        "on-primary-fixed": "#0f0069",
+                        "surface-dim": "#d9dadb",
+                        "on-error-container": "#93000a",
+                        "on-primary-fixed-variant": "#3323cc"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "unit": "4px",
+                        "stack-md": "16px",
+                        "container-max-width": "1280px",
+                        "gutter": "24px",
+                        "stack-lg": "32px",
+                        "margin-desktop": "48px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["40px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(229, 231, 235, 0.5);
+        }
+    </style>
+</head>
+<body class="text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface dark:bg-on-surface shadow-sm flex justify-between items-center px-margin-mobile h-14 w-full">
+<button class="text-primary dark:text-inverse-primary hover:opacity-80 transition-opacity active:scale-95 duration-100 flex items-center" onclick="history.back()">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary absolute left-1/2 -translate-x-1/2">HomeStyler AI</h1>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-outline-variant">
+<img class="w-full h-full object-cover" data-alt="A professional profile portrait of a clean-cut user in a bright, modern interior setting. The lighting is soft and natural, reflecting the professional and reliable aesthetic of the HomeStyler AI platform. High-key white background with subtle blue accents to match the brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4G4Bp1jGeUyjas1ltvVnsCOrebNye7XBIVUC0qA9AEiJNH8zc-EmDvZNZ6RaMvXMr-G27GvqUuTmqjrGMe6hKaY_oU5n5Ty68BdViQ9mVpdhcQicSKGp-0Km2QcU45l8lqvC0HgClVXqOu8eh_CQlfr3W01mzpQFgR5mi-XBeng9Ylj337AJwgOutd1dFBZyP6UHRMsWPCTrRoyH2hWbD4dRB0W2iVcAv3frGvmVcis7w5fXyXTgFF_tAmNqprAsg-x0nmJPIGa68">
+</div>
+</header>
+<main class="pt-20 pb-32 px-margin-mobile max-w-lg mx-auto min-h-screen">
+<!-- Warning Section -->
+<section class="mb-stack-lg">
+<div class="flex items-center gap-stack-sm mb-stack-md">
+<span class="material-symbols-outlined text-error text-[32px]" style="font-variation-settings: 'FILL' 1;">warning</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">정말 탈퇴하시겠어요?</h2>
+</div>
+<div class="bg-error-container/30 border border-error/20 p-stack-md rounded-xl space-y-stack-sm">
+<p class="font-body-md text-body-md text-on-surface font-semibold">탈퇴 시 다음 데이터가 영구적으로 삭제됩니다:</p>
+<ul class="space-y-unit">
+<li class="flex items-center gap-2 font-body-sm text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">close</span>
+                        AI가 생성한 모든 인테리어 스타일링 사진
+                    </li>
+<li class="flex items-center gap-2 font-body-sm text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">close</span>
+                        저장된 평면도 및 공간 분석 리포트
+                    </li>
+<li class="flex items-center gap-2 font-body-sm text-body-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">close</span>
+                        맞춤형 가구 추천 결과 및 장바구니 정보
+                    </li>
+</ul>
+<p class="font-label-sm text-label-sm text-error pt-unit">※ 삭제된 데이터는 복구가 불가능하며, 동일한 계정으로 재가입 시에도 복원되지 않습니다.</p>
+</div>
+</section>
+<!-- Reason Selection Section -->
+<section class="mb-stack-lg">
+<h3 class="font-label-md text-label-md text-on-surface-variant mb-stack-md">탈퇴하시는 사유가 무엇인가요?</h3>
+<div class="space-y-stack-sm">
+<label class="flex items-center justify-between p-stack-md glass-card rounded-xl border border-outline-variant hover:border-primary transition-all cursor-pointer group">
+<span class="font-body-md text-body-md">서비스 사용이 불편함</span>
+<input class="w-5 h-5 text-primary border-outline focus:ring-primary" name="withdrawal_reason" type="radio">
+</label>
+<label class="flex items-center justify-between p-stack-md glass-card rounded-xl border border-outline-variant hover:border-primary transition-all cursor-pointer group">
+<span class="font-body-md text-body-md">데이터 유출 및 보안이 우려됨</span>
+<input class="w-5 h-5 text-primary border-outline focus:ring-primary" name="withdrawal_reason" type="radio">
+</label>
+<label class="flex items-center justify-between p-stack-md glass-card rounded-xl border border-outline-variant hover:border-primary transition-all cursor-pointer group">
+<span class="font-body-md text-body-md">원하는 스타일링 결과가 나오지 않음</span>
+<input class="w-5 h-5 text-primary border-outline focus:ring-primary" name="withdrawal_reason" type="radio">
+</label>
+<label class="flex items-center justify-between p-stack-md glass-card rounded-xl border border-outline-variant hover:border-primary transition-all cursor-pointer group">
+<span class="font-body-md text-body-md">더 이상 서비스가 필요 없음</span>
+<input class="w-5 h-5 text-primary border-outline focus:ring-primary" name="withdrawal_reason" type="radio">
+</label>
+<label class="flex items-center justify-between p-stack-md glass-card rounded-xl border border-outline-variant hover:border-primary transition-all cursor-pointer group">
+<span class="font-body-md text-body-md">기타</span>
+<input class="w-5 h-5 text-primary border-outline focus:ring-primary" name="withdrawal_reason" type="radio">
+</label>
+</div>
+<div class="mt-stack-md hidden" id="etc-reason-container">
+<textarea class="w-full p-stack-md rounded-xl border border-outline-variant bg-surface focus:border-primary focus:ring-1 focus:ring-primary font-body-sm text-body-sm" placeholder="상세한 사유를 적어주시면 서비스 개선에 큰 도움이 됩니다."></textarea>
+</div>
+</section>
+<!-- Confirmation Check -->
+<section class="mb-stack-lg">
+<label class="flex items-start gap-stack-sm cursor-pointer">
+<div class="pt-0.5">
+<input class="rounded border-outline text-primary focus:ring-primary" id="final-confirm" type="checkbox">
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">상기 데이터 삭제 및 주의사항을 모두 확인하였으며, 이에 동의합니다.</span>
+</label>
+</section>
+<!-- Decorative AI Background Element (Glassmorphic) -->
+<div class="relative w-full h-40 mb-stack-lg overflow-hidden rounded-2xl shadow-sm">
+<div class="absolute inset-0 bg-gradient-to-br from-primary-fixed to-secondary-fixed opacity-20"></div>
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="glass-card p-stack-md rounded-full px-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary animate-pulse" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="font-label-md text-label-md text-primary">HomeStyler AI가 당신의 공간을 기억하고 있을게요.</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Action Bar (Replaces BottomNavBar for this focused task) -->
+<footer class="fixed bottom-0 left-0 w-full bg-surface shadow-[0_-4px_20px_rgba(0,0,0,0.05)] border-t border-outline-variant p-margin-mobile flex gap-stack-md">
+<button class="flex-1 h-14 rounded-xl bg-surface-container-highest text-on-surface-variant font-label-md text-label-md transition-all active:scale-95 disabled:opacity-50" disabled="" id="btn-withdrawal">
+            탈퇴하기
+        </button>
+<button class="flex-[2] h-14 rounded-xl bg-primary text-on-primary font-label-md text-label-md shadow-sm hover:opacity-90 transition-all active:scale-95" onclick="history.back()">
+            유지하기
+        </button>
+</footer>
+<script>
+        // Simple Interaction Logic
+        const radioButtons = document.querySelectorAll('input[name="withdrawal_reason"]');
+        const etcContainer = document.getElementById('etc-reason-container');
+        const confirmCheckbox = document.getElementById('final-confirm');
+        const withdrawalBtn = document.getElementById('btn-withdrawal');
+
+        radioButtons.forEach(radio => {
+            radio.addEventListener('change', (e) => {
+                // Style selected label
+                radioButtons.forEach(r => r.closest('label').classList.remove('border-primary', 'bg-primary/5'));
+                e.target.closest('label').classList.add('border-primary', 'bg-primary/5');
+
+                // Show/hide etc text area
+                if (e.target.closest('label').textContent.trim() === '기타') {
+                    etcContainer.classList.remove('hidden');
+                } else {
+                    etcContainer.classList.add('hidden');
+                }
+                updateButtonState();
+            });
+        });
+
+        confirmCheckbox.addEventListener('change', updateButtonState);
+
+        function updateButtonState() {
+            const reasonSelected = Array.from(radioButtons).some(r => r.checked);
+            const isConfirmed = confirmCheckbox.checked;
+            
+            if (reasonSelected && isConfirmed) {
+                withdrawalBtn.disabled = false;
+                withdrawalBtn.classList.remove('bg-surface-container-highest', 'text-on-surface-variant');
+                withdrawalBtn.classList.add('bg-outline-variant', 'text-on-surface');
+            } else {
+                withdrawalBtn.disabled = true;
+                withdrawalBtn.classList.add('bg-surface-container-highest', 'text-on-surface-variant');
+                withdrawalBtn.classList.remove('bg-outline-variant', 'text-on-surface');
+            }
+        }
+
+        withdrawalBtn.addEventListener('click', () => {
+            if(confirm('정말로 탈퇴하시겠습니까? 모든 정보가 영구 삭제됩니다.')) {
+                alert('탈퇴 처리가 완료되었습니다. 그동안 이용해 주셔서 감사합니다.');
+            }
+        });
+    </script>
+</body></html>

@@ -1,0 +1,534 @@
+<!DOCTYPE html><html class="light" lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>HomeStyler - 북유럽 스타일 상세</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .scroll-section {
+            scroll-margin-top: 80px;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#703a00",
+                        "surface-bright": "#f8f9fa",
+                        "tertiary-fixed-dim": "#ffb77d",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#e1e3e4",
+                        "on-background": "#191c1d",
+                        "inverse-surface": "#2e3132",
+                        "surface": "#f8f9fa",
+                        "primary-fixed": "#e2dfff",
+                        "surface-dim": "#d9dadb",
+                        "secondary-fixed": "#85f8c4",
+                        "on-surface-variant": "#464555",
+                        "on-secondary-fixed-variant": "#005137",
+                        "on-tertiary-container": "#ffd2b1",
+                        "secondary-container": "#82f5c1",
+                        "primary": "#3525cd",
+                        "surface-container-highest": "#e1e3e4",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "secondary-fixed-dim": "#68dba9",
+                        "on-tertiary-fixed": "#2f1500",
+                        "outline": "#777587",
+                        "background": "#f8f9fa",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f3f4f5",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#edeeef",
+                        "on-secondary-container": "#00714e",
+                        "surface-tint": "#4d44e3",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed": "#0f0069",
+                        "secondary": "#006c4a",
+                        "primary-container": "#4f46e5",
+                        "surface-container-high": "#e7e8e9",
+                        "on-surface": "#191c1d",
+                        "outline-variant": "#c7c4d8",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "tertiary-container": "#934e00",
+                        "inverse-primary": "#c3c0ff",
+                        "on-primary-container": "#dad7ff",
+                        "on-error": "#ffffff",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#ffdcc3",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#002114",
+                        "on-tertiary-fixed-variant": "#6e3900",
+                        "inverse-on-surface": "#f0f1f2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "stack-lg": "32px",
+                        "container-max-width": "1280px",
+                        "margin-desktop": "48px",
+                        "gutter": "24px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["40px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "label-sm": ["12px", {"lineHeight": "14px", "fontWeight": "500"}]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 bg-surface/80 dark:bg-surface-container-high/80 backdrop-blur-md shadow-sm flex justify-between items-center px-5 py-4">
+<div class="flex items-center gap-3">
+<button class="p-2 hover:bg-surface-container-low transition-all rounded-full">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">북유럽 스타일 상세</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 hover:bg-surface-container-low transition-all rounded-full">
+<span class="material-symbols-outlined text-on-surface-variant">share</span>
+</button>
+<button class="p-2 hover:bg-surface-container-low transition-all rounded-full">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+</div>
+</header>
+<!-- Content Area -->
+<main class="pt-20 px-5 max-w-[1280px] mx-auto space-y-20">
+<!-- Navigation Tabs -->
+<nav class="sticky top-16 z-40 bg-surface/90 backdrop-blur-md -mx-5 px-5 py-3 border-b border-outline-variant overflow-x-auto hide-scrollbar flex gap-4">
+<a class="whitespace-nowrap px-4 py-2 rounded-full bg-primary-container text-on-primary-container font-label-md text-label-md" href="#concept">컨셉 설명</a>
+<a class="whitespace-nowrap px-4 py-2 rounded-full hover:bg-surface-container-high text-on-surface-variant font-label-md text-label-md" href="#layout">배치 및 동선</a>
+<a class="whitespace-nowrap px-4 py-2 rounded-full hover:bg-surface-container-high text-on-surface-variant font-label-md text-label-md" href="#detail">마감 상세</a>
+<a class="whitespace-nowrap px-4 py-2 rounded-full hover:bg-surface-container-high text-on-surface-variant font-label-md text-label-md" href="#tips">확장 팁</a>
+<a class="whitespace-nowrap px-4 py-2 rounded-full hover:bg-surface-container-high text-on-surface-variant font-label-md text-label-md" href="#budget">예산별 구성</a>
+<a class="whitespace-nowrap px-4 py-2 rounded-full hover:bg-surface-container-high text-on-surface-variant font-label-md text-label-md" href="#furniture">가구 리스트</a>
+</nav>
+<!-- 1. Concept Section -->
+<section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+  <div class="bg-surface-container-low p-5 rounded-2xl flex flex-col items-center text-center space-y-2">
+    <span class="material-symbols-outlined text-primary text-3xl">payments</span>
+    <div class="space-y-1">
+      <p class="text-label-sm text-on-surface-variant">예상 예산</p>
+      <p class="font-bold text-lg">800~1,200만</p>
+    </div>
+    <div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+      <div class="bg-primary h-full w-[65%]"></div>
+    </div>
+  </div>
+  <div class="bg-surface-container-low p-5 rounded-2xl flex flex-col items-center text-center space-y-2">
+    <span class="material-symbols-outlined text-primary text-3xl">square_foot</span>
+    <div class="space-y-1">
+      <p class="text-label-sm text-on-surface-variant">권장 면적</p>
+      <p class="font-bold text-lg">25~30평형</p>
+    </div>
+    <div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+      <div class="bg-secondary h-full w-[80%]"></div>
+    </div>
+  </div>
+  <div class="bg-surface-container-low p-5 rounded-2xl flex flex-col items-center text-center space-y-2">
+    <span class="material-symbols-outlined text-primary text-3xl">schedule</span>
+    <div class="space-y-1">
+      <p class="text-label-sm text-on-surface-variant">시공 기간</p>
+      <p class="font-bold text-lg">약 2주</p>
+    </div>
+    <div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+      <div class="bg-tertiary h-full w-[40%]"></div>
+    </div>
+  </div>
+  <div class="bg-surface-container-low p-5 rounded-2xl flex flex-col items-center text-center space-y-2">
+    <span class="material-symbols-outlined text-primary text-3xl">star</span>
+    <div class="space-y-1">
+      <p class="text-label-sm text-on-surface-variant">스타일 완성도</p>
+      <p class="font-bold text-lg">95%</p>
+    </div>
+    <div class="w-full bg-surface-container-high h-1.5 rounded-full overflow-hidden">
+      <div class="bg-primary h-full w-[95%]"></div>
+    </div>
+  </div>
+</section><section class="scroll-section" id="concept">
+<div class="relative rounded-3xl overflow-hidden aspect-[16/9] mb-6 shadow-lg">
+<img class="w-full h-full object-cover" data-alt="A bright, airy Scandinavian living room with large windows, light oak wood flooring, and a neutral cream sofa. The room is filled with soft natural light, featuring a minimalist coffee table and several green indoor plants in terracotta pots. The overall atmosphere is warm, cozy, and exemplifies the Danish concept of Hygge." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCzCaqiM4HJYHIaJgTEhF8rTO5-QxodV600q10M98o6x6bFb1lXjjGXa-vXFjbXsjaYN69QkCZ2iOU-JsFYNGWbuGNarkU_sYnnZxW_ebFe5fBC-1KVEgvDDhfBhCm8UNG2nnAvAWLanfQ4lIYkEpAPcUrxleiFxONKWoJO1FcdY5qKHGaM_JCgL2s2wf-9kNPNSXAPfGlq0vDxHrp8jfznYELt0V3QGoJGeZqYJ_n0Gm59NN-4elzd74IEFHe4XjKGz6Zfdg4leFU0">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-8">
+<span class="inline-block px-3 py-1 bg-secondary text-on-secondary rounded-full font-label-sm text-label-sm w-fit mb-3">AI 추천 스타일</span>
+<h2 class="text-white font-headline-lg-mobile text-headline-lg-mobile lg:text-headline-lg font-bold">휘게(Hygge) 감성의 북유럽 모던</h2>
+</div>
+</div>
+<div class="space-y-4">
+<h3 class="font-headline-md text-headline-md text-primary font-bold">자연과 조화를 이루는 안식처</h3>
+<p class="text-on-surface-variant leading-relaxed font-body-md">
+                    북유럽 스타일은 단순한 인테리어를 넘어선 삶의 태도를 반영합니다. 화이트와 그레이 베이스의 밝은 톤에 따뜻한 질감의 원목 가구를 더해 시각적인 평온함을 선사합니다. 이번 제안은 '휘게(Hygge)'라는 덴마크어처럼 아늑하고 친밀한 분위기를 조성하는 데 중점을 두었습니다.
+                </p>
+<div class="flex flex-wrap gap-2 pt-2">
+<span class="px-3 py-1 bg-surface-container rounded-lg font-label-md text-label-md text-on-surface-variant">#자연친화</span>
+<span class="px-3 py-1 bg-surface-container rounded-lg font-label-md text-label-md text-on-surface-variant">#미니멀리즘</span>
+<span class="px-3 py-1 bg-surface-container rounded-lg font-label-md text-label-md text-on-surface-variant">#기능적디자인</span>
+</div>
+</div>
+</section>
+<!-- 2. Layout & Circulation Section -->
+<section class="scroll-section space-y-6" id="layout">
+<div class="flex items-center justify-between">
+<h3 class="font-headline-md text-headline-md font-bold">가구 배치도 및 동선 최적화</h3>
+<span class="material-symbols-outlined text-primary">architecture</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<div class="rounded-2xl border border-outline-variant overflow-hidden bg-white shadow-sm">
+<img class="w-full h-auto" data-alt="A professional architectural 2D floor plan of a small modern apartment showing furniture layout. The plan highlights a clear, unobstructed path from the entrance to the balcony. Furniture is arranged to maximize space, featuring a sectional sofa, a small dining area near the kitchen, and a queen-sized bed in the bedroom. Minimalist line art with subtle color coding for traffic flow." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAU0DlLX6Ulnx0uotwnL3NZt8IBLh958sMHRzu0rlqqo39JtuLKWj64JANH200B5gpeDhFKMCsDM_XOeZuhqg8wMMsKILuFbHPSoEg_jbRlVNpHSuygYMsihFMvsh041ZpWvj3Wd2Gj3z-pCEL2ZGdTqMVHq2IAIq5WrJZlyjdljYAMwDJ4Fb1VhjVRQfiQI9dn01omU3bvLA2lJ4FQ1Y3EEEloO0ThmEikIFfOFUn-aEx7GZFSkQfz_IU46cO-6Kf1zl-5-PM-r2-a">
+<div class="p-4">
+<p class="font-label-md text-label-md text-on-surface-variant">Top-down view 가구 배치 제안</p>
+</div>
+</div>
+<div class="space-y-4">
+<div class="p-5 rounded-2xl bg-surface-container-low space-y-2">
+<div class="flex items-center gap-2 font-label-md text-label-md text-primary">
+<span class="material-symbols-outlined text-sm">route</span>
+<span class="">L-Shape 동선 설계</span>
+</div>
+<p class="text-on-surface-variant font-body-sm">거실과 주방 사이의 막힘 없는 이동을 유도하여 25평형 공간을 30평형처럼 느껴지게 설계했습니다.</p>
+</div>
+<div class="p-5 rounded-2xl bg-surface-container-low space-y-2">
+<div class="flex items-center gap-2 font-label-md text-label-md text-primary">
+<span class="material-symbols-outlined text-sm">wb_sunny</span>
+<span class="">채광 가시성 확보</span>
+</div>
+<p class="text-on-surface-variant font-body-sm">큰 창문을 가리지 않는 낮은 높이의 가구를 배치하여 자연광의 깊은 유입을 방해하지 않습니다.</p>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. Material & Color Selection -->
+<section class="scroll-section space-y-8" id="detail">
+<h3 class="font-headline-md text-headline-md font-bold mb-4">세부 제안: 컬러 및 마감재</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Wallpaper -->
+<div class="p-6 rounded-2xl border border-outline-variant space-y-4 hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">벽지 (Wallpaper)</span>
+<div class="w-6 h-6 rounded-full bg-[#F5F5F0] border border-outline-variant"></div>
+</div>
+<h4 class="font-bold text-lg">Off-White Grain</h4>
+<p class="text-on-surface-variant text-sm">따스함이 도는 미색의 실크 벽지. 공간을 확장해 보이는 효과가 탁월합니다.</p>
+</div>
+<!-- Floor -->
+<div class="p-6 rounded-2xl border border-outline-variant space-y-4 hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">바닥 (Floor)</span>
+<div class="w-6 h-6 rounded-full bg-[#E5D5C0] border border-outline-variant"></div>
+</div>
+<h4 class="font-bold text-lg">Light Oak Plank</h4>
+<p class="text-on-surface-variant text-sm">내추럴한 나뭇결이 살아있는 강마루. 북유럽 인테리어의 핵심 토대입니다.</p>
+</div>
+<!-- Lighting -->
+<div class="p-6 rounded-2xl border border-outline-variant space-y-4 hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">조명 (Lighting)</span>
+<span class="material-symbols-outlined text-primary">lightbulb</span>
+</div>
+<h4 class="font-bold text-lg">Layered Ambient</h4>
+<p class="text-on-surface-variant text-sm">3000K 전구색 조명으로 따뜻한 분위기 연출. 펜던트와 플로어 램프를 조합하세요.</p>
+</div>
+<!-- Curtains -->
+<div class="p-6 rounded-2xl border border-outline-variant space-y-4 hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-label-md text-label-md text-on-surface-variant">커튼 (Curtain)</span>
+<div class="w-6 h-6 rounded-full bg-[#D1D5DB] border border-outline-variant"></div>
+</div>
+<h4 class="font-bold text-lg">Linen Sheer Silver</h4>
+<p class="text-on-surface-variant text-sm">자연스러운 주름이 매력적인 린넨 소재. 빛을 은은하게 투과시킵니다.</p>
+</div>
+</div>
+</section>
+<!-- 4. Expansion & Storage Tips -->
+<section class="scroll-section" id="tips">
+<div class="glass-card p-8 rounded-3xl space-y-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-2xl bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined">auto_awesome</span>
+</div>
+<h3 class="font-headline-md text-headline-md font-bold">공간 확장 및 수납 마스터 팁</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="flex gap-4">
+<span class="font-bold text-primary text-xl">01</span>
+<div>
+<h4 class="font-bold mb-1">벽면 활용 수납 (Wall Shelf)</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">바닥 면적을 차지하지 않는 스트링 선반을 설치하여 수납과 인테리어 효과를 동시에 누리세요.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="font-bold text-primary text-xl">02</span>
+<div>
+<h4 class="font-bold mb-1">멀티 펑션 가구</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">수납장이 포함된 소파 베드나 접이식 식탁을 활용하여 필요할 때만 공간을 점유하세요.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="font-bold text-primary text-xl">03</span>
+<div>
+<h4 class="font-bold mb-1">거울의 전략적 배치</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">창문 맞은편에 대형 전신거울을 두어 반사광을 극대화하고 깊이감을 부여합니다.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<span class="font-bold text-primary text-xl">04</span>
+<div>
+<h4 class="font-bold mb-1">데드 스페이스 정복</h4>
+<p class="text-on-surface-variant text-sm leading-relaxed">문 뒤쪽이나 코너 공간에 맞춤 슬림 수납장을 짜 넣어 숨은 공간을 찾아내세요.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 5. Budget Recommendation -->
+<section class="scroll-section space-y-6" id="budget">
+<h3 class="font-headline-md text-headline-md font-bold">예산별 추천 구성</h3>
+<div class="flex flex-col md:flex-row gap-6">
+<!-- Lite -->
+<div class="flex-1 p-6 rounded-3xl border border-outline-variant bg-surface-container-lowest space-y-6 flex flex-col">
+<div class="space-y-1">
+<h4 class="font-bold text-xl">실속형 (Lite)</h4>
+<p class="text-primary font-bold text-2xl">300 ~ 500만원</p>
+</div>
+<ul class="space-y-3 flex-grow">
+<li class="flex items-center gap-2 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-sm text-secondary">check_circle</span>
+                            대중 브랜드 가구 조합
+                        </li>
+<li class="flex items-center gap-2 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-sm text-secondary">check_circle</span>
+                            핵심 포인트 조명 1개
+                        </li>
+<li class="flex items-center gap-2 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-sm text-secondary">check_circle</span>
+                            기성 커튼 및 러그
+                        </li>
+</ul>
+<button class="w-full py-3 rounded-xl border border-primary text-primary font-label-md">선택하기</button>
+</div>
+<!-- Standard -->
+<div class="flex-1 p-6 rounded-3xl bg-primary text-on-primary space-y-6 flex flex-col shadow-xl transform scale-105 z-10">
+<div class="space-y-1">
+<div class="flex justify-between items-start">
+<h4 class="font-bold text-xl">표준형 (Standard)</h4>
+<span class="bg-white/20 px-2 py-1 rounded text-[10px] uppercase font-bold">Best Value</span>
+</div>
+<p class="text-on-primary-container font-bold text-2xl">800 ~ 1,200만원</p>
+</div>
+<ul class="space-y-3 flex-grow">
+<li class="flex items-center gap-2 text-sm">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+                            북유럽 디자이너 가구 믹스
+                        </li>
+<li class="flex items-center gap-2 text-sm">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+                            맞춤형 시스템 수납장
+                        </li>
+<li class="flex items-center gap-2 text-sm">
+<span class="material-symbols-outlined text-sm">check_circle</span>
+                            전체 공간 조명 큐레이션
+                        </li>
+</ul>
+<button class="w-full py-3 rounded-xl bg-white text-primary font-label-md hover:bg-surface-container-low transition-colors">가장 많이 선택함</button>
+</div>
+<!-- Premium -->
+<div class="flex-1 p-6 rounded-3xl border border-outline-variant bg-surface-container-lowest space-y-6 flex flex-col">
+<div class="space-y-1">
+<h4 class="font-bold text-xl">프리미엄 (Premium)</h4>
+<p class="text-primary font-bold text-2xl">2,000만원 +</p>
+</div>
+<ul class="space-y-3 flex-grow">
+<li class="flex items-center gap-2 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-sm text-secondary">check_circle</span>
+                            오리지널 빈티지 가구
+                        </li>
+<li class="flex items-center gap-2 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-sm text-secondary">check_circle</span>
+                            고급 원목 마루 시공 포함
+                        </li>
+<li class="flex items-center gap-2 text-sm text-on-surface-variant">
+<span class="material-symbols-outlined text-sm text-secondary">check_circle</span>
+                            아트 월 및 월페이퍼 매칭
+                        </li>
+</ul>
+<button class="w-full py-3 rounded-xl border border-primary text-primary font-label-md">상담 신청</button>
+</div>
+</div>
+</section>
+<!-- 6. Furniture List Section -->
+<section class="scroll-section space-y-6" id="furniture">
+<h3 class="font-headline-md text-headline-md font-bold">추천 가구 리스트</h3>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+<!-- Item 1 -->
+<div class="group rounded-2xl overflow-hidden border border-outline-variant bg-white transition-all hover:shadow-lg">
+<div class="relative h-64">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A premium 3-seater sofa in a light gray textured fabric. The sofa has slim light oak wood legs and a clean, minimalist silhouette. It is placed against a white wall with a soft shadow underneath, emphasizing its modern Scandinavian design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDE5h4o6pVUReaFW_WWyBCni2iaQCvQt_x-4Fxxv5y0RW3uCmSjkOCKU12f9S_KdGuoSfU76p23NCdueSYr3KuyGH_wb3kisXn-DmtUoaZfSYd7G4DVmf6Em4QHMhpzbQOh285YJCpacJok7SGv08DKiYJsaxS_PLkZEXvTHWG8tDdcb-jIPBtprx7uxTEctdFc99bjnkb-o1P-riaB4g-_TkbGQdjPV-nrzTQuaRF1AhYopv5mO49_cIb-uHKWMGFNgfEreu6NmR4V">
+<button class="absolute top-4 right-4 w-10 h-10 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+<div class="p-5 space-y-2">
+<p class="text-xs text-on-surface-variant">노르딕 리빙</p>
+<h4 class="font-bold">에센셜 린넨 3인용 소파</h4>
+<div class="flex justify-between items-center">
+<p class="text-primary font-bold">1,450,000원</p>
+<span class="text-xs text-outline">배송비 별도</span>
+</div>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="group rounded-2xl overflow-hidden border border-outline-variant bg-white transition-all hover:shadow-lg">
+<div class="relative h-64">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A round dining table made of light-colored solid ash wood. The design is characterized by its smooth edges and four tapered legs. Surrounding the table are two matching chairs with curved backrests. The lighting above is a large, white dome pendant lamp." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEbkqhAiOhN4xujwDIN6sl6G_eK3F1bSl4YNps3kG6NFgVR7ou29YTYMqZ3bYEYbuzdomDBBEJhcAwTEkjQ90nn2bcrUy4MzBeBqRPkgH8BMENvho7V5MWgvSdQdnQ_DigWVj58W2uXyS31ZqxiW2-Guw2d4WWtS37-u8WEZHVMbk4q0AFtKvOEnWiqWZ4neJd6SEoJo2FIA7jlcUWfHmxe1ga99oyZ4v9dMON5YChlwxZgbHDj_niLulHMaYZU0ltNfB4Btv13aZB">
+<button class="absolute top-4 right-4 w-10 h-10 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+<div class="p-5 space-y-2">
+<p class="text-xs text-on-surface-variant">코펜하겐 홈</p>
+<h4 class="font-bold">원형 애쉬 원목 다이닝 테이블</h4>
+<div class="flex justify-between items-center">
+<p class="text-primary font-bold">890,000원</p>
+<span class="text-xs text-outline">무료 배송</span>
+</div>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="group rounded-2xl overflow-hidden border border-outline-variant bg-white transition-all hover:shadow-lg">
+<div class="relative h-64">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A minimalist white floor lamp with a slender stem and a circular base. The lamp has a simple cone-shaped head that can be tilted. It stands next to a wooden armchair, casting a warm yellow light on a soft white rug. Scandinavian aesthetic, clean lines." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQ7s_RPI8xY0js4EfjkwbCGrJAaESu9NuokbgxyptYPaTxrbcDzi-iOOp7Y686z2DXemTDLXeVOqcjBcyJEmlAnZAJ256e5BCBJ5MjOeKxMhjvNqDsj7tUNA30-PtPnDEqGJPnhZBLKHdahBsiB5RRWneuzy6Sy1E38GFFNFH-bRleNVOSzcwhRvwAlpReWBkHHuY4XeBfhxYL41BAX-NzfAsSXZ6KbnLUNLnLMnJ5aAuNY8eAnpxt3TMMKC4VVoiORbmfzrbcjU3k">
+<button class="absolute top-4 right-4 w-10 h-10 bg-white/80 backdrop-blur-md rounded-full flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined">favorite</span>
+</button>
+</div>
+<div class="p-5 space-y-2">
+<p class="text-xs text-on-surface-variant">루미너스 디자인</p>
+<h4 class="font-bold">스칸디 스탠딩 플로어 램프</h4>
+<div class="flex justify-between items-center">
+<p class="text-primary font-bold">245,000원</p>
+<span class="text-xs text-outline">당일 발송</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Disclaimer Banner -->
+<div class="bg-surface-container-high rounded-2xl p-6 flex flex-col md:flex-row items-center gap-4 text-center md:text-left">
+<span class="material-symbols-outlined text-primary text-3xl">info</span>
+<div>
+<p class="text-on-surface-variant font-label-md text-label-md">본 제안은 HomeStyler AI 분석 결과로 실제와 다를 수 있습니다.</p>
+<p class="text-outline text-xs mt-1">공간의 실제 치수와 채광 조건에 따라 전문가 상담을 권장합니다.</p>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-surface dark:bg-surface-container flex justify-around items-center px-4 py-2 pb-safe shadow-lg border-t border-outline-variant rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">홈</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80" href="#">
+<span class="material-symbols-outlined">chair</span>
+<span class="font-label-sm text-label-sm">내 공간</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-3 py-1 scale-95 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="font-label-sm text-label-sm">추천</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-sm text-label-sm">보관함</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">마이</span>
+</a>
+</nav>
+<script>
+        // Simple scroll spy for tabs
+        const sections = document.querySelectorAll('.scroll-section');
+        const navLinks = document.querySelectorAll('nav a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('bg-primary-container', 'text-on-primary-container');
+                link.classList.add('text-on-surface-variant', 'hover:bg-surface-container-high');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.remove('text-on-surface-variant', 'hover:bg-surface-container-high');
+                    link.classList.add('bg-primary-container', 'text-on-primary-container');
+                }
+            });
+        });
+
+        // Wishlist toggle micro-interaction
+        document.querySelectorAll('button .material-symbols-outlined').forEach(btn => {
+            if(btn.innerText === 'favorite') {
+                btn.parentElement.addEventListener('click', function() {
+                    const icon = this.querySelector('.material-symbols-outlined');
+                    const isFilled = icon.style.fontVariationSettings.includes("'FILL' 1");
+                    icon.style.fontVariationSettings = isFilled ? "'FILL' 0" : "'FILL' 1";
+                    icon.classList.toggle('text-error', !isFilled);
+                });
+            }
+        });
+    </script>
+
+
+
+</body></html>

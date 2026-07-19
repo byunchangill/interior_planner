@@ -1,0 +1,332 @@
+<!DOCTYPE html><html class="light" lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>HomeStyler - Home</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind Config from Style Guidance -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface": "#191c1d",
+                    "surface-container-high": "#e7e8e9",
+                    "inverse-primary": "#c3c0ff",
+                    "tertiary-container": "#934e00",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "outline-variant": "#c7c4d8",
+                    "on-error": "#ffffff",
+                    "on-primary-container": "#dad7ff",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed": "#002114",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed": "#ffdcc3",
+                    "on-tertiary-fixed-variant": "#6e3900",
+                    "inverse-on-surface": "#f0f1f2",
+                    "outline": "#777587",
+                    "background": "#f8f9fa",
+                    "error-container": "#ffdad6",
+                    "surface-container": "#edeeef",
+                    "on-error-container": "#93000a",
+                    "surface-container-low": "#f3f4f5",
+                    "surface-tint": "#4d44e3",
+                    "on-secondary-container": "#00714e",
+                    "on-tertiary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "secondary": "#006c4a",
+                    "on-primary-fixed": "#000000",
+                    "primary-container": "#4f46e5",
+                    "primary-fixed": "#e2dfff",
+                    "surface": "#f8f9fa",
+                    "surface-dim": "#d9dadb",
+                    "secondary-fixed": "#85f8c4",
+                    "on-tertiary-container": "#ffd2b1",
+                    "on-surface-variant": "#464555",
+                    "on-secondary-fixed-variant": "#005137",
+                    "surface-container-highest": "#e1e3e4",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "secondary-container": "#82f5c1",
+                    "primary": "#3525cd",
+                    "secondary-fixed-dim": "#68dba9",
+                    "on-tertiary-fixed": "#2f1500",
+                    "tertiary": "#703a00",
+                    "surface-bright": "#f8f9fa",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb77d",
+                    "on-background": "#191c1d",
+                    "surface-variant": "#e1e3e4",
+                    "inverse-surface": "#2e3132"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-sm": "8px",
+                    "stack-lg": "32px",
+                    "container-max-width": "1280px",
+                    "margin-desktop": "48px",
+                    "gutter": "24px",
+                    "margin-mobile": "20px",
+                    "unit": "4px",
+                    "stack-md": "16px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-xl": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-xl": ["40px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.6);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+      }
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+      .no-scrollbar {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile py-4 bg-surface/80 backdrop-blur-md transition-all duration-300 ease-in-out shadow-sm">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant cursor-pointer hover:bg-surface-container-low p-2 rounded-full transition-colors">menu</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">HomeStyler</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-container-low rounded-full transition-all">notifications</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-32 max-w-container-max-width mx-auto px-margin-mobile md:px-margin-desktop">
+<!-- Greeting Section -->
+<section class="mb-stack-lg animate-in fade-in slide-in-from-bottom-4 duration-700">
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-on-surface mb-2">
+                반가워요, 홈스타일러님!<br>오늘은 어떤 공간을 바꿔볼까요?
+            </h2>
+<p class="text-on-surface-variant font-body-md">AI가 당신의 취향에 딱 맞는 스타일을 찾아드려요.</p>
+</section>
+<!-- CTA & Analysis Shortcut (Bento Style) -->
+<section class="grid grid-cols-1 md:grid-cols-3 gap-gutter mb-stack-lg">
+<!-- Main CTA -->
+<div class="md:col-span-2 relative overflow-hidden rounded-xl bg-primary-container p-8 flex flex-col justify-between min-h-[240px] shadow-sm hover:shadow-lg transition-all group">
+
+<div class="relative z-10">
+<span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-white font-label-sm mb-4">
+<span class="material-symbols-outlined text-[16px]" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                        AI 인테리어 리포트
+                    </span>
+<h3 class="font-headline-md text-headline-md text-white mb-2">공간 사진 한 장으로 시작하는<br>나만의 스타일 분석</h3>
+</div>
+<div class="relative z-10">
+<button class="bg-primary text-on-primary px-6 py-3 rounded-xl font-label-md flex items-center gap-2 group-hover:scale-105 transition-transform shadow-lg">
+                        맞춤형 인테리어 분석 시작
+                        <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Summary Card -->
+<div class="bg-surface-container-lowest rounded-xl p-6 border border-outline-variant flex flex-col gap-4 shadow-sm">
+<div class="flex justify-between items-center">
+<h3 class="font-label-md text-on-surface">내 공간 요약</h3>
+<button class="text-primary font-label-sm">전체보기</button>
+</div>
+<!-- Space List -->
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-3 p-3 rounded-lg bg-surface-container-low border border-outline-variant/30">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">weekend</span>
+</div>
+<div>
+<p class="font-label-md text-on-surface">우리집 거실</p>
+<p class="text-label-sm text-on-surface-variant">모던 미니멀 스타일 제안됨</p>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-lg bg-surface-container-low border border-outline-variant/30">
+<div class="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">bed</span>
+</div>
+<div>
+<p class="font-label-md text-on-surface">안방</p>
+<p class="text-label-sm text-on-surface-variant">분석 대기 중</p>
+</div>
+</div>
+<!-- Empty State logic integrated as a "Add" prompt -->
+<button class="flex items-center justify-center gap-2 p-3 border-2 border-dashed border-outline-variant rounded-lg text-on-surface-variant hover:bg-surface-container-highest transition-colors">
+<span class="material-symbols-outlined">add_circle</span>
+<span class="font-label-md">새 공간 등록하기</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Recent Recommendations (Horizontal Scroll) -->
+<section class="mb-stack-lg">
+<div class="flex justify-between items-end mb-stack-md">
+<h3 class="font-headline-md text-headline-md text-on-surface">최근 추천 결과</h3>
+<p class="text-label-sm text-on-surface-variant">방금 전 완료된 분석</p>
+</div>
+<div class="flex gap-4 overflow-x-auto no-scrollbar pb-4 snap-x">
+<div class="flex-none snap-start w-80"><div class="group relative aspect-[4/3] rounded-xl overflow-hidden mb-4 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A bright and airy modern minimalist living room featuring a low-profile white linen sofa, a light oak coffee table, and large floor-to-ceiling windows letting in soft afternoon sunlight. The walls are a warm off-white, and a single sculptural green plant stands in the corner. Professional interior photography style with soft shadows and high-end aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoulISDxNL7yADT1hqxYXq5nWMGmPQd-TLFpvD5YybVaxxHlbkM8Oe8HodyTuZZfDOjwuYq6CYUxnccHW_AWKyNxjyt3p8dohse3p3swWlzwBhXjsubfv57yGWd4zFb72liPJF7uzYLFJc-m6xEQn7kvuzF1tMeDAo6BnLI1QORSpAbq7C-EWtDPG8tTWAXbk5NpF6iAbo9DeeUMkZxYoOKnLZy22mIxQwWr5UkNLk8mM7uPv4mFWsciZAEzMZa9AZu39pq88iRNOw">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-6">
+<span class="bg-white/20 backdrop-blur-md text-white text-[12px] px-2 py-1 rounded w-fit mb-2">Modern Minimal</span>
+<h4 class="text-white font-headline-md">거실 #1: 젠 스타일링</h4>
+</div>
+</div>
+<div class="flex items-center justify-between px-1">
+<span class="text-body-md font-bold text-primary">일치율 92%</span>
+<span class="material-symbols-outlined text-primary text-[24px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div></div>
+<div class="flex-none snap-start w-80"><div class="group relative aspect-[4/3] rounded-xl overflow-hidden mb-4 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A bright and airy modern minimalist living room featuring a low-profile white linen sofa, a light oak coffee table, and large floor-to-ceiling windows letting in soft afternoon sunlight. The walls are a warm off-white, and a single sculptural green plant stands in the corner. Professional interior photography style with soft shadows and high-end aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoulISDxNL7yADT1hqxYXq5nWMGmPQd-TLFpvD5YybVaxxHlbkM8Oe8HodyTuZZfDOjwuYq6CYUxnccHW_AWKyNxjyt3p8dohse3p3swWlzwBhXjsubfv57yGWd4zFb72liPJF7uzYLFJc-m6xEQn7kvuzF1tMeDAo6BnLI1QORSpAbq7C-EWtDPG8tTWAXbk5NpF6iAbo9DeeUMkZxYoOKnLZy22mIxQwWr5UkNLk8mM7uPv4mFWsciZAEzMZa9AZu39pq88iRNOw">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-6">
+<span class="bg-white/20 backdrop-blur-md text-white text-[12px] px-2 py-1 rounded w-fit mb-2">Modern Minimal</span>
+<h4 class="text-white font-headline-md">거실 #1: 젠 스타일링</h4>
+</div>
+</div>
+<div class="flex items-center justify-between px-1">
+<span class="text-body-md font-bold text-primary">일치율 92%</span>
+<span class="material-symbols-outlined text-primary text-[24px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div></div>
+<div class="flex-none snap-start w-80"><div class="group relative aspect-[4/3] rounded-xl overflow-hidden mb-4 shadow-sm">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A bright and airy modern minimalist living room featuring a low-profile white linen sofa, a light oak coffee table, and large floor-to-ceiling windows letting in soft afternoon sunlight. The walls are a warm off-white, and a single sculptural green plant stands in the corner. Professional interior photography style with soft shadows and high-end aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAoulISDxNL7yADT1hqxYXq5nWMGmPQd-TLFpvD5YybVaxxHlbkM8Oe8HodyTuZZfDOjwuYq6CYUxnccHW_AWKyNxjyt3p8dohse3p3swWlzwBhXjsubfv57yGWd4zFb72liPJF7uzYLFJc-m6xEQn7kvuzF1tMeDAo6BnLI1QORSpAbq7C-EWtDPG8tTWAXbk5NpF6iAbo9DeeUMkZxYoOKnLZy22mIxQwWr5UkNLk8mM7uPv4mFWsciZAEzMZa9AZu39pq88iRNOw">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex flex-col justify-end p-6">
+<span class="bg-white/20 backdrop-blur-md text-white text-[12px] px-2 py-1 rounded w-fit mb-2">Modern Minimal</span>
+<h4 class="text-white font-headline-md">거실 #1: 젠 스타일링</h4>
+</div>
+</div>
+<div class="flex items-center justify-between px-1">
+<span class="text-body-md font-bold text-primary">일치율 92%</span>
+<span class="material-symbols-outlined text-primary text-[24px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</div></div>
+</div>
+</section>
+<!-- Style Gallery (Bento Grid) -->
+<section class="mb-stack-lg">
+<h3 class="font-headline-md text-headline-md text-on-surface mb-stack-md">스타일 갤러리 미리보기</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="col-span-2 row-span-2 relative rounded-xl overflow-hidden group">
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-all z-10"></div>
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A wide-angle shot of a luxurious, high-end living room with a neutral color palette. Polished stone floors, silk area rugs, and bespoke curved furniture. The lighting is soft and ambient, highlighting high-quality textures. The overall mood is sophisticated, professional, and serene." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE5BLmOl7tuvjLyLUJqByTp1i7e_SPmj1Y5Ul89GSWuNV5ioPdHrgZNIYGHglBg2jqCgdRTIk3RGn2HQcGutzu_9DlQKJlJfQBMweCveVeaLSVapCu6KTDVvJ0womzoB92dS8PEwffkc4xFyN1KrepsQd_xXCHVEPd5vMsmeHp7j748zlhWoXWpxOru4Dl-LOXDf42pPnOz81kfEaL0icJKJue7ungLA3BZO1IkRVG8CW5PPLMy58zFm_qSz0ZUzApjlwLy5OFIfkG">
+<div class="absolute bottom-4 left-4 z-20">
+<p class="text-white font-label-md">#럭셔리 모던</p>
+</div>
+</div>
+<div class="relative rounded-xl overflow-hidden aspect-square group">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform" data-alt="A close-up of a Japandi style dining area. A round wooden table with minimalist ceramic vases and dried branches. Natural textures of linen and wood are prominent. Bright, high-key lighting creates a fresh and peaceful atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCbqShlo_nubGh7ASxb3oXW-xPtsup4Dehyl9untF90kc0K2QBR_W5HqxvR_goXPsCU-3Uy84qHIaVBWK_qgozBLO6PJZcpyP2FBKLDLC7hcelfoY4EBwYyKY3lktGgZh9DkMzpZoA6Chrtp7NByw7-g42aoqiUBhwh6roMllexkKi76yGlUBgvey-9i1edsUZ7KPIbFjmRV4XieUWmbDh-OAVTgs4Sh_HPcVQEcqJI3KXV-zirjh_XwMSXuKpTLk-UAbwvbodrXMf3">
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+<div class="absolute bottom-3 left-3">
+<p class="text-white text-[12px] font-label-md">#자판디</p>
+</div>
+</div>
+<div class="relative rounded-xl overflow-hidden aspect-square group">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform" data-alt="A vibrant and colorful eclectic kitchen space. Mint green cabinets with brass hardware, patterned backsplash tiles, and open shelving with colorful glassware. The lighting is bright and cheerful. Professional interior design focused on unique personality and creativity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfRZMRBvWzB4vrKQ5yCOm1TXYReXLVyU94vB6Xat8wAY3eVGTs4p-oLuEk31SQ-GbPXeOIY4gldcmLTYH8c2MgND1tDW9brpk_Wi1vmexiw4-iriZRixexqxDwgFSNk3JUpA1dg7BMS5cAJrNzroPIe0qU1lFiAeaYCBq_g84hBqFUg_7yN9JUtAhO6-dyhmpPz6AWTqEnuolplD-j433Wg_pXaajvQ95uw7izY9rRfAN9qBGLZY9-oBmREOr9VC8yiBrzXzdu9Rq_">
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+<div class="absolute bottom-3 left-3">
+<p class="text-white text-[12px] font-label-md">#컬러풀 믹스</p>
+</div>
+</div>
+<div class="relative rounded-xl overflow-hidden aspect-square group">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform" data-alt="A cozy, rustic farmhouse kitchen with white shaker cabinets, a large farmhouse sink, and warm wood beams on the ceiling. Soft, warm natural light spills in from a window over the sink. The mood is welcoming, timeless, and professionally styled." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXvLl7WBGcW9nCBoex2rwc5J64np6lW9807lj-YBIJ5s9E66SmYD9kE2_J1lwW_tbuR9FlM2HVCly6K6pN1EnxBRi8Nd-5YJaS3uG_WqGJdC4GTBIPeirAQzICEiqkCz34RGRFgtwZLEQNNYqik_JS1bzpzNyvlm3f85DcBGQ2B_EeCTkGU_pOxGD7TDgTJE8JHAMlpx5Of98spiYTsFBoVzMaUvX2_7orVpnkQKN_sQ78xFKB-BkqPk3ZHXQAgGLfibrq2w17pnQO">
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+<div class="absolute bottom-3 left-3">
+<p class="text-white text-[12px] font-label-md">#어반 팜하우스</p>
+</div>
+</div>
+<div class="relative rounded-xl overflow-hidden aspect-square group">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform" data-alt="A futuristic and sleek high-tech home office. Floating desks, integrated LED strip lighting in cool blue tones, and minimalist matte black hardware. The aesthetic is clean, sharp, and highly modern with a focus on innovation and professional productivity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC1db4eR1XXdnTFLuL2I_4Wcc401c7m6dMjm1vikKG9OS1Z0xW5cr6XkbJ3RtEksGXQx_Hcb1qsss6C1UTzF3VA0IqPx1F9LFtTPC88m34tSktXjvUP2NRkkK6QT0UiPx7QYGuVZTCyLCu840SZ1pI4tP3djeZEw7aB8j3hDmobLYwTq0BpUQQZ_Db0CKPRFn6puhIOEsxO4SuQffhk597588rS5nF08MrTE3nGC17O0gSJdHe6xT59BsmDe-YClqp8O9f7CjxACLxc">
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+<div class="absolute bottom-3 left-3">
+<p class="text-white text-[12px] font-label-md">#테크 미니멀</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- FAB for quick action -->
+<button class="fixed right-6 bottom-24 z-40 bg-primary text-on-primary w-14 h-14 rounded-full shadow-lg flex items-center justify-center hover:scale-110 transition-transform active:scale-95">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">photo_camera</span>
+</button>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface border-t border-outline-variant shadow-lg md:max-w-md md:left-1/2 md:-translate-x-1/2 md:rounded-t-2xl">
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-3 py-1 scale-95 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-[10px]">홈</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80" href="#">
+<span class="material-symbols-outlined">chair</span>
+<span class="font-label-sm text-[10px]">내 공간</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80" href="#">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="font-label-sm text-[10px]">추천</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-sm text-[10px]">보관함</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-[10px]">마이</span>
+</a>
+</nav>
+<script>
+        // Micro-interactions
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('click', (e) => {
+                // Prevent default for prototype
+                if(el.tagName === 'A' && el.getAttribute('href') === '#') e.preventDefault();
+            });
+        });
+
+        // Simple scroll header effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('py-2', 'shadow-md');
+                header.classList.remove('py-4', 'shadow-sm');
+            } else {
+                header.classList.add('py-4', 'shadow-sm');
+                header.classList.remove('py-2', 'shadow-md');
+            }
+        });
+    </script>
+
+
+
+</body></html>

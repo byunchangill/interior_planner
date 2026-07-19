@@ -1,0 +1,257 @@
+<!DOCTYPE html><html class="light" lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>HomeStyler - Welcome</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#f8f9fa",
+                        "surface": "#f8f9fa",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#4d44e3",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#2f1500",
+                        "primary": "#3525cd",
+                        "on-primary-fixed": "#0f0069",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "inverse-surface": "#2e3132",
+                        "background": "#f8f9fa",
+                        "on-background": "#191c1d",
+                        "primary-fixed": "#e2dfff",
+                        "on-surface": "#191c1d",
+                        "secondary-fixed": "#85f8c4",
+                        "secondary": "#006c4a",
+                        "primary-container": "#4f46e5",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#e1e3e4",
+                        "secondary-container": "#82f5c1",
+                        "on-surface-variant": "#464555",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#c7c4d8",
+                        "outline": "#777587",
+                        "on-secondary-container": "#00714e",
+                        "surface-container-highest": "#e1e3e4",
+                        "secondary-fixed-dim": "#68dba9",
+                        "tertiary": "#703a00",
+                        "inverse-on-surface": "#f0f1f2",
+                        "tertiary-container": "#934e00",
+                        "tertiary-fixed-dim": "#ffb77d",
+                        "surface-container-high": "#e7e8e9",
+                        "surface-container": "#edeeef",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "on-secondary-fixed-variant": "#005137",
+                        "surface-dim": "#d9dadb",
+                        "on-tertiary-fixed-variant": "#6e3900",
+                        "on-secondary-fixed": "#002114",
+                        "surface-container-low": "#f3f4f5",
+                        "tertiary-fixed": "#ffdcc3",
+                        "on-primary-container": "#dad7ff",
+                        "on-tertiary-container": "#ffd2b1",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#c3c0ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "stack-md": "16px",
+                        "margin-desktop": "48px",
+                        "stack-lg": "32px",
+                        "margin-mobile": "20px",
+                        "container-max-width": "1280px",
+                        "stack-sm": "8px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-xl": ["40px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .social-btn {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .social-btn:active {
+            transform: scale(0.97);
+        }
+        .bg-mesh {
+            background-color: #f8f9fa;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(79, 70, 229, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(0, 108, 74, 0.05) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(79, 70, 229, 0.1) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, rgba(0, 108, 74, 0.05) 0px, transparent 50%);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-mesh min-h-screen flex items-center justify-center font-body-md text-on-surface p-margin-mobile md:p-margin-desktop overflow-hidden">
+<!-- Background Decorative Element (AI Analysis Aesthetic) -->
+<div class="fixed inset-0 pointer-events-none overflow-hidden">
+<div class="absolute top-[-10%] right-[-5%] w-[60%] h-[60%] opacity-20 rotate-12">
+<div class="w-full h-full rounded-[40px] border-[2px] border-primary-container animate-pulse"></div>
+</div>
+<div class="absolute bottom-[-5%] left-[-10%] w-[50%] h-[50%] opacity-10 -rotate-12">
+<div class="w-full h-full rounded-full border-[1px] border-secondary"></div>
+</div>
+</div>
+<!-- Main Container -->
+<main class="relative z-10 w-full max-w-[1100px] grid grid-cols-1 md:grid-cols-2 bg-surface-container-lowest rounded-[32px] overflow-hidden shadow-2xl">
+<!-- Left Side: Visual & Value Proposition -->
+<section class="hidden md:flex flex-col relative h-full min-h-[640px] p-12 bg-primary overflow-hidden">
+<!-- Background Image with AI Overlays -->
+<div class="absolute inset-0 z-0">
+<div class="w-full h-full bg-cover bg-center brightness-[0.8]" data-alt="A luxurious, sun-drenched modern living room with minimalist Nordic furniture. Overlayed on the scene are high-tech, glowing holographic UI elements like wireframe lines, measurement callouts, and architectural style tags, symbolizing AI-driven interior analysis. The lighting is soft and professional, emphasizing a calm and sophisticated atmosphere with deep indigo accents." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCRd6SpwrRMKen-LUzxG3Ybj4LmZoI4A_84slR5Z4jogydrVDagMBWZ0Xz6zXhpDGJtQ_fm65KgbdYeC2_X-qB7Ml6TKwLvyBbZitMVgwmkSOogGksEHY_BD_c6fYWRzIy8dHYclPM6lapXNZ5G6kpRTy4_DDEO6wdBG5F50ph9pf5mltFX8-lffX4aUFtLx-deIdBwKDA7Jyr9YZMcMrRcg7Cc91OrZZE31nZbZrMw83umx0wnm0VOOIzZ8dk5N1tOSV9W0wGPjhsu')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/20 to-transparent"></div>
+</div>
+<!-- Content -->
+<div class="relative z-10 mt-auto">
+<div class="flex items-center gap-2 mb-6">
+<div class="w-10 h-10 bg-primary-container rounded-xl flex items-center justify-center shadow-lg">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<span class="text-white font-headline-md font-bold tracking-tight">HomeStyler</span>
+</div>
+<h1 class="font-headline-xl text-white mb-4 leading-[1.1]">사진 한 장으로 완성되는<br>당신의 맞춤형 공간</h1>
+<p class="text-primary-fixed-dim font-body-lg max-w-[380px]">
+                    AI가 분석하는 가구 배치부터 스타일 제안까지, 전문 인테리어 디자이너의 감각을 기술로 구현합니다.
+                </p>
+<!-- Floating Info Card (Glassmorphic) -->
+<div class="mt-12 glass-panel p-6 rounded-2xl flex items-center gap-4 max-w-[320px]">
+<div class="flex -space-x-3">
+<div class="w-10 h-10 rounded-full border-2 border-white bg-surface-dim overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close-up portrait of a professional interior designer, smiling warmly, studio lighting, clean background, modern corporate style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDfDO1Ug3QXWawZncA0_h0EL2xK0koy6wPHCZx-ILi2dA36k9m4Lf7fAB2-6BpDS7pwdLWWxoUa06nMqbt2BE1LTbA2FHanrMJRW8S-MOgPbgwXy-9mAm8ZF5igh_5BQNrzZCr9wh0CmeYT9hxWRFPna7ZVexgo_tgoON6LpoEhpaWfOVzcPj14dHJWXQR1SYp3WoDWExJU0Zy0wPQxfWlXdfcAPX3v__z-F9uzeMDjzNcoGTRedi1Y58z0ZkukTah7TTDV4AFp1NQ-">
+</div>
+<div class="w-10 h-10 rounded-full border-2 border-white bg-surface-dim overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A middle-aged creative professional with glasses, minimalist aesthetic, warm soft lighting, high-end photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDO_2sQiWZMiDTvjBKN6NEpJWTPxuEFCgloLXPWrnRZZySX8LbRMOHwB-yVFzZUBunhLpL29yDDVWHS6F7ItMDCbNSlLEVKWKk-JVr90Th3RVs-C1LDb-18rkVbA571eQiF-DoBCLYMKHIwI9OFKKGPeKqR3l0rYRSyCcrxh5o1d8GDzFJbf3dcgrWFJGdMENpQLSKFAyhPuwNNcvEQiyfZ3vPTdhZQ-ed7tG3RkiIwtscURZmKne7mBZwVGYtlRviCEkuqGDNfqmW">
+</div>
+</div>
+<div class="flex-1">
+<p class="text-primary font-label-md text-xs">2,400+ 전문가 추천</p>
+<p class="text-on-surface-variant text-[11px]">지금 바로 시작해보세요</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Side: Login Actions -->
+<section class="flex flex-col p-8 md:p-16 justify-center bg-surface-container-lowest">
+<div class="mb-10 text-center md:text-left">
+<div class="md:hidden flex justify-center mb-6">
+<span class="font-headline-md font-bold text-primary tracking-tight">HomeStyler</span>
+</div>
+<h2 class="font-headline-lg-mobile md:font-headline-lg text-on-surface mb-2">반가워요!</h2>
+<p class="text-on-surface-variant font-body-md">간편 로그인으로 서비스를 시작하세요.</p>
+</div>
+<!-- Social Login Buttons -->
+<div class="space-y-3 mb-8">
+<!-- Kakao -->
+<button class="social-btn w-full h-[56px] bg-[#FEE500] text-[#191919] rounded-xl flex items-center px-6 font-label-md">
+<div class="w-6 flex justify-center mr-auto">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chat_bubble</span>
+</div>
+<span class="flex-grow text-center">카카오로 시작하기</span>
+<div class="w-6"></div>
+</button>
+<!-- Naver -->
+<button class="social-btn w-full h-[56px] bg-[#03C75A] text-white rounded-xl flex items-center px-6 font-label-md">
+<div class="w-6 flex justify-center mr-auto">
+<span class="material-symbols-outlined font-bold">1k</span>
+</div>
+<span class="flex-grow text-center">네이버로 시작하기</span>
+<div class="w-6"></div>
+</button>
+<!-- Google -->
+<button class="social-btn w-full h-[56px] bg-white border border-outline-variant text-on-surface rounded-xl flex items-center px-6 font-label-md hover:bg-surface-container-low">
+<div class="w-6 flex justify-center mr-auto">
+<img alt="Google" class="w-5 h-5" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAK25uQEwe9aRFY1WpuZZG6pieUAFHvIWkK8wUp6LHDJAPgtOzPnxWVQ9NSwnj77btGiYr9XbL2AmO-scCo5UJUk2JU6HXCZp7g6GH_jmIa56eRawsfIzdp-Qeo-7LzvTAeLO7FibBfk3v_X6eFqDzodo5nD-wirX5gNyYpb_N-z95O3x6LQZiouE-VeeQmWfgD66_0Wvpf2Wo59P0Wkz2pOgaFe7cmCtqbgP86F3DAZFcna8tuSidP8PFVHbgM5Bj_JoeWffX0AgCA">
+</div>
+<span class="flex-grow text-center">Google로 시작하기</span>
+<div class="w-6"></div>
+</button>
+<!-- Apple -->
+<button class="social-btn w-full h-[56px] bg-black text-white rounded-xl flex items-center px-6 font-label-md">
+<div class="w-6 flex justify-center mr-auto">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">apps</span>
+</div>
+<span class="flex-grow text-center">Apple로 시작하기</span>
+<div class="w-6"></div>
+</button>
+</div>
+<!-- Divider -->
+<div class="flex items-center gap-4 mb-8">
+<div class="h-[1px] flex-1 bg-outline-variant"></div>
+<span class="text-on-surface-variant font-label-sm uppercase tracking-widest opacity-60">또는</span>
+<div class="h-[1px] flex-1 bg-outline-variant"></div>
+</div>
+<!-- Secondary Actions -->
+<div class="space-y-4">
+<button class="w-full h-[56px] border-2 border-primary-container text-primary-container rounded-xl font-label-md hover:bg-primary-container hover:text-white transition-colors duration-300">
+                    이메일로 로그인
+                </button>
+<div class="text-center">
+<span class="text-on-surface-variant font-body-sm">아직 회원이 아니신가요? </span>
+<a class="text-primary-container font-label-md hover:underline underline-offset-4 decoration-2" href="#">회원가입</a>
+</div>
+</div>
+<!-- Footer Links -->
+<footer class="mt-12 pt-8 border-t border-surface-container-high flex flex-wrap justify-center gap-x-6 gap-y-2">
+<a class="text-on-surface-variant font-label-sm hover:text-primary" href="#">이용약관</a>
+<a class="text-on-surface-variant font-label-sm hover:text-primary" href="#">개인정보처리방침</a>
+<a class="text-on-surface-variant font-label-sm hover:text-primary" href="#">도움말</a>
+</footer>
+</section>
+</main>
+<!-- Micro-interaction Script -->
+<script>
+        document.querySelectorAll('.social-btn').forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                btn.style.boxShadow = '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)';
+            });
+            btn.addEventListener('mouseleave', () => {
+                btn.style.boxShadow = 'none';
+            });
+        });
+    </script>
+</body></html>

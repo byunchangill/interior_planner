@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet"/><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">try{
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-lowest": "#ffffff",
+                        "secondary-fixed": "#85f8c4",
+                        "surface": "#f8f9fa",
+                        "background": "#f8f9fa",
+                        "surface-bright": "#f8f9fa",
+                        "secondary-fixed-dim": "#68dba9",
+                        "inverse-on-surface": "#f0f1f2",
+                        "secondary": "#006c4a",
+                        "tertiary-container": "#934e00",
+                        "surface-container": "#edeeef",
+                        "on-primary-container": "#dad7ff",
+                        "tertiary": "#703a00",
+                        "secondary-container": "#82f5c1",
+                        "outline": "#777587",
+                        "on-error": "#ffffff",
+                        "primary-container": "#4f46e5",
+                        "on-error-container": "#93000a",
+                        "primary": "#3525cd",
+                        "error": "#ba1a1a",
+                        "outline-variant": "#c7c4d8",
+                        "surface-container-highest": "#e1e3e4",
+                        "inverse-surface": "#2e3132",
+                        "on-surface-variant": "#464555",
+                        "on-surface": "#191c1d",
+                        "on-primary": "#ffffff",
+                        "surface-container-high": "#e7e8e9",
+                        "inverse-primary": "#c3c0ff",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed": "#e2dfff",
+                        "on-secondary-fixed": "#002114",
+                        "surface-tint": "#4d44e3",
+                        "surface-dim": "#d9dadb",
+                        "surface-variant": "#e1e3e4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "32px",
+                        "gutter": "24px",
+                        "margin-mobile": "20px",
+                        "stack-md": "16px",
+                        "container-max-width": "1280px",
+                        "unit": "4px",
+                        "stack-sm": "8px",
+                        "margin-desktop": "48px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-xl": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-xl": ["40px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    }catch(_e){}</script><meta charset="utf-8"/></head><body class="bg-surface font-body-md text-on-surface overflow-hidden">
+<!-- Shell Suppression: Onboarding is a focused task, so TopAppBar and BottomNavBar are excluded -->
+<main class="relative h-screen w-full max-w-[500px] mx-auto bg-surface-container-lowest overflow-hidden flex flex-col">
+<!-- Header Controls -->
+<header class="absolute top-0 left-0 w-full z-20 px-margin-mobile py-8 flex justify-between items-center">
+<div class="font-headline-md text-headline-md font-bold text-primary">HomeStyler AI</div>
+<button class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" onclick="skipOnboarding()">
+                건너뛰기
+            </button>
+</header>
+<!-- Carousel Content -->
+<div class="carousel-container h-full" id="carousel">
+<!-- Step 1:-->
+<section class="carousel-item relative h-full flex flex-col">
+<div class="flex-1 relative overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A professional interior photography shot of a bright, empty modern living room with large windows. The lighting is soft and natural, emphasizing the architectural details and clean lines. High-quality whitespace and a minimalist aesthetic define the scene, using a palette of soft greys and warm whites to create an inviting atmosphere for AI styling." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_VN073CoQnnKcxk8Ek0Sel0Bq6X9GhsvGWzP2Cr0V9Rt9biwgq5wowpdL9pxDOiPdDTJfWJO9FxqiSZ5nv3wzxgjt7_nnuLvUOsfZMyt1_Xp_DjHm_XutpfIOlXmSTY4Bc_3HejwmSUlcD8nHODNcP8pYJzBg7dkdt3iTkSLnBxqab-Xj8ew9zK5Odsu1YvM3F1tdt41ODWaHf8h-n7lH7W9KO9UeXYcwIGK6zMKI04BkoAUVZaHMk0YsFQax2fG99byOVQPa_h3Q"/>
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-surface-container-lowest/90"></div>
+<!-- Floating UI Element -->
+<div class="absolute bottom-12 left-1/2 -translate-x-1/2 w-[85%] glass-card p-6 rounded-xl shadow-lg flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined">photo_camera</span>
+</div>
+<div>
+<p class="font-label-md text-label-md text-primary">AI 공간 인식</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant">공간 구조 분석 중...</p>
+</div>
+</div>
+</div>
+<div class="px-margin-mobile pb-32 pt-8 text-center">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-4">공간 사진을 찍어주세요</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">원하는 공간의 사진을 선명하게 찍어주세요. AI가 치수, 가구, 조명을 자동으로 분석합니다.</p>
+</div>
+</section>
+<!-- Step 2: Style Selection -->
+<section class="carousel-item relative h-full flex flex-col">
+<div class="flex-1 relative bg-surface-container-low p-margin-mobile flex flex-col justify-center gap-4">
+<div class="grid grid-cols-2 gap-4">
+<div class="aspect-square rounded-xl overflow-hidden shadow-sm relative group cursor-pointer border-2 border-primary">
+<img class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform" data-alt="A close-up of a Nordic-style interior featuring light oak wood, a simple white ceramic vase with dried grass, and a soft wool throw." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEwTqQQYVItn16uMhPvWrapR3sQc9SiGhO4OJm-h8OG4Y_0XkzZNVMDIukQ27LmX5pkep2VDqjAoI6e_x18KN3ZcrDldTxOH2ZI9S4sd-hEigTWUe491e6T2ewpglZQbKFGB8IezyDU8p8uHOkrfhehra8YGROyFOwbI8RLd2PFYo7uU_goJ-UEeZJNsiLmcUyrr-1mYRUd3KHTUO_PAs089wmoB8Cyd97PnyT0gmY1h1YsmW723JNgt_IUrs3skpA68a4fJKzBYyV"/>
+<div class="absolute bottom-3 left-3 px-3 py-1 bg-primary text-on-primary text-[10px] font-bold rounded-full uppercase tracking-widest">Nordic</div>
+<div class="absolute top-2 right-2 bg-primary rounded-full p-1 text-on-primary">
+<span class="material-symbols-outlined !text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+</div>
+<div class="aspect-square rounded-xl overflow-hidden shadow-sm relative group cursor-pointer border-2 border-transparent hover:border-outline-variant">
+<img class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform" data-alt="An industrial-style interior detail with exposed brick walls." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCXF29ZM29zeYA9W488gDgtTFfXh_r3nqsqVgaU2AK-0zMjkGmEtS2geBXERm6ZzT1SsvrL1Dlsh5FbRBT2QjMaszxG_ZafkPvF83oLsNePDAn-_OzFpcEPkhrYNFP7M34RsLh59HgzgMWitBfHkTsfN_cQsiF_Qu0dGYAAzlYc2Ko90rRy7TS9Vn_a1cOljjEbdPJGZEFCRk5lCE67xqQRjKjO4Obuu78Ln0qBQOWqQYhkZUx-yHnYaR3CZ-sbiIpnSLC-TPaDmEar"/>
+<div class="absolute bottom-3 left-3 px-3 py-1 bg-on-surface text-surface text-[10px] font-bold rounded-full uppercase tracking-widest">Industrial</div>
+</div>
+<div class="aspect-square rounded-xl overflow-hidden shadow-sm relative group cursor-pointer border-2 border-transparent hover:border-outline-variant">
+<img class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform" data-alt="A modern minimalist interior." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTtGOm8XjyZoe9PqysHsJctVOSW7xScCZFRg393psyrxP8uY4sbKc4ffiKDucbKn9ctYGZmLzGPeOjOO5xqWcL44lm2JMv4WqYONjN0Gi_f1zCNoXDl18bauiha5Ze-61uKfIy-pW13L6Kj9ph6bE1YtAGbZV5MBRVR90z0t26cBUMkJkgf_PgIp_gYeob-5uA9tMs9gKA9VF0v2oNEobTFSaQJZWq46Pvnx04glUkv5lCJUmT4XpfOlB6NhoDFC7tCpyfAx2ek9gj"/>
+<div class="absolute bottom-3 left-3 px-3 py-1 bg-on-surface text-surface text-[10px] font-bold rounded-full uppercase tracking-widest">Minimalist</div>
+</div>
+<div class="aspect-square rounded-xl overflow-hidden shadow-sm relative group cursor-pointer border-2 border-transparent hover:border-outline-variant">
+<img class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-transform" data-alt="A vibrant bohemian chic room detail." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqY2j4crgcYuMCla67GpW16IWqDptGJNV-sBHU6MCCn0mETwCU4w28Fvefm-V2eDNS9pg6nLJev9RB16mDUjZtPM5fT5rR19fVTdcp_F-p9i1oPiPqMpE35g1TphEDhPJg5uf5VJUTBvQ8nE1e0KNbTAsba3o065LDrnTYK6gvxgBqBeOOrAa6-sW22OI_QiVYfc9pcnOvdMH1yH0rYzu5DrrCvWXDKeiYkk6N9VtGUT90tw0rMmnxsNHzBAVsNkQ1bR3Tx_QdoJ0L"/>
+<div class="absolute bottom-3 left-3 px-3 py-1 bg-on-surface text-surface text-[10px] font-bold rounded-full uppercase tracking-widest">Boho</div>
+</div>
+</div>
+</div>
+<div class="px-margin-mobile pb-32 pt-8 text-center">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-4">선호하는 스타일을 선택하세요</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">자판디부터 미드센추리 모던까지, 당신의 취향에 딱 맞는 인테리어 스타일을 찾아보세요.</p>
+</div>
+</section>
+<!-- Step 3: AI Recommendations -->
+<section class="carousel-item relative h-full flex flex-col">
+<div class="flex-1 relative overflow-hidden flex items-center justify-center p-margin-mobile">
+<div class="relative w-full aspect-[4/5] rounded-3xl overflow-hidden shadow-2xl">
+<img class="w-full h-full object-cover" data-alt="A high-end interior designer's vision of a transformed living room." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2_ax9GgxeK791tc1UGnITD2VOqxpKBRZrh7AuKF0JQvC8n08OUi6q9tibWfhqrj13FyP3hTOJL83HSt56d8LrDn1BT4mIOffoO0WOxQqPKLrcTgp4aUmm2geOhfOvVqfmlQD4RNQ1cID-LqItbdWDeHzBlp0VflTn7Eo-CJhXDh-iohL5WivwIbSAcD0VdXPbM4JBRnnTEuuF4XEDpfeGDSUxFv6a6A4cVbb9DqqEjpumNnHk6BbmHijw9bAxLo95kz5whZ7M3CDC"/>
+<!-- AI Analysis Overlay -->
+<div class="absolute inset-0 bg-black/20 flex flex-col justify-end p-6">
+<div class="glass-card p-5 rounded-2xl animate-pulse">
+<div class="flex items-center gap-3 mb-3">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="font-label-md text-label-md text-primary">AI 스타일링 완료</span>
+</div>
+<div class="space-y-2">
+<div class="h-2 w-3/4 bg-primary/20 rounded-full"></div>
+<div class="h-2 w-1/2 bg-primary/20 rounded-full"></div>
+</div>
+<div class="mt-4 flex gap-2">
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded uppercase">Emerald Accents</span>
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded uppercase">Warm Oak</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="px-margin-mobile pb-32 pt-8 text-center">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-4">AI 추천을 받아보세요</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">새롭게 변화된 당신의 공간을 경험해 보세요. 당신만을 위해 생성된 맞춤형 쇼핑 리스트와 레이아웃을 제공합니다.</p>
+</div>
+</section>
+</div>
+<!-- Bottom Navigation Controls -->
+<footer class="absolute bottom-0 left-0 w-full px-margin-mobile pb-10 flex flex-col items-center gap-6 z-20">
+<!-- Progress Dots -->
+<div class="flex gap-2">
+<div class="step-dot active w-2 h-2 rounded-full bg-outline-variant"></div>
+<div class="step-dot w-2 h-2 rounded-full bg-outline-variant"></div>
+<div class="step-dot w-2 h-2 rounded-full bg-outline-variant"></div>
+</div>
+<!-- Action Buttons -->
+<div class="w-full flex gap-4">
+<button class="flex-1 h-14 bg-primary text-on-primary font-label-md text-label-md rounded-xl shadow-lg shadow-primary/20 active:scale-95 transition-all flex items-center justify-center gap-2" id="nextBtn" onclick="nextSlide()">
+<span>다음</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</footer>
+</main>
+<script>
+        let currentStep = 0;
+        const totalSteps = 3;
+        const carousel = document.getElementById('carousel');
+        const dots = document.querySelectorAll('.step-dot');
+        const nextBtn = document.getElementById('nextBtn');
+
+        function updateCarousel() {
+            carousel.style.transform = `translateX(-${currentStep * 100}%)`;
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                if (index === currentStep) {
+                    dot.classList.add('active');
+                } else {
+                    dot.classList.remove('active');
+                }
+            });
+
+            // Update button text on last step
+            if (currentStep === totalSteps - 1) {
+                nextBtn.innerHTML = `<span>시작하기</span><span class="material-symbols-outlined">rocket_launch</span>`;
+            } else {
+                nextBtn.innerHTML = `<span>다음</span><span class="material-symbols-outlined">arrow_forward</span>`;
+            }
+        }
+
+        function nextSlide() {
+            if (currentStep < totalSteps - 1) {
+                currentStep++;
+                updateCarousel();
+            } else {
+                // Final Action
+                alert('홈으로 이동 중...');
+            }
+        }
+
+        function skipOnboarding() {
+            alert('온보딩 건너뛰기');
+        }
+
+        // Swipe handling
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        carousel.addEventListener('touchstart', e => {
+            touchStartX = e.changedTouches[0].screenX;
+        }, false);
+
+        carousel.addEventListener('touchend', e => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        }, false);
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) {
+                if (currentStep < totalSteps - 1) {
+                    currentStep++;
+                    updateCarousel();
+                }
+            }
+            if (touchEndX > touchStartX + 50) {
+                if (currentStep > 0) {
+                    currentStep--;
+                    updateCarousel();
+                }
+            }
+        }
+    </script>
+</body></html>

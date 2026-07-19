@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HomeStyler - 약관 동의</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(229, 231, 235, 0.5);
+        }
+        .custom-checkbox:checked {
+            background-color: #3525cd;
+            border-color: #3525cd;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-bright": "#f8f9fa",
+                        "surface": "#f8f9fa",
+                        "on-error-container": "#93000a",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#4d44e3",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#2f1500",
+                        "primary": "#3525cd",
+                        "on-primary-fixed": "#0f0069",
+                        "on-primary": "#ffffff",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "inverse-surface": "#2e3132",
+                        "background": "#f8f9fa",
+                        "on-background": "#191c1d",
+                        "primary-fixed": "#e2dfff",
+                        "on-surface": "#191c1d",
+                        "secondary-fixed": "#85f8c4",
+                        "secondary": "#006c4a",
+                        "primary-container": "#4f46e5",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#e1e3e4",
+                        "secondary-container": "#82f5c1",
+                        "on-surface-variant": "#464555",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#c7c4d8",
+                        "outline": "#777587",
+                        "on-secondary-container": "#00714e",
+                        "surface-container-highest": "#e1e3e4",
+                        "secondary-fixed-dim": "#68dba9",
+                        "tertiary": "#703a00",
+                        "inverse-on-surface": "#f0f1f2",
+                        "tertiary-container": "#934e00",
+                        "tertiary-fixed-dim": "#ffb77d",
+                        "surface-container-high": "#e7e8e9",
+                        "surface-container": "#edeeef",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "on-secondary-fixed-variant": "#005137",
+                        "surface-dim": "#d9dadb",
+                        "on-tertiary-fixed-variant": "#6e3900",
+                        "on-secondary-fixed": "#002114",
+                        "surface-container-low": "#f3f4f5",
+                        "tertiary-fixed": "#ffdcc3",
+                        "on-primary-container": "#dad7ff",
+                        "on-tertiary-container": "#ffd2b1",
+                        "error": "#ba1a1a",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-primary": "#c3c0ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "gutter": "24px",
+                        "stack-md": "16px",
+                        "margin-desktop": "48px",
+                        "stack-lg": "32px",
+                        "margin-mobile": "20px",
+                        "container-max-width": "1280px",
+                        "stack-sm": "8px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-xl": ["40px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface-bright text-on-surface font-body-md min-h-screen flex flex-col items-center">
+<!-- Top AppBar (JSON Content & Style) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-5 py-4 bg-surface/80 backdrop-blur-md shadow-sm">
+<div class="flex items-center gap-4">
+<button class="p-1 hover:bg-surface-container-low transition-all duration-300 rounded-full">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">HomeStyler</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</div>
+</header>
+<main class="mt-20 px-5 py-8 w-full max-w-[600px] flex-grow">
+<!-- Progress Indicator -->
+<div class="mb-10">
+<div class="flex justify-between items-center mb-4">
+<span class="font-label-md text-label-md text-primary">01 약관 동의</span>
+<span class="font-label-sm text-label-sm text-outline">전체 3단계 중 1단계</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-1/3 rounded-full"></div>
+</div>
+</div>
+<!-- Title Section -->
+<section class="mb-10">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-surface mb-3">서비스 이용을 위해<br/>약관에 동의해 주세요</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">HomeStyler의 맞춤형 AI 인테리어 서비스를 경험하기 위한 첫 단계입니다.</p>
+</section>
+<!-- Terms Section -->
+<form class="space-y-4" id="termsForm">
+<!-- All Agree Checkbox -->
+<div class="p-5 bg-primary-container/10 border border-primary-container/20 rounded-lg mb-6 flex items-center group cursor-pointer transition-all active:scale-[0.98]" onclick="toggleAll()">
+<div class="relative flex items-center">
+<input class="custom-checkbox w-6 h-6 rounded-lg border-2 border-primary text-primary focus:ring-primary transition-all cursor-pointer" id="allAgree" type="checkbox"/>
+</div>
+<label class="ml-4 font-label-md text-label-md text-primary cursor-pointer flex-grow" for="allAgree">
+                    모든 필수 및 선택 약관에 전체 동의합니다.
+                </label>
+</div>
+<!-- Individual Terms: AI Training (Critical) -->
+<div class="glass-card p-5 rounded-lg border border-outline-variant hover:border-primary transition-colors">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center">
+<input class="custom-checkbox w-5 h-5 rounded-lg border-2 border-outline text-primary focus:ring-primary transition-all cursor-pointer required-term" id="termAI" name="term" type="checkbox"/>
+<label class="ml-3 font-label-md text-label-md text-on-surface cursor-pointer" for="termAI">
+                            [필수] 이미지 데이터 처리 및 AI 학습 활용 동의
+                        </label>
+</div>
+<button class="text-primary hover:underline font-label-sm text-label-sm" type="button">상세보기</button>
+</div>
+<div class="flex gap-4 items-start p-4 bg-surface-container-low rounded-lg">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                        HomeStyler는 사용자가 업로드한 공간 사진을 분석하여 맞춤형 스타일을 제안하며, 생성된 데이터는 AI 모델 고도화를 위해 익명화 처리 후 활용됩니다.
+                    </p>
+</div>
+</div>
+<!-- Individual Terms: Service -->
+<div class="glass-card p-5 rounded-lg border border-outline-variant hover:border-primary transition-colors">
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<input class="custom-checkbox w-5 h-5 rounded-lg border-2 border-outline text-primary focus:ring-primary transition-all cursor-pointer required-term" id="termService" name="term" type="checkbox"/>
+<label class="ml-3 font-label-md text-label-md text-on-surface cursor-pointer" for="termService">
+                            [필수] 서비스 이용약관 동의
+                        </label>
+</div>
+<button class="text-primary hover:underline font-label-sm text-label-sm" type="button">상세보기</button>
+</div>
+</div>
+<!-- Individual Terms: Privacy -->
+<div class="glass-card p-5 rounded-lg border border-outline-variant hover:border-primary transition-colors">
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<input class="custom-checkbox w-5 h-5 rounded-lg border-2 border-outline text-primary focus:ring-primary transition-all cursor-pointer required-term" id="termPrivacy" name="term" type="checkbox"/>
+<label class="ml-3 font-label-md text-label-md text-on-surface cursor-pointer" for="termPrivacy">
+                            [필수] 개인정보 수집 및 이용 동의
+                        </label>
+</div>
+<button class="text-primary hover:underline font-label-sm text-label-sm" type="button">상세보기</button>
+</div>
+</div>
+<!-- Individual Terms: Marketing (Optional) -->
+<div class="glass-card p-5 rounded-lg border border-outline-variant hover:border-primary transition-colors">
+<div class="flex items-center justify-between">
+<div class="flex items-center">
+<input class="custom-checkbox w-5 h-5 rounded-lg border-2 border-outline text-primary focus:ring-primary transition-all cursor-pointer" id="termMarketing" name="term" type="checkbox"/>
+<label class="ml-3 font-label-md text-label-md text-on-surface cursor-pointer" for="termMarketing">
+                            [선택] 마케팅 정보 수신 동의
+                        </label>
+</div>
+<button class="text-primary hover:underline font-label-sm text-label-sm" type="button">상세보기</button>
+</div>
+</div>
+</form>
+<!-- Aesthetic Divider -->
+<div class="my-12 flex items-center justify-center">
+<div class="h-px bg-outline-variant flex-grow"></div>
+<div class="mx-4 text-outline font-label-sm text-label-sm">AI-Powered Interior Design</div>
+<div class="h-px bg-outline-variant flex-grow"></div>
+</div>
+<!-- Call to Action -->
+<div class="pb-10">
+<button class="w-full h-14 bg-surface-variant text-on-surface-variant font-label-md text-label-md rounded-lg transition-all duration-300 disabled:cursor-not-allowed cursor-pointer active:scale-95" disabled="" id="nextStepBtn">
+                다음 단계로 이동
+            </button>
+<p class="mt-4 text-center font-body-sm text-body-sm text-on-surface-variant">
+                필수 항목에 모두 동의하셔야 서비스 이용이 가능합니다.
+            </p>
+</div>
+</main>
+<!-- Success Feedback Overlay (Hidden by default) -->
+<div class="fixed inset-0 z-[100] bg-on-background/20 backdrop-blur-sm flex items-center justify-center opacity-0 pointer-events-none transition-opacity duration-300" id="successOverlay">
+<div class="bg-white p-8 rounded-xl shadow-xl flex flex-col items-center text-center max-w-sm mx-5">
+<div class="w-16 h-16 bg-secondary-container text-on-secondary-container rounded-full flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-4xl" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-2">동의 완료!</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">다음 단계를 통해 회원 정보를 입력해주세요.</p>
+</div>
+</div>
+<script>
+        const allAgreeCheckbox = document.getElementById('allAgree');
+        const termCheckboxes = document.querySelectorAll('input[name="term"]');
+        const requiredCheckboxes = document.querySelectorAll('.required-term');
+        const nextStepBtn = document.getElementById('nextStepBtn');
+        const successOverlay = document.getElementById('successOverlay');
+
+        function updateNextButton() {
+            const allRequiredChecked = Array.from(requiredCheckboxes).every(cb => cb.checked);
+            if (allRequiredChecked) {
+                nextStepBtn.disabled = false;
+                nextStepBtn.classList.remove('bg-surface-variant', 'text-on-surface-variant');
+                nextStepBtn.classList.add('bg-primary', 'text-on-primary', 'shadow-lg');
+            } else {
+                nextStepBtn.disabled = true;
+                nextStepBtn.classList.add('bg-surface-variant', 'text-on-surface-variant');
+                nextStepBtn.classList.remove('bg-primary', 'text-on-primary', 'shadow-lg');
+            }
+
+            const allChecked = Array.from(termCheckboxes).every(cb => cb.checked);
+            allAgreeCheckbox.checked = allChecked;
+        }
+
+        allAgreeCheckbox.addEventListener('change', (e) => {
+            termCheckboxes.forEach(cb => {
+                cb.checked = e.target.checked;
+            });
+            updateNextButton();
+        });
+
+        termCheckboxes.forEach(cb => {
+            cb.addEventListener('change', () => {
+                updateNextButton();
+            });
+        });
+
+        function toggleAll() {
+            // Trigger checkbox from the container click
+            allAgreeCheckbox.checked = !allAgreeCheckbox.checked;
+            termCheckboxes.forEach(cb => {
+                cb.checked = allAgreeCheckbox.checked;
+            });
+            updateNextButton();
+        }
+
+        nextStepBtn.addEventListener('click', () => {
+            if (!nextStepBtn.disabled) {
+                successOverlay.style.opacity = '1';
+                successOverlay.style.pointerEvents = 'auto';
+                setTimeout(() => {
+                    // Logic to navigate to next page or perform action
+                    console.log('Proceeding to next step...');
+                }, 1500);
+            }
+        });
+    </script>
+</body></html>

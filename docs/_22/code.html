@@ -1,0 +1,274 @@
+<!DOCTYPE html><html class="light" lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#f8f9fa",
+                    "surface": "#f8f9fa",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "surface-tint": "#4d44e3",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#2f1500",
+                    "primary": "#3525cd",
+                    "on-primary-fixed": "#0f0069",
+                    "on-primary": "#ffffff",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "inverse-surface": "#2e3132",
+                    "background": "#f8f9fa",
+                    "on-background": "#191c1d",
+                    "primary-fixed": "#e2dfff",
+                    "on-surface": "#191c1d",
+                    "secondary-fixed": "#85f8c4",
+                    "secondary": "#006c4a",
+                    "primary-container": "#4f46e5",
+                    "on-tertiary": "#ffffff",
+                    "surface-variant": "#e1e3e4",
+                    "secondary-container": "#82f5c1",
+                    "on-surface-variant": "#464555",
+                    "on-secondary": "#ffffff",
+                    "outline-variant": "#c7c4d8",
+                    "outline": "#777587",
+                    "on-secondary-container": "#00714e",
+                    "surface-container-highest": "#e1e3e4",
+                    "secondary-fixed-dim": "#68dba9",
+                    "tertiary": "#703a00",
+                    "inverse-on-surface": "#f0f1f2",
+                    "tertiary-container": "#934e00",
+                    "tertiary-fixed-dim": "#ffb77d",
+                    "surface-container-high": "#e7e8e9",
+                    "surface-container": "#edeeef",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "on-secondary-fixed-variant": "#005137",
+                    "surface-dim": "#d9dadb",
+                    "on-tertiary-fixed-variant": "#6e3900",
+                    "on-secondary-fixed": "#002114",
+                    "surface-container-low": "#f3f4f5",
+                    "tertiary-fixed": "#ffdcc3",
+                    "on-primary-container": "#dad7ff",
+                    "on-tertiary-container": "#ffd2b1",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-primary": "#c3c0ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "gutter": "24px",
+                    "stack-md": "16px",
+                    "margin-desktop": "48px",
+                    "stack-lg": "32px",
+                    "margin-mobile": "20px",
+                    "container-max-width": "1280px",
+                    "stack-sm": "8px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-xl": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-xl": ["40px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        @keyframes pulse-soft {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .upload-area-active {
+            border-color: #3525cd;
+            background-color: #f0f1ff;
+        }
+    </style>
+</head>
+<body class="bg-surface-bright text-on-surface font-body-md min-h-screen pb-32">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-5 py-4 bg-surface/80 backdrop-blur-md shadow-sm">
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-all">
+<span class="material-symbols-outlined text-primary">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">HomeStyler</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-all">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+</div>
+</header>
+<main class="pt-24 px-5 max-w-4xl mx-auto">
+<!-- Title Section -->
+<section class="mb-10 text-center md:text-left">
+<h2 class="font-headline-lg text-headline-lg md:text-headline-lg-mobile text-on-surface mb-2">도면 업로드</h2>
+<p class="text-on-surface-variant font-body-md">AI가 도면을 분석하여 가구 배치와 스타일링을 제안해 드립니다.</p>
+</section>
+<!-- Upload Canvas -->
+<div class="relative group cursor-pointer transition-all duration-300" id="drop-zone">
+<!-- Decorative Background Element -->
+<div class="absolute -inset-4 bg-primary/5 rounded-3xl blur-2xl group-hover:bg-primary/10 transition-all"></div>
+<div class="relative bg-surface-container-lowest border-2 border-dashed border-outline-variant rounded-xl p-12 flex flex-col items-center justify-center min-h-[400px] text-center hover:border-primary transition-colors">
+<div class="w-24 h-24 mb-6 bg-primary-fixed rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-5xl" style="font-variation-settings: 'wght' 300;">cloud_upload</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-2">파일을 이곳에 드래그하거나 클릭하세요</h3>
+<p class="text-on-surface-variant mb-8 max-w-sm">
+                    평면도 파일을 업로드하면 더욱 정밀한 3D 가상 인테리어를 경험하실 수 있습니다.
+                </p>
+<div class="flex flex-wrap justify-center gap-3 mb-10">
+<span class="px-4 py-1.5 bg-surface-container-high rounded-full font-label-md text-label-md text-on-surface-variant">JPG</span>
+<span class="px-4 py-1.5 bg-surface-container-high rounded-full font-label-md text-label-md text-on-surface-variant">PNG</span>
+<span class="px-4 py-1.5 bg-surface-container-high rounded-full font-label-md text-label-md text-on-surface-variant">PDF</span>
+<span class="px-4 py-1.5 bg-error-container text-on-error-container rounded-full font-label-md text-label-md">최대 20MB</span>
+</div>
+<input accept=".jpg,.jpeg,.png,.pdf" class="hidden" id="file-input" type="file">
+<button class="bg-primary text-on-primary px-10 py-4 rounded-xl font-label-md text-headline-md shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all" onclick="document.getElementById('file-input').click()">
+                    파일 선택하기
+                </button>
+</div>
+</div>
+<!-- Tip Cards Section (Bento Style) -->
+<section class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Main Tip Card -->
+<div class="glass-panel p-8 rounded-xl flex flex-col gap-4 shadow-sm">
+<div class="flex items-center gap-3">
+<div class="bg-secondary-container p-2 rounded-lg">
+<span class="material-symbols-outlined text-on-secondary-container" style="font-variation-settings: 'FILL' 1;">tips_and_updates</span>
+</div>
+<span class="font-label-md text-label-md text-secondary">Expert Tip</span>
+</div>
+<h4 class="font-headline-md text-headline-md text-on-surface">도면 분석의 장점</h4>
+<p class="text-on-surface-variant font-body-md leading-relaxed">
+                    AI가 벽면의 두께와 창문의 위치를 정확히 인식하여, 실제 공간과 99% 일치하는 정밀한 배치 시뮬레이션을 제공합니다.
+                </p>
+</div>
+<!-- Visual Insight Card -->
+<div class="relative overflow-hidden rounded-xl h-full min-h-[200px] shadow-sm">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 hover:scale-105" data-alt="A professional architectural blueprint or floor plan lying on a minimalist wooden desk, with soft morning light filtering through a window, highlighting the precision and design expertise. High-end modern interior styling, professional photography style, soft focus background." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB-SdleIjGg5B6EFvX4TT3xVR_GnLsrbUH2-5LL3IQoZ7BA5vLZ6NjNuxPK4Is1OPSJfmdRsZjNi4G9soDahDEO3raUINv9dSjoy7FXIPQGiVUb_R5hIgylA2mEFWHwNRYdg9N7qJ-WX8cvV6An-IyP7XFcKgyJcz7--Ly7EV_AXirOs6ffJSF6j36R2VZbXfg8Q6EZjOElydLAUxMi59QO0yxfuTgzpBFm8wDQEfHLMGoTKwkdxaHH76zHHObV-jRe5CsZS-zF1eXD')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex flex-col justify-end p-8">
+<p class="text-white font-label-md text-label-md opacity-80 mb-1">Visual Analysis</p>
+<h4 class="text-white font-headline-md text-headline-md">실제와 같은 가상 배치</h4>
+</div>
+</div>
+</section>
+<!-- Secondary Info -->
+<div class="mt-8 flex flex-col md:flex-row items-center justify-between p-6 bg-surface-container-low rounded-xl gap-4">
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-outline">info</span>
+<p class="text-on-surface-variant font-body-sm text-body-sm">업로드된 파일은 도면 분석 이외의 용도로 사용되지 않으며 안전하게 보호됩니다.</p>
+</div>
+<a class="text-primary font-label-md text-label-md hover:underline decoration-2 underline-offset-4" href="#">개인정보 처리방침 보기</a>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-6 bg-surface border-t border-outline-variant shadow-lg rounded-t-xl">
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80 transition-all" href="#">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm mt-1">홈</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-4 py-2 scale-95 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chair</span>
+<span class="font-label-sm text-label-sm mt-1">내 공간</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80 transition-all" href="#">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="font-label-sm text-label-sm mt-1">추천</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80 transition-all" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-sm text-label-sm mt-1">보관함</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80 transition-all" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm mt-1">마이</span>
+</a>
+</nav>
+<script>
+        const dropZone = document.getElementById('drop-zone');
+        const fileInput = document.getElementById('file-input');
+
+        // Drag and Drop events
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropZone.addEventListener(eventName, () => {
+                dropZone.querySelector('.relative.bg-surface-container-lowest').classList.add('upload-area-active');
+            }, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropZone.addEventListener(eventName, () => {
+                dropZone.querySelector('.relative.bg-surface-container-lowest').classList.remove('upload-area-active');
+            }, false);
+        });
+
+        dropZone.addEventListener('drop', handleDrop, false);
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            handleFiles(files);
+        }
+
+        function handleFiles(files) {
+            if (files.length > 0) {
+                const file = files[0];
+                if (file.size > 20 * 1024 * 1024) {
+                    alert('파일 용량이 20MB를 초과합니다.');
+                    return;
+                }
+                alert(`${file.name} 업로드 준비 완료!`);
+                // UI transition for loading could be added here
+            }
+        }
+
+        fileInput.addEventListener('change', function() {
+            handleFiles(this.files);
+        });
+    </script>
+</body></html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html><html class="light" lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>HomeStyler - Style Gallery</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#ffdcc3",
+                        "surface-container-low": "#f3f4f5",
+                        "surface-dim": "#d9dadb",
+                        "on-primary-fixed": "#0f0069",
+                        "primary": "#3525cd",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#edeeef",
+                        "secondary-container": "#82f5c1",
+                        "secondary": "#006c4a",
+                        "on-secondary-container": "#00714e",
+                        "tertiary": "#703a00",
+                        "on-background": "#191c1d",
+                        "on-secondary-fixed-variant": "#005137",
+                        "surface-container-high": "#e7e8e9",
+                        "on-tertiary-fixed": "#2f1500",
+                        "surface-container-highest": "#e1e3e4",
+                        "primary-fixed": "#e2dfff",
+                        "outline": "#777587",
+                        "secondary-fixed-dim": "#68dba9",
+                        "on-tertiary-fixed-variant": "#6e3900",
+                        "on-primary-container": "#dad7ff",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#f8f9fa",
+                        "error": "#ba1a1a",
+                        "background": "#f8f9fa",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "tertiary-fixed-dim": "#ffb77d",
+                        "on-surface-variant": "#464555",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#ffd2b1",
+                        "inverse-surface": "#2e3132",
+                        "on-error-container": "#93000a",
+                        "surface": "#f8f9fa",
+                        "on-surface": "#191c1d",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#4f46e5",
+                        "on-secondary-fixed": "#002114",
+                        "surface-tint": "#4d44e3",
+                        "inverse-primary": "#c3c0ff",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e1e3e4",
+                        "secondary-fixed": "#85f8c4",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#934e00",
+                        "outline-variant": "#c7c4d8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "stack-md": "16px",
+                        "container-max-width": "1280px",
+                        "stack-sm": "8px",
+                        "stack-lg": "32px",
+                        "margin-desktop": "48px",
+                        "unit": "4px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-xl": ["40px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+            height: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #c7c4d8;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-24 md:pb-0 font-body-md">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 bg-surface/80 backdrop-blur-md shadow-sm">
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-all duration-300">
+<span class="material-symbols-outlined text-primary" data-icon="menu">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">HomeStyler</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-all duration-300">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+</button>
+<div class="hidden md:flex items-center gap-4 ml-8">
+<a class="text-primary font-label-md" href="#">홈</a>
+<a class="text-on-surface-variant font-label-md hover:text-primary transition-colors" href="#">내 공간</a>
+<a class="text-on-surface-variant font-label-md hover:text-primary transition-colors" href="#">추천</a>
+</div>
+</div>
+</header>
+<main class="pt-24 px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto">
+<!-- Search and Filter Header -->
+<section class="mb-stack-lg">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+<div>
+<h2 class="font-headline-xl text-headline-xl mb-2 text-on-surface">Style Gallery</h2>
+<p class="text-on-surface-variant font-body-lg max-w-2xl">당신의 취향을 저격할 다양한 인테리어 스타일을 탐색해보세요. AI가 추천하는 최신 트렌드를 한눈에 확인하실 수 있습니다.</p>
+</div>
+<!-- Search Bar -->
+<div class="relative w-full md:w-80 group">
+<input class="w-full bg-surface-container-lowest border border-outline-variant rounded-xl py-3 pl-12 pr-4 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none" placeholder="스타일 검색..." type="text">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline group-focus-within:text-primary" data-icon="search">search</span>
+</div>
+</div>
+<!-- Category Filters -->
+<div class="flex gap-3 overflow-x-auto pb-4 custom-scrollbar no-scrollbar">
+<button class="px-6 py-2 bg-primary text-on-primary rounded-full font-label-md whitespace-nowrap shadow-sm hover:opacity-90 transition-all">전체</button>
+<button class="px-6 py-2 bg-surface-container text-on-surface-variant rounded-full font-label-md whitespace-nowrap hover:bg-surface-container-highest transition-all">모던</button>
+<button class="px-6 py-2 bg-surface-container text-on-surface-variant rounded-full font-label-md whitespace-nowrap hover:bg-surface-container-highest transition-all">미니멀</button>
+<button class="px-6 py-2 bg-surface-container text-on-surface-variant rounded-full font-label-md whitespace-nowrap hover:bg-surface-container-highest transition-all">내추럴</button>
+<button class="px-6 py-2 bg-surface-container text-on-surface-variant rounded-full font-label-md whitespace-nowrap hover:bg-surface-container-highest transition-all">노르딕</button>
+<button class="px-6 py-2 bg-surface-container text-on-surface-variant rounded-full font-label-md whitespace-nowrap hover:bg-surface-container-highest transition-all">호텔</button>
+<button class="px-6 py-2 bg-surface-container text-on-surface-variant rounded-full font-label-md whitespace-nowrap hover:bg-surface-container-highest transition-all">우드톤</button>
+</div>
+</section>
+<!-- Style Bento Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter mb-20">
+<!-- Modern Style Card (Large/Featured) -->
+<div class="group relative overflow-hidden rounded-2xl bg-surface-container-high transition-all duration-500 hover:-translate-y-2 hover:shadow-xl lg:col-span-2 aspect-[16/9] md:aspect-auto">
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10"></div>
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="A luxurious modern living room with floor-to-ceiling glass windows overlooking a city skyline. The interior features sleek grey velvet sofas, a minimalist marble coffee table, and soft ambient recessed lighting. The color palette is composed of deep charcoals, crisp whites, and sophisticated indigo accents. The mood is professional, high-end, and serene." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD1vwkeuTIVSFhFGzd71H3AHrsCrdtQSFUioKe8Ex-KqcxF0dcsp-JcH9AvLBYDDcDXeH1CFfCsTRmCQHjd5Sdgy9jdItd6gRWcrduBlcqSCwwfOqRb4haBC1Ow9ZqvzGLbyoAs13tZx6N5rlwnVvfKF9xEGsGTbj3yo9OBkekIy0tAhMBbFrRMeFw7qexA4DEfcKt9eIBxMVs4UXKb0E73NxR0Pgy59YuOodWm-sfqbmXf1UCnzoL5TaNTYPmIaYMF4gb9TOO3k2if')"></div>
+<div class="absolute bottom-0 left-0 p-8 z-20 w-full">
+<div class="flex items-center gap-2 mb-2">
+<span class="px-3 py-1 glass-card rounded-full text-primary font-label-sm">AI 추천</span>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-white mb-2">어반 모던 (Urban Modern)</h3>
+<p class="text-white/80 font-body-md max-w-xl">도심의 세련됨과 기능적 미학을 결합한 스타일입니다. 무채색 베이스에 포인트 컬러를 활용하여 고급스러운 분위기를 연출합니다.</p>
+</div>
+<button class="absolute top-6 right-6 z-20 w-12 h-12 rounded-full glass-card flex items-center justify-center hover:bg-primary hover:text-white transition-all">
+<span class="material-symbols-outlined" data-icon="favorite">favorite</span>
+</button>
+</div>
+<!-- Minimal Style Card -->
+<div class="group relative overflow-hidden rounded-2xl bg-surface-container-high transition-all duration-500 hover:-translate-y-2 hover:shadow-xl aspect-square">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="A pristine minimalist bedroom in an all-white and cream palette. The room features a low-profile platform bed with high-quality linen bedding, a single sculptural wooden chair, and abundant soft natural light streaming through sheer curtains. The aesthetic is extremely clean, tactile, and peaceful, embodying the 'less is more' philosophy." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCNkgsh_nPA0TRgZgg0WHr8S4FrR0xUxXY_X3-6Lh3y1nads-q9WI6l8q5pqpNWepq8jRP3i2FdoqMMmgvKzcfAMP-drIt8gQ2m1glfuDLP1etTqjdK_JuPpA7vYbBilklTKWhq6gaBUI3W40Gx2T8O7DI7z4tLP1XNXJiH-0RVFu-QXRyZECQ3IQi5Dirus7YmRqnVz-uDfn7RL_A7z46Z1C6WG9QePz-nzW_N-AEoj-arIHjCPU9Ig7S7zBVNBmMdWrTrxboEQ5Oo')"></div>
+<div class="absolute bottom-0 left-0 p-6 z-20">
+<h3 class="font-headline-md text-headline-md text-white mb-1">소프트 미니멀</h3>
+<p class="text-white/70 font-body-sm">불필요함을 걷어낸 정제된 공간의 미학</p>
+</div>
+</div>
+<!-- Natural Style Card -->
+<div class="group relative overflow-hidden rounded-2xl bg-surface-container-high transition-all duration-500 hover:-translate-y-2 hover:shadow-xl aspect-square">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="A warm natural style sunroom or conservatory filled with various green indoor plants, rattan furniture, and light oak wood finishes. Golden hour sunlight filters through the leaves, creating soft shadows. The atmosphere is organic, cozy, and vibrant, emphasizing a connection to nature indoors." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCezhCboolwDoEt9E6PN5zNMtuVLXphlHzXwz0PQlTAdrGx6OyyZ_38clqO3Fd-urAwGChVVVmOCagynVtjynx1Ebr8TXwaCmvgW8PwwUIHmrOvsryw53SGmdByuM5pSgIJJIw-_1A1fKrm2d9XMCM8VJgMWBQKdqEk0RBMqdMNdbtHDCLUlZ95nycgdkVUwj35mNFaglwNkHzrWpk5pjvGxBGAzb045lq9BtQg0k-QTxjPAY2Rq2hZAjRWyNwCduxvXAAz6V8eXIQI')"></div>
+<div class="absolute bottom-0 left-0 p-6 z-20">
+<h3 class="font-headline-md text-headline-md text-white mb-1">내추럴 보타닉</h3>
+<p class="text-white/70 font-body-sm">자연의 소재로 채운 편안하고 생기있는 거실</p>
+</div>
+</div>
+<!-- Nordic Style Card -->
+<div class="group relative overflow-hidden rounded-2xl bg-surface-container-high transition-all duration-500 hover:-translate-y-2 hover:shadow-xl aspect-[4/3]">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="A Nordic style kitchen with pale blue cabinetry, light birch wood countertops, and white subway tiles. The design features clean lines, functional simplicity, and warm lighting. There are subtle details like a copper kettle and a small vase of wildflowers, creating a friendly and bright Scandinavian atmosphere." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCC9KVtWggue0yerbZbtiLuvTjJ70piKoi0TdAfm-ORXOMS0R6XpGBgOfVnVB3SaXeCml2N3DdtQpunjpWbaa5mlry006ekX_gNikYvibeANgRZ74otpg1LWASKnA2yXr8TKOTQmvANVeslUnyjC_X0-wRLqFZWZ7ra2E81ZlzI-dQ1yM5DJNi9TQ16TeA0qvL3b2V5klvtFmeMpgiJa9IO0imyYBxEab6BfdHp-TXFwGaa3dFsLuL0n5WNOZ-sIPNgrhCW4TA21HVK')"></div>
+<div class="absolute bottom-0 left-0 p-6 z-20">
+<h3 class="font-headline-md text-headline-md text-white mb-1">스칸디나비안</h3>
+<p class="text-white/70 font-body-sm">실용성과 따뜻함이 공존하는 북유럽 감성</p>
+</div>
+</div>
+<!-- Wood-tone Style Card -->
+<div class="group relative overflow-hidden rounded-2xl bg-surface-container-high transition-all duration-500 hover:-translate-y-2 hover:shadow-xl aspect-[4/3]">
+<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10"></div>
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="An elegant library or study area featuring deep mahogany wood panels, built-in bookshelves, and a classic leather armchair. The lighting is focused and warm, highlighting the rich textures of the wood and the leather. The mood is intellectual, stable, and deeply comfortable with a professional corporate edge." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA0dIEPDnG0YbvhCiY5tleY_Xsqq3rC58w_pypcD-FRfAbrFAs9ja2jZIPsLgcP0Wlk_wbXLAXQ-BEEpGOqhN4Y8ZqasSlWM5iqjVaVwQzhpqeRxHl5YjKYuzSJ51tXc6ADYq6TRcv_0rGU7TxtHAyCrMpAmpcDqPi5Q2U8HB5rv_Lg2u894svFAGTt-wXZ1AcJr6UDARXSPjusHtJvHLIel13XCQq6v472COe1jVv2nVG2iateUuE-og7kL8skvRmzzrIwX6vrJ_99')"></div>
+<div class="absolute bottom-0 left-0 p-6 z-20">
+<h3 class="font-headline-md text-headline-md text-white mb-1">딥 우드 클래식</h3>
+<p class="text-white/70 font-body-sm">깊이 있는 나무의 질감이 주는 안정감</p>
+</div>
+</div>
+<!-- Hotel Style Card (Full Width for AI feature callout) -->
+<div class="group relative overflow-hidden rounded-2xl bg-surface-container-high transition-all duration-500 hover:-translate-y-2 hover:shadow-xl lg:col-span-3 h-80">
+<div class="absolute inset-0 bg-primary/20 z-10"></div>
+
+<div class="w-full h-full bg-cover bg-center" data-alt="A luxury hotel-style master bathroom with a large freestanding bathtub, marble walls, and a large mirror with integrated LED backlighting. The lighting is soft and diffused, creating a spa-like atmosphere. Professional interior photography style with high-end finishes and a pristine, calming mood." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCJr3N5YkdxAbGEL5Iynp5a4uOHIQG9NPwd7EoI0uFnDas14_8io6UCF4nbFwFDBjbPm9EP6jUNu5I3oUR113Xl5EDfeUJIwIRIswgx7e_L4Bu57MGOrjqBwqoCqbZrwG6f7WEpeIhVbAtnVqY0PFNGg7tbcLtT7RxSBm1fgW4sAZNPZHSY1n_-NOUAjR4EqXw6UjqMCUc3TgRM4nXeKq6w-G5TDJhpn5_687IwyqkZF3BX0lqw8xMGm8-QClRYWJ4yC6cztlITJNJo')"></div>
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center z-20 px-4">
+<div class="glass-card px-8 py-8 rounded-3xl max-w-2xl">
+<span class="material-symbols-outlined text-primary text-4xl mb-4" data-icon="auto_awesome">auto_awesome</span>
+<h3 class="font-headline-lg text-headline-lg text-primary mb-3">AI가 분석한 당신의 취향</h3>
+<p class="text-on-surface-variant font-body-md mb-6">현재까지 보신 스타일들을 바탕으로, AI가 당신에게 가장 잘 어울리는 '호텔 스위트' 스타일을 제안합니다.</p>
+<button class="px-8 py-3 bg-primary text-on-primary rounded-xl font-label-md hover:scale-105 transition-transform">분석 결과 보기</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar (Mobile Only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface shadow-lg rounded-t-xl border-t border-outline-variant">
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-[10px]">홈</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1">
+<span class="material-symbols-outlined" data-icon="chair">chair</span>
+<span class="font-label-sm text-[10px]">내 공간</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-3 py-1">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-label-sm text-[10px]">추천</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-sm text-[10px]">보관함</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-[10px]">마이</span>
+</div>
+</nav>
+<!-- FAB for AI Consultant (Mobile Only Contextual) -->
+<button class="md:hidden fixed bottom-24 right-6 w-14 h-14 bg-primary text-on-primary rounded-full shadow-xl flex items-center justify-center hover:scale-110 active:scale-95 transition-all z-40">
+<span class="material-symbols-outlined" data-icon="magic_button">magic_button</span>
+</button>
+<script>
+        // Simple Interaction logic
+        document.querySelectorAll('button, .group').forEach(el => {
+            el.addEventListener('click', () => {
+                // Potential navigation or animation logic
+            });
+        });
+
+        // Search Bar Focus Effect
+        const searchInput = document.querySelector('input[type="text"]');
+        searchInput.addEventListener('focus', () => {
+            searchInput.parentElement.classList.add('shadow-md');
+        });
+        searchInput.addEventListener('blur', () => {
+            searchInput.parentElement.classList.remove('shadow-md');
+        });
+    </script>
+</body></html>

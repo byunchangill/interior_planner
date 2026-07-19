@@ -1,0 +1,370 @@
+<!DOCTYPE html><html class="light" lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>HomeStyler - 위시리스트</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-tab-indicator {
+            view-transition-name: active-tab;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(229, 231, 235, 0.5);
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "outline": "#777587",
+                        "on-tertiary-container": "#ffd2b1",
+                        "surface-dim": "#d9dadb",
+                        "secondary-container": "#82f5c1",
+                        "on-background": "#191c1d",
+                        "primary-fixed": "#e2dfff",
+                        "on-primary-fixed": "#0f0069",
+                        "on-surface-variant": "#464555",
+                        "background": "#f8f9fa",
+                        "outline-variant": "#c7c4d8",
+                        "surface-variant": "#e1e3e4",
+                        "on-primary": "#ffffff",
+                        "inverse-surface": "#2e3132",
+                        "on-surface": "#191c1d",
+                        "on-secondary": "#ffffff",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "on-error-container": "#93000a",
+                        "tertiary-fixed": "#ffdcc3",
+                        "on-tertiary-fixed-variant": "#6e3900",
+                        "on-tertiary-fixed": "#2f1500",
+                        "surface-bright": "#f8f9fa",
+                        "surface": "#f8f9fa",
+                        "primary": "#3525cd",
+                        "inverse-on-surface": "#f0f1f2",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "tertiary-container": "#934e00",
+                        "on-tertiary": "#ffffff",
+                        "primary-container": "#4f46e5",
+                        "on-secondary-fixed-variant": "#005137",
+                        "on-error": "#ffffff",
+                        "surface-container-highest": "#e1e3e4",
+                        "on-secondary-fixed": "#002114",
+                        "surface-tint": "#4d44e3",
+                        "secondary": "#006c4a",
+                        "surface-container-high": "#e7e8e9",
+                        "on-primary-container": "#dad7ff",
+                        "tertiary": "#703a00",
+                        "on-secondary-container": "#00714e",
+                        "error": "#ba1a1a",
+                        "inverse-primary": "#c3c0ff",
+                        "surface-container-low": "#f3f4f5",
+                        "tertiary-fixed-dim": "#ffb77d",
+                        "surface-container": "#edeeef",
+                        "secondary-fixed-dim": "#68dba9",
+                        "secondary-fixed": "#85f8c4",
+                        "error-container": "#ffdad6"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "stack-sm": "8px",
+                        "container-max-width": "1280px",
+                        "stack-lg": "32px",
+                        "margin-desktop": "48px",
+                        "unit": "4px",
+                        "stack-md": "16px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["40px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "label-sm": ["12px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md overflow-x-hidden min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile py-4 bg-surface/80 dark:bg-surface-container-high/80 backdrop-blur-md shadow-sm dark:shadow-none transition-all duration-300 ease-in-out">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-primary dark:text-inverse-primary" data-icon="menu">menu</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary">HomeStyler</h1>
+</div>
+<div class="flex items-center gap-stack-md">
+<button class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</button>
+</div>
+</header>
+<main class="pt-20 px-margin-mobile lg:px-margin-desktop max-w-container-max-width mx-auto">
+<!-- Page Header & Tab System -->
+<section class="mt-8 mb-6">
+<div class="flex justify-between items-end mb-6">
+<div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mb-1">보관함</h2>
+<p class="text-on-surface-variant font-body-sm text-body-sm">나만의 스타일 영감을 한곳에 담았습니다.</p>
+</div>
+<button class="px-4 py-2 rounded-xl text-primary font-label-md text-label-md hover:bg-primary-container/10 transition-colors flex items-center gap-2" id="edit-mode-btn" onclick="toggleEditMode()">
+<span class="material-symbols-outlined text-sm">edit</span>
+<span>편집</span>
+</button>
+</div>
+<!-- Custom Tabs -->
+<div class="flex border-b border-outline-variant overflow-x-auto scrollbar-hide">
+<button class="px-6 py-4 font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors relative">
+                    최근 본 내역
+                </button>
+<button class="px-6 py-4 font-label-md text-label-md text-primary transition-colors relative">
+                    위시리스트
+                    <div class="absolute bottom-0 left-0 w-full h-0.5 bg-primary rounded-t-full"></div>
+</button>
+<button class="px-6 py-4 font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors relative">
+                    스타일링 폴더
+                </button>
+</div>
+</section>
+<!-- Edit Action Bar (Hidden by default) -->
+<div class="hidden flex items-center justify-between mb-4 animate-fade-in py-2 px-4 bg-primary-container/10 rounded-xl" id="edit-actions">
+<div class="flex items-center gap-2">
+<input class="w-5 h-5 rounded border-outline text-primary focus:ring-primary" id="select-all" onclick="toggleSelectAll()" type="checkbox">
+<label class="font-label-md text-label-md text-primary" for="select-all">전체 선택</label>
+</div>
+<button class="flex items-center gap-2 text-error font-label-md text-label-md px-4 py-2 rounded-lg hover:bg-error/5 transition-colors" onclick="deleteSelected()">
+<span class="material-symbols-outlined text-lg">delete</span>
+<span>선택 삭제 (<span id="selected-count">0</span>)</span>
+</button>
+</div>
+<!-- Wishlist Grid -->
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-gutter mb-12">
+<!-- Item 1 -->
+<div class="wishlist-item group flex flex-col relative animate-fade-in" style="animation-delay: 0.1s">
+<div class="relative overflow-hidden rounded-xl aspect-[4/5] bg-surface-container-low mb-stack-md shadow-sm group-hover:shadow-lg transition-all duration-300">
+<div class="edit-checkbox hidden absolute top-3 left-3 z-10">
+<input class="item-check w-6 h-6 rounded-full border-white bg-white/50 backdrop-blur-sm text-primary focus:ring-primary shadow-sm" onchange="updateCount()" type="checkbox">
+</div>
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500 cursor-pointer" data-alt="A premium minimalist velvet armchair in a deep emerald green, positioned in a brightly lit modern living room with large floor-to-ceiling windows. The aesthetic is professional and corporate modern, featuring clean lines and soft ambient shadows. Natural sunlight streams in, highlighting the rich texture of the fabric against a pristine white oak floor." onclick="navigateToDetail()" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBoD_PfT8bM4U_1R226nFn8UXiZue19-eUm39oZHYvXn4A5BGy-2zWxqW2xh9XDu29C8Umu-WT3lvFIRsxboqeLiz8tF_99ZG8zQF13eKOXIKDXBUfuiOj-yZGB7DR_w_Z5-df5-K-cJo0OcplGbqAWoLpXVPx5WzlYFRgg861DgaYjSAnvZ4P5w8I5s8UH_yfbPReX516AhLiroWAxjcanqHFkaEtbZdyH_owtTNLKfv2qcrta6iwEYTnTx2UV497Urm-hf4FLTD_p')"></div>
+<button class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-white/80 backdrop-blur shadow-sm text-primary">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="px-1 cursor-pointer" onclick="navigateToDetail()">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-0.5">Louis Poulsen</p>
+<h3 class="font-label-md text-label-md text-on-surface line-clamp-1 mb-1">벨벳 라운지 체어 Green</h3>
+<p class="font-headline-md text-headline-md text-primary">₩842,000</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="wishlist-item group flex flex-col relative animate-fade-in" style="animation-delay: 0.15s">
+<div class="relative overflow-hidden rounded-xl aspect-[4/5] bg-surface-container-low mb-stack-md shadow-sm group-hover:shadow-lg transition-all duration-300">
+<div class="edit-checkbox hidden absolute top-3 left-3 z-10">
+<input class="item-check w-6 h-6 rounded-full border-white bg-white/50 backdrop-blur-sm text-primary focus:ring-primary shadow-sm" onchange="updateCount()" type="checkbox">
+</div>
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500 cursor-pointer" data-alt="A sleek industrial-style floor lamp with a matte black finish and warm brass accents, standing next to a contemporary concrete-texture wall. The lighting is moody yet clear, emphasizing professional photography standards for home styling. The scene uses high-quality whitespace and minimal decorative elements to maintain a sophisticated and modern feel." onclick="navigateToDetail()" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBO5YYgS0LzHPDp11poyaTtSL3vJz3yqy_U2crT_cVj-Po0kuDqeD-6UhtI_l0L7UTf-B9J1PK6y_alO-e2GTTMMYFLwhTu4KYhI-lBw7qhJxBVxP6Z9bmFzPVrj_IIKTgcWpzVoftsR8Qtms-jdbxR7SfJonD33oae7xQLLIxidEzz3HMzDstSNCaI3q6Lz_1PEM8XM8W1OALVXRXVWK0hyejACNcbh3JeTZ0mr2KZKY5wPokwZbk1mxgy91gGKmN_HdKJuFZTLlqn')"></div>
+<button class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-white/80 backdrop-blur shadow-sm text-primary">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="px-1 cursor-pointer" onclick="navigateToDetail()">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-0.5">Artemide</p>
+<h3 class="font-label-md text-label-md text-on-surface line-clamp-1 mb-1">톨로메오 플로어 램프</h3>
+<p class="font-headline-md text-headline-md text-primary">₩455,000</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="wishlist-item group flex flex-col relative animate-fade-in" style="animation-delay: 0.2s">
+<div class="relative overflow-hidden rounded-xl aspect-[4/5] bg-surface-container-low mb-stack-md shadow-sm group-hover:shadow-lg transition-all duration-300">
+<div class="edit-checkbox hidden absolute top-3 left-3 z-10">
+<input class="item-check w-6 h-6 rounded-full border-white bg-white/50 backdrop-blur-sm text-primary focus:ring-primary shadow-sm" onchange="updateCount()" type="checkbox">
+</div>
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500 cursor-pointer" data-alt="A sophisticated modular oak wood shelving unit against a soft beige wall, styled with minimalist ceramics and curated books. The image features a bright, airy atmosphere typical of Nordic interior design. Soft ambient light from a side window creates delicate shadows, giving the wood a tactile and natural appearance within a clean grid-based UI." onclick="navigateToDetail()" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDGZzvXYAeXfJj9gdNudFueNMyeBm8v0XvzODXm2WTtqmQZff7wTAsHBO6l8znt9fVVYuviZ5SHTpGDG1_g3CqHJQLqEv8WUgRXC4qhpGV2GTTNd9JL-g5dkt9wiCosrrcvnbEkaQV3RNl7_3Uwnu1jWEtadcA7XxiVts6uwS6ogsqNyWd_NMcN32dhlib1Q-1Hz3voGz-w3N3mMrUeaCd2H9Uaw-DKjMc6lg_uRGABzHuqwhMUHXAW70v3eX78UmQB-iwg18yzrM8m')"></div>
+<button class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-white/80 backdrop-blur shadow-sm text-primary">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="px-1 cursor-pointer" onclick="navigateToDetail()">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-0.5">Muuto</p>
+<h3 class="font-label-md text-label-md text-on-surface line-clamp-1 mb-1">스택 오크 모듈 선반</h3>
+<p class="font-headline-md text-headline-md text-primary">₩1,280,000</p>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="wishlist-item group flex flex-col relative animate-fade-in" style="animation-delay: 0.25s">
+<div class="relative overflow-hidden rounded-xl aspect-[4/5] bg-surface-container-low mb-stack-md shadow-sm group-hover:shadow-lg transition-all duration-300">
+<div class="edit-checkbox hidden absolute top-3 left-3 z-10">
+<input class="item-check w-6 h-6 rounded-full border-white bg-white/50 backdrop-blur-sm text-primary focus:ring-primary shadow-sm" onchange="updateCount()" type="checkbox">
+</div>
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500 cursor-pointer" data-alt="A round travertine marble coffee table with a unique sculptural base, placed on a high-pile cream-colored rug. The surrounding space is filled with high-quality whitespace and features a calm, assurance-evoking aesthetic. Professional studio lighting highlights the natural stone veins, showcasing a luxurious and modern corporate design style." onclick="navigateToDetail()" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAVcePhTS_C6pTRmCxpdI27LkT91iVGs9K8LigsBfH6OHDnLykZ8Cp8FsD_qyClXNr83iSulOLNYUOCJCXMH3ASAgu3bWOjFPydVwJItNGGndeuMeNfcm38hfPIt3CzWsnJCQbbRhfpTUuyNs4wKf1gXTuKKh_tHbXvZcPETsPSeEmzeSqPenYoZ6yZ82i_tMFbY0QS6f1It_Er0c0ywUgPD5djeztgALbV2Ja1AWZFf7UwtsDKMb_5Dza4HkxyRtX2LYuWTESVp1oh')"></div>
+<button class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-white/80 backdrop-blur shadow-sm text-primary">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="px-1 cursor-pointer" onclick="navigateToDetail()">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-0.5">Ferm Living</p>
+<h3 class="font-label-md text-label-md text-on-surface line-clamp-1 mb-1">마블 코페이 테이블</h3>
+<p class="font-headline-md text-headline-md text-primary">₩2,150,000</p>
+</div>
+</div>
+<!-- Item 5 -->
+<div class="wishlist-item group flex flex-col relative animate-fade-in" style="animation-delay: 0.3s">
+<div class="relative overflow-hidden rounded-xl aspect-[4/5] bg-surface-container-low mb-stack-md shadow-sm group-hover:shadow-lg transition-all duration-300">
+<div class="edit-checkbox hidden absolute top-3 left-3 z-10">
+<input class="item-check w-6 h-6 rounded-full border-white bg-white/50 backdrop-blur-sm text-primary focus:ring-primary shadow-sm" onchange="updateCount()" type="checkbox">
+</div>
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500 cursor-pointer" data-alt="A set of handcrafted ceramic vases in neutral earthy tones, displayed on a minimalist glass console table. The background features a subtle glassmorphic blur effect, suggesting AI-driven curation. The lighting is soft and diffused, creating a serene, modern, and professional look that emphasizes tactile quality and intuitive design." onclick="navigateToDetail()" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDlhCScAy3cMoEr9TdzWGOFWPKXyih6np7MDsbO1gxN0rbsheHI9qqA0P4nqLSY2OA5S3_SP1Zp4aMZayVkOK_RK9o1K11dTEUwUAlf7m9SKfWKrDhdYmrjmaHIVIJ65v7ez_6DwfpYloROcZVBY35dongzoplxUxyzndp85CmfMWptmsYGRcdG0gk7yeJADy7KtzZXi3jPWbFX_W28161J9sJXDX6DMSFk2bD6tjWKiCP47MqRsLyq9g-KiNmn4f2VSSfevcaWpPQ7')"></div>
+<button class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-white/80 backdrop-blur shadow-sm text-primary">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="px-1 cursor-pointer" onclick="navigateToDetail()">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-0.5">Menu Space</p>
+<h3 class="font-label-md text-label-md text-on-surface line-clamp-1 mb-1">핸드메이드 세라믹 화병 세트</h3>
+<p class="font-headline-md text-headline-md text-primary">₩230,000</p>
+</div>
+</div>
+<!-- Item 6 -->
+<div class="wishlist-item group flex flex-col relative animate-fade-in" style="animation-delay: 0.35s">
+<div class="relative overflow-hidden rounded-xl aspect-[4/5] bg-surface-container-low mb-stack-md shadow-sm group-hover:shadow-lg transition-all duration-300">
+<div class="edit-checkbox hidden absolute top-3 left-3 z-10">
+<input class="item-check w-6 h-6 rounded-full border-white bg-white/50 backdrop-blur-sm text-primary focus:ring-primary shadow-sm" onchange="updateCount()" type="checkbox">
+</div>
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500 cursor-pointer" data-alt="A minimalist woven jute rug with subtle geometric patterns, covering a dark slate floor in a high-end apartment. The composition uses wide-angle photography to provide breathing room and highlight the texture of the material. The aesthetic is modern and sophisticated, with a professional color palette of muted greys and warm ochre accents." onclick="navigateToDetail()" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD4st7Dz_PCZ9pgFD14tN7qBmQ5vsu_2gc7keiM1GxBX7jc_naRE66GeW2ffn0YAwct5EOI2hdfBraxl-3nuQ5ka47nHR9MjYSGE92OdqeRyDAjVMUE_ESVsUvnvDpcwK_Bw1Sj7i5il8CpF8nL5JgbeN-PlG229JjZ_xuwj-Whr4cCiPhVmGwiI6ZAY1pGGzVGZqw5zz9SyPu2-ngEU7FfZLrIgTjKpRMiUJXnFAY_3x76Xe8fU_UNF-KTNIAjiuBIwOmMtKLVSuTS')"></div>
+<button class="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-white/80 backdrop-blur shadow-sm text-primary">
+<span class="material-symbols-outlined text-xl" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</button>
+</div>
+<div class="px-1 cursor-pointer" onclick="navigateToDetail()">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-0.5">&amp;Tradition</p>
+<h3 class="font-label-md text-label-md text-on-surface line-clamp-1 mb-1">내추럴 주트 러그</h3>
+<p class="font-headline-md text-headline-md text-primary">₩680,000</p>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface dark:bg-surface-container rounded-t-xl shadow-lg border-t border-outline-variant dark:border-outline">
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 hover:opacity-80 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-label-sm mt-1">홈</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 hover:opacity-80 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="chair">chair</span>
+<span class="font-label-sm text-label-sm mt-1">내 공간</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 hover:opacity-80 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-label-sm text-label-sm mt-1">추천</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-xl px-3 py-1 scale-95 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="font-label-sm text-label-sm mt-1">보관함</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 hover:opacity-80 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-label-sm mt-1">마이</span>
+</a>
+</nav>
+<script>
+        let isEditMode = false;
+
+        function toggleEditMode() {
+            isEditMode = !isEditMode;
+            const editBtn = document.getElementById('edit-mode-btn');
+            const editActions = document.getElementById('edit-actions');
+            const checkboxes = document.querySelectorAll('.edit-checkbox');
+            
+            if (isEditMode) {
+                editBtn.innerHTML = '<span class="material-symbols-outlined text-sm">close</span><span>취소</span>';
+                editBtn.classList.add('text-on-surface-variant');
+                editActions.classList.remove('hidden');
+                checkboxes.forEach(cb => cb.classList.remove('hidden'));
+            } else {
+                editBtn.innerHTML = '<span class="material-symbols-outlined text-sm">edit</span><span>편집</span>';
+                editBtn.classList.remove('text-on-surface-variant');
+                editActions.classList.add('hidden');
+                checkboxes.forEach(cb => cb.classList.add('hidden'));
+                resetSelection();
+            }
+        }
+
+        function updateCount() {
+            const checkedItems = document.querySelectorAll('.item-check:checked');
+            document.getElementById('selected-count').innerText = checkedItems.length;
+        }
+
+        function toggleSelectAll() {
+            const selectAll = document.getElementById('select-all');
+            const checkboxes = document.querySelectorAll('.item-check');
+            checkboxes.forEach(cb => cb.checked = selectAll.checked);
+            updateCount();
+        }
+
+        function resetSelection() {
+            const checkboxes = document.querySelectorAll('.item-check');
+            checkboxes.forEach(cb => cb.checked = false);
+            document.getElementById('select-all').checked = false;
+            updateCount();
+        }
+
+        function deleteSelected() {
+            const checkedItems = document.querySelectorAll('.wishlist-item:has(.item-check:checked)');
+            if (checkedItems.length === 0) return;
+            
+            if (confirm(`${checkedItems.length}개의 아이템을 삭제하시겠습니까?`)) {
+                checkedItems.forEach(item => {
+                    item.classList.add('scale-95', 'opacity-0');
+                    setTimeout(() => item.remove(), 300);
+                });
+                setTimeout(() => {
+                    updateCount();
+                    if (document.querySelectorAll('.wishlist-item').length === 0) {
+                        // Handle empty state if needed
+                    }
+                }, 350);
+            }
+        }
+
+        function navigateToDetail() {
+            if (isEditMode) return;
+            // Logical link to RECO-007
+            console.log("Navigating to detailed info...");
+        }
+    </script>
+</body></html>

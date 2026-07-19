@@ -1,0 +1,292 @@
+<!DOCTYPE html><html class="light" lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>HomeStyler - 보관함</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#703a00",
+                        "surface-bright": "#f8f9fa",
+                        "tertiary-fixed-dim": "#ffb77d",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-variant": "#e1e3e4",
+                        "on-background": "#191c1d",
+                        "inverse-surface": "#2e3132",
+                        "surface": "#f8f9fa",
+                        "primary-fixed": "#e2dfff",
+                        "surface-dim": "#d9dadb",
+                        "secondary-fixed": "#85f8c4",
+                        "on-surface-variant": "#464555",
+                        "on-secondary-fixed-variant": "#005137",
+                        "on-tertiary-container": "#ffd2b1",
+                        "secondary-container": "#82f5c1",
+                        "primary": "#3525cd",
+                        "surface-container-highest": "#e1e3e4",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "secondary-fixed-dim": "#68dba9",
+                        "on-tertiary-fixed": "#2f1500",
+                        "outline": "#777587",
+                        "background": "#f8f9fa",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#f3f4f5",
+                        "on-error-container": "#93000a",
+                        "surface-container": "#edeeef",
+                        "on-secondary-container": "#00714e",
+                        "surface-tint": "#4d44e3",
+                        "on-tertiary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed": "#0f0069",
+                        "secondary": "#006c4a",
+                        "primary-container": "#4f46e5",
+                        "surface-container-high": "#e7e8e9",
+                        "on-surface": "#191c1d",
+                        "outline-variant": "#c7c4d8",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "tertiary-container": "#934e00",
+                        "inverse-primary": "#c3c0ff",
+                        "on-primary-container": "#dad7ff",
+                        "on-error": "#ffffff",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed": "#ffdcc3",
+                        "on-secondary": "#ffffff",
+                        "on-secondary-fixed": "#002114",
+                        "on-tertiary-fixed-variant": "#6e3900",
+                        "inverse-on-surface": "#f0f1f2"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "4px",
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "stack-lg": "32px",
+                        "container-max-width": "1280px",
+                        "margin-desktop": "48px",
+                        "gutter": "24px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "body-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"],
+                        "label-md": ["Inter"],
+                        "label-sm": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .selected-card {
+            border-color: #3525cd !important;
+            background-color: #f3f4f5;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-5 py-4 bg-surface/80 backdrop-blur-md shadow-sm">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant">menu</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">보관함</h1>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant">notifications</button>
+</div>
+</header>
+<main class="pt-20 px-5 max-w-container-max-width mx-auto">
+<!-- Tabs -->
+<div class="flex border-b border-outline-variant mb-6">
+<button class="flex-1 py-4 font-label-md text-label-md border-b-2 border-primary text-primary transition-all" id="tab-saved">저장된 추천</button>
+<button class="flex-1 py-4 font-label-md text-label-md border-b-2 border-transparent text-on-surface-variant hover:text-on-surface transition-all" id="tab-wishlist">위시리스트</button>
+</div>
+<!-- Saved Recommendations Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="card-container">
+<!-- Card 1 -->
+<div class="group relative overflow-hidden bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-all cursor-pointer select-card" data-id="1">
+<div class="absolute top-3 left-3 z-10">
+<div class="checkbox-container w-6 h-6 rounded-md border-2 border-outline-variant bg-white flex items-center justify-center transition-all group-[.selected]:bg-primary group-[.selected]:border-primary">
+<span class="material-symbols-outlined text-white text-sm scale-0 group-[.selected]:scale-100 transition-transform">check</span>
+</div>
+</div>
+<div class="aspect-[16/10] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A bright, modern Scandinavian living room featuring a neutral color palette, light oak flooring, and a plush cream-colored sofa. Natural light streams through large windows, illuminating minimalist decor and indoor plants. The atmosphere is calm and professional, reflecting high-end interior design quality." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDkdiovQ_DiXv7Vpt4j_1Vysd4qz7wHPKCCOfAYjdFhXssnBfTqZKw2fqbnGZiUHchhu-aEF04eBvMfr1W87mgwJnIv3PwWYILRRbxG3gtwJps4LiJc-yxqMgbn2trtqigE_BH2DSe4Je00SCCfPMySe76rwoTnmQv9UnOfc6p03qIfV3loQrcEkdhgVYFexoDqZwh2dAMQjNrd5l7z8M18rxV4jfLIV1MLbcLTL0JalnerO3lCEFNRGPg-eJyFt1n3vEbAUhmI_VZc">
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded-md uppercase">Living Room</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">2024.05.20</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">내추럴 노르딕 스타일</h3>
+<p class="text-on-surface-variant font-body-sm text-body-sm">AI가 분석한 최적의 채광 중심 공간 제안</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group relative overflow-hidden bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-all cursor-pointer select-card" data-id="2">
+<div class="absolute top-3 left-3 z-10">
+<div class="checkbox-container w-6 h-6 rounded-md border-2 border-outline-variant bg-white flex items-center justify-center transition-all group-[.selected]:bg-primary group-[.selected]:border-primary">
+<span class="material-symbols-outlined text-white text-sm scale-0 group-[.selected]:scale-100 transition-transform">check</span>
+</div>
+</div>
+<div class="aspect-[16/10] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A sophisticated industrial style bedroom with exposed brick walls, dark metal light fixtures, and a low-profile charcoal grey bed. The lighting is moody and focused, creating a tactile and modern aesthetic. Rich textures of leather and reclaimed wood are visible throughout the space, emphasizing a professional interior finish." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB3hv-tkSdSybQfgPL4fYj6Dh7TM3ZBsY2l7B0TFtqi3sbXeigqPdEZNSs6QyPr0DzkQoSMgBvzOzqBWf2v2Z2hN_6cmIkv7cchQL6Af3kJCZMY5CPE6ptp_8P5cf9tz0UiSeJGoPLKJN5O9BY1hRLKih0wt2SS1K6IE5LBIL8lQh01BJDWOAZUF-d4spZTZNF7RtOwAYAdUVGnGV3BPDUhqFJShqTY99bZabkzP2ZNYIfDW-f-3gX7g97u3_mwzlbXiV-GxHAtdEy9">
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded-md uppercase">Bedroom</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">2024.05.18</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">모던 인더스트리얼</h3>
+<p class="text-on-surface-variant font-body-sm text-body-sm">세련된 도시 감성의 메탈릭 무드 포인트</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="group relative overflow-hidden bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-all cursor-pointer select-card" data-id="3">
+<div class="absolute top-3 left-3 z-10">
+<div class="checkbox-container w-6 h-6 rounded-md border-2 border-outline-variant bg-white flex items-center justify-center transition-all group-[.selected]:bg-primary group-[.selected]:border-primary">
+<span class="material-symbols-outlined text-white text-sm scale-0 group-[.selected]:scale-100 transition-transform">check</span>
+</div>
+</div>
+<div class="aspect-[16/10] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="A minimalist and high-end home office featuring a floating white desk, an ergonomic designer chair, and sleek built-in shelving. The lighting is clean and professional, with a focus on productivity and calm. A subtle glassmorphic divider adds a touch of modern innovation to the functional space." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCB04grBOEQiH-zbM3-nYHr_ft_LuFUCz4JrtsppZAnfqmK_8nmPu6nVLAm8LRpjokotKZp9HlxSTzh8uBmh2fPLSAQfeLAuBaLT6VYbUkz1F961NMHU88jcgB0OAKn8FQlwT-LInM8Ne6q0GMRIaxSju70axktfowTtmZc8WvOmUnltP67PTtHWObY85oQkP5A9mA2goPGCFMvfHVZ6_J78m8fneCYDNQmqlora8cUNafa8TQjFbJHDHhQ4T-1PIRPPR6qVJzYtO3P">
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded-md uppercase">Home Office</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">2024.05.15</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">미니멀리스트 큐브</h3>
+<p class="text-on-surface-variant font-body-sm text-body-sm">몰입을 돕는 심플한 가구 배치와 동선</p>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="group relative overflow-hidden bg-surface-container-lowest rounded-xl border border-outline-variant shadow-sm hover:shadow-md transition-all cursor-pointer select-card" data-id="4">
+<div class="absolute top-3 left-3 z-10">
+<div class="checkbox-container w-6 h-6 rounded-md border-2 border-outline-variant bg-white flex items-center justify-center transition-all group-[.selected]:bg-primary group-[.selected]:border-primary">
+<span class="material-symbols-outlined text-white text-sm scale-0 group-[.selected]:scale-100 transition-transform">check</span>
+</div>
+</div>
+<div class="aspect-[16/10] overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" data-alt="An elegant and spacious kitchen with dark navy cabinets, marble countertops, and brass hardware accents. The design is a blend of traditional and modern styles, featuring high-end appliances and soft warm pendant lighting. The overall feel is one of luxury, professional quality, and domestic warmth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAk55PWeyxT6lGJNfPQTTsChoND2bokll6YK-tsK-wq9AcsuvJZEj49NSfZVFFOrkSXhZ2InJ7dWYr2CHAICVuotUZjl4iJGjWxRVM9HaK7UwxDsVqilzajlg6-hdHIUVrd0jjFQvvl1U60NBPmcqXlmO3DTJBapxd6cvx_WNR5-fx-TsskxJ438RpwT1GW_-enqxl98DcwpkvMegNQXjXXPTBc2aYoDCrH2d1KQo6TGuo0gN-EvCCrBWN8cKjZ3iNLKEc_DyUdR-RV">
+</div>
+<div class="p-4">
+<div class="flex justify-between items-start mb-2">
+<span class="px-2 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold rounded-md uppercase">Kitchen</span>
+<span class="text-on-surface-variant font-label-sm text-label-sm">2024.05.10</span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface mb-1">모던 클래식 키친</h3>
+<p class="text-on-surface-variant font-body-sm text-body-sm">럭셔리한 대리석 질감의 조화로운 연출</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button Area -->
+<div class="fixed bottom-24 left-1/2 -translate-x-1/2 w-full max-w-md px-5 pointer-events-none opacity-0 translate-y-4 transition-all duration-300" id="compare-fab">
+<button class="w-full h-14 bg-primary text-on-primary rounded-full shadow-lg flex items-center justify-center gap-2 pointer-events-auto active:scale-95 transition-transform">
+<span class="material-symbols-outlined">compare_arrows</span>
+<span class="font-label-md text-label-md"><span id="selection-count">0</span>개 선택하여 비교하기</span>
+</button>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-6 bg-surface border-t border-outline-variant shadow-lg md:hidden">
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm mt-1">홈</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80">
+<span class="material-symbols-outlined">chair</span>
+<span class="font-label-sm text-label-sm mt-1">내 공간</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="font-label-sm text-label-sm mt-1">추천</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-4 py-2 scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="font-label-sm text-label-sm mt-1 font-bold">보관함</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm mt-1">마이</span>
+</button>
+</nav>
+<script>
+        const cards = document.querySelectorAll('.select-card');
+        const fab = document.getElementById('compare-fab');
+        const countSpan = document.getElementById('selection-count');
+        let selectedIds = new Set();
+
+        cards.forEach(card => {
+            card.addEventListener('click', () => {
+                const id = card.dataset.id;
+                
+                if (selectedIds.has(id)) {
+                    selectedIds.delete(id);
+                    card.classList.remove('selected');
+                    card.classList.remove('selected-card');
+                } else {
+                    selectedIds.add(id);
+                    card.classList.add('selected');
+                    card.classList.add('selected-card');
+                }
+
+                updateFab();
+            });
+        });
+
+        function updateFab() {
+            const count = selectedIds.size;
+            countSpan.textContent = count;
+
+            if (count >= 1) {
+                fab.classList.remove('opacity-0', 'translate-y-4');
+                fab.classList.add('opacity-100', 'translate-y-0');
+            } else {
+                fab.classList.add('opacity-0', 'translate-y-4');
+                fab.classList.remove('opacity-100', 'translate-y-0');
+            }
+        }
+
+        // Tab Switching Simulation
+        const tabSaved = document.getElementById('tab-saved');
+        const tabWishlist = document.getElementById('tab-wishlist');
+
+        tabSaved.addEventListener('click', () => {
+            tabSaved.classList.add('border-primary', 'text-primary');
+            tabSaved.classList.remove('border-transparent', 'text-on-surface-variant');
+            tabWishlist.classList.remove('border-primary', 'text-primary');
+            tabWishlist.classList.add('border-transparent', 'text-on-surface-variant');
+        });
+
+        tabWishlist.addEventListener('click', () => {
+            tabWishlist.classList.add('border-primary', 'text-primary');
+            tabWishlist.classList.remove('border-transparent', 'text-on-surface-variant');
+            tabSaved.classList.remove('border-primary', 'text-primary');
+            tabSaved.classList.add('border-transparent', 'text-on-surface-variant');
+        });
+    </script>
+</body></html>

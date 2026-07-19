@@ -1,0 +1,357 @@
+<!DOCTYPE html><html class="light" lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>HomeStyler - 데이터 및 개인정보 관리</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(229, 231, 235, 0.5);
+        }
+        .safe-area-inset-bottom {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        @keyframes slideIn {
+            from { transform: translateX(-100%); }
+            to { transform: translateX(0); }
+        }
+        .slide-in {
+            animation: slideIn 0.3s ease-out forwards;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-error": "#ffffff",
+                      "inverse-surface": "#2e3132",
+                      "surface-container-highest": "#e1e3e4",
+                      "secondary-container": "#82f5c1",
+                      "tertiary": "#703a00",
+                      "outline": "#777587",
+                      "on-primary-fixed": "#0f0069",
+                      "surface-variant": "#e1e3e4",
+                      "secondary-fixed-dim": "#68dba9",
+                      "primary-fixed-dim": "#c3c0ff",
+                      "on-secondary": "#ffffff",
+                      "surface-container-lowest": "#ffffff",
+                      "error-container": "#ffdad6",
+                      "on-tertiary-fixed-variant": "#6e3900",
+                      "on-tertiary-container": "#ffd2b1",
+                      "tertiary-fixed-dim": "#ffb77d",
+                      "on-surface-variant": "#464555",
+                      "on-primary-fixed-variant": "#3323cc",
+                      "on-background": "#191c1d",
+                      "surface-container-low": "#f3f4f5",
+                      "on-secondary-fixed-variant": "#005137",
+                      "inverse-on-surface": "#f0f1f2",
+                      "surface-bright": "#f8f9fa",
+                      "secondary": "#006c4a",
+                      "primary-fixed": "#e2dfff",
+                      "tertiary-fixed": "#ffdcc3",
+                      "surface": "#f8f9fa",
+                      "on-primary-container": "#dad7ff",
+                      "tertiary-container": "#934e00",
+                      "primary": "#3525cd",
+                      "on-surface": "#191c1d",
+                      "background": "#f8f9fa",
+                      "surface-container": "#edeeef",
+                      "on-secondary-fixed": "#002114",
+                      "secondary-fixed": "#85f8c4",
+                      "surface-dim": "#d9dadb",
+                      "error": "#ba1a1a",
+                      "inverse-primary": "#c3c0ff",
+                      "on-tertiary-fixed": "#2f1500",
+                      "on-error-container": "#93000a",
+                      "primary-container": "#4f46e5",
+                      "surface-container-high": "#e7e8e9",
+                      "on-primary": "#ffffff",
+                      "surface-tint": "#4d44e3",
+                      "outline-variant": "#c7c4d8",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-container": "#00714e"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-md": "16px",
+                      "stack-lg": "32px",
+                      "unit": "4px",
+                      "margin-mobile": "20px",
+                      "margin-desktop": "48px",
+                      "gutter": "24px",
+                      "stack-sm": "8px",
+                      "container-max-width": "1280px"
+              },
+              "fontFamily": {
+                      "label-md": ["Inter"],
+                      "headline-md": ["Plus Jakarta Sans"],
+                      "body-sm": ["Inter"],
+                      "body-lg": ["Inter"],
+                      "label-sm": ["Inter"],
+                      "headline-xl": ["Plus Jakarta Sans"],
+                      "headline-lg-mobile": ["Plus Jakarta Sans"],
+                      "headline-lg": ["Plus Jakarta Sans"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                      "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "label-sm": ["12px", {"lineHeight": "14px", "fontWeight": "500"}],
+                      "headline-xl": ["40px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface min-h-screen font-body-md">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile py-4 bg-surface/80 backdrop-blur-md shadow-sm">
+<div class="flex items-center gap-4">
+<button class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container-low transition-all" onclick="history.back()">
+<span class="material-symbols-outlined text-primary">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">데이터 및 개인정보</h1>
+</div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">verified_user</span>
+</div>
+</header>
+<main class="pt-24 pb-32 px-margin-mobile max-w-container-max-width mx-auto">
+<!-- Hero Section / Security Emphasis -->
+<section class="mb-stack-lg">
+<div class="glass-card rounded-xl p-6 mb-stack-md flex flex-col md:flex-row items-start md:items-center gap-4 border-l-4 border-primary">
+<div class="p-3 bg-primary/10 rounded-full">
+<span class="material-symbols-outlined text-primary scale-125" style="font-variation-settings: 'FILL' 1;">security</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-1">데이터 주권 보호</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">사용자가 업로드한 모든 원본 사진과 도면은 강력한 암호화 알고리즘(AES-256)으로 보호되며, 원할 때 언제든 완전 삭제가 가능합니다.</p>
+</div>
+</div>
+</section>
+<!-- Global Actions & Toggles -->
+<section class="mb-stack-lg">
+<div class="bg-surface-container-low p-6 rounded-2xl border border-outline-variant">
+  <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+    <div class="flex-1">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="material-symbols-outlined text-error">warning</span>
+        <h3 class="font-headline-md text-headline-md text-on-surface">데이터 영구 삭제</h3>
+      </div>
+      <p class="font-body-sm text-body-sm text-on-surface-variant">서버에 보관된 모든 원본 데이터를 즉시 파기합니다. 이 작업은 취소할 수 없으며 분석 결과만 유지됩니다.</p>
+    </div>
+    <div class="flex flex-col items-end gap-3 w-full md:w-auto">
+      <div class="flex items-center gap-3 bg-white px-4 py-2 rounded-lg border border-outline-variant w-full md:w-auto">
+        <label class="relative inline-flex items-center cursor-pointer">
+          <input checked="" class="sr-only peer" id="keepAnalysis" type="checkbox">
+          <div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+        </label>
+        <span class="font-label-md text-label-md text-on-surface">분석 결과 유지</span>
+      </div>
+      <button class="w-full md:w-auto flex items-center justify-center gap-2 px-8 py-4 bg-error text-on-error rounded-full font-label-md text-label-md hover:opacity-90 transition-all shadow-lg active:scale-95">
+        <span class="material-symbols-outlined">delete_forever</span>
+        원본 전체 삭제
+      </button>
+    </div>
+  </div>
+</div>
+</section>
+<!-- Data Grid -->
+<section>
+<div class="flex justify-between items-end mb-stack-md">
+<h3 class="font-headline-md text-headline-md">업로드된 파일 <span class="text-primary text-body-md font-normal ml-2">12개</span></h3>
+<div class="flex gap-2">
+<button class="p-2 rounded-lg bg-surface-container text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">grid_view</span>
+</button>
+<button class="p-2 rounded-lg text-on-surface-variant hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined">list</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-gutter">
+<!-- Item 1 -->
+<div class="group relative bg-white dark:bg-surface-container-high rounded-xl overflow-hidden border border-outline-variant shadow-sm hover:shadow-md transition-all">
+<div class="aspect-square bg-cover bg-center" data-alt="A clean, brightly lit modern living room with a large grey sofa, minimalist furniture, and large windows. The lighting is soft and natural, emphasizing a professional interior photography style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCUloAC4-SSoLlJYS9-6RUe2srSA3Xe2qNfjhQ6sYUWC_8BJQJiv9a4NImt-3OVz_wSLTifg2F-S8yqzukKnQLXllMVCMm_3THhneG-qRAob2iHs4zjrFjR6wtECYxWdOKaLYZoYf0eDUmnUWQyjxfmAS16-dIkyHopBvOIPxqzuKgiUzr0zhEBvrJLXw_ZuUQ8qfkhpMb9utupAIpKvClZQnZHxa-PkWgRjuTnTV7ugMxfJ9AdQvoQmPu1_FG3Z4S7grHNrx8HqwXB')"></div>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+<button class="w-10 h-10 bg-error text-on-error rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">delete</span>
+</button>
+<button class="w-10 h-10 bg-white text-on-surface rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+<div class="p-3"><div class="flex items-center gap-1 mb-1">
+  <span class="material-symbols-outlined text-[14px] text-secondary" style="font-variation-settings: 'FILL' 1;">lock</span>
+  <span class="text-[10px] font-bold text-secondary uppercase tracking-tighter">암호화 보관 중</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface truncate">living_room_01.jpg</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant text-[10px]">2.4 MB • 2023.10.24</p>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="group relative bg-white dark:bg-surface-container-high rounded-xl overflow-hidden border border-outline-variant shadow-sm hover:shadow-md transition-all">
+<div class="aspect-square bg-cover bg-center" data-alt="A high-resolution architectural floor plan of a modern apartment, showing precise black lines on a white background with professional annotations and measurements." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCdfmB55r5S0KSNt_ptmFD-Y28gv6Jrgah0mz6mRWApAovH5xw-KJwS95md104XANpI29ReCv7i7Bt1avxObt802PCc1WnN65MzFAv3z2IiigILJ-89i2YJKA_ntCVTC-4ZcfM4v4ly8jp5j1L9n1fpTXSCmePov98NK-Kg0j2gejGBc0tJ-S4rVH41MjxzD8-yOBHLq0AXaTInrg_zN4qvvcZJnlYmzpEzOD-Ucz2_8Mg5wtc_dop2AoqRoPfpbuVI-PzTanhDiV_G')"></div>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+<button class="w-10 h-10 bg-error text-on-error rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">delete</span>
+</button>
+<button class="w-10 h-10 bg-white text-on-surface rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+<div class="p-3"><div class="flex items-center gap-1 mb-1">
+  <span class="material-symbols-outlined text-[14px] text-secondary" style="font-variation-settings: 'FILL' 1;">lock</span>
+  <span class="text-[10px] font-bold text-secondary uppercase tracking-tighter">암호화 보관 중</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface truncate">apartment_layout_revised.pdf</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant text-[10px]">1.8 MB • 2023.10.22</p>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="group relative bg-white dark:bg-surface-container-high rounded-xl overflow-hidden border border-outline-variant shadow-sm hover:shadow-md transition-all">
+<div class="aspect-square bg-cover bg-center" data-alt="A close-up shot of a cozy bedroom with warm wooden accents, soft ambient lighting, and white linen bedding. The style is Scandinavian minimalist with a calm and inviting mood." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDC8rvOce7EVK0T_pNi6a2omBayUN1zonFz4keLT5m2FGUhJJh4IIG7Orcrs4Un2N54FgH_5L_iG94j2stDdO8fL7MkPKzV8Jc9z1wDAvseGzhDIEuRcam1lO0odpFM6PhJbhDceJNWxoihOi5ah2uCNBGWwh2UK5Pxppnbxut4R2Fn0IUTOWNESDsB07TdHV9iNsfMmR9sku1IHcJ6IVBG6PMz1zeU7zSpBH-mheYGfUY3ELjF91kFtpp0QfgImM8VI_vLrpzIkQOE')"></div>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+<button class="w-10 h-10 bg-error text-on-error rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+<div class="p-3"><div class="flex items-center gap-1 mb-1">
+  <span class="material-symbols-outlined text-[14px] text-secondary" style="font-variation-settings: 'FILL' 1;">lock</span>
+  <span class="text-[10px] font-bold text-secondary uppercase tracking-tighter">암호화 보관 중</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface truncate">bedroom_study.png</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant text-[10px]">4.1 MB • 2023.10.20</p>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="group relative bg-white dark:bg-surface-container-high rounded-xl overflow-hidden border border-outline-variant shadow-sm hover:shadow-md transition-all">
+<div class="aspect-square bg-cover bg-center" data-alt="A modern kitchen with marble countertops, sleek dark cabinets, and integrated high-end appliances. The image is captured with professional perspective, featuring crisp details and bright, clean lighting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCuwVaJZbgp8USbifCP1ohAjt1tJuNg2zkZQx9zMYG8LTWMeaGlVf4CK8x9Y3gLxiH3WUCIxwpBrjiKiMjfee7_2TC4Ej8wNxu4Mk6jf7qXng87SD5uAOak7c3QGU-49CUWl2VfndzZvYahVmnhWu2SL1H27SSMyttGR94CLbZhmGtNwFLi7804rcHdRR9W-_6s9oDrE0gBGttJNZfbl32hZV3bS3FHs4Bg4x8uoCG3AB6hMVUpjThW2pG-5_uYwxzDFpYeKwbirmbM')"></div>
+<div class="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2">
+<button class="w-10 h-10 bg-error text-on-error rounded-full flex items-center justify-center hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+<div class="p-3"><div class="flex items-center gap-1 mb-1">
+  <span class="material-symbols-outlined text-[14px] text-secondary" style="font-variation-settings: 'FILL' 1;">lock</span>
+  <span class="text-[10px] font-bold text-secondary uppercase tracking-tighter">암호화 보관 중</span>
+</div>
+<p class="font-label-sm text-label-sm text-on-surface truncate">kitchen_pano.jpg</p>
+<p class="font-label-sm text-label-sm text-on-surface-variant text-[10px]">5.7 MB • 2023.10.15</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Privacy Policy & Transparency Info -->
+<section class="mt-stack-lg pt-stack-lg border-t border-outline-variant">
+<div class="bg-surface-container rounded-2xl p-6 md:p-8">
+<div class="flex items-center gap-2 mb-4">
+<span class="material-symbols-outlined text-secondary">info</span>
+<h4 class="font-label-md text-label-md text-secondary uppercase tracking-wider">데이터 투명성 안내</h4>
+</div>
+<div class="grid md:grid-cols-2 gap-8">
+<div>
+<h5 class="font-label-md text-label-md text-on-surface mb-2">보관 정책</h5>
+<ul class="space-y-2 font-body-sm text-body-sm text-on-surface-variant">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                                원본 데이터는 서비스 탈퇴 시 즉시 파기됩니다.
+                            </li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5">check_circle</span>
+                                분석에 사용된 데이터는 익명화 처리 후 인공지능 성능 향상을 위해 사용될 수 있으며, 설정에서 이를 거부할 수 있습니다.
+                            </li>
+</ul>
+</div>
+<div>
+<h5 class="font-label-md text-label-md text-on-surface mb-2">보안 기술</h5>
+<ul class="space-y-2 font-body-sm text-body-sm text-on-surface-variant">
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5">lock</span>
+                                모든 통신은 SSL/TLS 1.3 암호화 프로토콜을 사용합니다.
+                            </li>
+<li class="flex items-start gap-2">
+<span class="material-symbols-outlined text-primary text-sm mt-0.5">lock</span>
+                                데이터베이스 접근은 다중 인증(MFA)을 거친 허가된 인원으로 엄격히 제한됩니다.
+                            </li>
+</ul>
+</div>
+</div>
+<div class="mt-6 p-4 bg-surface-container-high rounded-lg text-center">
+<p class="font-body-sm text-body-sm text-on-surface-variant">상세 정보는 <a class="text-primary font-bold underline decoration-primary/30" href="#">개인정보 처리방침</a>에서 확인하실 수 있습니다.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation (Mobile Only via shell logic) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface border-t border-outline-variant shadow-lg"><a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80" href="#">
+  <span class="material-symbols-outlined">home</span>
+  <span class="font-label-sm text-[10px]">홈</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80" href="#">
+  <span class="material-symbols-outlined">chair</span>
+  <span class="font-label-sm text-[10px]">내 공간</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80" href="#">
+  <span class="material-symbols-outlined">auto_awesome</span>
+  <span class="font-label-sm text-[10px]">추천</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80" href="#">
+  <span class="material-symbols-outlined">inventory_2</span>
+  <span class="font-label-sm text-[10px]">보관함</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-3 py-1 transition-transform active:scale-95 duration-200" href="#">
+  <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">person</span>
+  <span class="font-label-sm text-[10px]">마이</span>
+</a></nav>
+<!-- JavaScript for micro-interactions -->
+<script>
+        document.querySelectorAll('.group button').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const container = btn.closest('.group');
+                container.style.transform = 'scale(0.95)';
+                container.style.opacity = '0';
+                setTimeout(() => {
+                    container.remove();
+                }, 300);
+            });
+        });
+
+        // Global Delete Mockup
+        const globalDeleteBtn = document.querySelector('button.bg-error');
+        globalDeleteBtn.addEventListener('click', () => {
+            if(confirm('모든 원본 데이터를 삭제하시겠습니까? 이 작업은 되돌릴 수 없습니다.')) {
+                const items = document.querySelectorAll('.grid > div');
+                items.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.style.transform = 'scale(0.9)';
+                        item.style.opacity = '0';
+                        setTimeout(() => item.remove(), 300);
+                    }, index * 100);
+                });
+            }
+        });
+    </script>
+
+
+
+</body></html>

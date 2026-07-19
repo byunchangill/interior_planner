@@ -1,0 +1,343 @@
+<!DOCTYPE html><html class="light" lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>HomeStyler - 내 공간 관리</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "outline": "#777587",
+                    "on-tertiary-container": "#ffd2b1",
+                    "surface-dim": "#d9dadb",
+                    "secondary-container": "#82f5c1",
+                    "on-background": "#191c1d",
+                    "primary-fixed": "#e2dfff",
+                    "on-primary-fixed": "#0f0069",
+                    "on-surface-variant": "#464555",
+                    "background": "#f8f9fa",
+                    "outline-variant": "#c7c4d8",
+                    "surface-variant": "#e1e3e4",
+                    "on-primary": "#ffffff",
+                    "inverse-surface": "#2e3132",
+                    "on-surface": "#191c1d",
+                    "on-secondary": "#ffffff",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "on-error-container": "#93000a",
+                    "tertiary-fixed": "#ffdcc3",
+                    "on-tertiary-fixed-variant": "#6e3900",
+                    "on-tertiary-fixed": "#2f1500",
+                    "surface-bright": "#f8f9fa",
+                    "surface": "#f8f9fa",
+                    "primary": "#3525cd",
+                    "inverse-on-surface": "#f0f1f2",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "tertiary-container": "#934e00",
+                    "on-tertiary": "#ffffff",
+                    "primary-container": "#4f46e5",
+                    "on-secondary-fixed-variant": "#005137",
+                    "on-error": "#ffffff",
+                    "surface-container-highest": "#e1e3e4",
+                    "on-secondary-fixed": "#002114",
+                    "surface-tint": "#4d44e3",
+                    "secondary": "#006c4a",
+                    "surface-container-high": "#e7e8e9",
+                    "on-primary-container": "#dad7ff",
+                    "tertiary": "#703a00",
+                    "on-secondary-container": "#00714e",
+                    "error": "#ba1a1a",
+                    "inverse-primary": "#c3c0ff",
+                    "surface-container-low": "#f3f4f5",
+                    "tertiary-fixed-dim": "#ffb77d",
+                    "surface-container": "#edeeef",
+                    "secondary-fixed-dim": "#68dba9",
+                    "secondary-fixed": "#85f8c4",
+                    "error-container": "#ffdad6"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "stack-sm": "8px",
+                    "container-max-width": "1280px",
+                    "stack-lg": "32px",
+                    "margin-desktop": "48px",
+                    "unit": "4px",
+                    "stack-md": "16px",
+                    "gutter": "24px"
+            },
+            "fontFamily": {
+                    "headline-xl": ["Plus Jakarta Sans"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "label-md": ["Inter"],
+                    "headline-md": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "headline-xl": ["40px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { -webkit-tap-highlight-color: transparent; }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-tab-shadow {
+            box-shadow: 0 4px 12px rgba(53, 37, 205, 0.2);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container">
+<!-- Top AppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 bg-surface/80 backdrop-blur-md shadow-sm">
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-surface-container-low transition-all duration-300 rounded-full">
+<span class="material-symbols-outlined text-primary" data-icon="menu">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">HomeStyler</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 hover:bg-surface-container-low transition-all duration-300 rounded-full relative">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+</div>
+</header>
+<main class="pt-24 pb-32 px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto">
+<!-- Header Section -->
+<section class="mb-stack-lg flex flex-col md:flex-row md:items-end justify-between gap-stack-md">
+<div>
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-primary" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-md text-label-md text-primary">나의 거주 공간</span>
+</div>
+<h2 class="font-headline-xl text-headline-xl text-on-surface">우리 집</h2>
+<p class="text-on-surface-variant mt-2 font-body-md">현재 3개의 공간이 등록되어 있습니다.</p>
+</div>
+<div class="flex gap-stack-sm">
+<button class="flex items-center gap-2 px-6 py-3 rounded-xl border border-outline-variant text-primary font-label-md hover:bg-surface-container transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="add_home">add_home</span>
+                    집 추가
+                </button>
+<button class="flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-on-primary font-label-md shadow-lg shadow-primary/20 hover:opacity-90 transition-all duration-300">
+<span class="material-symbols-outlined" data-icon="add_circle">add_circle</span>
+                    공간 추가
+                </button>
+</div>
+</section>
+<!-- Bento Grid Layout for Spaces -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- Space Card 1: Living Room -->
+<div class="group relative bg-surface-container-lowest rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer border border-outline-variant/30 flex flex-col" onclick="location.href='#SPACE-007'">
+<div class="relative h-64 overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-700" data-alt="A spacious and sun-drenched modern living room with a minimalist aesthetic. Large floor-to-ceiling windows reveal a soft urban view. The interior features a low-profile navy blue sofa, an oak wood coffee table, and a large textured rug in neutral tones. The lighting is bright and natural, emphasizing the clean lines and airy atmosphere of professional interior photography." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAl_UZfwHsutQNcHm_7NxByB0UPHYads3XTNu8VTAWQ0-Vg76Gjbn4ADQG3OwbMK2oVvYd7pZrXjos-n3cV3CZdk0-NSyMuMzpeWyQLC6jCIvmRxW6okkorjzkaqBYt_Zu5P-q3ibe_Cql4-Uz0UO8j4ZVtfelEGVpjjKZ8MlS1HArB65wepTyt8N8ENUlJF_L-fKq2FFkYn0mjGHpaiyGJKToldpY3YZLkjMVI0CEi3WcAWEVf8Rej3mFhpiTiaa6BcD8Agut5ywHn')"></div>
+<div class="absolute top-4 left-4 glass-effect px-3 py-1 rounded-full flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-[12px] font-bold text-primary">AI 분석 완료</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">거실</h3>
+<p class="text-on-surface-variant font-body-sm">메인 패밀리 존</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors" data-icon="arrow_forward_ios">arrow_forward_ios</span>
+</div>
+<div class="mt-auto space-y-3">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]" data-icon="straighten">straighten</span>
+<span>공간 치수</span>
+</div>
+<span class="font-bold text-on-surface">24.5 m²</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]" data-icon="history">history</span>
+<span>마지막 분석</span>
+</div>
+<span class="text-on-surface">2024.05.12 14:30</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Space Card 2: Master Bedroom -->
+<div class="group relative bg-surface-container-lowest rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer border border-outline-variant/30 flex flex-col" onclick="location.href='#SPACE-007'">
+<div class="relative h-64 overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-700" data-alt="A serene master bedroom styled in a contemporary Nordic design. The room features a plush gray upholstered bed with layered linen bedding in white and forest green. Soft ambient lighting from bedside pendant lamps creates a cozy, professional mood. High-quality textures are visible on the wooden flooring and the soft drape of the curtains. The atmosphere is calm and inviting." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD9tX_9YtZDkZo3NUDbJVwivJI4ekGYl8H3E8RfhSD56-Cmz-ZPlAr6LH15j7zkHF-QlWuQ9yL4FCQZZbJs8UMRtM6G26ODLt_L21uHcKo1Wb6Z7jJhZ1mOVsuTRoZBUEteKdLvV2IeRV9jnjclGXgxaK4vxXBkKMlJgepMAWeO515BQvH2AmSyxp154AYzMhJ_iir2KVcUYe8cqQ6Lpw0sYrCKu5hVDSII09gyjI3ARZ2ExTQg-K1V1m5p1J0GVemnYxEdtAa4CsWb')"></div>
+<div class="absolute top-4 left-4 glass-effect px-3 py-1 rounded-full flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="chair" style="font-variation-settings: 'FILL' 1;">chair</span>
+<span class="text-[12px] font-bold text-primary">스타일링 중</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">안방</h3>
+<p class="text-on-surface-variant font-body-sm">휴식 및 수면 공간</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors" data-icon="arrow_forward_ios">arrow_forward_ios</span>
+</div>
+<div class="mt-auto space-y-3">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]" data-icon="straighten">straighten</span>
+<span>공간 치수</span>
+</div>
+<span class="font-bold text-on-surface">18.2 m²</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]" data-icon="history">history</span>
+<span>마지막 분석</span>
+</div>
+<span class="text-on-surface">2024.05.10 09:15</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Space Card 3: Kitchen -->
+<div class="group relative bg-surface-container-lowest rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer border border-outline-variant/30 flex flex-col" onclick="location.href='#SPACE-007'">
+<div class="relative h-64 overflow-hidden">
+<div class="absolute inset-0 bg-cover bg-center group-hover:scale-105 transition-transform duration-700" data-alt="A sleek, modern kitchen with matte black cabinetry and white marble countertops. The design is professional and industrial-inspired, featuring high-end stainless steel appliances and a minimalist breakfast bar with two leather stools. Recessed ceiling lights and under-cabinet LED strips provide sophisticated layered lighting. The clean, organized environment reflects a modern lifestyle." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAdewRKqe0ftUsxsWEYeF1fX0fu0cHrOxIyAjPrVQwh_zhUjHQJCnczVVrh7HnND9REUSU7LK-UMDeNCjD83UvktL6S6gBLJZsDyb9NwILAVXFyGMfsW8duKzeB81_jT3_htlVNuRkiE26xFB3gZIxSQVHlp2J2pLrSw-h3iioVQz_mvsmYVRvA5crmfZXZzO45VEsgvOU1Bs1v5JXWI0y3K6iVPgmpBAJ6ddDfLSV8yR4QjVlFvmFqBu5qIZpGYpYQUtEbmMSH8Yk6')"></div>
+<div class="absolute top-4 left-4 bg-surface-container-highest/80 backdrop-blur-md px-3 py-1 rounded-full flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-outline" data-icon="pending">pending</span>
+<span class="text-[12px] font-bold text-outline">분석 전</span>
+</div>
+</div>
+<div class="p-6 flex flex-col flex-grow">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">주방</h3>
+<p class="text-on-surface-variant font-body-sm">다이닝 및 요리 공간</p>
+</div>
+<span class="material-symbols-outlined text-outline-variant group-hover:text-primary transition-colors" data-icon="arrow_forward_ios">arrow_forward_ios</span>
+</div>
+<div class="mt-auto space-y-3">
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]" data-icon="straighten">straighten</span>
+<span>공간 치수</span>
+</div>
+<span class="font-bold text-on-surface">12.8 m²</span>
+</div>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[20px]" data-icon="history">history</span>
+<span>마지막 분석</span>
+</div>
+<span class="text-on-surface">-</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Add New Space Placeholder -->
+<div class="group relative bg-surface-container-low border-2 border-dashed border-outline-variant/50 rounded-3xl h-full min-h-[300px] flex flex-col items-center justify-center gap-4 hover:bg-surface-container-high hover:border-primary/50 transition-all duration-300 cursor-pointer">
+<div class="w-16 h-16 rounded-full bg-white flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
+<span class="material-symbols-outlined text-primary text-3xl" data-icon="add">add</span>
+</div>
+<div class="text-center">
+<p class="font-bold text-on-surface">새로운 공간 추가</p>
+<p class="text-on-surface-variant text-sm mt-1">도면을 찍거나 사진을 업로드하세요</p>
+</div>
+</div>
+</div>
+<!-- AI Assistant Banner (Glassmorphism) -->
+<section class="mt-stack-lg rounded-3xl p-8 relative overflow-hidden glass-effect border border-primary/10">
+<div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+<div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-48 h-48 bg-secondary-container/20 rounded-full blur-3xl"></div>
+<div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+<div class="flex items-center gap-6">
+<div class="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center shadow-lg shadow-primary/30">
+<span class="material-symbols-outlined text-on-primary text-3xl" data-icon="smart_toy">smart_toy</span>
+</div>
+<div>
+<h3 class="font-headline-md text-headline-md text-on-surface">AI 인테리어 비서가 제안하는 팁</h3>
+<p class="text-on-surface-variant font-body-md mt-1">거실의 채광을 분석한 결과, 더 밝은 톤의 커튼이 공간을 넓게 보이게 할 수 있어요.</p>
+</div>
+</div>
+<button class="px-8 py-3 rounded-xl bg-on-background text-white font-label-md hover:bg-opacity-90 transition-all">
+                    자세히 보기
+                </button>
+</div>
+</section>
+</main>
+<!-- Bottom Navigation Bar (Mobile Only - Simplified Desktop) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface shadow-lg rounded-t-xl md:hidden">
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm text-[10px] mt-1">홈</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-3 py-1 active-tab-shadow transition-transform duration-200 scale-95">
+<span class="material-symbols-outlined" data-icon="chair" style="font-variation-settings: 'FILL' 1;">chair</span>
+<span class="font-label-sm text-[10px] mt-1">내 공간</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-label-sm text-[10px] mt-1">추천</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-sm text-[10px] mt-1">보관함</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80 transition-all duration-200">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-label-sm text-[10px] mt-1">마이</span>
+</button>
+</nav>
+<!-- Navigation FAB for Mobile -->
+<button class="fixed bottom-24 right-margin-mobile md:hidden w-14 h-14 bg-primary text-on-primary rounded-full shadow-xl flex items-center justify-center z-40 transition-transform active:scale-90">
+<span class="material-symbols-outlined text-3xl" data-icon="add">add</span>
+</button>
+<script>
+        // Micro-interaction for cards
+        document.querySelectorAll('.group').forEach(card => {
+            card.addEventListener('mousedown', () => {
+                card.style.transform = 'scale(0.98)';
+            });
+            card.addEventListener('mouseup', () => {
+                card.style.transform = 'scale(1)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>

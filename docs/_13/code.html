@@ -1,0 +1,274 @@
+<!DOCTYPE html><html class="light" lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>HomeStyler - Share Recommendation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#ffdcc3",
+                        "surface-container-low": "#f3f4f5",
+                        "surface-dim": "#d9dadb",
+                        "on-primary-fixed": "#0f0069",
+                        "primary": "#3525cd",
+                        "surface-container-lowest": "#ffffff",
+                        "surface-container": "#edeeef",
+                        "secondary-container": "#82f5c1",
+                        "secondary": "#006c4a",
+                        "on-secondary-container": "#00714e",
+                        "tertiary": "#703a00",
+                        "on-background": "#191c1d",
+                        "on-secondary-fixed-variant": "#005137",
+                        "surface-container-high": "#e7e8e9",
+                        "on-tertiary-fixed": "#2f1500",
+                        "surface-container-highest": "#e1e3e4",
+                        "primary-fixed": "#e2dfff",
+                        "outline": "#777587",
+                        "secondary-fixed-dim": "#68dba9",
+                        "on-tertiary-fixed-variant": "#6e3900",
+                        "on-primary-container": "#dad7ff",
+                        "error-container": "#ffdad6",
+                        "surface-bright": "#f8f9fa",
+                        "error": "#ba1a1a",
+                        "background": "#f8f9fa",
+                        "on-primary-fixed-variant": "#3323cc",
+                        "primary-fixed-dim": "#c3c0ff",
+                        "tertiary-fixed-dim": "#ffb77d",
+                        "on-surface-variant": "#464555",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-container": "#ffd2b1",
+                        "inverse-surface": "#2e3132",
+                        "on-error-container": "#93000a",
+                        "surface": "#f8f9fa",
+                        "on-surface": "#191c1d",
+                        "on-primary": "#ffffff",
+                        "primary-container": "#4f46e5",
+                        "on-secondary-fixed": "#002114",
+                        "surface-tint": "#4d44e3",
+                        "inverse-primary": "#c3c0ff",
+                        "on-error": "#ffffff",
+                        "surface-variant": "#e1e3e4",
+                        "secondary-fixed": "#85f8c4",
+                        "inverse-on-surface": "#f0f1f2",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#934e00",
+                        "outline-variant": "#c7c4d8"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "20px",
+                        "stack-md": "16px",
+                        "container-max-width": "1280px",
+                        "stack-sm": "8px",
+                        "stack-lg": "32px",
+                        "margin-desktop": "48px",
+                        "unit": "4px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "headline-md": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Plus Jakarta Sans"],
+                        "body-lg": ["Inter"],
+                        "headline-xl": ["Plus Jakarta Sans"],
+                        "body-md": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-lg-mobile": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "14px", "fontWeight": "500"}],
+                        "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "headline-xl": ["40px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .custom-shadow {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md text-body-md min-h-screen flex flex-col">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile py-4 bg-surface/80 backdrop-blur-md shadow-sm">
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-primary">close</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">공유하기</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-low transition-all">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+</button>
+</div>
+</header>
+<main class="mt-20 px-margin-mobile flex-grow max-w-lg mx-auto w-full pb-32">
+<!-- Preview Section -->
+<section class="mb-stack-lg">
+<div class="relative rounded-xl overflow-hidden custom-shadow group">
+<img class="w-full aspect-[4/3] object-cover group-hover:scale-105 transition-transform duration-700" data-alt="A luxurious, high-end modern living room featuring Nordic furniture, soft natural morning light streaming through large windows, and a sophisticated palette of warm wood and cool gray tones. The image captures a serene, professional interior design aesthetic with high-key lighting and clean lines, emphasizing a sense of space and tranquility." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAaoJH1lXlRgAt-TdZ55jSG81hDxL4MmTPg4UEewQuZXjE_HZktYzVsCD8sRIM5whTK22_Cb1Ad_X2QnBPhxaCJ8sMUdrwCypeUK4jvZsrznbWiuFx9JdSDmuuSwzv9DgcfX2nyL0yUj0NODlniP7ag9ThpsKkBNd_hYdD3Go-yraqXBRDMH-geFMqnUeJU6nhJObGR49qic7hqkSIKfpQ6luO2MGalY--3jmtDhblJA5St9ernXOEYClsjZv1hgcp0_WyW9LdV4z9q">
+<div class="absolute bottom-0 left-0 w-full p-4 glass-card flex items-center justify-between">
+<div>
+<p class="font-label-md text-label-md text-primary">추천 스타일</p>
+<h3 class="font-headline-md text-headline-md text-on-surface">모던 노르딕 거실</h3>
+</div>
+<div class="bg-secondary-container px-3 py-1 rounded-full">
+<p class="text-[10px] font-bold text-on-secondary-container">AI 분석 완료</p>
+</div>
+</div>
+</div>
+<p class="mt-4 text-on-surface-variant text-body-sm px-1">
+                앱이 없는 사용자도 웹페이지를 통해 추천 내용을 확인할 수 있습니다. (조회 전용)
+            </p>
+</section>
+<!-- Link Settings Card -->
+<div class="bg-surface-container-lowest rounded-xl p-6 custom-shadow mb-stack-md border border-outline-variant/30">
+<h4 class="font-label-md text-label-md mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-[20px]">settings</span>
+                링크 설정
+            </h4>
+<!-- Expiration Settings -->
+<div class="mb-6">
+<p class="font-label-sm text-label-sm text-on-surface-variant mb-3">만료 기간 설정</p>
+<div class="flex gap-2">
+<button class="flex-1 py-2 rounded-lg border border-primary bg-primary-container text-on-primary-container font-label-md transition-all active:scale-95" id="exp-7">7일</button>
+<button class="flex-1 py-2 rounded-lg border border-outline-variant text-on-surface-variant font-label-md hover:bg-surface-container-low transition-all active:scale-95" id="exp-30">30일</button>
+<button class="flex-1 py-2 rounded-lg border border-outline-variant text-on-surface-variant font-label-md hover:bg-surface-container-low transition-all active:scale-95" id="exp-none">제한 없음</button>
+</div>
+</div>
+<!-- Photos Toggle -->
+<div class="flex items-center justify-between py-4 border-t border-outline-variant/20">
+<div>
+<p class="font-body-md font-semibold text-on-surface">원본 사진 포함</p>
+<p class="text-xs text-error mt-1 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">warning</span>
+                        개인정보 보호를 위해 신중히 선택하세요.
+                    </p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox" value="">
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<!-- Copy Link Section -->
+<div class="bg-surface-container-lowest rounded-xl p-6 custom-shadow border border-outline-variant/30">
+<div class="flex items-center gap-3 bg-surface-container p-3 rounded-lg border border-outline-variant/50">
+<span class="material-symbols-outlined text-on-surface-variant">link</span>
+<span class="flex-grow text-sm text-on-surface truncate">homestyler.com/share/v2/recommendation_003_ax7</span>
+<button class="px-4 py-2 bg-primary text-white rounded-lg font-label-md hover:opacity-90 active:scale-95 transition-all">복사</button>
+</div>
+<div class="mt-8">
+<p class="text-center font-label-sm text-label-sm text-on-surface-variant mb-6 relative">
+<span class="bg-surface-container-lowest px-4 relative z-10">간편 공유</span>
+<span class="absolute top-1/2 left-0 w-full h-[1px] bg-outline-variant/30"></span>
+</p>
+<div class="grid grid-cols-4 gap-4">
+<button class="flex flex-col items-center gap-2 group">
+<div class="w-14 h-14 bg-[#FEE500] rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform shadow-sm">
+<span class="material-symbols-outlined text-[#3C1E1E]">chat_bubble</span>
+</div>
+<span class="text-[12px] font-medium text-on-surface-variant">카카오톡</span>
+</button>
+<button class="flex flex-col items-center gap-2 group">
+<div class="w-14 h-14 bg-surface-container-highest rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform shadow-sm">
+<span class="material-symbols-outlined text-primary">mail</span>
+</div>
+<span class="text-[12px] font-medium text-on-surface-variant">메시지</span>
+</button>
+<button class="flex flex-col items-center gap-2 group">
+<div class="w-14 h-14 bg-surface-container-highest rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform shadow-sm">
+<span class="material-symbols-outlined text-on-surface">share</span>
+</div>
+<span class="text-[12px] font-medium text-on-surface-variant">더보기</span>
+</button>
+<button class="flex flex-col items-center gap-2 group">
+<div class="w-14 h-14 bg-surface-container-highest rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform shadow-sm">
+<span class="material-symbols-outlined text-secondary">download</span>
+</div>
+<span class="text-[12px] font-medium text-on-surface-variant">저장</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface rounded-t-xl shadow-lg border-t border-outline-variant">
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80 transition-transform duration-200">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">홈</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80 transition-transform duration-200">
+<span class="material-symbols-outlined">chair</span>
+<span class="font-label-sm text-label-sm">내 공간</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80 transition-transform duration-200">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="font-label-sm text-label-sm">추천</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-3 py-1 scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+<span class="font-label-sm text-label-sm">보관함</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80 transition-transform duration-200">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-label-sm">마이</span>
+</div>
+</nav>
+<script>
+        // Micro-interactions for expiration buttons
+        const expButtons = [
+            document.getElementById('exp-7'),
+            document.getElementById('exp-30'),
+            document.getElementById('exp-none')
+        ];
+
+        expButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                expButtons.forEach(b => {
+                    b.classList.remove('bg-primary-container', 'text-on-primary-container', 'border-primary');
+                    b.classList.add('border-outline-variant', 'text-on-surface-variant');
+                });
+                btn.classList.add('bg-primary-container', 'text-on-primary-container', 'border-primary');
+                btn.classList.remove('border-outline-variant', 'text-on-surface-variant');
+            });
+        });
+
+        // Copy button toast simulation
+        const copyBtn = document.querySelector('main button.bg-primary');
+        copyBtn.addEventListener('click', () => {
+            copyBtn.textContent = '완료!';
+            setTimeout(() => {
+                copyBtn.textContent = '복사';
+            }, 2000);
+        });
+    </script>
+</body></html>

@@ -1,0 +1,355 @@
+<!DOCTYPE html><html class="light" lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>HomeStyler - 공간 상세 분석 및 수정</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Shared Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-bright": "#f8f9fa",
+                    "surface": "#f8f9fa",
+                    "on-error-container": "#93000a",
+                    "on-error": "#ffffff",
+                    "surface-tint": "#4d44e3",
+                    "error-container": "#ffdad6",
+                    "on-tertiary-fixed": "#2f1500",
+                    "primary": "#3525cd",
+                    "on-primary-fixed": "#0f0069",
+                    "on-primary": "#ffffff",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "inverse-surface": "#2e3132",
+                    "background": "#f8f9fa",
+                    "on-background": "#191c1d",
+                    "primary-fixed": "#e2dfff",
+                    "on-surface": "#191c1d",
+                    "secondary-fixed": "#85f8c4",
+                    "secondary": "#006c4a",
+                    "primary-container": "#4f46e5",
+                    "on-tertiary": "#ffffff",
+                    "surface-variant": "#e1e3e4",
+                    "secondary-container": "#82f5c1",
+                    "on-surface-variant": "#464555",
+                    "on-secondary": "#ffffff",
+                    "outline-variant": "#c7c4d8",
+                    "outline": "#777587",
+                    "on-secondary-container": "#00714e",
+                    "surface-container-highest": "#e1e3e4",
+                    "secondary-fixed-dim": "#68dba9",
+                    "tertiary": "#703a00",
+                    "inverse-on-surface": "#f0f1f2",
+                    "tertiary-container": "#934e00",
+                    "tertiary-fixed-dim": "#ffb77d",
+                    "surface-container-high": "#e7e8e9",
+                    "surface-container": "#edeeef",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "on-secondary-fixed-variant": "#005137",
+                    "surface-dim": "#d9dadb",
+                    "on-tertiary-fixed-variant": "#6e3900",
+                    "on-secondary-fixed": "#002114",
+                    "surface-container-low": "#f3f4f5",
+                    "tertiary-fixed": "#ffdcc3",
+                    "on-primary-container": "#dad7ff",
+                    "on-tertiary-container": "#ffd2b1",
+                    "error": "#ba1a1a",
+                    "surface-container-lowest": "#ffffff",
+                    "inverse-primary": "#c3c0ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "unit": "4px",
+                    "gutter": "24px",
+                    "stack-md": "16px",
+                    "margin-desktop": "48px",
+                    "stack-lg": "32px",
+                    "margin-mobile": "20px",
+                    "container-max-width": "1280px",
+                    "stack-sm": "8px"
+            },
+            "fontFamily": {
+                    "label-md": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-md": ["Inter"],
+                    "headline-xl": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-lg": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-xl": ["40px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #f8f9fa;
+            color: #191c1d;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+        @media (max-width: 768px) {
+            .bento-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 bg-surface/80 backdrop-blur-md shadow-sm">
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors">
+<span class="material-symbols-outlined text-primary">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-primary">HomeStyler</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 hover:bg-surface-container-low rounded-full transition-colors relative">
+<span class="material-symbols-outlined text-on-surface-variant">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-error rounded-full"></span>
+</button>
+</div>
+</header>
+<main class="pt-24 pb-32 px-margin-mobile md:px-margin-desktop max-w-container-max-width mx-auto">
+<!-- Dashboard Header -->
+<div class="mb-stack-lg animate-in fade-in slide-in-from-bottom-4 duration-700">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+<div>
+<span class="font-label-md text-label-md text-primary uppercase tracking-wider">Analysis Dashboard</span>
+<h2 class="font-headline-lg text-headline-lg md:font-headline-xl md:text-headline-xl mt-2">공간 분석 결과 상세</h2>
+<p class="text-on-surface-variant mt-2 max-w-2xl">AI가 분석한 현재 공간의 데이터입니다. 치수가 부정확하거나 가구 목록을 수정하고 싶으시면 아래 버튼을 이용해 주세요.</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="bg-secondary-container text-on-secondary-container px-4 py-1 rounded-full font-label-md text-label-md flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+                        분석 완료
+                    </span>
+</div>
+</div>
+</div>
+<!-- Main Content Bento Grid -->
+<div class="bento-grid">
+<!-- Space Image Preview (Col 1-8) -->
+<div class="col-span-12 lg:col-span-8 group relative overflow-hidden rounded-3xl bg-surface-container shadow-sm border border-outline-variant aspect-video lg:aspect-auto lg:h-[500px]">
+<div class="absolute inset-0 z-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105" data-alt="A brightly lit, modern living room with a large floor-to-ceiling window showcasing a serene urban view. The interior features a neutral-toned sectional sofa, a minimalist oak coffee table, and soft natural textures. Sophisticated studio lighting enhances the high-end architectural feel. The design system's clean, professional aesthetic is reflected in the perfect symmetry and airy atmosphere of the space." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDHNWuCYJP5CAJDlkfizTnp4hy80S7iFv2fY5UcZd2S2_Yvpvx3hJx1shUCadbmP_i7OHnNHxtJ3tnMh8ECiuJ2y8WF0Ij7Ez5InFjBwX5abiB-04pVFCHxzbfSAd83YNmiBU1949WAFMzDuMPLvTqDBCLzaMb2M6WWnsz2fo1WM0dYvH-wcZjAJZ3dsrejvXYaet7ZkPczfSx-qO3utXcYDsY3S5301E1hkkRCgZBgCAbAlq_LHVNauf0zV97esFN0z1Wd13fs4A1t')">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10"></div>
+<div class="absolute top-6 left-6 z-20">
+<div class="glass-panel px-4 py-2 rounded-xl flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">photo_camera</span>
+<span class="font-label-md text-label-md text-on-surface">등록된 공간 사진</span>
+</div>
+</div>
+<!-- AI Overlay Mapping Visualization -->
+<div class="absolute inset-0 z-20 pointer-events-none p-12 hidden md:block">
+<div class="relative w-full h-full">
+<!-- Simulated AR Markers -->
+<div class="absolute top-1/4 left-1/3 w-4 h-4 bg-primary rounded-full border-4 border-white shadow-lg animate-pulse"></div>
+<div class="absolute bottom-1/4 right-1/4 w-4 h-4 bg-primary rounded-full border-4 border-white shadow-lg animate-pulse" style="animation-delay: 1s;"></div>
+<svg class="absolute inset-0 w-full h-full overflow-visible">
+<line opacity="0.6" stroke="white" stroke-dasharray="8 4" stroke-width="2" x1="33%" x2="75%" y1="25%" y2="75%"></line>
+</svg>
+<div class="absolute top-[28%] left-[36%] glass-panel px-3 py-1 rounded-lg text-primary text-[12px] font-bold">W: 3,420mm</div>
+</div>
+</div>
+</div>
+<!-- Dimension Summary (Col 9-12) -->
+<div class="col-span-12 lg:col-span-4 flex flex-col gap-6">
+<div class="bg-white p-8 rounded-3xl shadow-sm border border-outline-variant flex-1 flex flex-col">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-headline-md text-headline-md">공간 치수 요약</h3>
+<span class="material-symbols-outlined text-on-surface-variant">straighten</span>
+</div>
+<div class="space-y-6 flex-1">
+<div class="flex items-center justify-between p-4 bg-surface-container-low rounded-2xl border border-outline-variant/30">
+<span class="text-on-surface-variant font-medium">전체 면적</span>
+<span class="font-bold text-headline-md">24.5 <span class="text-body-sm font-normal text-on-surface-variant">m²</span></span>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="p-4 bg-surface-container-low rounded-2xl border border-outline-variant/30">
+<p class="text-label-sm text-on-surface-variant mb-1">가로 너비</p>
+<p class="font-bold text-body-lg">4,200mm</p>
+</div>
+<div class="p-4 bg-surface-container-low rounded-2xl border border-outline-variant/30">
+<p class="text-label-sm text-on-surface-variant mb-1">세로 깊이</p>
+<p class="font-bold text-body-lg">5,840mm</p>
+</div>
+</div>
+<div class="p-4 bg-surface-container-low rounded-2xl border border-outline-variant/30">
+<p class="text-label-sm text-on-surface-variant mb-1">층고 높이</p>
+<p class="font-bold text-body-lg">2,450mm</p>
+</div>
+</div>
+<div class="mt-8 flex items-start gap-3 p-4 bg-primary/5 rounded-2xl border border-primary/10">
+<span class="material-symbols-outlined text-primary text-[20px]">info</span>
+<p class="text-label-sm text-on-surface-variant leading-relaxed">
+                            AI 분석 오차 범위는 약 ±50mm입니다. 정밀한 스타일링을 위해 실제 치수를 확인해 주세요.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Furniture List Section (Full Width) -->
+<div class="col-span-12">
+<div class="bg-white p-8 rounded-3xl shadow-sm border border-outline-variant">
+<div class="flex flex-col md:flex-row md:items-center justify-between mb-8 gap-4">
+<div>
+<h3 class="font-headline-md text-headline-md">유지 가구 목록</h3>
+<p class="text-on-surface-variant mt-1">현재 공간에 배치된 가구 중 스타일링 시 유지할 품목들입니다.</p>
+</div>
+<button class="flex items-center gap-2 text-primary font-label-md hover:underline decoration-2 underline-offset-4">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+                            새 가구 추가
+                        </button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Furniture Item 1 -->
+<div class="group border border-outline-variant rounded-2xl overflow-hidden hover:border-primary transition-all duration-300">
+<div class="h-40 bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A high-resolution professional product shot of a light gray modern fabric sectional sofa. The lighting is soft and directional, highlighting the weave of the fabric. It is positioned against a clean white background in a minimalist studio style, matching the professional and modern brand identity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtIN8gOk_HldUcnMHyO9kADVdpe7Sev1FHo0jvhJBRkh7spGDqT1J5c_ktwhR7sIW_dyxY7h5vwjih3eWdIclRoA4mCJsiMRuVOEtU3QvISAwzcidtuD15ufktaWc8IeslZGW873PCv5cq-BPZqmPy_dda27gVFkzpqAHEBlW_AF8XiDMkHpSvwd-vibgcNq4dLPEzm2q0FZzckZ_Sxz6Sf0HUu4OHMvL1qn6KBi73i78NLxiRFO13F8VSrkFrY_URxmcRSf6oJvwm">
+</div>
+<div class="p-4 flex justify-between items-start">
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">3인용 패브릭 소파</h4>
+<p class="text-label-sm text-on-surface-variant">2,400 x 950mm</p>
+</div>
+<button class="text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<!-- Furniture Item 2 -->
+<div class="group border border-outline-variant rounded-2xl overflow-hidden hover:border-primary transition-all duration-300">
+<div class="h-40 bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A stylish scandinavian design oak wood dining table with clean lines and tapered legs. Professional lighting creates soft shadows on the natural wood grain. The background is a minimalist light gray, emphasizing the modern and intuitive product design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpAkUa0qslK4PjM_TsLSrysV03-dDQ5vkmT7XbrDxYYPidVbBbHVx6CfjeGhNRyLC4YQqHPQjmoBX65NlFd5biO80h93zepGqjjYB1i4Q0plv1k3CeH3bPlGBatVxP_kTQ79Wzo2V2Zff5AvtqIXR3gHLUovpnP1o5fkMhMrzBFFZpvJtQB4tbcb7zqcdF1K7kQZQPzvtQDpgZPYA6TXPckG5DmLf5sf3Cef-W_n95YjFlqg3-uzmro5bYYvzFz4kgR1piX7kL-FGn">
+</div>
+<div class="p-4 flex justify-between items-start">
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">원목 다이닝 테이블</h4>
+<p class="text-label-sm text-on-surface-variant">1,600 x 800mm</p>
+</div>
+<button class="text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<!-- Furniture Item 3 -->
+<div class="group border border-outline-variant rounded-2xl overflow-hidden hover:border-primary transition-all duration-300">
+<div class="h-40 bg-surface-container overflow-hidden">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="A minimalist black metal floor lamp with a slender arch and a conical shade. The lighting is dramatic and moody, casting a warm glow in a dark room. The photography style is high-end architectural, highlighting the sleek industrial aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaGbSBkuik9CHaUeIcpd1rmuZA7KuSvk_w7aomI1jNr6ej0Yl-gct0G3Ooa-hO5yh4CzHpcbtOgEjpwv6peXw5qmFHo4cgOrHinI-aAvR3Ciay_plPPhaYOs-JtR1sNmut4j_4mqOJ6I7qLXejL0iIjvLDvWafeQLyK_FL2T6yvbU0IDz2Lu9r7ZGiAxgYSTxwM0MDuZaTg2OyrJYOCQJJ3Kl3ZtrfarWxjGdwXzzMdKGf7E1XtZaeWyQXLtZrE0Hf5TuPj_RXBI6e">
+</div>
+<div class="p-4 flex justify-between items-start">
+<div>
+<h4 class="font-label-md text-label-md text-on-surface">블랙 스탠드 조명</h4>
+<p class="text-label-sm text-on-surface-variant">Φ 450 x 1,650mm</p>
+</div>
+<button class="text-on-surface-variant hover:text-error transition-colors">
+<span class="material-symbols-outlined">delete</span>
+</button>
+</div>
+</div>
+<!-- Furniture Item 4 - Empty/Add Placeholder -->
+<div class="border border-dashed border-outline rounded-2xl flex flex-col items-center justify-center h-full min-h-[224px] p-6 text-on-surface-variant hover:bg-surface-container-low cursor-pointer transition-colors group">
+<div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center mb-3 group-hover:bg-primary/10 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">add</span>
+</div>
+<span class="font-label-md text-label-md">가구 추가하기</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Buttons Section -->
+<div class="mt-16 flex flex-col sm:flex-row items-center justify-center gap-6 pb-12">
+<button class="w-full sm:w-auto min-w-[200px] h-[56px] px-8 rounded-full border-2 border-primary text-primary font-label-md flex items-center justify-center gap-2 hover:bg-primary/5 transition-all active:scale-95">
+<span class="material-symbols-outlined">edit_square</span>
+                치수 수정하기
+            </button>
+<button class="w-full sm:w-auto min-w-[200px] h-[56px] px-10 rounded-full bg-primary text-on-primary font-label-md flex items-center justify-center gap-2 shadow-lg shadow-primary/20 hover:shadow-primary/30 hover:bg-primary-container transition-all active:scale-95 group">
+<span class="material-symbols-outlined group-hover:rotate-180 transition-transform duration-500">autorenew</span>
+                다시 분석하기
+            </button>
+</div>
+</main>
+<!-- BottomNavBar (Mobile only) -->
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface border-t border-outline-variant shadow-lg rounded-t-xl">
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-[10px] mt-1">홈</span>
+</button>
+<button class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl px-4 py-2 active:scale-95 transition-transform">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">chair</span>
+<span class="font-label-sm text-[10px] mt-1">내 공간</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80">
+<span class="material-symbols-outlined">auto_awesome</span>
+<span class="font-label-sm text-[10px] mt-1">추천</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-label-sm text-[10px] mt-1">보관함</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant px-3 py-1 hover:opacity-80">
+<span class="material-symbols-outlined">person</span>
+<span class="font-label-sm text-[10px] mt-1">마이</span>
+</button>
+</nav>
+<script>
+        // Simple scroll effect for Header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('shadow-md');
+                header.classList.remove('shadow-sm');
+            } else {
+                header.classList.remove('shadow-md');
+                header.classList.add('shadow-sm');
+            }
+        });
+
+        // Add hover effect to furniture cards
+        const furnitureCards = document.querySelectorAll('.group.border-outline-variant');
+        furnitureCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.classList.add('shadow-md', '-translate-y-1');
+            });
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('shadow-md', '-translate-y-1');
+            });
+        });
+    </script>
+</body></html>

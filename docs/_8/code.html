@@ -1,0 +1,197 @@
+<!DOCTYPE html><html class="light" lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>HomeStyler - My Page</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        .safe-bottom {
+            padding-bottom: env(safe-area-inset-bottom);
+        }
+        body {
+            -webkit-tap-highlight-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-surface text-on-surface font-body-md min-h-screen pb-24">
+<!-- TopAppBar Mapping -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile py-4 bg-surface/80 dark:bg-surface-container-high/80 backdrop-blur-md shadow-sm dark:shadow-none">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="menu">menu</span>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-inverse-primary">HomeStyler</h1>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-primary" data-icon="notifications">notifications</span>
+</div>
+</header>
+<main class="pt-20 px-margin-mobile max-w-container-max-width mx-auto">
+<!-- Profile Section (Header) -->
+<section class="mt-stack-lg mb-stack-lg">
+<div class="flex items-center justify-between p-stack-md rounded-xl bg-surface-container-lowest shadow-sm border border-outline-variant/30">
+<div class="flex items-center gap-4">
+<div class="relative">
+<div class="w-16 h-16 rounded-full bg-primary-fixed overflow-hidden border-2 border-primary/10">
+<img class="w-full h-full object-cover" data-alt="A professional headshot of a friendly interior design enthusiast in a bright, sunlit modern office. The lighting is soft and natural, emphasizing a clean and professional corporate aesthetic. The background features blurred architectural elements and lush indoor plants, creating a sense of calm and creative inspiration. The overall color palette is composed of warm whites, soft grays, and deep indigo accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDRuURPIcMfYhhHJYFDhpLSw1GWCN1UvAYDNcskY20Q-Dy7aXpk_lB6MqkKGfvUav2Z7DAP_vpQRG-nf6t47DYkukChQAiJyvDjbDRvuOdjNAfPm_upqSsU5oGMOcJR0IyWAN6cFv1NuX7J6SjrhqAL2ryrRmAmbhfVXzpF_SRRCNGRSw3zsidRBe2M9EVkMxyz__3DEyeqEAqCJUA-z_ffjdC3yYDYYaJF9g8FavNT32ArBDOYKnTsW6rS8D9PQW1JyJ5dyQxT_IKy">
+</div>
+<div class="absolute -bottom-1 -right-1 bg-secondary w-5 h-5 rounded-full flex items-center justify-center border-2 border-surface">
+<span class="material-symbols-outlined text-[12px] text-on-secondary" data-icon="verified" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h2 class="font-headline-md text-headline-md text-on-surface">홈스타일러님</h2>
+<span class="px-2 py-0.5 rounded-full bg-tertiary-fixed text-on-tertiary-fixed font-label-sm text-label-sm">PREMIUM</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">프리미엄 멤버십 이용 중</p>
+</div>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- Activity Summary (Bento Style) -->
+<section class="grid grid-cols-2 gap-gutter mb-stack-lg">
+<div class="p-stack-md bg-primary-container/10 rounded-2xl border border-primary/5 flex flex-col justify-between aspect-square">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined" data-icon="chair">chair</span>
+</div>
+<div>
+<span class="font-headline-xl text-headline-xl text-primary block">12</span>
+<span class="font-label-md text-label-md text-on-surface-variant">내 공간 수</span>
+</div>
+</div>
+<div class="p-stack-md bg-secondary-container/10 rounded-2xl border border-secondary/5 flex flex-col justify-between aspect-square">
+<div class="w-10 h-10 rounded-lg bg-secondary/10 flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+</div>
+<div>
+<span class="font-headline-xl text-headline-xl text-secondary block">48</span>
+<span class="font-label-md text-label-md text-on-surface-variant">저장된 추천</span>
+</div>
+</div>
+</section>
+<!-- AI Assistant Promo Card (Glassmorphism) -->
+<section class="mb-stack-lg relative overflow-hidden rounded-2xl p-stack-md glass-card">
+
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div>
+<h3 class="font-headline-md text-[18px] text-on-surface">AI 인테리어 비서</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">새로운 스타일링 제안이 3건 도착했습니다.</p>
+</div>
+</div>
+</section>
+<!-- Menu List -->
+<section class="space-y-unit">
+<h4 class="font-label-md text-label-md text-on-surface-variant px-2 mb-stack-sm">설정 및 관리</h4>
+<!-- Menu Item: My Info -->
+<div class="group flex items-center justify-between p-4 bg-surface-container-low rounded-xl transition-all hover:bg-surface-container-high cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="person_edit">person_edit</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface">내 정보 수정</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Menu Item: Data/Privacy -->
+<div class="group flex items-center justify-between p-4 bg-surface-container-low rounded-xl transition-all hover:bg-surface-container-high cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="shield_person">shield_person</span>
+</div>
+<div>
+<span class="font-body-md text-body-md text-on-surface block">데이터·개인정보 관리</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">원본 사진 삭제 및 보안 설정</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Menu Item: Notifications -->
+<div class="group flex items-center justify-between p-4 bg-surface-container-low rounded-xl transition-all hover:bg-surface-container-high cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="notifications_active">notifications_active</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface">알림 설정</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm text-primary">켜짐</span>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]" data-icon="chevron_right">chevron_right</span>
+</div>
+</div>
+<h4 class="font-label-md text-label-md text-on-surface-variant px-2 mt-stack-lg mb-stack-sm">지원</h4>
+<!-- Menu Item: CS -->
+<div class="group flex items-center justify-between p-4 bg-surface-container-low rounded-xl transition-all hover:bg-surface-container-high cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="support_agent">support_agent</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface">고객센터</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]" data-icon="chevron_right">chevron_right</span>
+</div>
+<!-- Menu Item: Policy -->
+<div class="group flex items-center justify-between p-4 bg-surface-container-low rounded-xl transition-all hover:bg-surface-container-high cursor-pointer">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface flex items-center justify-center text-on-surface-variant group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+</div>
+<span class="font-body-md text-body-md text-on-surface">약관 및 정책</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]" data-icon="chevron_right">chevron_right</span>
+</div>
+<div class="py-stack-lg text-center">
+<button class="text-on-surface-variant font-label-md text-label-md underline underline-offset-4 decoration-outline-variant hover:text-error transition-colors">로그아웃</button>
+<p class="text-[11px] text-outline mt-4 uppercase tracking-widest">Version 2.4.0 (Build 501)</p>
+</div>
+</section>
+</main>
+<!-- BottomNavBar Mapping -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 py-2 pb-safe bg-surface dark:bg-surface-container shadow-lg border-t border-outline-variant dark:border-outline rounded-t-xl">
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 hover:opacity-80 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-sm-mobile text-label-sm-mobile mt-1">홈</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 hover:opacity-80 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="chair">chair</span>
+<span class="font-label-sm-mobile text-label-sm-mobile mt-1">내 공간</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 hover:opacity-80 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-label-sm-mobile text-label-sm-mobile mt-1">추천</span>
+</div>
+<div class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant px-3 py-1 hover:opacity-80 cursor-pointer">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-label-sm-mobile text-label-sm-mobile mt-1">보관함</span>
+</div>
+<!-- Active Tab: 마이 -->
+<div class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary text-on-primary-container dark:text-on-primary rounded-xl px-3 py-1 scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="font-label-sm-mobile text-label-sm-mobile mt-1">마이</span>
+</div>
+</nav>
+<script>
+        // Micro-interaction for menu items
+        document.querySelectorAll('.cursor-pointer').forEach(item => {
+            item.addEventListener('touchstart', () => {
+                item.style.transform = 'scale(0.98)';
+            });
+            item.addEventListener('touchend', () => {
+                item.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>

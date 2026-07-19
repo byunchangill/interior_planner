@@ -1,0 +1,257 @@
+<!DOCTYPE html><html class="light" lang="ko"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport">
+<title>HomeStyler - Photo Guide (SPACE-003)</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-surface": "#191c1d",
+                    "surface-container-high": "#e7e8e9",
+                    "inverse-primary": "#c3c0ff",
+                    "tertiary-container": "#934e00",
+                    "on-primary-fixed-variant": "#3323cc",
+                    "outline-variant": "#c7c4d8",
+                    "on-error": "#ffffff",
+                    "on-primary-container": "#dad7ff",
+                    "error": "#ba1a1a",
+                    "on-secondary-fixed": "#002114",
+                    "on-secondary": "#ffffff",
+                    "tertiary-fixed": "#ffdcc3",
+                    "on-tertiary-fixed-variant": "#6e3900",
+                    "inverse-on-surface": "#f0f1f2",
+                    "outline": "#777587",
+                    "background": "#f8f9fa",
+                    "error-container": "#ffdad6",
+                    "surface-container": "#edeeef",
+                    "on-error-container": "#93000a",
+                    "surface-container-low": "#f3f4f5",
+                    "surface-tint": "#4d44e3",
+                    "on-secondary-container": "#00714e",
+                    "on-tertiary": "#ffffff",
+                    "on-primary": "#ffffff",
+                    "secondary": "#006c4a",
+                    "on-primary-fixed": "#0f0069",
+                    "primary-container": "#4f46e5",
+                    "primary-fixed": "#e2dfff",
+                    "surface": "#f8f9fa",
+                    "surface-dim": "#d9dadb",
+                    "secondary-fixed": "#85f8c4",
+                    "on-tertiary-container": "#ffd2b1",
+                    "on-surface-variant": "#464555",
+                    "on-secondary-fixed-variant": "#005137",
+                    "surface-container-highest": "#e1e3e4",
+                    "primary-fixed-dim": "#c3c0ff",
+                    "secondary-container": "#82f5c1",
+                    "primary": "#3525cd",
+                    "secondary-fixed-dim": "#68dba9",
+                    "on-tertiary-fixed": "#2f1500",
+                    "tertiary": "#703a00",
+                    "surface-bright": "#f8f9fa",
+                    "surface-container-lowest": "#ffffff",
+                    "tertiary-fixed-dim": "#ffb77d",
+                    "on-background": "#191c1d",
+                    "surface-variant": "#e1e3e4",
+                    "inverse-surface": "#2e3132"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-sm": "8px",
+                    "stack-lg": "32px",
+                    "container-max-width": "1280px",
+                    "margin-desktop": "48px",
+                    "gutter": "24px",
+                    "margin-mobile": "20px",
+                    "unit": "4px",
+                    "stack-md": "16px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "headline-lg": ["Plus Jakarta Sans"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Plus Jakarta Sans"],
+                    "headline-lg-mobile": ["Plus Jakarta Sans"],
+                    "label-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "body-sm": ["Inter"],
+                    "headline-xl": ["Plus Jakarta Sans"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700"}],
+                    "label-md": ["14px", {"lineHeight": "16px", "letterSpacing": "0.01em", "fontWeight": "600"}],
+                    "label-sm": ["12px", {"lineHeight": "14px", "fontWeight": "500"}],
+                    "body-sm": ["14px", {"lineHeight": "20px", "fontWeight": "400"}],
+                    "headline-xl": ["40px", {"lineHeight": "52px", "letterSpacing": "-0.02em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .camera-mask {
+            mask: radial-gradient(circle at center, transparent 30%, black 100%);
+            -webkit-mask: radial-gradient(circle at center, transparent 30%, black 100%);
+        }
+        .perspective-guide {
+            perspective: 1000px;
+        }
+        @keyframes pulse-indigo {
+            0%, 100% { border-color: rgba(79, 70, 229, 0.4); box-shadow: 0 0 0 0 rgba(79, 70, 229, 0.2); }
+            50% { border-color: rgba(79, 70, 229, 1); box-shadow: 0 0 20px 2px rgba(79, 70, 229, 0.4); }
+        }
+        .animate-guide {
+            animation: pulse-indigo 2s infinite ease-in-out;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-black overflow-hidden font-body-md text-on-surface antialiased">
+<!-- Camera Preview Placeholder (Background) -->
+<div class="fixed inset-0 z-0 bg-neutral-900" data-alt="A high-quality real-world photo of a minimalist, empty modern living room with light oak flooring and clean white walls. The camera angle is slightly wide, positioned from a corner looking into the room. Soft natural daylight streams in from a large window on the side, creating realistic shadows and highlights. The aesthetic is professional, clean, and architecturally focused." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAPoAd4s-7ZGbMl7M2vddiM4ouJ1fM_XvqHdXIYv5FcKaHhHp0saUZZe1fKGObk1Ji93n4HGGsWYy-Xrt6-QC3JYD1xuDj2mGW4GNLeV_1AvtVV_3H9eh_Juh5hnfoZYx2NlzYrGQQSYmRkEhaijILY5v9HGfXmOAa13p7UgOwUac9jRZbclFe10origwp6Ti0HibAEyBaOCQl0Nr8-Y47DrY2Mor75pil3Rzv4fFLU5DTz4OFOqTclhjYBQSCwp2VASpl3Fj_VEkAq')">
+</div>
+<!-- UI Overlay Layer -->
+<div class="relative z-10 h-screen flex flex-col justify-between pt-safe pb-safe px-margin-mobile">
+<!-- Top Control Bar -->
+<header class="flex justify-between items-center py-stack-md mt-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full glass-panel text-white">
+<span class="material-symbols-outlined">close</span>
+</button>
+<div class="glass-panel px-4 py-2 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-primary-fixed-dim" style="font-variation-settings: 'FILL' 1;">light_mode</span>
+<span class="font-label-md text-label-md text-white">분석 최적 채광</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full glass-panel text-white">
+<span class="material-symbols-outlined">flash_off</span>
+</button>
+</header>
+<!-- Central Alignment Guide (Bento-like framing) -->
+<main class="flex-grow flex items-center justify-center pointer-events-none relative">
+<!-- Perspective Corner Guides -->
+<div class="w-full max-w-sm aspect-[4/3] relative">
+<!-- Top Left Corner -->
+<div class="absolute top-0 left-0 w-16 h-16 border-t-4 border-l-4 border-primary-container rounded-tl-xl animate-guide"></div>
+<!-- Top Right Corner -->
+<div class="absolute top-0 right-0 w-16 h-16 border-t-4 border-r-4 border-primary-container rounded-tr-xl animate-guide"></div>
+<!-- Bottom Left Corner -->
+<div class="absolute bottom-0 left-0 w-16 h-16 border-b-4 border-l-4 border-primary-container rounded-bl-xl animate-guide"></div>
+<!-- Bottom Right Corner -->
+<div class="absolute bottom-0 right-0 w-16 h-16 border-b-4 border-r-4 border-primary-container rounded-br-xl animate-guide"></div>
+<!-- Central Intersection Guide -->
+<div class="absolute inset-0 flex items-center justify-center opacity-40">
+<div class="w-[1px] h-32 bg-primary-container"></div>
+<div class="h-[1px] w-32 bg-primary-container absolute"></div>
+</div>
+<!-- Tip Overlays -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center gap-4 w-full px-8">
+<div class="glass-panel text-white p-4 rounded-xl text-center shadow-xl border-primary-container/30">
+<p class="font-label-md text-label-md text-primary-fixed">TIP</p>
+<p class="font-body-md text-body-md mt-1 leading-tight">코너(모서리)를 중앙 십자선에 맞춰주세요</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Controls & Guides -->
+<footer class="mb-8 flex flex-col gap-stack-lg">
+<!-- Information Cards (Horizontal Scroll/Bento Style) -->
+<div class="grid grid-cols-1 gap-stack-md">
+<!-- Dynamic Guide Message -->
+<div class="glass-panel p-stack-md rounded-2xl flex items-start gap-4 shadow-lg">
+<div class="bg-primary-container p-2 rounded-lg shrink-0">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">info</span>
+</div>
+<div>
+<h3 class="text-white font-label-md text-label-md mb-1">촬영 가이드</h3>
+<p class="text-white/90 font-body-sm text-body-sm">
+                            공간 전체가 보이도록 구석에서 1.5m 이상 거리를 두고 찍어주세요.
+                        </p>
+</div>
+</div>
+<div class="glass-panel p-stack-md rounded-2xl flex items-start gap-4 shadow-lg border-emerald-400/20">
+<div class="bg-secondary p-2 rounded-lg shrink-0">
+<span class="material-symbols-outlined text-white" style="font-variation-settings: 'FILL' 1;">wb_sunny</span>
+</div>
+<div>
+<h3 class="text-white font-label-md text-label-md mb-1">채광 확인</h3>
+<p class="text-white/90 font-body-sm text-body-sm">
+                            조명을 켜고 낮에 찍으면 분석 결과가 더 정확해요.
+                        </p>
+</div>
+</div>
+</div>
+<!-- Main Capture Action & Examples -->
+<div class="flex items-center justify-between gap-4">
+<!-- Good/Bad Examples -->
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<div class="w-14 h-14 rounded-lg overflow-hidden border-2 border-emerald-500 relative bg-surface-container-high" data-alt="Small thumbnail showing a well-composed interior photo with wide perspective and even natural lighting. A green checkmark icon is subtly overlaid in the corner. Professional architectural style." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCDxuy0FWHeI5SGcnF7rt4_wZ2DYXdheTulIH2ChYE4GxlpuGJYOhgGvvfyd1Y1DOmPYdJT2azOzIy_BgpO8Mcygg_Tb01Ta5Rj6r8F-WjV86k5qzJ6P2X1iI6uDAasnWBokP40hjiABFGzg9AdN9ih72cdi0hkJzO3JIf9ewDb7gQKq6hxN597Sn2LkrOpQbUwFLNOPJ7q2tx_S0_8FBQZMw4itDvr-1X6f0q-AwmNkEA8ZXnIJB1I7dQUKa2GzVIgtmmO_KbMIBY9')">
+<div class="absolute bottom-1 right-1 bg-emerald-500 rounded-full w-4 h-4 flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px] text-white font-bold">check</span>
+</div>
+</div>
+<span class="text-white font-label-sm text-label-sm">좋은 예</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-14 h-14 rounded-lg overflow-hidden border-2 border-error relative bg-surface-container-high" data-alt="Small thumbnail showing a poorly composed interior photo that is too close to a wall, blurry, and dimly lit. A red cross icon is subtly overlaid in the corner. Amateurish photography." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA65PVyd0VmQMT-OJBS03M2Uo5_KZ1xmsncUxcYSSg6kEFPLNTMdJzlYB2h49dlNkXGIS_dOH0spoXcVSC7IIUClwc5uFmtA9xj0SZsSLvOKjKeaCEvNMr6Z8sYnRHcRcTG2AIrRIc1uCmRNGK7xy42k3NTmdWqnjoftiKarS8GaGL6VHNKtKte8jCmH2TMC8CYlaIXcTr1WZHwgxO37uZzA2_zjU2Zn_aE2y1m_s0InB31XiGsnI4A_ak-HmSPYV1P1CidQgmXlznY')">
+<div class="absolute bottom-1 right-1 bg-error rounded-full w-4 h-4 flex items-center justify-center">
+<span class="material-symbols-outlined text-[10px] text-white font-bold">close</span>
+</div>
+</div>
+<span class="text-white font-label-sm text-label-sm">나쁜 예</span>
+</div>
+</div>
+<!-- Shutter Button -->
+<div class="flex-grow flex justify-center">
+<button class="relative group">
+<div class="w-20 h-20 rounded-full border-4 border-white flex items-center justify-center transition-transform group-active:scale-90">
+<div class="w-16 h-16 rounded-full bg-white flex items-center justify-center">
+<div class="w-14 h-14 rounded-full border-2 border-primary-container group-active:bg-primary-fixed"></div>
+</div>
+</div>
+</button>
+</div>
+<!-- Gallery/Switch Button -->
+<div class="w-14 h-14 flex flex-col items-center justify-center gap-1 glass-panel rounded-xl text-white">
+<span class="material-symbols-outlined">image</span>
+<span class="text-[10px] font-label-sm">앨범</span>
+</div>
+</div>
+</footer>
+</div>
+<!-- Background Atmospheric Effect -->
+<div class="fixed inset-0 z-[1] pointer-events-none opacity-20 bg-gradient-to-t from-black via-transparent to-black"></div>
+<script>
+        // Micro-interaction for the shutter button
+        const shutter = document.querySelector('button.group');
+        shutter.addEventListener('click', () => {
+            const flash = document.createElement('div');
+            flash.className = 'fixed inset-0 bg-white z-[100] transition-opacity duration-150';
+            document.body.appendChild(flash);
+            setTimeout(() => {
+                flash.classList.add('opacity-0');
+                setTimeout(() => flash.remove(), 150);
+            }, 50);
+        });
+    </script>
+</body></html>
