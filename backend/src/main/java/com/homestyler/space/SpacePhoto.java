@@ -62,6 +62,14 @@ public class SpacePhoto {
         return isFloorPlan;
     }
 
+    public Space getSpace() {
+        return space;
+    }
+
+    public Instant getCreatedAt() {
+        return createdAt;
+    }
+
     public void setSpace(Space space) {
         this.space = space;
     }

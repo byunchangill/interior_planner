@@ -13,7 +13,7 @@
 | M2 | SPACE (공간 등록·사진·치수·가구) | DONE | 빌드 통과 + QA High 0 | QA PASS (High 0, Low 2 비차단). EXIF GPS 제거 검증. AI 추정 Mock. 계약: `_workspace/contracts/m2.md` (Home 엔티티 생략·직접 multipart) |
 | M3 | RECO (조건 설정·비동기 분석·추천 결과) | DONE | 빌드 통과 + QA High 0 | QA PASS (High 0/Med 0). 비동기 202 non-blocking, fitScore 실제 룰+테스트, 생활방식 실반영. 계약: `_workspace/contracts/m3.md` |
 | M4 | SAVE (저장·비교·공유 링크·구매목록) | DONE | 빌드 통과 + QA High 0 | QA PASS (High/Med/Low 0). 공개뷰 비인증·410·민감정보제외 실검증. 계약: `_workspace/contracts/m4.md` |
-| M5 | MY/DATA (마이페이지·원본 삭제·탈퇴) | TODO | 빌드 통과 + QA High 0 | |
+| M5 | MY/DATA (마이페이지·원본 삭제·탈퇴) | DONE | 빌드 통과 + QA High 0 | QA PASS (11/11). 물리 삭제·탈퇴 연쇄·SHARE_002·AUTH_001 실검증. 에이전트 세션한도 조기종료분은 리더가 배선+QA 완결. 보고서: `_workspace/m5_report.md` |
 
 ## 미구현/Mock 항목 누적
 
@@ -34,3 +34,4 @@
 | 3 | M2 | 계약 작성(`m2.md`, Home 생략·직접 multipart 결정) → BE(Space CRUD+사진/치수/가구+EXIF제거+Mock AI) ∥ FE(7화면) 병렬 → QA(6개 경계면+E2E 실행 검증, 사용자 2명 소유권) | DONE — QA PASS(High 0). EXIF GPS 제거 실검증. Low 2건(미존재 파일/깨진 JSON 500) 비차단 기록 |
 | 4 | M3 | 계약 작성(`m3.md`, 비동기잡·fitScore 실룰·Mock AI 결정) → BE(비동기 분석+8섹션 추천+fitScore+테스트) ∥ FE(7화면+5초 폴링) 병렬 → QA(7개 경계면+폴링 실관찰+생활방식 2회 비교) | DONE — QA PASS(High 0/Med 0). 경계면 불일치 0. Low 1건(깨진 JSON 500, 반복) 태스크 분리 |
 | 5 | M4 | 계약 작성(`m4.md`, saved/selected 플래그·공개뷰 permitAll 결정) → BE(저장/비교/공유링크/공개뷰/구매목록+토큰보안) ∥ FE(5화면+공개 독립 라우트) 병렬 → QA(7경계면+공개뷰 비인증 실검증) | DONE — QA PASS(High/Med/Low 0). 공개뷰 비인증 200·회수후 410·민감정보 제외·토큰 은닉 실검증 |
+| 6 | M5 | 계약 작성(`m5.md`, 물리삭제·탈퇴 연쇄·비번게이트 결정) → BE(프로필/설정/원본조회/삭제/탈퇴) ∥ FE(5화면) 병렬. **두 에이전트 세션한도 조기종료** → 리더가 FE 라우트 배선+mock 타입버그 수정+런타임 QA 직접 완결 | DONE — QA PASS(11/11). 물리 삭제·탈퇴 연쇄·SHARE_002·AUTH_001 실검증 |

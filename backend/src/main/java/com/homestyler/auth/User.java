@@ -75,6 +75,22 @@ public class User {
         return nickname;
     }
 
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public boolean isTermsOfService() {
+        return termsOfService;
+    }
+
+    public boolean isPrivacyPolicy() {
+        return privacyPolicy;
+    }
+
+    public boolean isImageProcessing() {
+        return imageProcessing;
+    }
+
     public boolean isMarketing() {
         return marketing;
     }

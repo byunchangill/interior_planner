@@ -64,6 +64,22 @@ api.interceptors.response.use(
 )
 
 /**
+ * AxiosError 응답 본문에서 계약 에러코드(error.code)를 꺼낸다.
+ * 4xx면 axios가 reject → unwrap의 await가 AxiosError를 그대로 던지므로 code가 살아있다.
+ * (SHARE_002/AI_005/AUTH_001 등 코드별 분기가 필요한 페이지에서 사용)
+ */
+export function apiErrorCode(err: unknown): string | undefined {
+  if (axios.isAxiosError(err)) {
+    return (err.response?.data as { error?: { code?: string } } | undefined)?.error?.code
+  }
+  // mock(api/mock/*)이 코드로 reject하는 경우 지원
+  if (err && typeof err === 'object' && 'code' in err) {
+    return String((err as { code: unknown }).code)
+  }
+  return undefined
+}
+
+/**
  * ApiResponse<T> 래퍼에서 data만 꺼내는 헬퍼.
  * 페이지에는 도메인 타입(T)만 노출되도록 API 함수 안에서 사용한다.
  */

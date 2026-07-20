@@ -7,4 +7,6 @@ import java.util.List;
 public interface SpaceRepository extends JpaRepository<Space, Long> {
 
     List<Space> findByUserIdOrderByIdDesc(Long userId);
+
+    long countByUserId(Long userId);
 }

@@ -37,7 +37,11 @@ public enum ErrorCode {
     // --- M4: SAVE ---
     // VALID_004(서로 다른 공간 비교)는 차단이 아니라 200 + sameSpace:false 로 대체되므로 throw 하지 않아 enum 미추가.
     SHARE_001(HttpStatus.GONE, "만료되었거나 회수된 공유 링크입니다."),
-    LIMIT_002(HttpStatus.CONFLICT, "공유 링크는 추천안당 최대 5개까지 생성할 수 있습니다.");
+    LIMIT_002(HttpStatus.CONFLICT, "공유 링크는 추천안당 최대 5개까지 생성할 수 있습니다."),
+
+    // --- M5: MY/DATA ---
+    SHARE_002(HttpStatus.CONFLICT, "원본이 포함된 공유 링크가 있습니다. 링크 회수에 동의해야 삭제할 수 있습니다."),
+    AI_005(HttpStatus.CONFLICT, "진행 중인 분석이 있어 삭제할 수 없습니다. 완료 또는 취소 후 다시 시도하세요.");
 
     private final HttpStatus status;
     private final String message;

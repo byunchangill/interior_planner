@@ -35,8 +35,12 @@ import ComparePage from './pages/save/ComparePage.tsx'
 import SharePage from './pages/save/SharePage.tsx'
 import ShoppingListPage from './pages/save/ShoppingListPage.tsx'
 import PublicSharePage from './pages/save/PublicSharePage.tsx'
-// 기타 탭
-import MyPage from './pages/MyPage.tsx'
+// MY/DATA (MY-001~005) — M5
+import MyPage from './pages/my/MyPage.tsx'
+import AccountSettingsPage from './pages/my/AccountSettingsPage.tsx'
+import DataPrivacyPage from './pages/my/DataPrivacyPage.tsx'
+import WithdrawPage from './pages/my/WithdrawPage.tsx'
+import SupportPage from './pages/my/SupportPage.tsx'
 
 const router = createBrowserRouter([
   // 앱 진입점: 스플래시(세션 확인 후 홈/온보딩/로그인 분기)
@@ -69,6 +73,11 @@ const router = createBrowserRouter([
       { path: '/saved/compare', element: <ComparePage /> }, // SAVE-002
       { path: '/reco/:recommendationId/share', element: <SharePage /> }, // SAVE-003
       { path: '/reco/:recommendationId/shopping-list', element: <ShoppingListPage /> }, // 구매목록 내보내기
+      // MY 서브플로우 — 포커스 화면(하단 탭 없음)
+      { path: '/my/account', element: <AccountSettingsPage /> }, // MY-003
+      { path: '/my/data', element: <DataPrivacyPage /> }, // MY-002
+      { path: '/my/withdraw', element: <WithdrawPage /> }, // MY-004
+      { path: '/my/support', element: <SupportPage /> }, // MY-005
     ],
   },
 

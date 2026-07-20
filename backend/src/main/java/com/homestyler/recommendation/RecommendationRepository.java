@@ -13,4 +13,11 @@ public interface RecommendationRepository extends JpaRepository<Recommendation, 
     List<Recommendation> findBySavedTrueAndUserIdOrderBySavedAtDesc(Long userId);
 
     List<Recommendation> findBySpaceIdAndUserIdAndSelectedTrue(Long spaceId, Long userId);
+
+    // M5(MY/DATA)
+    long countBySavedTrueAndUserId(Long userId);
+
+    List<Recommendation> findByUserId(Long userId);
+
+    List<Recommendation> findBySpaceIdInAndUserId(java.util.Collection<Long> spaceIds, Long userId);
 }
