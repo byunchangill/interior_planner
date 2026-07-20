@@ -42,10 +42,13 @@ public class SecurityConfig {
 
     private final JwtProvider jwtProvider;
     private final JwtAuthenticationEntryPoint entryPoint;
+    private final List<String> allowedOrigins;
 
-    public SecurityConfig(JwtProvider jwtProvider, JwtAuthenticationEntryPoint entryPoint) {
+    public SecurityConfig(JwtProvider jwtProvider, JwtAuthenticationEntryPoint entryPoint,
+                          @org.springframework.beans.factory.annotation.Value("${app.cors.allowed-origins}") String allowedOrigins) {
         this.jwtProvider = jwtProvider;
         this.entryPoint = entryPoint;
+        this.allowedOrigins = List.of(allowedOrigins.split("\\s*,\\s*"));
     }
 
     @Bean
@@ -74,8 +77,8 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        // dev: localhost 임의 포트 허용(vite dev 서버 포트가 유동적). prod 프로파일에서 실도메인으로 교체 예정.
-        config.setAllowedOriginPatterns(List.of("http://localhost:*"));
+        // 허용 오리진은 app.cors.allowed-origins(프로퍼티)에서 주입. 로컬 기본 localhost:*, prod 는 실도메인.
+        config.setAllowedOriginPatterns(allowedOrigins);
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true);

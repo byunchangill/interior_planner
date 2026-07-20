@@ -57,9 +57,11 @@ public class KakaoOAuthClient implements SocialOAuthClient {
                     .retrieve()
                     .body(UserResponse.class);
 
-            String email = user.kakaoAccount() == null ? null : user.kakaoAccount().email();
-            String nickname = user.kakaoAccount() == null || user.kakaoAccount().profile() == null
-                    ? null : user.kakaoAccount().profile().nickname();
+            // 미검증 이메일은 계정 연동(email 매칭) 근거로 쓸 수 없으므로 null 처리 — AuthService 가 더미 이메일로 대체
+            // (구글 email_verified 와 동일 방어: 미검증 이메일로 타 계정 탈취 방지)
+            KakaoAccount acct = user.kakaoAccount();
+            String email = acct != null && Boolean.TRUE.equals(acct.emailVerified()) ? acct.email() : null;
+            String nickname = acct == null || acct.profile() == null ? null : acct.profile().nickname();
             return new SocialUserInfo(String.valueOf(user.id()), email, nickname);
         } catch (RestClientException e) {
             throw new ApiException(ErrorCode.AUTH_006, "카카오 로그인 처리 중 오류가 발생했습니다.");
@@ -75,7 +77,9 @@ public class KakaoOAuthClient implements SocialOAuthClient {
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
-    private record KakaoAccount(String email, Profile profile) {
+    private record KakaoAccount(String email,
+                                @JsonProperty("is_email_verified") Boolean emailVerified,
+                                Profile profile) {
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
