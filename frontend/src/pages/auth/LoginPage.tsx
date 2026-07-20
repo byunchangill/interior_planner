@@ -6,14 +6,13 @@ import { login } from '../../api/auth'
 import Toast from '../../components/Toast'
 
 interface Social {
-  id: 'kakao' | 'naver' | 'google'
+  id: 'kakao' | 'google'
   label: string
   className: string
 }
 
 const SOCIALS: Social[] = [
   { id: 'kakao', label: '카카오로 시작하기', className: 'bg-[#FEE500] text-[#191919]' },
-  { id: 'naver', label: '네이버로 시작하기', className: 'bg-[#03C75A] text-white' },
   { id: 'google', label: 'Google로 시작하기', className: 'bg-white border border-outline-variant text-on-surface' },
 ]
 
@@ -25,12 +24,6 @@ function SocialLogo({ id }: { id: Social['id'] }) {
       return (
         <svg viewBox="0 0 24 24" fill="currentColor" className={c} aria-hidden>
           <path d="M12 3C6.48 3 2 6.53 2 10.88c0 2.8 1.9 5.26 4.75 6.63-.16.56-.72 2.5-.75 2.66 0 0-.03.13.06.18a.24.24 0 0 0 .2 0c.24-.03 2.76-1.85 3.2-2.16.44.06.88.09 1.34.09 5.52 0 10-3.53 10-7.88S17.52 3 12 3z" />
-        </svg>
-      )
-    case 'naver':
-      return (
-        <svg viewBox="0 0 24 24" fill="currentColor" className={c} aria-hidden>
-          <path d="M14.34 12.6 9.4 5.5H5v13h4.66v-7.1l4.94 7.1H19v-13h-4.66v7.1z" />
         </svg>
       )
     case 'google':
