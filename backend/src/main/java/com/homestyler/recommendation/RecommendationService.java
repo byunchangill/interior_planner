@@ -46,6 +46,13 @@ public class RecommendationService {
         this.fitScore = fitScore;
     }
 
+    /** 공개 공유 뷰용 — 소유권 검증 없이 추천안 소유자 기준으로 상세를 재구성한다. */
+    public RecommendationDetail detailForOwner(Long recommendationId) {
+        Recommendation rec = recommendationRepository.findById(recommendationId)
+                .orElseThrow(() -> new ApiException(ErrorCode.RES_001));
+        return detail(recommendationId, rec.getUserId());
+    }
+
     public RecommendationDetail detail(Long recommendationId, Long userId) {
         Recommendation rec = ownedRecommendation(recommendationId, userId);
         AnalysisJob job = jobRepository.findById(rec.getJobId())
@@ -93,7 +100,7 @@ public class RecommendationService {
 
     // ---------- 헬퍼 ----------
 
-    private Recommendation ownedRecommendation(Long recommendationId, Long userId) {
+    public Recommendation ownedRecommendation(Long recommendationId, Long userId) {
         Recommendation rec = recommendationRepository.findById(recommendationId)
                 .orElseThrow(() -> new ApiException(ErrorCode.RES_001));
         if (!rec.getUserId().equals(userId)) {

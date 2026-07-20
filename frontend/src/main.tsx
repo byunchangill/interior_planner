@@ -29,8 +29,13 @@ import RecommendationDetailPage from './pages/reco/RecommendationDetailPage.tsx'
 import BeforeAfterPage from './pages/reco/BeforeAfterPage.tsx'
 import FurnitureDetailPage from './pages/reco/FurnitureDetailPage.tsx'
 import ExpertNoticePage from './pages/reco/ExpertNoticePage.tsx'
-// 기타 탭 (M1+ 예정)
+// SAVE (SAVE-001~003 + 공개뷰/구매목록) — M4
 import SavedPage from './pages/SavedPage.tsx'
+import ComparePage from './pages/save/ComparePage.tsx'
+import SharePage from './pages/save/SharePage.tsx'
+import ShoppingListPage from './pages/save/ShoppingListPage.tsx'
+import PublicSharePage from './pages/save/PublicSharePage.tsx'
+// 기타 탭
 import MyPage from './pages/MyPage.tsx'
 
 const router = createBrowserRouter([
@@ -40,6 +45,9 @@ const router = createBrowserRouter([
   { path: '/login', element: <LoginPage /> }, // COM-003
   { path: '/signup', element: <SignupPage /> }, // COM-004
   { path: '/permissions', element: <PermissionsPage /> }, // COM-005
+
+  // 공개 공유 뷰 — 비로그인 열람(RequireAuth 밖), 하단 탭 없는 독립 레이아웃
+  { path: '/share/:token', element: <PublicSharePage /> }, // SAVE-003 공개뷰
 
   // SPACE 서브플로우 — 포커스 화면(하단 탭 없음), 보호 라우트
   {
@@ -57,6 +65,10 @@ const router = createBrowserRouter([
       { path: '/reco/:recommendationId/compare', element: <BeforeAfterPage /> }, // RECO-006
       { path: '/reco/:recommendationId/items/:itemId', element: <FurnitureDetailPage /> }, // RECO-007
       { path: '/reco/:recommendationId/expert', element: <ExpertNoticePage /> }, // RECO-008
+      // SAVE 서브플로우 — 포커스 화면(하단 탭 없음)
+      { path: '/saved/compare', element: <ComparePage /> }, // SAVE-002
+      { path: '/reco/:recommendationId/share', element: <SharePage /> }, // SAVE-003
+      { path: '/reco/:recommendationId/shopping-list', element: <ShoppingListPage /> }, // 구매목록 내보내기
     ],
   },
 

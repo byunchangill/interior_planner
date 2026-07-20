@@ -33,6 +33,7 @@ public class SecurityConfig {
             "/api/v1/auth/refresh",
             "/api/v1/styles",
             "/api/v1/styles/**",
+            "/api/v1/share/**", // M4: 공개 공유 웹뷰 (비인증)
             "/files/**"
     };
 

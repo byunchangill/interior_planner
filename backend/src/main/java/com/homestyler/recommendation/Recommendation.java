@@ -45,6 +45,15 @@ public class Recommendation {
     @Column(nullable = false)
     private int styleIndex;
 
+    // M4(SAVE): 별도 엔티티 없이 플래그로 보관함/대표 지정 관리 (계약 결정 1)
+    @Column(nullable = false)
+    private boolean saved;
+
+    @Column(nullable = false)
+    private boolean selected;
+
+    private Instant savedAt;
+
     @CreatedDate
     @Column(updatable = false)
     private Instant createdAt;
@@ -82,5 +91,26 @@ public class Recommendation {
 
     public int getStyleIndex() {
         return styleIndex;
+    }
+
+    public boolean isSaved() {
+        return saved;
+    }
+
+    public boolean isSelected() {
+        return selected;
+    }
+
+    public Instant getSavedAt() {
+        return savedAt;
+    }
+
+    public void setSaved(boolean saved) {
+        this.saved = saved;
+        this.savedAt = saved ? Instant.now() : null;
+    }
+
+    public void setSelected(boolean selected) {
+        this.selected = selected;
     }
 }

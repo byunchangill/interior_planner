@@ -32,7 +32,12 @@ public enum ErrorCode {
     LIMIT_001(HttpStatus.CONFLICT, "이미 진행 중인 분석이 있습니다. 완료 후 다시 시도하세요."),
     AI_001(HttpStatus.INTERNAL_SERVER_ERROR, "분석에 실패했습니다. 잠시 후 다시 시도해 주세요."),
     AI_004(HttpStatus.INTERNAL_SERVER_ERROR, "시각화 생성에 실패했습니다."),
-    DATA_001(HttpStatus.OK, "원본 사진이 삭제되어 일부 이미지를 표시할 수 없습니다.");
+    DATA_001(HttpStatus.OK, "원본 사진이 삭제되어 일부 이미지를 표시할 수 없습니다."),
+
+    // --- M4: SAVE ---
+    // VALID_004(서로 다른 공간 비교)는 차단이 아니라 200 + sameSpace:false 로 대체되므로 throw 하지 않아 enum 미추가.
+    SHARE_001(HttpStatus.GONE, "만료되었거나 회수된 공유 링크입니다."),
+    LIMIT_002(HttpStatus.CONFLICT, "공유 링크는 추천안당 최대 5개까지 생성할 수 있습니다.");
 
     private final HttpStatus status;
     private final String message;

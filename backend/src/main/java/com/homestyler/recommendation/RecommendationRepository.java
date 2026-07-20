@@ -8,4 +8,9 @@ import java.util.List;
 public interface RecommendationRepository extends JpaRepository<Recommendation, Long> {
 
     List<Recommendation> findByJobIdOrderByStyleIndexAsc(Long jobId);
+
+    // M4(SAVE)
+    List<Recommendation> findBySavedTrueAndUserIdOrderBySavedAtDesc(Long userId);
+
+    List<Recommendation> findBySpaceIdAndUserIdAndSelectedTrue(Long spaceId, Long userId);
 }
