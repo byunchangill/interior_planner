@@ -1,8 +1,6 @@
 spring:
   application:
     name: homestyler-api
-  profiles:
-    default: dev
   config:
     import: optional:application-secrets.yml # 로컬 전용 OAuth 시크릿 (gitignore, 없으면 무시)
   # Jackson 3 (Spring Boot 4) 는 java.time 값을 기본적으로 ISO-8601 문자열로 직렬화한다.
@@ -11,21 +9,32 @@ spring:
       # 실제 20MB 제한은 LocalFileStorage 에서 VALID_002 로 검증. 여기선 컨트롤러 도달을 위해 여유를 둔다.
       max-file-size: 21MB
       max-request-size: 25MB
+  # Supabase(PostgreSQL) 단일 DB. 비밀번호는 환경변수 필수 (기본값 없음 — 커밋 금지).
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://db.runiohbhyhtsdnqqbzfk.supabase.co:5432/postgres}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
 
 server:
   port: 8080
 
-# 파일 스토리지 (dev: 로컬 파일시스템). prod 는 오브젝트 스토리지 어댑터로 교체.
+# 파일 스토리지 (v1: 로컬 파일시스템)
 storage:
   local:
     dir: uploads
 
-# JWT — dev 기본값은 git 에 노출된 값이므로 dev 전용. prod 는 application-prod.yml 이 JWT_SECRET 환경변수를 강제한다.
+# JWT — 기본값은 로컬 실행 편의용. 실제 배포 시 JWT_SECRET 환경변수로 반드시 교체.
 jwt:
   secret: ${JWT_SECRET:homestyler-dev-secret-key-please-change-in-prod-0123456789abcdef}
   access-ttl-seconds: 3600      # accessToken 1시간
   refresh-ttl-seconds: 2592000  # refreshToken 30일
-  # refreshToken httpOnly 쿠키의 Secure 플래그 (dev 는 http 라 false, prod 는 prod.yml 에서 true)
   cookie-secure: ${JWT_COOKIE_SECURE:false}
 
 # 소셜 로그인 — rest-api-key/client-secret 은 application-secrets.yml(로컬) 또는
