@@ -155,7 +155,7 @@ export default function SharePage() {
           <button
             onClick={onCreate}
             disabled={creating}
-            className="mt-2 flex h-12 w-full items-center justify-center gap-2 rounded-full bg-primary font-label-md text-label-md text-on-primary active:scale-95 disabled:opacity-60"
+            className="mt-2 flex h-12 w-full items-center justify-center gap-2 rounded-full bg-primary font-label-md text-label-md text-on-primary active:scale-95 disabled:bg-surface-container-high disabled:text-on-surface-variant disabled:shadow-none"
           >
             <span className="material-symbols-outlined text-[20px]">add_link</span>
             {creating ? '생성 중…' : '공유 링크 만들기'}

@@ -130,7 +130,7 @@ export default function AccountSettingsPage() {
             <button
               onClick={onSave}
               disabled={saving}
-              className="h-14 w-full rounded-xl bg-primary font-label-md text-label-md text-on-primary shadow-md transition-all active:scale-95 disabled:opacity-60"
+              className="h-14 w-full rounded-xl bg-primary font-label-md text-label-md text-on-primary shadow-md transition-all active:scale-95 disabled:bg-surface-container-high disabled:text-on-surface-variant disabled:shadow-none"
             >
               {saving ? '저장 중…' : '변경사항 저장'}
             </button>

@@ -85,7 +85,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={submitting}
-            className="h-14 w-full rounded-xl bg-primary font-label-md text-label-md text-on-primary shadow-lg transition-all active:scale-95 disabled:opacity-60"
+            className="h-14 w-full rounded-xl bg-primary font-label-md text-label-md text-on-primary shadow-lg transition-all active:scale-95 disabled:bg-surface-container-high disabled:text-on-surface-variant disabled:shadow-none"
           >
             {submitting ? '로그인 중...' : '이메일로 로그인'}
           </button>

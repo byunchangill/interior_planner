@@ -221,7 +221,7 @@ export default function DataPrivacyPage() {
             <button
               onClick={() => openConfirm({ deleteAll: false, imageIds: [...selected] })}
               disabled={selected.size === 0}
-              className="flex h-12 flex-1 items-center justify-center gap-1 rounded-full border border-error font-label-md text-label-md text-error transition-all active:scale-95 disabled:border-outline-variant disabled:text-on-surface-variant disabled:opacity-60"
+              className="flex h-12 flex-1 items-center justify-center gap-1 rounded-full border border-error font-label-md text-label-md text-error transition-all active:scale-95 disabled:border-outline-variant disabled:text-on-surface-variant"
             >
               <span className="material-symbols-outlined text-[20px]">delete</span>
               선택 삭제{selected.size > 0 ? ` (${selected.size})` : ''}
@@ -284,7 +284,7 @@ export default function DataPrivacyPage() {
                   <button
                     onClick={() => runDelete(false)}
                     disabled={deleting}
-                    className="h-12 flex-1 rounded-xl bg-error font-label-md text-label-md text-on-error transition-all active:scale-95 disabled:opacity-60"
+                    className="h-12 flex-1 rounded-xl bg-error font-label-md text-label-md text-on-error transition-all active:scale-95 disabled:bg-surface-container-high disabled:text-on-surface-variant disabled:shadow-none"
                   >
                     {deleting ? '삭제 중…' : '삭제하기'}
                   </button>
@@ -313,7 +313,7 @@ export default function DataPrivacyPage() {
                   <button
                     onClick={() => runDelete(true)}
                     disabled={deleting}
-                    className="h-12 flex-1 rounded-xl bg-error font-label-md text-label-md text-on-error transition-all active:scale-95 disabled:opacity-60"
+                    className="h-12 flex-1 rounded-xl bg-error font-label-md text-label-md text-on-error transition-all active:scale-95 disabled:bg-surface-container-high disabled:text-on-surface-variant disabled:shadow-none"
                   >
                     {deleting ? '처리 중…' : '회수하고 삭제'}
                   </button>

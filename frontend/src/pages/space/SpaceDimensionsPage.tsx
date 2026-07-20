@@ -348,7 +348,7 @@ export default function SpaceDimensionsPage() {
         <button
           onClick={onSave}
           disabled={saving}
-          className="flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-primary font-label-md text-label-md text-on-primary shadow-lg shadow-primary/20 transition-all active:scale-95 disabled:opacity-60"
+          className="flex h-14 w-full items-center justify-center gap-2 rounded-xl bg-primary font-label-md text-label-md text-on-primary shadow-lg shadow-primary/20 transition-all active:scale-95 disabled:bg-surface-container-high disabled:text-on-surface-variant disabled:shadow-none"
         >
           <span className="material-symbols-outlined">save</span>
           {saving ? '저장 중…' : '저장하기'}
