@@ -8,6 +8,7 @@ import RequireAuth from './components/RequireAuth.tsx'
 import SplashPage from './pages/auth/SplashPage.tsx'
 import OnboardingPage from './pages/auth/OnboardingPage.tsx'
 import LoginPage from './pages/auth/LoginPage.tsx'
+import OAuthCallbackPage from './pages/auth/OAuthCallbackPage.tsx'
 import SignupPage from './pages/auth/SignupPage.tsx'
 import PermissionsPage from './pages/auth/PermissionsPage.tsx'
 // HOME (HOME-001~003)
@@ -49,6 +50,7 @@ const router = createBrowserRouter([
   { path: '/login', element: <LoginPage /> }, // COM-003
   { path: '/signup', element: <SignupPage /> }, // COM-004
   { path: '/permissions', element: <PermissionsPage /> }, // COM-005
+  { path: '/oauth/callback/:provider', element: <OAuthCallbackPage /> }, // 카카오/구글 콜백
 
   // 공개 공유 뷰 — 비로그인 열람(RequireAuth 밖), 하단 탭 없는 독립 레이아웃
   { path: '/share/:token', element: <PublicSharePage /> }, // SAVE-003 공개뷰

@@ -1,8 +1,9 @@
 // COM-003 로그인 — docs/_21
-// 이메일 로그인 폼 + 소셜 로그인 버튼(클릭 시 "준비 중" 토스트, API 없음).
+// 이메일 로그인 폼 + 소셜 로그인 버튼(카카오/구글 실연동 — 클릭 시 인가 URL로 리다이렉트).
 import { useState, type FormEvent } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { login } from '../../api/auth'
+import { kakaoAuthorizeUrl, googleAuthorizeUrl } from '../../api/oauth'
 import Toast from '../../components/Toast'
 
 interface Social {
@@ -113,13 +114,15 @@ export default function LoginPage() {
           <div className="h-px flex-1 bg-outline-variant" />
         </div>
 
-        {/* 소셜 로그인 (준비 중) */}
+        {/* 소셜 로그인 */}
         <div className="space-y-3">
           {SOCIALS.map((s) => (
             <button
               key={s.id}
               type="button"
-              onClick={() => setToast('소셜 로그인은 준비 중입니다.')}
+              onClick={() => {
+                window.location.href = s.id === 'kakao' ? kakaoAuthorizeUrl() : googleAuthorizeUrl()
+              }}
               className={`flex h-[56px] w-full items-center rounded-xl px-6 font-label-md transition-all active:scale-[0.98] ${s.className}`}
             >
               <span className="mr-auto flex w-6 justify-center">

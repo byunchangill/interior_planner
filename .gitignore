@@ -15,3 +15,6 @@ Thumbs.db
 
 # Local settings
 .claude/settings.local.json
+
+# OAuth 시크릿 (카카오/구글 등 실제 발급 키 — 커밋 금지)
+backend/src/main/resources/application-secrets.yml

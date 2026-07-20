@@ -6,6 +6,7 @@ import com.homestyler.auth.AuthDtos.ConsentUpdateRequest;
 import com.homestyler.auth.AuthDtos.IssuedTokens;
 import com.homestyler.auth.AuthDtos.LoginRequest;
 import com.homestyler.auth.AuthDtos.SignupRequest;
+import com.homestyler.auth.AuthDtos.SocialLoginRequest;
 import com.homestyler.auth.AuthDtos.TokenResponse;
 import com.homestyler.auth.AuthDtos.UserInfo;
 import com.homestyler.common.ApiResponse;
@@ -58,6 +59,22 @@ public class AuthController {
     public ApiResponse<AuthResponse> login(@Valid @RequestBody LoginRequest req,
                                            HttpServletResponse res) {
         IssuedTokens t = authService.login(req);
+        setRefreshCookie(res, t.refreshToken(), refreshTtlSeconds);
+        return ApiResponse.ok(new AuthResponse(t.accessToken(), t.user()));
+    }
+
+    @PostMapping("/kakao")
+    public ApiResponse<AuthResponse> kakaoLogin(@Valid @RequestBody SocialLoginRequest req,
+                                                HttpServletResponse res) {
+        IssuedTokens t = authService.socialLogin(AuthProvider.KAKAO, req.code());
+        setRefreshCookie(res, t.refreshToken(), refreshTtlSeconds);
+        return ApiResponse.ok(new AuthResponse(t.accessToken(), t.user()));
+    }
+
+    @PostMapping("/google")
+    public ApiResponse<AuthResponse> googleLogin(@Valid @RequestBody SocialLoginRequest req,
+                                                 HttpServletResponse res) {
+        IssuedTokens t = authService.socialLogin(AuthProvider.GOOGLE, req.code());
         setRefreshCookie(res, t.refreshToken(), refreshTtlSeconds);
         return ApiResponse.ok(new AuthResponse(t.accessToken(), t.user()));
     }

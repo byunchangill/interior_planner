@@ -3,6 +3,8 @@ spring:
     name: homestyler-api
   profiles:
     default: dev
+  config:
+    import: optional:application-secrets.yml # 로컬 전용 OAuth 시크릿 (gitignore, 없으면 무시)
   # Jackson 3 (Spring Boot 4) 는 java.time 값을 기본적으로 ISO-8601 문자열로 직렬화한다.
   servlet:
     multipart:
@@ -25,3 +27,11 @@ jwt:
   refresh-ttl-seconds: 2592000  # refreshToken 30일
   # refreshToken httpOnly 쿠키의 Secure 플래그 (dev 는 http 라 false, prod 는 prod.yml 에서 true)
   cookie-secure: ${JWT_COOKIE_SECURE:false}
+
+# 소셜 로그인 — rest-api-key/client-secret 은 application-secrets.yml(로컬) 또는
+# OAUTH_KAKAO_REST_API_KEY 등 환경변수(prod)로 주입. redirect-uri 는 공개 값이라 기본값 포함.
+oauth:
+  kakao:
+    redirect-uri: ${KAKAO_REDIRECT_URI:http://localhost:5173/oauth/callback/kakao}
+  google:
+    redirect-uri: ${GOOGLE_REDIRECT_URI:http://localhost:5173/oauth/callback/google}

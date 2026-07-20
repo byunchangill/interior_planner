@@ -52,6 +52,11 @@ public final class AuthDtos {
     public record ConsentUpdateRequest(boolean marketing) {
     }
 
+    public record SocialLoginRequest(
+            @NotBlank(message = "code는 필수입니다.") String code
+    ) {
+    }
+
     // --- 응답 ---
 
     public record UserInfo(Long userId, String email, String nickname) {

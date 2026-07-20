@@ -22,6 +22,16 @@ export function getMe(): Promise<User> {
   return unwrap(api.get<ApiResponse<User>>('/auth/me'))
 }
 
+// POST /auth/kakao, /auth/google — 인가 코드 교환 (OAuthCallbackPage 에서 호출)
+export async function socialLogin(
+  provider: 'kakao' | 'google',
+  code: string,
+): Promise<AuthResult> {
+  const result = await unwrap(api.post<ApiResponse<AuthResult>>(`/auth/${provider}`, { code }))
+  saveAccessToken(result.accessToken)
+  return result
+}
+
 export async function logout() {
   // 서버 refreshToken 폐기 + httpOnly 쿠키 삭제. 호출이 끝나기 전에 clearTokens 하면
   // 인터셉터가 Authorization 헤더를 못 붙여 401이 나므로 반드시 완료를 기다린다.
