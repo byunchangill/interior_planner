@@ -17,7 +17,7 @@ import java.util.List;
 
 /**
  * 보안 설정 (M1: 실제 JWT 인증 도입).
- * - CSRF off, CORS: FE dev origin(http://localhost:5173)
+ * - CSRF off, CORS: FE dev origin(http://localhost:*, prod에서 실도메인으로 교체)
  * - STATELESS 세션, JwtAuthenticationFilter 로 Bearer 토큰 검증
  * - permitAll: /api/v1/health, /api/v1/auth/**, /api/v1/styles/**, /files/** (+ dev H2 콘솔)
  * - 나머지(/home/summary, /auth/me, /auth/consents 등)는 인증 필요
@@ -71,7 +71,8 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of("http://localhost:5173"));
+        // dev: localhost 임의 포트 허용(vite dev 서버 포트가 유동적). prod 프로파일에서 실도메인으로 교체 예정.
+        config.setAllowedOriginPatterns(List.of("http://localhost:*"));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true);
