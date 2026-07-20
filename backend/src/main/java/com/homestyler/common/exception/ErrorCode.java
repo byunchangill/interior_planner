@@ -20,7 +20,13 @@ public enum ErrorCode {
     AUTH_002(HttpStatus.UNAUTHORIZED, "토큰이 만료되었습니다."),
     AUTH_004(HttpStatus.BAD_REQUEST, "필수 약관에 동의해야 합니다."),
     VALID_001(HttpStatus.BAD_REQUEST, "입력값 형식이 올바르지 않습니다."),
-    RES_001(HttpStatus.NOT_FOUND, "요청한 리소스를 찾을 수 없습니다.");
+    RES_001(HttpStatus.NOT_FOUND, "요청한 리소스를 찾을 수 없습니다."),
+
+    // --- M2: SPACE ---
+    AUTH_003(HttpStatus.FORBIDDEN, "접근 권한이 없습니다."),
+    VALID_002(HttpStatus.BAD_REQUEST, "파일 형식 또는 용량이 올바르지 않습니다."),
+    VALID_003(HttpStatus.BAD_REQUEST, "입력값이 허용 범위를 벗어났습니다."),
+    IMG_001(HttpStatus.UNPROCESSABLE_CONTENT, "이미지 품질이 기준에 미달합니다.");
 
     private final HttpStatus status;
     private final String message;

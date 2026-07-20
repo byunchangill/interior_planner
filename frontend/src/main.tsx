@@ -14,8 +14,14 @@ import PermissionsPage from './pages/auth/PermissionsPage.tsx'
 import HomePage from './pages/home/HomePage.tsx'
 import StyleGalleryPage from './pages/home/StyleGalleryPage.tsx'
 import StyleDetailPage from './pages/home/StyleDetailPage.tsx'
+// SPACE (SPACE-001~007) — M2
+import SpaceListPage from './pages/space/SpaceListPage.tsx'
+import SpaceCreatePage from './pages/space/SpaceCreatePage.tsx'
+import SpacePhotoPage from './pages/space/SpacePhotoPage.tsx'
+import FloorPlanUploadPage from './pages/space/FloorPlanUploadPage.tsx'
+import SpaceDimensionsPage from './pages/space/SpaceDimensionsPage.tsx'
+import SpaceDetailPage from './pages/space/SpaceDetailPage.tsx'
 // 기타 탭 (M1+ 예정)
-import SpaceListPage from './pages/SpaceListPage.tsx'
 import RecoPage from './pages/RecoPage.tsx'
 import SavedPage from './pages/SavedPage.tsx'
 import MyPage from './pages/MyPage.tsx'
@@ -27,6 +33,18 @@ const router = createBrowserRouter([
   { path: '/login', element: <LoginPage /> }, // COM-003
   { path: '/signup', element: <SignupPage /> }, // COM-004
   { path: '/permissions', element: <PermissionsPage /> }, // COM-005
+
+  // SPACE 서브플로우 — 포커스 화면(하단 탭 없음), 보호 라우트
+  {
+    element: <RequireAuth />,
+    children: [
+      { path: '/spaces/new', element: <SpaceCreatePage /> }, // SPACE-002
+      { path: '/spaces/:id', element: <SpaceDetailPage /> }, // SPACE-007
+      { path: '/spaces/:id/photos', element: <SpacePhotoPage /> }, // SPACE-003
+      { path: '/spaces/:id/floorplan', element: <FloorPlanUploadPage /> }, // SPACE-004
+      { path: '/spaces/:id/edit', element: <SpaceDimensionsPage /> }, // SPACE-005 · SPACE-006
+    ],
+  },
 
   // 하단 탭 셸 (BottomNav 포함)
   {

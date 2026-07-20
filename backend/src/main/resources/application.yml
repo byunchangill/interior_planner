@@ -4,9 +4,19 @@ spring:
   profiles:
     default: dev
   # Jackson 3 (Spring Boot 4) 는 java.time 값을 기본적으로 ISO-8601 문자열로 직렬화한다.
+  servlet:
+    multipart:
+      # 실제 20MB 제한은 LocalFileStorage 에서 VALID_002 로 검증. 여기선 컨트롤러 도달을 위해 여유를 둔다.
+      max-file-size: 21MB
+      max-request-size: 25MB
 
 server:
   port: 8080
+
+# 파일 스토리지 (dev: 로컬 파일시스템). prod 는 오브젝트 스토리지 어댑터로 교체.
+storage:
+  local:
+    dir: uploads
 
 # JWT (dev용 하드코딩 — prod 는 환경변수로 전환 예정)
 jwt:

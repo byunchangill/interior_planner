@@ -7,6 +7,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 
 /**
  * 모든 예외를 표준 ApiResponse 실패 포맷으로 변환한다.
@@ -32,6 +33,13 @@ public class GlobalExceptionHandler {
         return ResponseEntity
                 .status(ErrorCode.COMMON_400.getStatus())
                 .body(ApiResponse.error(new ApiError(ErrorCode.COMMON_400.name(), message)));
+    }
+
+    @ExceptionHandler(MaxUploadSizeExceededException.class)
+    public ResponseEntity<ApiResponse<Void>> handleMaxUpload(MaxUploadSizeExceededException e) {
+        return ResponseEntity
+                .status(ErrorCode.VALID_002.getStatus())
+                .body(ApiResponse.error(new ApiError(ErrorCode.VALID_002.name(), "파일 용량이 20MB 를 초과합니다.")));
     }
 
     @ExceptionHandler(Exception.class)
