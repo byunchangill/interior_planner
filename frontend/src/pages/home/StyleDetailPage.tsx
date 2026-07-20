@@ -3,7 +3,7 @@
 // 계약이 title/description/keywords/gallery만 제공하므로 _7의 다단 섹션 대신 핵심만 구성.
 import { useNavigate, useParams } from 'react-router-dom'
 import { getStyleDetail } from '../../api/home'
-import { STYLE_GRADIENT } from '../../types/home'
+import { STYLE_GRADIENTS } from '../../types/home'
 import { useFetch } from '../../hooks/useFetch'
 
 export default function StyleDetailPage() {
@@ -51,7 +51,7 @@ export default function StyleDetailPage() {
             {/* 히어로 */}
             <section>
               <div className="relative mb-6 aspect-[16/9] overflow-hidden rounded-3xl bg-surface-container-high shadow-lg">
-                <div className={`h-full w-full ${STYLE_GRADIENT[res.data.styleType]}`} />
+                <div className="h-full w-full" style={{ background: STYLE_GRADIENTS[res.data.styleType] }} />
                 <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/60 to-transparent p-8">
                   <span className="mb-3 w-fit rounded-full bg-secondary px-3 py-1 font-label-sm text-label-sm text-on-secondary">
                     AI 추천 스타일
@@ -93,7 +93,7 @@ export default function StyleDetailPage() {
                       key={i}
                       className="overflow-hidden rounded-2xl border border-outline-variant bg-white"
                     >
-                      <div className={`aspect-[4/3] w-full ${STYLE_GRADIENT[res.data.styleType]}`} />
+                      <div className="aspect-[4/3] w-full" style={{ background: STYLE_GRADIENTS[res.data.styleType] }} />
                       <figcaption className="p-4 font-label-md text-label-md text-on-surface-variant">
                         {g.caption}
                       </figcaption>

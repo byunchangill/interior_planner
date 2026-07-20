@@ -43,14 +43,8 @@ export const HOUSING_TYPE_LABELS: Record<HousingType, string> = {
 }
 
 // 스타일 카드 배경 (원본 원격 이미지는 만료 위험 → 스타일별 그라디언트 플레이스홀더)
-export const STYLE_GRADIENTS: Record<StyleType, string> = {
-  MODERN: 'linear-gradient(135deg,#2e3132,#464555)',
-  MINIMAL: 'linear-gradient(135deg,#e1e3e4,#c7c4d8)',
-  NATURAL: 'linear-gradient(135deg,#85f8c4,#68dba9)',
-  NORDIC: 'linear-gradient(135deg,#e2dfff,#c3c0ff)',
-  HOTEL: 'linear-gradient(135deg,#703a00,#934e00)',
-  WOOD: 'linear-gradient(135deg,#ffdcc3,#ffb77d)',
-}
+// 스타일 그라디언트는 home.ts 단일 정본을 재사용(앱 전역 통일)
+export { STYLE_GRADIENTS } from './home'
 
 // 선호 색상 팔레트 (hex 그대로 요청에 전송)
 export const COLOR_PALETTE: { hex: string; label: string }[] = [

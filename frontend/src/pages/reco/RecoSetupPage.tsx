@@ -378,7 +378,7 @@ export default function RecoSetupPage() {
         <button
           onClick={onSubmit}
           disabled={!canSubmit || submitting}
-          className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-4 font-label-md text-label-md text-white shadow-lg shadow-primary/20 transition-all active:scale-[0.98] disabled:opacity-40"
+          className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-4 font-label-md text-label-md text-white shadow-lg shadow-primary/20 transition-all active:scale-[0.98] disabled:bg-surface-container-high disabled:text-on-surface-variant disabled:shadow-none"
         >
           <span>{submitting ? '분석 요청 중…' : '맞춤 인테리어 분석 시작'}</span>
           <span className="material-symbols-outlined">auto_awesome</span>

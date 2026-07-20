@@ -3,7 +3,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { getHomeSummary } from '../../api/home'
 import { useFetch } from '../../hooks/useFetch'
-import { STYLE_LABELS, STYLE_GRADIENT } from '../../types/home'
+import { STYLE_LABELS, STYLE_GRADIENTS } from '../../types/home'
 
 export default function HomePage() {
   const navigate = useNavigate()
@@ -126,7 +126,8 @@ export default function HomePage() {
                     className="group relative aspect-square overflow-hidden rounded-xl bg-surface-container-high"
                   >
                     <div
-                      className={`h-full w-full transition-transform duration-500 group-hover:scale-110 ${STYLE_GRADIENT[s.styleType]}`}
+                      className="h-full w-full transition-transform duration-500 group-hover:scale-110"
+                      style={{ background: STYLE_GRADIENTS[s.styleType] }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
                     <div className="absolute bottom-3 left-3">

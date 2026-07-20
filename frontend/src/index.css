@@ -8,7 +8,9 @@
 
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', 'Pretendard Variable', Pretendard, sans-serif;
+  /* 한글은 음절 중간에서 줄바꿈되지 않도록(word-break는 상속됨) */
+  word-break: keep-all;
   background-color: theme('colors.background');
   color: theme('colors.on-surface');
 }

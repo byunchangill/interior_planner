@@ -15,15 +15,16 @@ export const STYLE_LABELS: Record<StyleType, string> = {
 
 export const STYLE_TYPES = Object.keys(STYLE_LABELS) as StyleType[]
 
-// v1엔 실제 스타일 이미지가 없어 스타일별 브랜드 그라디언트를 placeholder로 사용한다.
-// (실 이미지 확보 시 배경 이미지로 교체) — 클래스는 JIT가 인식하도록 리터럴로 둔다.
-export const STYLE_GRADIENT: Record<StyleType, string> = {
-  MODERN: 'bg-gradient-to-br from-slate-500 to-slate-800',
-  MINIMAL: 'bg-gradient-to-br from-neutral-300 to-neutral-500',
-  NATURAL: 'bg-gradient-to-br from-emerald-300 to-teal-600',
-  NORDIC: 'bg-gradient-to-br from-sky-300 to-indigo-500',
-  HOTEL: 'bg-gradient-to-br from-amber-600 to-neutral-800',
-  WOOD: 'bg-gradient-to-br from-amber-500 to-amber-800',
+// v1엔 실제 스타일 이미지가 없어 스타일별 브랜드 그라디언트를 placeholder로 사용한다(실 이미지 확보 시 교체).
+// 앱 전역 단일 팔레트 — 디자인 토큰(DESIGN.md) 색상 기반. inline `style={{ background }}`로 사용.
+// reco/save 도메인은 이 상수를 re-export해 재사용한다.
+export const STYLE_GRADIENTS: Record<StyleType, string> = {
+  MODERN: 'linear-gradient(135deg,#2e3132,#464555)',
+  MINIMAL: 'linear-gradient(135deg,#e1e3e4,#c7c4d8)',
+  NATURAL: 'linear-gradient(135deg,#85f8c4,#68dba9)',
+  NORDIC: 'linear-gradient(135deg,#e2dfff,#c3c0ff)',
+  HOTEL: 'linear-gradient(135deg,#703a00,#934e00)',
+  WOOD: 'linear-gradient(135deg,#ffdcc3,#ffb77d)',
 }
 
 export interface RecentSpace {
