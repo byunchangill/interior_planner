@@ -12,7 +12,7 @@
 **관련 요구사항**: FR-AUTH-001, FR-AUTH-003, FR-AUTH-005
 
 ### 개요
-> 카카오/네이버/Apple/Google 계정으로 로그인하고, 최초 가입 시 이미지 데이터 처리 동의를 받는다.
+> 카카오/네이버/Google 계정으로 로그인하고, 최초 가입 시 이미지 데이터 처리 동의를 받는다.
 
 ### 트리거
 - 사용자가 로그인 화면에서 소셜 로그인 버튼을 탭했을 때
@@ -20,7 +20,7 @@
 ### 입력값
 | 파라미터 | 타입 | 필수 | 유효성 검사 |
 |----------|------|------|-------------|
-| provider | string | Y | kakao / naver / apple / google |
+| provider | string | Y | kakao / naver / google |
 | authCode | string | Y | 소셜 플랫폼 발급 인가 코드 |
 | deviceId | string | Y | 기기 고유 식별자 |
 

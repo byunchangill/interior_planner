@@ -6,7 +6,7 @@ import { login } from '../../api/auth'
 import Toast from '../../components/Toast'
 
 interface Social {
-  id: 'kakao' | 'naver' | 'apple' | 'google'
+  id: 'kakao' | 'naver' | 'google'
   label: string
   className: string
 }
@@ -14,7 +14,6 @@ interface Social {
 const SOCIALS: Social[] = [
   { id: 'kakao', label: '카카오로 시작하기', className: 'bg-[#FEE500] text-[#191919]' },
   { id: 'naver', label: '네이버로 시작하기', className: 'bg-[#03C75A] text-white' },
-  { id: 'apple', label: 'Apple로 시작하기', className: 'bg-black text-white' },
   { id: 'google', label: 'Google로 시작하기', className: 'bg-white border border-outline-variant text-on-surface' },
 ]
 
@@ -32,12 +31,6 @@ function SocialLogo({ id }: { id: Social['id'] }) {
       return (
         <svg viewBox="0 0 24 24" fill="currentColor" className={c} aria-hidden>
           <path d="M14.34 12.6 9.4 5.5H5v13h4.66v-7.1l4.94 7.1H19v-13h-4.66v7.1z" />
-        </svg>
-      )
-    case 'apple':
-      return (
-        <svg viewBox="0 0 24 24" fill="currentColor" className={c} aria-hidden>
-          <path d="M17.05 12.04c-.03-2.6 2.12-3.85 2.22-3.91-1.21-1.77-3.1-2.01-3.77-2.04-1.6-.16-3.13.94-3.94.94-.81 0-2.07-.92-3.4-.9-1.75.03-3.36 1.02-4.26 2.58-1.82 3.16-.47 7.83 1.3 10.4.86 1.25 1.89 2.66 3.24 2.61 1.3-.05 1.79-.84 3.36-.84 1.57 0 2.01.84 3.39.81 1.4-.02 2.29-1.28 3.15-2.54.99-1.46 1.4-2.87 1.42-2.94-.03-.01-2.73-1.05-2.76-4.16zM14.6 4.6c.71-.87 1.2-2.07 1.06-3.27-1.03.04-2.28.69-3.02 1.55-.66.76-1.24 1.99-1.09 3.16 1.15.09 2.33-.58 3.05-1.44z" />
         </svg>
       )
     case 'google':
