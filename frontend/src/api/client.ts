@@ -72,10 +72,6 @@ export function apiErrorCode(err: unknown): string | undefined {
   if (axios.isAxiosError(err)) {
     return (err.response?.data as { error?: { code?: string } } | undefined)?.error?.code
   }
-  // mock(api/mock/*)이 코드로 reject하는 경우 지원
-  if (err && typeof err === 'object' && 'code' in err) {
-    return String((err as { code: unknown }).code)
-  }
   return undefined
 }
 
