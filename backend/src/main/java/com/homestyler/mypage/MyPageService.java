@@ -88,7 +88,7 @@ public class MyPageService {
                 recommendationRepository.countBySavedTrueAndUserId(userId),
                 photoRepository.countByUser(userId));
         Consents consents = new Consents(user.isTermsOfService(), user.isPrivacyPolicy(),
-                user.isImageProcessing(), user.isMarketing());
+                user.isImageProcessing(), user.isAiTraining(), user.isMarketing());
         return new ProfileResponse(user.getId(), user.getEmail(), user.getNickname(), consents, stats);
     }
 

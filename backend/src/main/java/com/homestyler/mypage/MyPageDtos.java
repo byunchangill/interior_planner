@@ -18,7 +18,7 @@ public final class MyPageDtos {
     }
 
     public record Consents(boolean termsOfService, boolean privacyPolicy,
-                           boolean imageProcessing, boolean marketing) {
+                           boolean imageProcessing, boolean aiTraining, boolean marketing) {
     }
 
     public record Stats(long spaceCount, long savedRecommendationCount, long photoCount) {

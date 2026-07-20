@@ -33,10 +33,12 @@ public final class AuthDtos {
     ) {
     }
 
+    // 필수: termsOfService·privacyPolicy·imageProcessing / 선택: aiTraining·marketing
     public record Consents(
             boolean termsOfService,
             boolean privacyPolicy,
             boolean imageProcessing,
+            boolean aiTraining,
             boolean marketing
     ) {
     }

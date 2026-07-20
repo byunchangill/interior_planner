@@ -35,6 +35,7 @@ public class AuthService {
 
     public AuthResponse signup(SignupRequest req) {
         var c = req.consents();
+        // 필수 동의만 검증(약관·개인정보·공간사진처리). AI학습·마케팅은 선택이라 강제하지 않는다.
         if (!c.termsOfService() || !c.privacyPolicy() || !c.imageProcessing()) {
             throw new ApiException(ErrorCode.AUTH_004);
         }
@@ -45,7 +46,7 @@ public class AuthService {
                 req.email(),
                 passwordEncoder.encode(req.password()),
                 req.nickname(),
-                c.termsOfService(), c.privacyPolicy(), c.imageProcessing(), c.marketing()));
+                c.termsOfService(), c.privacyPolicy(), c.imageProcessing(), c.aiTraining(), c.marketing()));
         return issueAuth(user);
     }
 

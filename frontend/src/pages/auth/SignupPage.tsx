@@ -13,16 +13,39 @@ interface ConsentItem {
   hint?: string
 }
 
+// 개인정보보호법(제15·22·23조) 준수: 필수/선택 분리, 수집 항목·목적·보유기간·거부권 고지.
+// AI 학습 활용은 서비스 제공에 필수가 아니므로 '선택'으로 분리(끼워팔기 동의 금지).
 const CONSENT_ITEMS: ConsentItem[] = [
   {
-    key: 'imageProcessing',
-    label: '[필수] 이미지 데이터 처리 및 AI 학습 활용 동의',
+    key: 'termsOfService',
+    label: '[필수] 서비스 이용약관 동의',
     required: true,
-    hint: '업로드한 공간 사진을 분석해 맞춤 스타일을 제안하며, 생성 데이터는 익명화 후 AI 모델 고도화에 활용됩니다.',
+    hint: 'HomeStyler 서비스 이용 조건과 회원의 권리·의무에 동의합니다.',
   },
-  { key: 'termsOfService', label: '[필수] 서비스 이용약관 동의', required: true },
-  { key: 'privacyPolicy', label: '[필수] 개인정보 수집 및 이용 동의', required: true },
-  { key: 'marketing', label: '[선택] 마케팅 정보 수신 동의', required: false },
+  {
+    key: 'privacyPolicy',
+    label: '[필수] 개인정보 수집·이용 동의',
+    required: true,
+    hint: '수집 항목: 이메일, 비밀번호(암호화), 닉네임 · 이용 목적: 회원 식별·서비스 제공 · 보유 기간: 회원 탈퇴 시까지(관계 법령에 따른 보존 항목 제외). 동의를 거부할 수 있으나 이 경우 회원가입이 제한됩니다.',
+  },
+  {
+    key: 'imageProcessing',
+    label: '[필수] 공간 사진·도면 처리 동의',
+    required: true,
+    hint: '수집 항목: 업로드한 공간 사진·도면 · 이용 목적: AI 맞춤 인테리어 추천 제공 · 보유 기간: 사용자가 삭제하거나 탈퇴할 때까지(즉시 영구 삭제). 위치정보(EXIF GPS)는 업로드 시 자동 제거됩니다. 서비스 제공에 필요한 항목이므로 거부 시 공간 등록·추천 기능을 이용할 수 없습니다.',
+  },
+  {
+    key: 'aiTraining',
+    label: '[선택] AI 모델 학습 활용 동의',
+    required: false,
+    hint: '익명화 처리한 데이터를 AI 모델 품질 개선에 활용합니다. 동의하지 않아도 맞춤 추천 등 모든 서비스를 그대로 이용할 수 있으며, 마이페이지에서 언제든 변경할 수 있습니다.',
+  },
+  {
+    key: 'marketing',
+    label: '[선택] 마케팅 정보 수신 동의',
+    required: false,
+    hint: '이메일 등으로 이벤트·혜택 정보를 받습니다. 동의하지 않아도 서비스 이용에 제한이 없으며, 언제든 수신을 해지할 수 있습니다.',
+  },
 ]
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
@@ -37,21 +60,26 @@ export default function SignupPage() {
     termsOfService: false,
     privacyPolicy: false,
     imageProcessing: false,
+    aiTraining: false,
     marketing: false,
   })
+  // 만 14세 이상 확인 (개인정보보호법 제22조의2 — 14세 미만은 법정대리인 동의 필요)
+  const [age14, setAge14] = useState(false)
   const [submitting, setSubmitting] = useState(false)
   const [toast, setToast] = useState<string | null>(null)
 
-  const allChecked = CONSENT_ITEMS.every((it) => consents[it.key])
-  const requiredOk = CONSENT_ITEMS.filter((it) => it.required).every((it) => consents[it.key])
+  const allChecked = age14 && CONSENT_ITEMS.every((it) => consents[it.key])
+  const requiredOk = age14 && CONSENT_ITEMS.filter((it) => it.required).every((it) => consents[it.key])
 
   const toggle = (key: keyof Consents) => setConsents((c) => ({ ...c, [key]: !c[key] }))
   const toggleAll = () => {
     const next = !allChecked
+    setAge14(next)
     setConsents({
       termsOfService: next,
       privacyPolicy: next,
       imageProcessing: next,
+      aiTraining: next,
       marketing: next,
     })
   }
@@ -61,6 +89,7 @@ export default function SignupPage() {
     if (!EMAIL_RE.test(email)) return setToast('올바른 이메일 형식을 입력해 주세요.')
     if (!PW_RE.test(password)) return setToast('비밀번호는 영문·숫자 포함 8~20자여야 합니다.')
     if (!nickname.trim()) return setToast('닉네임을 입력해 주세요.')
+    if (!age14) return setToast('만 14세 이상만 가입할 수 있습니다.')
     if (!requiredOk) return setToast('필수 약관에 모두 동의해 주세요.')
 
     setSubmitting(true)
@@ -137,6 +166,20 @@ export default function SignupPage() {
               모든 필수 및 선택 약관에 전체 동의합니다.
             </span>
           </button>
+
+          {/* 만 14세 이상 확인 (필수) */}
+          <div className="rounded-lg border border-outline-variant bg-surface-container-lowest/60 p-5">
+            <button
+              type="button"
+              onClick={() => setAge14((v) => !v)}
+              className="flex w-full items-center text-left"
+            >
+              <CheckBox checked={age14} small />
+              <span className="ml-3 font-label-md text-label-md text-on-surface">
+                [필수] 만 14세 이상입니다
+              </span>
+            </button>
+          </div>
 
           {/* 개별 동의 */}
           <div className="space-y-4">

@@ -49,8 +49,11 @@ Request: { "provider": "kakao", "authCode": "...", "deviceId": "..." }
 Response: { "success": true, "data": { "accessToken": "...", "refreshToken": "...", "isNewUser": true, "needsConsent": true } }
 
 POST /api/v1/auth/consents
-Request: { "termsOfService": true, "privacyPolicy": true, "imageProcessing": true, "marketing": false }
+Request: { "termsOfService": true, "privacyPolicy": true, "imageProcessing": true, "aiTraining": false, "marketing": false }
 ```
+> 동의 항목은 필수(약관·개인정보·공간사진처리)와 선택(AI학습 활용·마케팅)을 분리한다.
+> AI 학습 활용은 서비스 제공에 불필요하므로 선택이며 거부해도 전 기능 이용 가능(개인정보보호법 제22조·NFR-SEC-005).
+> 만 14세 이상 확인 필수. 상세 동의 내역: `docs/privacy_consent.md`.
 
 ### Use Case 시나리오
 **정상 시나리오:**

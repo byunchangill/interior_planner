@@ -31,11 +31,13 @@ public class User {
     @Column(nullable = false)
     private String nickname;
 
-    // 동의 항목 (FR-AUTH-003)
+    // 동의 항목 (FR-AUTH-003). 필수: 약관·개인정보·공간사진처리 / 선택: AI학습·마케팅
+    // 필수/선택 분리는 개인정보보호법 제22조(끼워팔기 동의 금지) 준수 목적.
     private boolean termsOfService;
     private boolean privacyPolicy;
-    private boolean imageProcessing;
-    private boolean marketing;
+    private boolean imageProcessing;   // [필수] 공간 사진·도면을 서비스 제공(추천)에 처리
+    private boolean aiTraining;        // [선택] 익명화 데이터의 AI 모델 학습 활용 (거부해도 서비스 이용 가능)
+    private boolean marketing;         // [선택] 마케팅 정보 수신
 
     @CreatedDate
     @Column(updatable = false)
@@ -49,13 +51,14 @@ public class User {
 
     public User(String email, String password, String nickname,
                 boolean termsOfService, boolean privacyPolicy,
-                boolean imageProcessing, boolean marketing) {
+                boolean imageProcessing, boolean aiTraining, boolean marketing) {
         this.email = email;
         this.password = password;
         this.nickname = nickname;
         this.termsOfService = termsOfService;
         this.privacyPolicy = privacyPolicy;
         this.imageProcessing = imageProcessing;
+        this.aiTraining = aiTraining;
         this.marketing = marketing;
     }
 
@@ -89,6 +92,14 @@ public class User {
 
     public boolean isImageProcessing() {
         return imageProcessing;
+    }
+
+    public boolean isAiTraining() {
+        return aiTraining;
+    }
+
+    public void setAiTraining(boolean aiTraining) {
+        this.aiTraining = aiTraining;
     }
 
     public boolean isMarketing() {
