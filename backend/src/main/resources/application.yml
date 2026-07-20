@@ -6,7 +6,7 @@ spring:
   # Jackson 3 (Spring Boot 4) 는 java.time 값을 기본적으로 ISO-8601 문자열로 직렬화한다.
   servlet:
     multipart:
-      # 실제 20MB 제한은 LocalFileStorage 에서 VALID_002 로 검증. 여기선 컨트롤러 도달을 위해 여유를 둔다.
+      # 실제 20MB 제한은 SupabaseFileStorage 에서 VALID_002 로 검증. 여기선 컨트롤러 도달을 위해 여유를 둔다.
       max-file-size: 21MB
       max-request-size: 25MB
   # Supabase(PostgreSQL) 단일 DB. 비밀번호는 환경변수 필수 (기본값 없음 — 커밋 금지).
@@ -25,10 +25,12 @@ spring:
 server:
   port: 8080
 
-# 파일 스토리지 (v1: 로컬 파일시스템)
-storage:
-  local:
-    dir: uploads
+# 파일 스토리지 — Supabase Storage 단일 버킷. service-role-key 는 환경변수 필수 (기본값 없음 — 커밋 금지).
+supabase:
+  url: https://runiohbhyhtsdnqqbzfk.supabase.co
+  service-role-key: ${SUPABASE_SERVICE_ROLE_KEY}
+  storage:
+    bucket: uploads
 
 # JWT — 기본값은 로컬 실행 편의용. 실제 배포 시 JWT_SECRET 환경변수로 반드시 교체.
 jwt:

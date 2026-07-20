@@ -2,9 +2,6 @@ package com.homestyler.common.storage;
 
 import com.homestyler.common.exception.ApiException;
 import com.homestyler.common.exception.ErrorCode;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.core.io.FileSystemResource;
-import org.springframework.core.io.Resource;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,8 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 
 /**
@@ -24,16 +19,16 @@ import java.nio.file.Paths;
 @RestController
 public class FileController {
 
-    private final Path root;
+    private final FileStorageService storage;
     private final FileUrlSigner signer;
 
-    public FileController(@Value("${storage.local.dir:uploads}") String dir, FileUrlSigner signer) {
-        this.root = Paths.get(dir).toAbsolutePath().normalize();
+    public FileController(FileStorageService storage, FileUrlSigner signer) {
+        this.storage = storage;
         this.signer = signer;
     }
 
     @GetMapping("/files/{filename}")
-    public ResponseEntity<Resource> serve(@PathVariable String filename,
+    public ResponseEntity<byte[]> serve(@PathVariable String filename,
                                           @RequestParam(required = false) Long exp,
                                           @RequestParam(required = false) String sig) {
         String safe = Paths.get(filename).getFileName().toString(); // 경로 조작 방지
@@ -42,11 +37,11 @@ public class FileController {
                 && (exp == null || !signer.verify(safe, exp, sig))) {
             throw new ApiException(ErrorCode.AUTH_003);
         }
-        Path file = root.resolve(safe);
-        if (!Files.isReadable(file)) {
+        byte[] bytes = storage.fetch(safe);
+        if (bytes == null) {
             throw new ApiException(ErrorCode.RES_001);
         }
         MediaType type = safe.endsWith(".png") ? MediaType.IMAGE_PNG : MediaType.IMAGE_JPEG;
-        return ResponseEntity.ok().contentType(type).body(new FileSystemResource(file));
+        return ResponseEntity.ok().contentType(type).body(bytes);
     }
 }

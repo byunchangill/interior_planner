@@ -19,7 +19,7 @@ backend/src/main/java/com/homestyler/
 │   ├── ApiResponse.java
 │   ├── exception/   # ApiException, ErrorCode(enum), GlobalExceptionHandler
 │   ├── security/    # JWT 필터·프로바이더, SecurityConfig
-│   └── storage/     # FileStorageService (인터페이스) + LocalFileStorage
+│   └── storage/     # FileStorageService (인터페이스) + SupabaseFileStorage
 ├── auth/            # AuthController, AuthService, User, RefreshToken, Consent
 ├── space/           # Space, SpacePhoto, Dimension, Furniture ...
 ├── recommendation/  # 조건, 분석 잡, 추천 결과
@@ -41,7 +41,7 @@ backend/src/main/java/com/homestyler/
 
 ## 파일 업로드
 
-- `FileStorageService` 인터페이스 뒤에 숨긴다. dev는 `LocalFileStorage`(경로: `backend/uploads/`, `.gitignore` 등록).
+- `FileStorageService` 인터페이스 뒤에 숨긴다. 구현체는 `SupabaseFileStorage`(Supabase Storage `uploads` 버킷) 하나뿐 — dev/prod 환경 분리 없음.
 - 업로드 시 필수 처리: (1) 확장자·MIME 검증 (2) **EXIF 메타데이터 제거** — NFR-PRIV-002, GPS 좌표가 남으면 개인정보 사고다 (3) 20MB 제한 (4) 저장 파일명은 UUID.
 - 응답에는 스토리지 내부 경로가 아닌 서빙 URL(`/files/**`)만 노출한다.
 
