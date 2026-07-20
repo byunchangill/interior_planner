@@ -206,6 +206,7 @@ Response: { "success": true, "data": { "spaceId": "sp_123", "areaPyeong": 4.9 } 
 | preferredColors[] | array | N | 색상 코드 목록 |
 | requiredFurniture[] | array | N | 가구 카테고리 코드 |
 | keepFurnitureIds[] | array | N | 유지 가구 ID (SPACE-006에서 선택된 값) |
+| lifestyle | object | Y | 생활 방식 설문 (FR-PREF-006): householdSize(1~10), hasChildren, hasPets, worksFromHome, cooksOften, storagePreference(STORAGE/OPENNESS), housingType(JEONSE/WOLSE/OWNED), residenceYears |
 
 ### 처리 로직
 1. 입력 검증 후 분석 Job 생성 → 분석 큐에 등록 (상태: `queued`)
@@ -237,7 +238,10 @@ Response: { "success": true, "data": { "spaceId": "sp_123", "areaPyeong": 4.9 } 
 POST /api/v1/analyses
 Request: { "spaceId": "sp_123", "styles": ["nordic", "wood"], "budgetRange": "B300_500",
            "preferredColors": ["#F5F0E8", "#8B7355"], "requiredFurniture": ["sofa", "bookshelf"],
-           "keepFurnitureIds": ["fur_001"] }
+           "keepFurnitureIds": ["fur_001"],
+           "lifestyle": { "householdSize": 2, "hasChildren": false, "hasPets": true,
+                          "worksFromHome": true, "cooksOften": false,
+                          "storagePreference": "STORAGE", "housingType": "JEONSE", "residenceYears": 2 } }
 Response: { "success": true, "data": { "analysisId": "an_789", "status": "queued", "estimatedSeconds": 120 } }
 
 GET /api/v1/analyses/{analysisId}
@@ -285,8 +289,10 @@ Response: { "success": true, "data": { "status": "generating_visual", "progress"
    - `storage`: 수납 활용 제안 목록
    - `keepFurnitureLayout`: 유지 가구 반영 배치안 (유지 가구 없으면 섹션 숨김)
    - `budgetPlans`: 예산 구간별 추천 구성 (설정 예산 구간 기본 펼침)
-   - `items`: 추천 가구·소품 목록 (크기, 예상 가격대, 배치 위치 태그)
+   - `items`: 추천 가구·소품 목록 — 실제 판매 제품 형태의 스키마(브랜드, 제품명, W×D×H 치수, 가격, 구매 링크, 배치 위치 태그). v1은 Mock 값이지만 스키마는 실데이터 교체 가능 형태(BL-001)로 유지
+   - `fitScore`: 공간 적합도(FR-RECO-015) — 총점(0~100) + 항목별 판정(GOOD/CHECK/BLOCKED, 예: 통로 폭, 가구 대비 벽 길이) + 구매 전 실측 확인 목록
 4. 구조 변경·전기·배관·철거 관련 항목에는 `expertRequired: true` 플래그 → 경고 배지 표시, 탭 시 RECO-008 안내로 이동
+5. 배치·마감재·가구 등 주요 추천 항목에는 `reason`(추천 이유, FR-RECO-014)을 포함해 표시한다. 생활 방식 설문(lifestyle)이 반영된 항목은 이유에 그 근거를 명시한다 (예: "반려동물 가정 — 긁힘에 강한 패브릭 추천")
 
 ### 출력/결과
 - 성공 시: 섹션 탐색형 상세 화면 렌더링, 항목별 스크랩 가능
@@ -305,12 +311,19 @@ GET /api/v1/recommendations/{recommendationId}
 Response: { "success": true, "data": {
   "style": "nordic",
   "concept": { "title": "...", "description": "...", "keywords": ["..."] },
-  "layout": { "imageUrl": "...", "flowDescription": "..." },
+  "layout": { "imageUrl": "...", "flowDescription": "...", "reason": "창문 앞을 비워 채광을 유지합니다." },
   "materials": { "wallpaper": { "color": "#F5F0E8", "material": "...", "reason": "..." }, ... },
   "spaceTips": ["..."], "storage": ["..."],
   "keepFurnitureLayout": { ... },
   "budgetPlans": [ { "range": "B300_500", "items": [...] } ],
-  "items": [ { "itemId": "...", "name": "...", "size": "...", "priceRange": "...", "position": "...", "expertRequired": false } ],
+  "items": [ { "itemId": "...", "brand": "A사", "name": "3인용 패브릭 소파",
+               "widthMm": 2180, "depthMm": 920, "heightMm": 810,
+               "price": 1290000, "purchaseUrl": "https://...", "position": "거실 남측 벽",
+               "reason": "반려동물 가정 — 긁힘에 강한 패브릭", "expertRequired": false } ],
+  "fitScore": { "total": 92, "checks": [
+    { "label": "통로 폭", "verdict": "GOOD", "detail": "소파 배치 후 통로 83cm" },
+    { "label": "소파 폭 vs 벽 길이", "verdict": "CHECK", "detail": "여유 12cm — 구매 전 실측 권장" } ],
+    "measureBeforeBuy": ["남측 벽 길이", "현관 폭"] },
   "disclaimers": ["AI 분석 결과로 실제와 다를 수 있습니다."]
 } }
 ```
@@ -533,6 +546,57 @@ DELETE /api/v1/share-links/{linkId}   → 링크 회수
 
 **예외 시나리오:**
 1. 업체와 상담 완료 후 링크 회수 → 이후 접근 시 만료 페이지 표시
+
+---
+
+## FR-SAVE-006 구매 목록 내보내기
+
+**관련 화면**: SAVE-001, SAVE-003
+**우선순위**: [P1]
+**관련 요구사항**: FR-SAVE-006, FR-RECO-009, FR-RECO-015
+
+### 개요
+> 추천안의 가구 목록과 주요 치수 요약을 구매·상담에 바로 쓸 수 있는 형태로 내보낸다.
+
+### 트리거
+- 추천 상세 또는 보관함에서 "구매 목록 내보내기" 탭
+
+### 입력값
+| 파라미터 | 타입 | 필수 | 유효성 검사 |
+|----------|------|------|-------------|
+| recommendationId | string | Y | 본인 소유 추천안 |
+| budgetPlanRange | string | N | 특정 예산안만 내보낼 때 (기본: 설정 예산 구간) |
+
+### 처리 로직
+1. 추천안의 `items`에서 제품명·브랜드·치수(W×D×H)·가격·구매 링크를 목록화
+2. 공간 주요 치수(가로/세로/높이)와 `fitScore.measureBeforeBuy`(구매 전 실측 확인 항목)를 상단에 요약
+3. 품목별 금액 합계와 총예산 표시
+4. 텍스트(클립보드 복사)와 공유 링크(FR-SAVE-003 재사용) 두 가지 형태로 제공
+
+### 출력/결과
+- 성공 시: 구매 목록 뷰 표시 → 복사/공유 액션
+- 실패 시: 목록 생성 실패 안내
+
+### 예외 처리
+| 예외 상황 | 에러 코드 | 사용자 메시지 |
+|-----------|-----------|---------------|
+| 추천안 없음/삭제됨 | RES_001 | 추천 결과를 찾을 수 없습니다. |
+
+### API 엔드포인트 (안)
+```
+GET /api/v1/recommendations/{recommendationId}/shopping-list
+Response: { "success": true, "data": {
+  "spaceSummary": { "widthM": 4.5, "depthM": 3.6, "heightM": 2.3 },
+  "measureBeforeBuy": ["남측 벽 길이", "현관 폭"],
+  "items": [ { "brand": "A사", "name": "3인용 패브릭 소파", "widthMm": 2180, "depthMm": 920, "heightMm": 810,
+               "price": 1290000, "purchaseUrl": "https://..." } ],
+  "totalPrice": 3450000 } }
+```
+
+### Use Case 시나리오
+**정상 시나리오:**
+1. 추천안 확정 → "구매 목록 내보내기" → 총 345만 원 목록 확인
+2. 텍스트 복사 → 가족 단톡방에 붙여넣기, 실측 확인 항목 보고 현관 폭 측정
 
 ---
 
