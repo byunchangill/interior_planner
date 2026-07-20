@@ -26,7 +26,13 @@ public enum ErrorCode {
     AUTH_003(HttpStatus.FORBIDDEN, "접근 권한이 없습니다."),
     VALID_002(HttpStatus.BAD_REQUEST, "파일 형식 또는 용량이 올바르지 않습니다."),
     VALID_003(HttpStatus.BAD_REQUEST, "입력값이 허용 범위를 벗어났습니다."),
-    IMG_001(HttpStatus.UNPROCESSABLE_CONTENT, "이미지 품질이 기준에 미달합니다.");
+    IMG_001(HttpStatus.UNPROCESSABLE_CONTENT, "이미지 품질이 기준에 미달합니다."),
+
+    // --- M3: RECO ---
+    LIMIT_001(HttpStatus.CONFLICT, "이미 진행 중인 분석이 있습니다. 완료 후 다시 시도하세요."),
+    AI_001(HttpStatus.INTERNAL_SERVER_ERROR, "분석에 실패했습니다. 잠시 후 다시 시도해 주세요."),
+    AI_004(HttpStatus.INTERNAL_SERVER_ERROR, "시각화 생성에 실패했습니다."),
+    DATA_001(HttpStatus.OK, "원본 사진이 삭제되어 일부 이미지를 표시할 수 없습니다.");
 
     private final HttpStatus status;
     private final String message;

@@ -55,7 +55,7 @@ public class SpaceService {
 
     // ---------- 공통 소유권 검증 (모든 핸들러가 이 한 곳을 통과) ----------
 
-    private Space ownedSpace(Long spaceId, Long userId) {
+    public Space ownedSpace(Long spaceId, Long userId) {
         Space space = spaceRepository.findById(spaceId)
                 .orElseThrow(() -> new ApiException(ErrorCode.RES_001));
         if (!space.getUserId().equals(userId)) {

@@ -21,8 +21,15 @@ import SpacePhotoPage from './pages/space/SpacePhotoPage.tsx'
 import FloorPlanUploadPage from './pages/space/FloorPlanUploadPage.tsx'
 import SpaceDimensionsPage from './pages/space/SpaceDimensionsPage.tsx'
 import SpaceDetailPage from './pages/space/SpaceDetailPage.tsx'
+// RECO (RECO-001~008) — M3
+import RecoSetupPage from './pages/reco/RecoSetupPage.tsx'
+import AnalysisProgressPage from './pages/reco/AnalysisProgressPage.tsx'
+import RecoSummaryPage from './pages/reco/RecoSummaryPage.tsx'
+import RecommendationDetailPage from './pages/reco/RecommendationDetailPage.tsx'
+import BeforeAfterPage from './pages/reco/BeforeAfterPage.tsx'
+import FurnitureDetailPage from './pages/reco/FurnitureDetailPage.tsx'
+import ExpertNoticePage from './pages/reco/ExpertNoticePage.tsx'
 // 기타 탭 (M1+ 예정)
-import RecoPage from './pages/RecoPage.tsx'
 import SavedPage from './pages/SavedPage.tsx'
 import MyPage from './pages/MyPage.tsx'
 
@@ -43,6 +50,13 @@ const router = createBrowserRouter([
       { path: '/spaces/:id/photos', element: <SpacePhotoPage /> }, // SPACE-003
       { path: '/spaces/:id/floorplan', element: <FloorPlanUploadPage /> }, // SPACE-004
       { path: '/spaces/:id/edit', element: <SpaceDimensionsPage /> }, // SPACE-005 · SPACE-006
+      // RECO 결과 플로우 — 포커스 화면(하단 탭 없음)
+      { path: '/reco/jobs/:analysisId', element: <AnalysisProgressPage /> }, // RECO-003
+      { path: '/reco/summary/:analysisId', element: <RecoSummaryPage /> }, // RECO-004
+      { path: '/reco/:recommendationId', element: <RecommendationDetailPage /> }, // RECO-005
+      { path: '/reco/:recommendationId/compare', element: <BeforeAfterPage /> }, // RECO-006
+      { path: '/reco/:recommendationId/items/:itemId', element: <FurnitureDetailPage /> }, // RECO-007
+      { path: '/reco/:recommendationId/expert', element: <ExpertNoticePage /> }, // RECO-008
     ],
   },
 
@@ -59,7 +73,7 @@ const router = createBrowserRouter([
         children: [
           { path: 'home', element: <HomePage /> }, // HOME-001
           { path: 'spaces', element: <SpaceListPage /> }, // SPACE-001
-          { path: 'reco', element: <RecoPage /> }, // RECO-001
+          { path: 'reco', element: <RecoSetupPage /> }, // RECO-001 · RECO-002
           { path: 'saved', element: <SavedPage /> }, // SAVE-001
           { path: 'my', element: <MyPage /> }, // MY-001
         ],
