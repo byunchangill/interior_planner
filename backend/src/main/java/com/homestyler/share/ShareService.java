@@ -225,12 +225,13 @@ public class ShareService {
         return d.items().stream().mapToLong(ProductItem::price).sum();
     }
 
+    // v1엔 실제 스타일/AI 이미지가 없다 → null. FE가 스타일 그라디언트·placeholder를 렌더한다.
     private String thumbnailUrl(String style) {
-        return "/files/placeholder_" + style.toLowerCase() + ".png";
+        return null;
     }
 
     private String afterImageUrl(String style) {
-        return "/files/placeholder_" + style.toLowerCase() + "_after.png";
+        return null;
     }
 
     private String colorOf(MaterialSpec spec) {

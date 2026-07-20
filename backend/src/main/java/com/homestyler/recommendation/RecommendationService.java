@@ -77,7 +77,8 @@ public class RecommendationService {
     public Visuals visuals(Long recommendationId, Long userId) {
         Recommendation rec = ownedRecommendation(recommendationId, userId);
         Space space = spaceService.ownedSpace(rec.getSpaceId(), userId);
-        String afterUrl = "/files/placeholder_" + rec.getStyle().name().toLowerCase() + "_after.png";
+        // After(AI 생성 시각화)는 v1엔 없음 → null. FE가 "AI 시각화 준비 중" placeholder를 렌더한다.
+        String afterUrl = null;
 
         List<SpacePhoto> photos = space.getPhotos().stream().filter(p -> !p.isFloorPlan()).toList();
         List<VisualPair> pairs = new ArrayList<>();

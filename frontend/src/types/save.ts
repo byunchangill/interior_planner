@@ -28,7 +28,7 @@ export interface SavedItem {
   spaceName: string
   style: StyleType
   conceptTitle: string
-  thumbnailUrl: string
+  thumbnailUrl: string | null
   budgetTotal: number
   fitScoreTotal: number
   selected: boolean
@@ -52,7 +52,7 @@ export interface CompareColumn {
   recommendationId: number
   style: StyleType
   conceptTitle: string
-  thumbnailUrl: string
+  thumbnailUrl: string | null
   budgetTotal: number
   fitScoreTotal: number
   materialSummary: Record<string, string>
@@ -104,7 +104,7 @@ export interface PublicShare {
   fitScoreTotal: number
   materials: Record<string, PublicMaterial>
   items: PublicShareItem[]
-  afterImageUrl: string
+  afterImageUrl: string | null
   originalPhotos: string[]
   disclaimers: string[]
 }

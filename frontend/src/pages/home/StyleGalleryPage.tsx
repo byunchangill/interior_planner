@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { getStyles } from '../../api/home'
 import { useFetch } from '../../hooks/useFetch'
-import { STYLE_LABELS, STYLE_TYPES, type StyleType } from '../../types/home'
+import { STYLE_LABELS, STYLE_GRADIENT, STYLE_TYPES, type StyleType } from '../../types/home'
 
 export default function StyleGalleryPage() {
   const res = useFetch(getStyles)
@@ -59,8 +59,7 @@ export default function StyleGalleryPage() {
               >
                 <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                 <div
-                  className="h-full w-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110"
-                  style={{ backgroundImage: `url(${it.thumbnailUrl})` }}
+                  className={`h-full w-full transition-transform duration-700 group-hover:scale-110 ${STYLE_GRADIENT[it.styleType]}`}
                 />
                 <div className="absolute bottom-0 left-0 z-20 p-6">
                   <span className="mb-2 inline-block rounded-full bg-white/20 px-2 py-1 font-label-sm text-white backdrop-blur-md">

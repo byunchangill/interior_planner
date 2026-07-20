@@ -173,7 +173,9 @@ public class MockAiAnalysisService implements AiAnalysisService {
         return style.getKeywords().get(0) + " " + style.getTitle().replace(" 스타일", "") + " " + spaceType.korName();
     }
 
+    // v1엔 실제 AI 생성 이미지가 없다. null을 반환해 FE가 의도된 placeholder(아이콘/그라디언트)를 렌더하게 한다.
+    // 실제 이미지 생성 어댑터 도입 시 생성 URL을 반환하도록 교체.
     private String placeholder(StyleType style, String kind) {
-        return "/files/placeholder_" + style.name().toLowerCase() + "_" + kind + ".png";
+        return null;
     }
 }

@@ -49,6 +49,17 @@ export default function BeforeAfterPage() {
   )
 }
 
+// After는 AI 생성 이미지 — Mock 단계에선 없으므로 의도된 placeholder를 보여준다.
+function AfterVisual({ url }: { url: string | null }) {
+  if (url) return <img src={url} alt="After" className="h-full w-full object-cover" />
+  return (
+    <div className="flex h-full w-full flex-col items-center justify-center gap-2 bg-gradient-to-br from-primary to-primary-container">
+      <span className="material-symbols-outlined text-5xl text-white/90">auto_awesome</span>
+      <span className="font-label-md text-label-md text-white/90">AI 시각화 준비 중</span>
+    </div>
+  )
+}
+
 function ComparePair({ pair }: { pair: VisualPair }) {
   const containerRef = useRef<HTMLDivElement>(null)
   const [pos, setPos] = useState(50) // after clip 시작 %
@@ -68,7 +79,7 @@ function ComparePair({ pair }: { pair: VisualPair }) {
     return (
       <section>
         <div className="relative aspect-[4/5] w-full overflow-hidden rounded-3xl bg-surface-dim shadow-xl">
-          <img src={pair.afterUrl} alt="After" className="h-full w-full object-cover" />
+          <AfterVisual url={pair.afterUrl} />
           <AfterWatermark />
           <span className="absolute right-4 top-4 rounded-full bg-primary px-3 py-1 font-label-md text-label-md text-on-primary shadow-md">
             After AI
@@ -97,7 +108,7 @@ function ComparePair({ pair }: { pair: VisualPair }) {
 
         {/* After (clipped) */}
         <div className="absolute inset-0" style={{ clipPath: `inset(0 0 0 ${pos}%)` }}>
-          <img src={pair.afterUrl} alt="After" className="h-full w-full object-cover" />
+          <AfterVisual url={pair.afterUrl} />
           <span className="absolute right-4 top-4 z-10 rounded-full bg-primary px-3 py-1 font-label-md text-label-md text-on-primary shadow-md">
             After AI
           </span>

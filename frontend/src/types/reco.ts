@@ -200,7 +200,7 @@ export interface Recommendation {
 // GET /recommendations/{id}/visuals
 export interface VisualPair {
   beforeUrl: string | null
-  afterUrl: string
+  afterUrl: string | null
   viewLabel: string
 }
 export interface Visuals {
