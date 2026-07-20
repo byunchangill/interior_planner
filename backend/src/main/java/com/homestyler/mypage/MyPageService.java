@@ -205,8 +205,9 @@ public class MyPageService {
     public DeleteMeResponse deleteAccount(Long userId, DeleteMeRequest req) {
         User user = requireUser(userId);
 
-        // 비밀번호 재확인
-        if (req.password() == null || !passwordEncoder.matches(req.password(), user.getPassword())) {
+        // 비밀번호 재확인 (소셜 전용 계정은 비밀번호가 없어 이 경로로 탈퇴 불가 — AUTH_001)
+        if (req.password() == null || user.getPassword() == null
+                || !passwordEncoder.matches(req.password(), user.getPassword())) {
             throw new ApiException(ErrorCode.AUTH_001);
         }
 

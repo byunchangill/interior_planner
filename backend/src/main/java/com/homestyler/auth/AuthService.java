@@ -23,6 +23,7 @@ import java.util.Map;
 public class AuthService {
 
     private final UserRepository userRepository;
+    private final SocialAccountRepository socialAccountRepository;
     private final RefreshTokenRepository refreshTokenRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtProvider jwtProvider;
@@ -30,12 +31,14 @@ public class AuthService {
     private final Map<AuthProvider, SocialOAuthClient> socialClients;
 
     public AuthService(UserRepository userRepository,
+                       SocialAccountRepository socialAccountRepository,
                        RefreshTokenRepository refreshTokenRepository,
                        PasswordEncoder passwordEncoder,
                        JwtProvider jwtProvider,
                        LoginAttemptLimiter loginAttemptLimiter,
                        List<SocialOAuthClient> socialClients) {
         this.userRepository = userRepository;
+        this.socialAccountRepository = socialAccountRepository;
         this.refreshTokenRepository = refreshTokenRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtProvider = jwtProvider;
@@ -74,7 +77,7 @@ public class AuthService {
         return issueAuth(user);
     }
 
-    /** 카카오/구글 인가 코드 → 사용자 조회/자동가입 → JWT 발급. */
+    /** 카카오/구글 인가 코드 → 사용자 조회/자동가입/계정연동 → JWT 발급. */
     public IssuedTokens socialLogin(AuthProvider provider, String code) {
         SocialOAuthClient client = socialClients.get(provider);
         if (client == null) {
@@ -82,21 +85,29 @@ public class AuthService {
         }
         SocialUserInfo info = client.exchangeAndFetchUser(code);
 
-        User user = userRepository.findByProviderAndProviderId(provider, info.providerId())
-                .orElseGet(() -> createSocialUser(provider, info));
+        User user = socialAccountRepository.findByProviderAndProviderId(provider, info.providerId())
+                .map(link -> userRepository.findById(link.getUserId())
+                        .orElseThrow(() -> new ApiException(ErrorCode.AUTH_001)))
+                .orElseGet(() -> linkOrCreateUser(provider, info));
         return issueAuth(user);
     }
 
-    private User createSocialUser(AuthProvider provider, SocialUserInfo info) {
-        // 이메일이 없는 제공자(예: 카카오 비즈 앱 미전환)는 내부용 더미 이메일을 발급한다.
+    /**
+     * 계정 연동: 검증된 이메일이 기존 유저(로컬 또는 타 제공자)와 일치하면 그 유저에 이 제공자를 연결한다
+     * (SocialAccount 행만 추가 — 이후 로그인 방식이 하나 늘어남). 일치하는 유저가 없으면 신규 가입.
+     * 이메일이 없는/미검증 제공자(카카오 비즈 앱 미전환, 구글 미검증 이메일)는 더미 이메일이라 연동 대상에서
+     * 자연히 제외된다 — 더미 이메일은 provider+providerId 로 조합되어 실제 유저 이메일과 절대 충돌하지 않는다.
+     */
+    private User linkOrCreateUser(AuthProvider provider, SocialUserInfo info) {
         String email = info.email() != null ? info.email()
                 : provider.name().toLowerCase() + "_" + info.providerId() + "@social.homestyler.local";
-        if (userRepository.existsByEmail(email)) {
-            // 다른 방식(로컬 또는 타 제공자)으로 이미 가입된 이메일 — v1엔 계정 연동 기능이 없어 충돌로 처리
-            throw new ApiException(ErrorCode.VALID_001, "이미 다른 방식으로 가입된 이메일입니다.");
-        }
-        String nickname = info.nickname() != null ? info.nickname() : provider.name() + " 사용자";
-        return userRepository.save(new User(email, nickname, provider, info.providerId()));
+
+        User user = userRepository.findByEmail(email).orElseGet(() -> {
+            String nickname = info.nickname() != null ? info.nickname() : provider.name() + " 사용자";
+            return userRepository.save(new User(email, nickname, provider));
+        });
+        socialAccountRepository.save(new SocialAccount(user.getId(), provider, info.providerId()));
+        return user;
     }
 
     public IssuedTokens refresh(String refreshToken) {

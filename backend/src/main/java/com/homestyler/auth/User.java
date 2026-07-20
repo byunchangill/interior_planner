@@ -32,12 +32,10 @@ public class User {
     @Column(nullable = false)
     private String nickname;
 
-    // 소셜 로그인: LOCAL 은 providerId null, KAKAO/GOOGLE 은 제공자 고유회원번호를 저장
+    // 최초 가입 방식 기록용(표시 목적). 실제 로그인 가능 방식은 SocialAccount 테이블(연동) + password 유무로 결정된다.
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private AuthProvider provider = AuthProvider.LOCAL;
-
-    private String providerId;
 
     // 동의 항목 (FR-AUTH-003). 필수: 약관·개인정보·공간사진처리 / 선택: AI학습·마케팅
     // 필수/선택 분리는 개인정보보호법 제22조(끼워팔기 동의 금지) 준수 목적.
@@ -72,12 +70,11 @@ public class User {
 
     // 소셜 최초 로그인 시 자동 가입. 소셜 제공자의 로그인 동의 화면이 약관 동의를 대신하므로
     // 필수 동의 3종은 true로 간주한다 — 별도 동의 화면은 v1 범위 밖(백로그).
-    public User(String email, String nickname, AuthProvider provider, String providerId) {
+    public User(String email, String nickname, AuthProvider provider) {
         this.email = email;
         this.password = null;
         this.nickname = nickname;
         this.provider = provider;
-        this.providerId = providerId;
         this.termsOfService = true;
         this.privacyPolicy = true;
         this.imageProcessing = true;
@@ -103,10 +100,6 @@ public class User {
 
     public AuthProvider getProvider() {
         return provider;
-    }
-
-    public String getProviderId() {
-        return providerId;
     }
 
     public void setNickname(String nickname) {

@@ -57,7 +57,9 @@ public class GoogleOAuthClient implements SocialOAuthClient {
                     .retrieve()
                     .body(UserResponse.class);
 
-            return new SocialUserInfo(user.sub(), user.email(), user.name());
+            // 미검증 이메일은 계정 연동(email 매칭) 근거로 쓸 수 없으므로 null 처리 — AuthService 가 더미 이메일로 대체
+            String email = Boolean.TRUE.equals(user.emailVerified()) ? user.email() : null;
+            return new SocialUserInfo(user.sub(), email, user.name());
         } catch (RestClientException e) {
             throw new ApiException(ErrorCode.AUTH_006, "구글 로그인 처리 중 오류가 발생했습니다.");
         }
@@ -68,6 +70,7 @@ public class GoogleOAuthClient implements SocialOAuthClient {
     }
 
     @JsonIgnoreProperties(ignoreUnknown = true)
-    private record UserResponse(String sub, String email, String name) {
+    private record UserResponse(String sub, String email,
+                                @JsonProperty("email_verified") Boolean emailVerified, String name) {
     }
 }
