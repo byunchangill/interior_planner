@@ -1,10 +1,9 @@
 package com.homestyler.auth;
 
-import com.homestyler.auth.AuthDtos.AuthResponse;
 import com.homestyler.auth.AuthDtos.ConsentResponse;
+import com.homestyler.auth.AuthDtos.IssuedTokens;
 import com.homestyler.auth.AuthDtos.LoginRequest;
 import com.homestyler.auth.AuthDtos.SignupRequest;
-import com.homestyler.auth.AuthDtos.TokenResponse;
 import com.homestyler.auth.AuthDtos.UserInfo;
 import com.homestyler.common.exception.ApiException;
 import com.homestyler.common.exception.ErrorCode;
@@ -22,18 +21,21 @@ public class AuthService {
     private final RefreshTokenRepository refreshTokenRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtProvider jwtProvider;
+    private final LoginAttemptLimiter loginAttemptLimiter;
 
     public AuthService(UserRepository userRepository,
                        RefreshTokenRepository refreshTokenRepository,
                        PasswordEncoder passwordEncoder,
-                       JwtProvider jwtProvider) {
+                       JwtProvider jwtProvider,
+                       LoginAttemptLimiter loginAttemptLimiter) {
         this.userRepository = userRepository;
         this.refreshTokenRepository = refreshTokenRepository;
         this.passwordEncoder = passwordEncoder;
         this.jwtProvider = jwtProvider;
+        this.loginAttemptLimiter = loginAttemptLimiter;
     }
 
-    public AuthResponse signup(SignupRequest req) {
+    public IssuedTokens signup(SignupRequest req) {
         var c = req.consents();
         // 필수 동의만 검증(약관·개인정보·공간사진처리). AI학습·마케팅은 선택이라 강제하지 않는다.
         if (!c.termsOfService() || !c.privacyPolicy() || !c.imageProcessing()) {
@@ -50,14 +52,19 @@ public class AuthService {
         return issueAuth(user);
     }
 
-    public AuthResponse login(LoginRequest req) {
+    public IssuedTokens login(LoginRequest req) {
+        loginAttemptLimiter.check(req.email()); // 15분 창 5회 실패 시 AUTH_005
         User user = userRepository.findByEmail(req.email())
                 .filter(u -> passwordEncoder.matches(req.password(), u.getPassword()))
-                .orElseThrow(() -> new ApiException(ErrorCode.AUTH_001));
+                .orElseThrow(() -> {
+                    loginAttemptLimiter.onFailure(req.email());
+                    return new ApiException(ErrorCode.AUTH_001);
+                });
+        loginAttemptLimiter.onSuccess(req.email());
         return issueAuth(user);
     }
 
-    public TokenResponse refresh(String refreshToken) {
+    public IssuedTokens refresh(String refreshToken) {
         Long userId;
         try {
             userId = jwtProvider.parseRefreshUserId(refreshToken);
@@ -71,7 +78,12 @@ public class AuthService {
         String newAccess = jwtProvider.createAccessToken(userId);
         String newRefresh = jwtProvider.createRefreshToken(userId);
         stored.rotate(newRefresh, jwtProvider.refreshExpiry());
-        return new TokenResponse(newAccess, newRefresh);
+        return new IssuedTokens(newAccess, newRefresh, null);
+    }
+
+    /** 서버 측 refreshToken 폐기 — 이후 해당 세션의 refresh 는 AUTH_002 로 실패한다. */
+    public void logout(Long userId) {
+        refreshTokenRepository.findByUserId(userId).ifPresent(refreshTokenRepository::delete);
     }
 
     @Transactional(readOnly = true)
@@ -88,7 +100,7 @@ public class AuthService {
         return new ConsentResponse(marketing);
     }
 
-    private AuthResponse issueAuth(User user) {
+    private IssuedTokens issueAuth(User user) {
         String access = jwtProvider.createAccessToken(user.getId());
         String refresh = jwtProvider.createRefreshToken(user.getId());
         refreshTokenRepository.findByUserId(user.getId())
@@ -96,6 +108,6 @@ public class AuthService {
                         rt -> rt.rotate(refresh, jwtProvider.refreshExpiry()),
                         () -> refreshTokenRepository.save(
                                 new RefreshToken(user.getId(), refresh, jwtProvider.refreshExpiry())));
-        return new AuthResponse(access, refresh, UserInfo.of(user));
+        return new IssuedTokens(access, refresh, UserInfo.of(user));
     }
 }

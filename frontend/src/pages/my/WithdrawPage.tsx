@@ -30,7 +30,7 @@ export default function WithdrawPage() {
     try {
       await deleteAccount(password)
       // 성공: 토큰 삭제 + 인증 상태 초기화 후 공개 화면으로
-      logout()
+      await logout()
       navigate('/login', { replace: true })
     } catch (e) {
       const code = apiErrorCode(e)

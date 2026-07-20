@@ -12,6 +12,7 @@ import com.homestyler.recommendation.RecommendationDtos.RecommendationDetail;
 import com.homestyler.recommendation.RecommendationDtos.RegenResult;
 import com.homestyler.recommendation.RecommendationDtos.VisualPair;
 import com.homestyler.recommendation.RecommendationDtos.Visuals;
+import com.homestyler.common.storage.FileUrlSigner;
 import com.homestyler.space.Furniture;
 import com.homestyler.space.Space;
 import com.homestyler.space.SpacePhoto;
@@ -35,15 +36,18 @@ public class RecommendationService {
     private final SpaceService spaceService;
     private final AiAnalysisService ai;
     private final FitScoreCalculator fitScore;
+    private final FileUrlSigner fileUrlSigner;
 
     public RecommendationService(RecommendationRepository recommendationRepository,
                                  AnalysisJobRepository jobRepository, SpaceService spaceService,
-                                 AiAnalysisService ai, FitScoreCalculator fitScore) {
+                                 AiAnalysisService ai, FitScoreCalculator fitScore,
+                                 FileUrlSigner fileUrlSigner) {
         this.recommendationRepository = recommendationRepository;
         this.jobRepository = jobRepository;
         this.spaceService = spaceService;
         this.ai = ai;
         this.fitScore = fitScore;
+        this.fileUrlSigner = fileUrlSigner;
     }
 
     /** 공개 공유 뷰용 — 소유권 검증 없이 추천안 소유자 기준으로 상세를 재구성한다. */
@@ -88,7 +92,7 @@ public class RecommendationService {
             return new Visuals(pairs, true);
         }
         for (int i = 0; i < photos.size(); i++) {
-            pairs.add(new VisualPair("/files/" + photos.get(i).getStoredFilename(), afterUrl,
+            pairs.add(new VisualPair(fileUrlSigner.sign(photos.get(i).getStoredFilename()), afterUrl,
                     space.getName() + " 뷰 " + (i + 1)));
         }
         return new Visuals(pairs, null);

@@ -19,7 +19,8 @@ import java.util.List;
  * 보안 설정 (M1: 실제 JWT 인증 도입).
  * - CSRF off, CORS: FE dev origin(http://localhost:*, prod에서 실도메인으로 교체)
  * - STATELESS 세션, JwtAuthenticationFilter 로 Bearer 토큰 검증
- * - permitAll: /api/v1/health, /api/v1/auth/**, /api/v1/styles/**, /files/** (+ dev H2 콘솔)
+ * - permitAll: /api/v1/health, /api/v1/auth(signup·login·refresh), /api/v1/styles/**, /files/** (+ dev H2 콘솔)
+ *   /files 는 필터 단계만 통과 — 실제 인가는 FileController 의 HMAC 서명 검증이 담당한다.
  * - 나머지(/home/summary, /auth/me, /auth/consents 등)는 인증 필요
  */
 @Configuration

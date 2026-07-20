@@ -49,11 +49,6 @@ public final class AuthDtos {
     ) {
     }
 
-    public record RefreshRequest(
-            @NotBlank(message = "refreshToken은 필수입니다.") String refreshToken
-    ) {
-    }
-
     public record ConsentUpdateRequest(boolean marketing) {
     }
 
@@ -65,12 +60,16 @@ public final class AuthDtos {
         }
     }
 
-    /** signup / login 응답: accessToken + refreshToken + user */
-    public record AuthResponse(String accessToken, String refreshToken, UserInfo user) {
+    /** signup / login 응답 본문: accessToken + user. refreshToken 은 httpOnly 쿠키로만 내려간다. */
+    public record AuthResponse(String accessToken, UserInfo user) {
     }
 
-    /** refresh 응답: accessToken + refreshToken */
-    public record TokenResponse(String accessToken, String refreshToken) {
+    /** refresh 응답 본문: accessToken. refreshToken 은 httpOnly 쿠키로 회전된다. */
+    public record TokenResponse(String accessToken) {
+    }
+
+    /** 서비스 내부 발급 결과 — refreshToken 은 컨트롤러가 쿠키로만 내보내고 본문에서 제외한다. */
+    public record IssuedTokens(String accessToken, String refreshToken, UserInfo user) {
     }
 
     public record ConsentResponse(boolean marketing) {

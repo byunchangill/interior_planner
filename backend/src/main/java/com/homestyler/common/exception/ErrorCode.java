@@ -19,6 +19,7 @@ public enum ErrorCode {
     AUTH_001(HttpStatus.UNAUTHORIZED, "이메일 또는 비밀번호가 올바르지 않습니다."),
     AUTH_002(HttpStatus.UNAUTHORIZED, "토큰이 만료되었습니다."),
     AUTH_004(HttpStatus.BAD_REQUEST, "필수 약관에 동의해야 합니다."),
+    AUTH_005(HttpStatus.TOO_MANY_REQUESTS, "로그인 시도가 너무 많습니다. 15분 후 다시 시도해 주세요."),
     VALID_001(HttpStatus.BAD_REQUEST, "입력값 형식이 올바르지 않습니다."),
     RES_001(HttpStatus.NOT_FOUND, "요청한 리소스를 찾을 수 없습니다."),
 

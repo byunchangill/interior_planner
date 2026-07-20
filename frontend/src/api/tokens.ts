@@ -1,18 +1,11 @@
-// accessToken/refreshToken localStorage 저장소 (계약 토큰 정책)
-import type { TokenPair } from '../types/auth'
-
+// accessToken localStorage 저장소. refreshToken 은 httpOnly 쿠키(서버 관리)로 이동 — JS 접근 불가.
 const ACCESS = 'accessToken'
-const REFRESH = 'refreshToken'
 
 export const getAccessToken = () => localStorage.getItem(ACCESS)
-export const getRefreshToken = () => localStorage.getItem(REFRESH)
 
-export function saveTokens({ accessToken, refreshToken }: TokenPair) {
-  localStorage.setItem(ACCESS, accessToken)
-  localStorage.setItem(REFRESH, refreshToken)
-}
+export const saveAccessToken = (accessToken: string) => localStorage.setItem(ACCESS, accessToken)
 
 export function clearTokens() {
   localStorage.removeItem(ACCESS)
-  localStorage.removeItem(REFRESH)
+  localStorage.removeItem('refreshToken') // 쿠키 전환 이전 localStorage 잔재 정리
 }

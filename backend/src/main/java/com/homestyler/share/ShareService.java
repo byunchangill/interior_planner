@@ -27,6 +27,7 @@ import com.homestyler.share.ShareDtos.ShareLinkResult;
 import com.homestyler.share.ShareDtos.ShoppingItem;
 import com.homestyler.share.ShareDtos.ShoppingList;
 import com.homestyler.share.ShareDtos.SpaceSummary;
+import com.homestyler.common.storage.FileUrlSigner;
 import com.homestyler.space.Space;
 import com.homestyler.space.SpacePhoto;
 import com.homestyler.space.SpaceService;
@@ -53,15 +54,18 @@ public class ShareService {
     private final ShareLinkRepository shareLinkRepository;
     private final RecommendationService recommendationService;
     private final SpaceService spaceService;
+    private final FileUrlSigner fileUrlSigner;
 
     public ShareService(RecommendationRepository recommendationRepository,
                         ShareLinkRepository shareLinkRepository,
                         RecommendationService recommendationService,
-                        SpaceService spaceService) {
+                        SpaceService spaceService,
+                        FileUrlSigner fileUrlSigner) {
         this.recommendationRepository = recommendationRepository;
         this.shareLinkRepository = shareLinkRepository;
         this.recommendationService = recommendationService;
         this.spaceService = spaceService;
+        this.fileUrlSigner = fileUrlSigner;
     }
 
     // ---------- 저장 ----------
@@ -175,7 +179,7 @@ public class ShareService {
             Space space = spaceService.ownedSpace(rec.getSpaceId(), rec.getUserId());
             originalPhotos = space.getPhotos().stream()
                     .filter(p -> !p.isFloorPlan())
-                    .map(p -> "/files/" + p.getStoredFilename())
+                    .map(p -> fileUrlSigner.sign(p.getStoredFilename()))
                     .toList();
         }
 

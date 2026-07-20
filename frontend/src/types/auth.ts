@@ -6,15 +6,10 @@ export interface User {
   nickname: string
 }
 
+// refreshToken 은 httpOnly 쿠키로만 오간다 — 응답 본문·FE 저장소에 없음
 export interface AuthResult {
   accessToken: string
-  refreshToken: string
   user: User
-}
-
-export interface TokenPair {
-  accessToken: string
-  refreshToken: string
 }
 
 // POST /auth/signup 요청의 consents 블록

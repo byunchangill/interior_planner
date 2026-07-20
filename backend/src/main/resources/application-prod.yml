@@ -1,0 +1,5 @@
+# prod 프로파일 — 시크릿은 환경변수 필수. 기본값을 두지 않아 JWT_SECRET 미설정 시 기동이 실패하는 것이 의도다
+# (git 에 커밋된 dev 시크릿의 prod 재사용 방지). DB 등 나머지 prod 설정은 PostgreSQL 전환 시 추가.
+jwt:
+  secret: ${JWT_SECRET}
+  cookie-secure: true

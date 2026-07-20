@@ -31,8 +31,8 @@ export default function MyPage() {
   const navigate = useNavigate()
   const res = useFetch(getProfile)
 
-  function onLogout() {
-    logout()
+  async function onLogout() {
+    await logout()
     navigate('/login', { replace: true })
   }
 

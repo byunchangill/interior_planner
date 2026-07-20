@@ -6,6 +6,7 @@ import com.homestyler.auth.UserRepository;
 import com.homestyler.common.exception.ApiException;
 import com.homestyler.common.exception.ErrorCode;
 import com.homestyler.common.storage.FileStorageService;
+import com.homestyler.common.storage.FileUrlSigner;
 import com.homestyler.mypage.MyPageDtos.Consents;
 import com.homestyler.mypage.MyPageDtos.DeleteImagesRequest;
 import com.homestyler.mypage.MyPageDtos.DeleteImagesResponse;
@@ -59,6 +60,7 @@ public class MyPageService {
     private final RefreshTokenRepository refreshTokenRepository;
     private final FileStorageService fileStorage;
     private final PasswordEncoder passwordEncoder;
+    private final FileUrlSigner fileUrlSigner;
 
     public MyPageService(UserRepository userRepository, SpaceRepository spaceRepository,
                          SpacePhotoRepository photoRepository,
@@ -66,7 +68,8 @@ public class MyPageService {
                          ShareLinkRepository shareLinkRepository,
                          AnalysisJobRepository analysisJobRepository,
                          RefreshTokenRepository refreshTokenRepository,
-                         FileStorageService fileStorage, PasswordEncoder passwordEncoder) {
+                         FileStorageService fileStorage, PasswordEncoder passwordEncoder,
+                         FileUrlSigner fileUrlSigner) {
         this.userRepository = userRepository;
         this.spaceRepository = spaceRepository;
         this.photoRepository = photoRepository;
@@ -76,6 +79,7 @@ public class MyPageService {
         this.refreshTokenRepository = refreshTokenRepository;
         this.fileStorage = fileStorage;
         this.passwordEncoder = passwordEncoder;
+        this.fileUrlSigner = fileUrlSigner;
     }
 
     // ---------- GET /me/profile ----------
@@ -116,7 +120,7 @@ public class MyPageService {
         List<ImageItem> items = photoRepository.findAllByUser(userId).stream()
                 .map(p -> new ImageItem(
                         p.getId(), p.getSpace().getId(), p.getSpace().getName(),
-                        "/files/" + p.getStoredFilename(), p.isFloorPlan(), p.getCreatedAt()))
+                        fileUrlSigner.sign(p.getStoredFilename()), p.isFloorPlan(), p.getCreatedAt()))
                 .toList();
         return new ImagesResponse(items);
     }

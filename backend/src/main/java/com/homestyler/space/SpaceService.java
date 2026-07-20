@@ -3,6 +3,7 @@ package com.homestyler.space;
 import com.homestyler.common.exception.ApiException;
 import com.homestyler.common.exception.ErrorCode;
 import com.homestyler.common.storage.FileStorageService;
+import com.homestyler.common.storage.FileUrlSigner;
 import com.homestyler.space.AiEstimationService.Estimation;
 import com.homestyler.space.SpaceDtos.CreateSpaceRequest;
 import com.homestyler.space.SpaceDtos.DetectedFurnitureDto;
@@ -45,12 +46,14 @@ public class SpaceService {
     private final SpaceRepository spaceRepository;
     private final FileStorageService fileStorage;
     private final AiEstimationService aiEstimation;
+    private final FileUrlSigner fileUrlSigner;
 
     public SpaceService(SpaceRepository spaceRepository, FileStorageService fileStorage,
-                        AiEstimationService aiEstimation) {
+                        AiEstimationService aiEstimation, FileUrlSigner fileUrlSigner) {
         this.spaceRepository = spaceRepository;
         this.fileStorage = fileStorage;
         this.aiEstimation = aiEstimation;
+        this.fileUrlSigner = fileUrlSigner;
     }
 
     // ---------- 공통 소유권 검증 (모든 핸들러가 이 한 곳을 통과) ----------
@@ -255,7 +258,7 @@ public class SpaceService {
     }
 
     private String servingUrl(String storedFilename) {
-        return "/files/" + storedFilename;
+        return fileUrlSigner.sign(storedFilename); // 서명 URL — 무서명 /files 접근은 403
     }
 
     private double pick(Double in, Double existing) {
