@@ -4,6 +4,8 @@ import axios, {
   type InternalAxiosRequestConfig,
 } from 'axios'
 import type { ApiResponse } from '../types/common'
+import type { TokenPair } from '../types/auth'
+import { getAccessToken, getRefreshToken, saveTokens, clearTokens } from './tokens'
 
 // 단일 axios 인스턴스. baseURL은 계약 표준(/api/v1).
 // dev 환경에서는 vite proxy가 /api → http://localhost:8080 으로 전달.
@@ -14,23 +16,50 @@ export const api = axios.create({
 
 // ── 요청 인터셉터: accessToken 첨부 ─────────────────────────────
 api.interceptors.request.use((config: InternalAxiosRequestConfig) => {
-  const token = localStorage.getItem('accessToken')
+  const token = getAccessToken()
   if (token) {
     config.headers.set('Authorization', `Bearer ${token}`)
   }
   return config
 })
 
-// ── 응답 인터셉터: 401 시 refresh 재시도 자리(M0 스텁) ───────────
-// M1에서 /api/v1/auth/refresh 연동으로 채운다. 지금은 토큰 정리 후 원본 에러 전파.
+// 재시도 1회 플래그를 얹기 위한 config 확장
+type RetriableConfig = InternalAxiosRequestConfig & { _retry?: boolean }
+
+function goToLogin() {
+  clearTokens()
+  if (window.location.pathname !== '/login') {
+    window.location.href = '/login'
+  }
+}
+
+// ── 응답 인터셉터: 401 시 /auth/refresh 1회 재시도 ───────────────
+// 성공 시 새 토큰 저장 후 원 요청 재시도, 실패 시 토큰 삭제 후 로그인 이동.
+// refresh 호출은 인터셉터가 없는 bare axios로 보내 재귀를 피한다.
 api.interceptors.response.use(
   (response: AxiosResponse) => response,
   async (error: AxiosError) => {
-    if (error.response?.status === 401) {
-      // TODO(M1): refresh 토큰으로 accessToken 재발급 후 원 요청 재시도
-      // localStorage.removeItem('accessToken')
+    const original = error.config as RetriableConfig | undefined
+    const refreshToken = getRefreshToken()
+
+    if (error.response?.status !== 401 || !original || original._retry || !refreshToken) {
+      if (error.response?.status === 401 && !refreshToken) goToLogin()
+      return Promise.reject(error)
     }
-    return Promise.reject(error)
+
+    original._retry = true
+    try {
+      const res = await axios.post<ApiResponse<TokenPair>>('/api/v1/auth/refresh', {
+        refreshToken,
+      })
+      const tokens = res.data.data
+      saveTokens(tokens)
+      original.headers.set('Authorization', `Bearer ${tokens.accessToken}`)
+      return api(original)
+    } catch (refreshErr) {
+      goToLogin()
+      return Promise.reject(refreshErr)
+    }
   },
 )
 

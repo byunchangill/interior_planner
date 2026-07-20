@@ -7,3 +7,9 @@ spring:
 
 server:
   port: 8080
+
+# JWT (dev용 하드코딩 — prod 는 환경변수로 전환 예정)
+jwt:
+  secret: homestyler-dev-secret-key-please-change-in-prod-0123456789abcdef
+  access-ttl-seconds: 3600      # accessToken 1시간
+  refresh-ttl-seconds: 2592000  # refreshToken 30일

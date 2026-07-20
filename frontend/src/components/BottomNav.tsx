@@ -11,7 +11,7 @@ interface Tab {
 
 // 하단 탭 5개 — 홈(/), 내 공간(/spaces), 추천(/reco), 보관함(/saved), 마이(/my)
 const TABS: Tab[] = [
-  { to: '/', icon: 'home', label: '홈' },
+  { to: '/home', icon: 'home', label: '홈' },
   { to: '/spaces', icon: 'chair', label: '내 공간' },
   { to: '/reco', icon: 'auto_awesome', label: '추천' },
   { to: '/saved', icon: 'inventory_2', label: '보관함' },
@@ -25,7 +25,6 @@ export default function BottomNav() {
         <NavLink
           key={tab.to}
           to={tab.to}
-          end={tab.to === '/'}
           className={({ isActive }) =>
             [
               'flex flex-col items-center justify-center rounded-xl px-3 py-1 transition-transform duration-200',
