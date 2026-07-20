@@ -106,8 +106,10 @@ public class AnalysisJobStore {
                         .stream().map(Recommendation::getId).toList()
                 : List.of();
         String failureReason = job.getStatus() == JobStatus.FAILED ? job.getFailureReason() : null;
+        // 추천안 순서(styleIndex)와 동일한 순서의 스타일명 — FE 요약 탭 라벨용
+        List<String> styles = job.getStyles().stream().map(Enum::name).toList();
         return new AnalysisStatusView(job.getId(), job.getStatus().name(), job.getProgress(),
-                job.getStatus().getLabel(), recommendationIds, failureReason);
+                job.getStatus().getLabel(), recommendationIds, styles, failureReason);
     }
 
     // ---------- 헬퍼 ----------

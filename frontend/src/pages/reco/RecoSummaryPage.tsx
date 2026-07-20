@@ -14,6 +14,7 @@ export default function RecoSummaryPage() {
 
   const analysis = useFetch(() => getAnalysis(id), [id])
   const recIds = analysis.state === 'ok' ? analysis.data.recommendationIds : []
+  const recStyles = analysis.state === 'ok' ? analysis.data.styles : []
   const [activeIdx, setActiveIdx] = useState(0)
   const activeId = recIds[activeIdx]
 
@@ -71,10 +72,7 @@ export default function RecoSummaryPage() {
             <nav className="-mx-margin-mobile flex gap-2 overflow-x-auto px-margin-mobile py-1 no-scrollbar">
               {recIds.map((rid, i) => {
                 const active = i === activeIdx
-                const label =
-                  reco.state === 'ok' && reco.data.recommendationId === rid
-                    ? STYLE_LABELS[reco.data.style]
-                    : `추천안 ${i + 1}`
+                const label = recStyles[i] ? STYLE_LABELS[recStyles[i]] : `추천안 ${i + 1}`
                 return (
                   <button
                     key={rid}

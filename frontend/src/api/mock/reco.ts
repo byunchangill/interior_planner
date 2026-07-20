@@ -66,6 +66,7 @@ export const getAnalysis = (analysisId: number): Promise<AnalysisStatus> => {
     progress,
     currentStepLabel: label,
     recommendationIds: status === 'COMPLETED' ? job.recIds : [],
+    styles: job.styles,
   })
 }
 

@@ -45,7 +45,7 @@ export default function PermissionsPage() {
             className="material-symbols-outlined text-[96px] text-primary"
             style={{ fontVariationSettings: "'FILL' 1" }}
           >
-            interior_design
+            chair
           </span>
         </div>
 

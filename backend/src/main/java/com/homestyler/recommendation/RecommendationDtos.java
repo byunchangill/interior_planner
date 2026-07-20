@@ -47,6 +47,7 @@ public final class RecommendationDtos {
             int progress,
             String currentStepLabel,
             List<Long> recommendationIds,
+            List<String> styles,
             String failureReason) {
     }
 

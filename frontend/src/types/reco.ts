@@ -114,6 +114,7 @@ export interface AnalysisStatus {
   progress: number
   currentStepLabel: string
   recommendationIds: number[]
+  styles: StyleType[] // recommendationIds와 동일 순서의 스타일명 (요약 탭 라벨용)
   failureReason?: string
 }
 

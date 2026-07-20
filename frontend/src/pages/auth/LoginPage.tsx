@@ -6,24 +6,51 @@ import { login } from '../../api/auth'
 import Toast from '../../components/Toast'
 
 interface Social {
-  id: string
+  id: 'kakao' | 'naver' | 'apple' | 'google'
   label: string
   className: string
-  icon?: string
-  iconChar?: string
 }
 
 const SOCIALS: Social[] = [
-  { id: 'kakao', label: '카카오로 시작하기', className: 'bg-[#FEE500] text-[#191919]', icon: 'chat_bubble' },
-  { id: 'naver', label: '네이버로 시작하기', className: 'bg-[#03C75A] text-white', iconChar: 'N' },
-  { id: 'apple', label: 'Apple로 시작하기', className: 'bg-black text-white', icon: 'apple' },
-  {
-    id: 'google',
-    label: 'Google로 시작하기',
-    className: 'bg-white border border-outline-variant text-on-surface',
-    icon: 'g_translate',
-  },
+  { id: 'kakao', label: '카카오로 시작하기', className: 'bg-[#FEE500] text-[#191919]' },
+  { id: 'naver', label: '네이버로 시작하기', className: 'bg-[#03C75A] text-white' },
+  { id: 'apple', label: 'Apple로 시작하기', className: 'bg-black text-white' },
+  { id: 'google', label: 'Google로 시작하기', className: 'bg-white border border-outline-variant text-on-surface' },
 ]
+
+// 브랜드 로고 — Material Symbols엔 브랜드 마크가 없어 인라인 SVG로 통일(apple/google 깨짐·오류 해결).
+function SocialLogo({ id }: { id: Social['id'] }) {
+  const c = 'h-5 w-5'
+  switch (id) {
+    case 'kakao':
+      return (
+        <svg viewBox="0 0 24 24" fill="currentColor" className={c} aria-hidden>
+          <path d="M12 3C6.48 3 2 6.53 2 10.88c0 2.8 1.9 5.26 4.75 6.63-.16.56-.72 2.5-.75 2.66 0 0-.03.13.06.18a.24.24 0 0 0 .2 0c.24-.03 2.76-1.85 3.2-2.16.44.06.88.09 1.34.09 5.52 0 10-3.53 10-7.88S17.52 3 12 3z" />
+        </svg>
+      )
+    case 'naver':
+      return (
+        <svg viewBox="0 0 24 24" fill="currentColor" className={c} aria-hidden>
+          <path d="M14.34 12.6 9.4 5.5H5v13h4.66v-7.1l4.94 7.1H19v-13h-4.66v7.1z" />
+        </svg>
+      )
+    case 'apple':
+      return (
+        <svg viewBox="0 0 24 24" fill="currentColor" className={c} aria-hidden>
+          <path d="M17.05 12.04c-.03-2.6 2.12-3.85 2.22-3.91-1.21-1.77-3.1-2.01-3.77-2.04-1.6-.16-3.13.94-3.94.94-.81 0-2.07-.92-3.4-.9-1.75.03-3.36 1.02-4.26 2.58-1.82 3.16-.47 7.83 1.3 10.4.86 1.25 1.89 2.66 3.24 2.61 1.3-.05 1.79-.84 3.36-.84 1.57 0 2.01.84 3.39.81 1.4-.02 2.29-1.28 3.15-2.54.99-1.46 1.4-2.87 1.42-2.94-.03-.01-2.73-1.05-2.76-4.16zM14.6 4.6c.71-.87 1.2-2.07 1.06-3.27-1.03.04-2.28.69-3.02 1.55-.66.76-1.24 1.99-1.09 3.16 1.15.09 2.33-.58 3.05-1.44z" />
+        </svg>
+      )
+    case 'google':
+      return (
+        <svg viewBox="0 0 24 24" className={c} aria-hidden>
+          <path fill="#4285F4" d="M23.06 12.25c0-.85-.08-1.67-.22-2.45H12v4.64h6.2a5.3 5.3 0 0 1-2.3 3.48v2.9h3.72c2.18-2 3.44-4.95 3.44-8.57z" />
+          <path fill="#34A853" d="M12 24c3.1 0 5.7-1.03 7.6-2.78l-3.72-2.9c-1.03.7-2.35 1.1-3.88 1.1-2.98 0-5.5-2.01-6.4-4.72H1.76v2.99A11.99 11.99 0 0 0 12 24z" />
+          <path fill="#FBBC05" d="M5.6 14.7A7.2 7.2 0 0 1 5.22 12c0-.94.16-1.85.38-2.7V6.31H1.76A12 12 0 0 0 .5 12c0 1.94.46 3.77 1.26 5.69l3.84-2.99z" />
+          <path fill="#EA4335" d="M12 4.75c1.68 0 3.19.58 4.38 1.72l3.29-3.29C17.7 1.24 15.1 0 12 0 7.4 0 3.43 2.65 1.76 6.31L5.6 9.3C6.5 6.59 9.02 4.75 12 4.75z" />
+        </svg>
+      )
+  }
+}
 
 export default function LoginPage() {
   const navigate = useNavigate()
@@ -110,16 +137,7 @@ export default function LoginPage() {
               className={`flex h-[56px] w-full items-center rounded-xl px-6 font-label-md transition-all active:scale-[0.98] ${s.className}`}
             >
               <span className="mr-auto flex w-6 justify-center">
-                {s.icon ? (
-                  <span
-                    className="material-symbols-outlined"
-                    style={{ fontVariationSettings: "'FILL' 1" }}
-                  >
-                    {s.icon}
-                  </span>
-                ) : (
-                  <span className="font-bold">{s.iconChar}</span>
-                )}
+                <SocialLogo id={s.id} />
               </span>
               <span className="flex-grow text-center">{s.label}</span>
               <span className="w-6" />
