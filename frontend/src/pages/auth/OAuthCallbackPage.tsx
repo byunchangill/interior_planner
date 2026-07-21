@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react'
 import { useNavigate, useParams, useSearchParams } from 'react-router-dom'
 import { socialLogin } from '../../api/auth'
+import { consumeOAuthState } from '../../api/oauth'
 
 // 인가 코드는 1회용이라 이미 처리한 코드는 다시 보내면 안 된다. React 18 StrictMode(dev)는
 // 컴포넌트를 mount→unmount→remount 하며 effect를 두 번 실행하는데, useRef는 인스턴스별이라
@@ -17,12 +18,21 @@ export default function OAuthCallbackPage() {
 
   useEffect(() => {
     const code = searchParams.get('code')
+    const state = searchParams.get('state')
     if ((provider !== 'kakao' && provider !== 'google') || !code) {
       setFailed(true)
       return
     }
+    // processedCodes 체크를 state 검증보다 먼저 둬야 한다 — consumeOAuthState 는 대조 즉시
+    // sessionStorage 값을 지우므로, StrictMode 리마운트로 effect 가 두 번 돌면 두 번째 호출은
+    // 항상 실패한다(state 없음). 가드가 재실행 자체를 막아 그 문제를 피한다.
     if (processedCodes.has(code)) return
     processedCodes.add(code)
+
+    if (!consumeOAuthState(state)) {
+      setFailed(true)
+      return
+    }
 
     socialLogin(provider, code)
       .then(() => navigate('/home', { replace: true }))
